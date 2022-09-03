@@ -20,4 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get("/fppp", [FPPPController::class, "index"]);
+Route::get("/fppp/file", [FPPPController::class, "show_file"]);
 Route::post("/fppp", [FPPPController::class, "store"]);
+Route::post("/fppp/delete", [FPPPController::class, "delete_file"]);

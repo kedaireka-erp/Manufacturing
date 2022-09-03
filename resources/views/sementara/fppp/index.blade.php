@@ -12,6 +12,21 @@
 
 <body>
     <div class="container">
+        <form action="/fppp" class="d-flex mt-5">
+            <input type="text" name="search" id="search" placeholder="Cari bernasarkan No. FPPP, jenis proyek, atau aplikator" class="form-control">
+            <button type="submit" class="btn btn-primary">Cari</button>
+        </form>
+        @if ($message = Session::get('failed'))
+            <div class="alert alert-danger" role="alert">
+                {{ $message }}
+            </div>
+        @endif
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success" role="alert">
+                {{ $message }}
+            </div>
+        @endif
+            
         <table class="table table-striped-columns">
             <tr>
                 <th>No. FPPP</th>
@@ -30,11 +45,8 @@
                 </td>
             </tr>
             @endforeach
-            <tr>
-
-            </tr>
         </table>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -59,25 +71,27 @@
                         <label for="formFile" class="form-label">Import File</label>
                         <input class="form-control" type="file" id="formFile" name="file">
                     </div>
-                    <div class="mb-3">
-                        <table>
-                            <tr>
-                                <th>No.</th>
-                                <th>Jenis</th>
-                                <th>Action</th>
-                            </tr>
-                            
-                        </table>
-                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
+                    
+
                 </div>
                 </form>
+                <div class="mb-3 p-2">
+                        <div class="text-primary fw-bold">File yang telah diupload</div>
+                        <table class="table" id="files_table">
+                            
+                            
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
+        {{ $all_fppp->links() }}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -90,6 +104,9 @@ exampleModal.addEventListener('show.bs.modal', event => {
   const button = event.relatedTarget
   // Extract info from data-bs-* attributes
   const fppp_id = button.getAttribute('data-bs-id')
+  const fppp_files = button.getAttribute('data-bs-files')
+  const files_arr = fppp_files.split(" ").filter(e =>  e)
+  console.log(files_arr)
   const project_name = button.getAttribute('data-bs-title')
   // If necessary, you could initiate an AJAX request here
   // and then do the updating in a callback.
@@ -97,9 +114,40 @@ exampleModal.addEventListener('show.bs.modal', event => {
   // Update the modal's content.
   const modalTitle = exampleModal.querySelector('.modal-title')
   const modalBodyInput = exampleModal.querySelector('.modal-body input')
+  const modalTable = exampleModal.querySelector('#files_table')
 
+  let modalTableContent = `<tr>
+                                <th>No.</th>
+                                <th>Jenis</th>
+                                <th>Action</th>
+                            </tr>
+                            `;
+
+
+files_arr.forEach((element, index) => {
+    jenisRaw = element.slice(0,element.indexOf("/"))
+    jenis = jenisRaw.replace("_"," ")
+    modalTableContent += `<tr>
+                                <td>${index+1}.</td>
+                                <td>${jenis}</td>
+                                <td class="d-flex">
+                                    <a href="/fppp/file?path=${element}" target="_blank" class="btn btn-primary me-2">Lihat</a>
+                                    <form action="/fppp/delete" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="type" value="${jenisRaw}">
+                                        <input type="hidden" name="path" value="${element}">
+                                        <input type="hidden" name="id" value="${fppp_id}">
+                                        <button type="submit" class="btn btn-danger">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>`
+    
+});
   modalTitle.textContent = `Impot: ${project_name}`
   modalBodyInput.value = fppp_id
+  modalTable.innerHTML = modalTableContent;
 })
 
     </script>
