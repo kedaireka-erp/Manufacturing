@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FPPPController;
+use App\Models\FPPP;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("/fppp", [FPPPController::class, "index"]);
+Route::post("/fppp", [FPPPController::class, "store"]);
