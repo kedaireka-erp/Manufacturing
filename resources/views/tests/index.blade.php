@@ -6,9 +6,9 @@
             <div class="col-lg-12">
                 <div class="card card-table-header">
                     <div class="card-body d-flex justify-content-between align-items-center">
-                        <h2 class="card-title">Contoh Tabel</h2>
-                        <h5 class="card-bredcrumb"><a href="#" class="text-secondary">Master</a> / <a href="#" class="text-primary">Lead
-                                Subkon</a></h5>
+                        <h2 class="card-title mb-0">Contoh Tabel</h2>
+                        <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Master / </a><a href="#"
+                                class="text-primary">Lead</a></h5>
                     </div>
                 </div>
             </div>

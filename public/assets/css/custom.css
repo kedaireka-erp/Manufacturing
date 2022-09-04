@@ -122,40 +122,34 @@ body {
 }
 
 .main-panel .card.card-table-header {
-    max-height: 60px;
+    max-height: 56px;
     height: 100%;
     box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
 }
 
 .main-panel .card.card-table-header .card-body {
-    padding: 20px 37px;
+    padding: 1rem 2rem !important;
+    height: inherit !important;
 }
 
 .main-panel .card.card-table-header .card-body .card-bredcrumb a {
     font-size: 12px !important;
-    color: var(--font-primary) !important;
+    color: rgba(52, 58, 64, 0.7) !important;
     text-decoration: none !important;
+}
+
+.main-panel .card.card-table-header .card-body .card-bredcrumb .text-primary {
+    color: var(--purple) !important;
+    font-family: "Ubuntu-Bold";
 
 }
 
 
 .main-panel .card.card-table-header .card-body .card-title {
-    font-family: 'Ubuntu-Bold' !important;
-    font-size: 1.2rem;
+    /* font-family: 'Ubuntu-Bold' !important; */
+    font-size: 1.25rem;
 }
 
 
 /* END OF MAIN PANEL */
-
-/* .bg-img {
-    background-image: url("{{ asset('assets/images/bg.svg') }}");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-} */
-
-/* 
-.bg-active {
-    background-color: #e0e0e0;
-} */
