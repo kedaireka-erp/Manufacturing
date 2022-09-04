@@ -4,7 +4,7 @@
 <div class="content-wrapper bg-img">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
+            <div class="card">              
                 <div class="card-body">
                     <h2 class="card-title float-start">Master Lead</h2>
                     <h5 class="float-end"><a href="#" class="text-secondary">Master</a> / <a href="#" class="text-primary">Lead</a></h5>
