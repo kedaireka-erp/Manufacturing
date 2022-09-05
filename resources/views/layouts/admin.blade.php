@@ -20,7 +20,7 @@
 
                 <!-- content-wrapper ends -->
                 @yield('content')
-                <x-footer></x-footer>
+                {{-- <x-footer></x-footer> --}}
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
