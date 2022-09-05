@@ -9,9 +9,8 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::get();
 
-        return view("items.index", compact("items"));
+        return view("items.index");
     }
     public function create()
     {

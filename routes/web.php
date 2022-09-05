@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('tests.index');
 // });
 
+route::get("/manufacture", function () {
+    return view("items.index");
+});
 route::get("/", [ItemController::class, "index"]);
 route::get("/create", [ItemController::class, "create"])->name("create");
 route::post("/store", [ItemController::class, "store"])->name("store");
