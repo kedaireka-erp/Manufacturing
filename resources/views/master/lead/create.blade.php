@@ -37,7 +37,7 @@
                     <option>Active</option>
                   </select>
             </div>
-            <button class="btn btn-gradient-primary float-end" type="submit">Tambah</button>
+            <button class="btn btn-gradient-info float-end" type="submit">Tambah</button>
 
           </div>
         </div>

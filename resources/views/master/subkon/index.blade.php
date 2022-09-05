@@ -15,7 +15,7 @@
     <br>
     <div class="row">
         <div class="col-lg-12">
-            <a href="#" class="btn btn-gradient-primary float-end">Buat Surat Jalan <i class="mdi mdi-plus"></i></a>
+            <a href="#" class="btn btn-gradient-info float-end"><i class="mdi mdi-plus"></i>Tambah Subkon </a>
         </div>
     </div>
     <br>
