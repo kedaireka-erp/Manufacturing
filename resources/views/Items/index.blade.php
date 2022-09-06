@@ -5,49 +5,46 @@
             <h5 class="float-end"><a href="#" class="text-secondary">Master</a> / <a href="#" class="text-primary">Lead Subkon</a></h5>
             </div>
 </div>
-        <br>
         <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table ">
-                            <tr class="text-center">
-                                <th>No. FPPP</th>
-                                <th>Nama Proyek</th>
-                                <th>Aplikator</th>
-                                <th>Action</th>
-                            </tr>
-   
-                                <tr class="text-center">
-                                    <td>test</td>
-                                    <td>test</td>
-                                    <td>test</td>
-                                    <td>
-                                        <button type="button" class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #51e29f">Import</button>
+            <div class="content-wrapper bg-img">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+            <div class="col-md-6">
+                <form action="">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Cari.." name="search">
+                  
+                    </div>
+                </form>
+            </div>
+            <div class="">
+                <table class="table table-striped">
+                    <tr class="text-center">
+                        <th>No. FPPP</th>
+                        <th>Nama Proyek</th>
+                        <th>Aplikator</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr class="text-center">
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>
+                            <button type="button" class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #51e29f">Import</button>
                                         <a href="{{route("store")}}" class="btn btn-info">Lihat</a>
                                         <a href="{{route("show")}}" class="btn btn-primary">Detail</a>
-                                        {{-- <a href="{{route("edit", $item->id)}}" class="btn btn-warning">Ubah</a>
-                        
-                                        <form action="{{route("destroy", $item->id)}}" method="post">
-                                          @csrf
-                                          @method("DELETE")
-                                          
-                                          <button type="submit" class="btn btn-danger">Hapus</button>
-                                        </form>
-                                    </td> --}}
-                                    {{-- </td> --}}
-                                </tr>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
         
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Import: Lantai 1 BRI</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form method="POST" action="/fppp" enctype="multipart/form-data">
