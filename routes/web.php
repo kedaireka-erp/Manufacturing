@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\FPPPController;
+use App\Http\Controllers\ManufactureController;
 use App\Models\FPPP;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/fppp", [FPPPController::class, "index"]);
-Route::get("/fppp/file", [FPPPController::class, "show_file"]);
-Route::post("/fppp", [FPPPController::class, "store"]);
-Route::post("/fppp/delete", [FPPPController::class, "delete_file"]);
+Route::get("/fppp", [ManufactureController::class, "index"]);
+Route::get("/fppp/file", [ManufactureController::class, "show_file"]);
+Route::post("/fppp", [ManufactureController::class, "store"]);
+Route::post("/fppp/delete", [ManufactureController::class, "delete_file"]);
