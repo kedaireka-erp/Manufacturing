@@ -17,7 +17,7 @@
                                 <th>Aplikator</th>
                                 <th>Action</th>
                             </tr>
-                            
+   
                                 <tr class="text-center">
                                     <td>test</td>
                                     <td>test</td>
@@ -37,52 +37,52 @@
                                     </td> --}}
                                     {{-- </td> --}}
                                 </tr>
+                            </div>
+                        </div>
                     </div>
+                </div>
+        </div>
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="/fppp" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="text" name="id" hidden>
+                            
+                            <div class="mb-3">
+                                <label class="col-form-label">Pilih Jenis</label>
+                                <select class="form-select" aria-label="Default select example" name="type">
+                                    <option value="bom_alumunium">BOM Alumunium</option>
+                                    <option value="bom_aksesoris">BOM Aksesoris</option>
+                                    <option value="wo_alumunium">WO Alumunium</option>
+                                    <option value="wo_kaca">WO Kaca</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Import File</label>
+                                <input class="form-control" type="file" id="formFile" name="file">
+                            </div>
+                            
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        
+    
+                    </div>
+                    </form>
+                    <div class="mb-3 p-2">
+                            <div class="text-primary fw-bold">File yang telah diupload</div>
+                            <table class="table" id="files_table">
+                            </table>
                 </div>
             </div>
         </div>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="POST" action="/fppp" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <input type="text" name="id" hidden>
-                    
-                    <div class="mb-3">
-                        <label class="col-form-label">Pilih Jenis</label>
-                        <select class="form-select" aria-label="Default select example" name="type">
-                            <option value="bom_alumunium">BOM Alumunium</option>
-                            <option value="bom_aksesoris">BOM Aksesoris</option>
-                            <option value="wo_alumunium">WO Alumunium</option>
-                            <option value="wo_kaca">WO Kaca</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Import File</label>
-                        <input class="form-control" type="file" id="formFile" name="file">
-                    </div>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    
-
-                </div>
-                </form>
-                <div class="mb-3 p-2">
-                        <div class="text-primary fw-bold">File yang telah diupload</div>
-                        <table class="table" id="files_table">
-                        </table>
-                    </div>
-                </div>
-            </div>
 </div>
 @endsection
