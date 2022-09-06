@@ -12,11 +12,11 @@ class LeadController extends Controller
     {
         $leads = Lead::paginate(5);
        
-        return view('')->with('leads',$leads);
+        return view('master.lead.index')->with('leads',$leads);
     }
     public function create()
     {
-        return view();
+        return view('master.lead.create');
     }
     public function store(Request $request)
     {
@@ -33,16 +33,16 @@ class LeadController extends Controller
 
         $newLeads->save();
 
-        return redirect('');
+        return redirect('/leads');
     }
     public function edit($id)
     {
-        $lead = Lead::findOrFaill($id);
-        return view('')->with('lead',$lead);
+        $lead = Lead::findOrFail($id);
+        return view('master.lead.edit')->with('lead',$lead);
     } 
     public function update(Request $request, $id)
     {
-        $lead = Lead::findOrFaill($id);
+        $lead = Lead::findOrFail($id);
 
         $lead->update([
             'employee_number' => $request->employee_number,
@@ -50,7 +50,7 @@ class LeadController extends Controller
             'is_active' => $request->is_active
         ]);
 
-        return redirect('');
+        return redirect('/leads');
     }
     
     //soft delete

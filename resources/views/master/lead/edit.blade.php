@@ -21,24 +21,25 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            
+            <form action="/updateleads/{{ $lead->id }}" method="post">
+              @csrf
             <div class="mb-3">
                 <label class="form-label">Nomor Pegawai</label>
-                <input type="text" class="form-control" value="">
+                <input type="text" name="employee_number" class="form-control" value="{{ $lead->employee_number }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Nama</label>
-                <input type="text" class="form-control" value="">
+                <input type="text" name="lead_name" class="form-control" value="{{ $lead->lead_name }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Status</label>
-                <select class="form-select">
-                    <option>Inactive</option>
-                    <option>Active</option>
+                <select class="form-select" name="is_active">
+                    <option value="0">Inactive</option>
+                    <option value="1">Active</option>
                   </select>
             </div>
             <button class="btn btn-gradient-success float-end" type="submit">Edit</button>
-
+          </form>
           </div>
         </div>
       </div>

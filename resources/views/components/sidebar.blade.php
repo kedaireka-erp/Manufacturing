@@ -35,11 +35,11 @@
             <div class="collapse" id="general-pages">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="#">
+                        <a class="nav-link" onclick="subMenuClick(this)" href="/leads">
                             <i class="mdi mdi-radiobox-blank"></i>Lead</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="#">
+                        <a class="nav-link" onclick="subMenuClick(this)" href="/subkons">
                             <i class="mdi mdi-radiobox-blank"></i>Subkon</a>
                     </li>
                 </ul>

@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('master.lead.index');
-});
 //Route leads
 Route::controller(LeadController::class)->group(function(){
     Route::get('/leads','index');
@@ -40,5 +37,5 @@ Route::controller(SubkonController::class)->group(function(){
     Route::get('/deletesubkon/{id}','destroy');
     Route::get('/subkon/trash','trash');
     Route::get('/subkon/{id}/restore','restore');
-    Route::get('/serachAjax','search');
+    Route::get('/serachAjaxSubkon','search');
 });

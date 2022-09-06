@@ -12,11 +12,11 @@ class SubkonController extends Controller
     {
         $subkons = Subkon::paginate(5);
         
-        return view('',compact('subkons'));
+        return view('master.subkon.index',compact('subkons'));
     }
     public function create()
     {
-        return view('');
+        return view('master.subkon.create');
     }
     public function store(Request $request)
     {
@@ -34,13 +34,13 @@ class SubkonController extends Controller
             'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
-        return redirect('');
+        return redirect('/subkons');
     }
     public function edit($id)
     {
         $subkon = Subkon::findOrFail($id);
 
-        return view('',compact('subkon'));
+        return view('master.subkon.edit',compact('subkon'));
     }
     public function update(Request $request,$id)
     {
@@ -52,7 +52,7 @@ class SubkonController extends Controller
             'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
-        return redirect('');
+        return redirect('/subkons');
     }
 
     //soft delete
@@ -61,7 +61,7 @@ class SubkonController extends Controller
         $lead = Subkon::findOrFail($id);
         $lead->delete();
 
-        return redirect('');
+        return redirect('/subkons');
     }
     public function trash()
     {
@@ -74,7 +74,7 @@ class SubkonController extends Controller
         $lead = Subkon::onlyTrashed()->findOrFail($id);
         $lead->restore();
 
-        return to_route('subkons.index')->with('success','lead restore successfully');
+        return to_route('master.subkon.index')->with('success','lead restore successfully');
     }
     
 
