@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 // Route::get('/', function () {
 //     return view('tests.index');
 // });
@@ -48,7 +47,7 @@ Route::controller(SubkonController::class)->group(function(){
     Route::get('/subkon/trash','trash');
     Route::get('/subkon/{id}/restore','restore');
     Route::get('/serachAjax','search');
-    
+
 });
 route::get("/", [ItemController::class, "index"]);
 route::get("/create", [ItemController::class, "create"])->name("create");
