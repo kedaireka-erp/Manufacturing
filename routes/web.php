@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 route::get("/manufacture", function () {
     return view("items.index");
+});
 
 //Route leads
 Route::controller(LeadController::class)->group(function(){
@@ -55,3 +56,8 @@ route::post("/store", [ItemController::class, "store"])->name("store");
 route::get("/show", [ItemController::class, "show"])->name("show");
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
+
+// route surat jalan sementara
+Route::get('/surat-jalan', function () {
+    return view('logistic.index');
+});
