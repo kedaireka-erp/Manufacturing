@@ -15,7 +15,7 @@ class ManufactureController extends Controller
     {
         $all_fppp = Manufacture::latest("updated_at");
 
-        return view("sementara.fppp.index", [
+        return view("manufacture.fppp.index", [
             "all_fppp" => $all_fppp->search(request(["search"]))->paginate(5)
         ]);
     }

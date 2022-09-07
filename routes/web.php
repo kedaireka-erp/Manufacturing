@@ -23,42 +23,45 @@ use Illuminate\Support\Facades\Route;
 //     return view('tests.index');
 // });
 
-route::get("/manufacture", function () {
-    return view("items.index");
+
 
 //Route leads
-Route::controller(LeadController::class)->group(function(){
-    Route::get('/leads','index');
-    Route::get('/createleads','create');
-    Route::post('/storeleads','store');
-    Route::get('/editleads/{id}','edit');
-    Route::post('/updateleads/{id}','update');
-    Route::get('/deleteLeads/{id}','destroy');
-    Route::get('/lead/trash','trash');
-    Route::post('/lead/{id}/restore','restore');
-    Route::get('/searchAjax','search');
+Route::controller(LeadController::class)->group(function () {
+    Route::get('/leads', 'index');
+    Route::get('/createleads', 'create');
+    Route::post('/storeleads', 'store');
+    Route::get('/editleads/{id}', 'edit');
+    Route::post('/updateleads/{id}', 'update');
+    Route::get('/deleteLeads/{id}', 'destroy');
+    Route::get('/lead/trash', 'trash');
+    Route::post('/lead/{id}/restore', 'restore');
+    Route::get('/searchAjax', 'search');
 });
 
-Route::get("/fppp", [ManufactureController::class, "index"]);
-Route::get("/fppp/file", [ManufactureController::class, "show_file"]);
-Route::post("/fppp", [ManufactureController::class, "store"]);
-Route::post("/fppp/delete", [ManufactureController::class, "delete_file"]);
+// Route FPPP
+Route::controller(ManufactureController::class)->group(function () {
+    Route::get("/fppp", "index");
+    Route::get("/fppp/file", "show_file");
+    Route::post("/fppp", "store");
+    Route::get("/fppp/file/delete", "delete_file");
+});
+
+
 //Route Subkons
-Route::controller(SubkonController::class)->group(function(){
-    Route::get('/subkons','index');
-    Route::get('/createsubkon','create');
-    Route::post('/storesubkon','store');
-    Route::get('/editsubkon/{id}','edit');
-    Route::post('/updatesubkon/{id}','update');
-    Route::get('/deletesubkon/{id}','destroy');
-    Route::get('/subkon/trash','trash');
-    Route::get('/subkon/{id}/restore','restore');
-    Route::get('/serachAjax','search');
-
+Route::controller(SubkonController::class)->group(function () {
+    Route::get('/subkons', 'index');
+    Route::get('/createsubkon', 'create');
+    Route::post('/storesubkon', 'store');
+    Route::get('/editsubkon/{id}', 'edit');
+    Route::post('/updatesubkon/{id}', 'update');
+    Route::get('/deletesubkon/{id}', 'destroy');
+    Route::get('/subkon/trash', 'trash');
+    Route::get('/subkon/{id}/restore', 'restore');
+    Route::get('/serachAjax', 'search');
 });
-route::get("/", [ItemController::class, "index"]);
-route::get("/create", [ItemController::class, "create"])->name("create");
-route::post("/store", [ItemController::class, "store"])->name("store");
-route::get("/show", [ItemController::class, "show"])->name("show");
+// route::get("/", [ItemController::class, "index"]);
+// route::get("/create", [ItemController::class, "create"])->name("create");
+// route::post("/store", [ItemController::class, "store"])->name("store");
+// route::get("/show", [ItemController::class, "show"])->name("show");
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
