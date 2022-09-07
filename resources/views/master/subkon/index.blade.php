@@ -13,25 +13,25 @@
         </div>
     </div>
     <br>
-    <div class="row">
-        <div class="col-lg-12">
-            <a href="#" class="btn btn-gradient-info float-end"><i class="mdi mdi-plus"></i>Tambah Subkon </a>
-        </div>
-    </div>
+    
     <br>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
 
-            <!-- search -->
-            <form class="col-lg-4 my-md-0" >
-                <div class="input-group" >
-                    <input type="text" class="form-control bg-light border rounded" placeholder="Cari Pegawai Berdasarkan Nomor atau Nama.."
-                        aria-label="Search" aria-describedby="basic-addon2">
-                </div>
-            </form>
-
+            <div class="row">
+              <div class="col-lg-12 justify-content-between">
+                  <a href="#" class="btn btn-gradient-info float-end"><i class="mdi mdi-plus"></i>Tambah Subkon </a>
+                  <form class="col-lg-4 my-md-0" >
+                    <div class="input-group" >
+                        <input type="text" class="form-control bg-light border rounded" placeholder="Cari Pegawai Berdasarkan Nomor atau Nama.."
+                            aria-label="Search" aria-describedby="basic-addon2">
+                    </div>
+                </form>
+              </div>
+          </div>
+            
         <!-- Tabel -->
         <div class="table-responsive">
             <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
