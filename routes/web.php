@@ -61,3 +61,6 @@ route::get("/show", [ItemController::class, "show"])->name("show");
 Route::get('/surat-jalan', function () {
     return view('logistic.index');
 });
+Route::get('/surat-jalan/create', function () {
+    return view('logistic.create');
+});
