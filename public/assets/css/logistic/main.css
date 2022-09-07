@@ -1,0 +1,62 @@
+.content-wrapper .card .card-body .card-header__wrapper .btn {
+    width: fit-content !important;
+    background: var(--blue);
+    padding: 10px 20px !important;
+}
+
+
+.content-wrapper .card .card-body .card-header__wrapper {
+    max-height: 36px;
+    height: 100%;
+    margin-bottom: 36px;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper>div {
+    max-height: inherit !important;
+    height: 100%;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper .form-control {
+    color: #9C9FA6 !important;
+    font-size: 12px !important;
+    border: 1px solid #9C9FA6 !important;
+    border-radius: 5px;
+    padding: 8px 8px 8px 36px !important;
+    height: 100%;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper .search {
+    max-width: 378px;
+    width: 100%;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper .search i {
+    top: 10px;
+    left: 13px;
+}
+
+
+/* Table */
+.main-panel .content-wrapper .table th {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.main-panel .content-wrapper .table td {
+    font-size: 14px;
+    font-family: "Ubuntu-Regular";
+}
+
+.main-panel .content-wrapper .table td .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 23px !important;
+    height: 23px !important; */
+    padding: 4px !important;
+}
+
+/* End Table */
+
+/* END MAIN PANEL */

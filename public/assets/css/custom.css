@@ -1,7 +1,9 @@
 /* ROOT */
 :root {
     --font-primary: #343A40;
+    --font-secondary: #9C9FA6;
     --purple: #B66DFF;
+    --blue: #2D94E6;
 }
 
 /* FONT FACE */
@@ -13,6 +15,11 @@
 @font-face {
     font-family: 'Ubuntu-Bold';
     src: url('../fonts/Ubuntu/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Ubuntu-Regular';
+    src: url('../fonts/Ubuntu/Ubuntu-Regular.ttf');
 }
 
 body {
@@ -51,9 +58,6 @@ body {
 .sidebar .nav-item .nav-link.nav-link--active .menu-title {
     padding-left: 28px;
 }
-
-
-
 
 /* sidebar nav-link submenu */
 .sidebar .nav-link .menu-title,
@@ -150,16 +154,3 @@ body {
     /* font-family: 'Ubuntu-Bold' !important; */
     font-size: 1.25rem;
 }
-
-.cutting{
-    height: 50px;
-}
-
-.button{
-    height: 40px;
-    opacity: 1;
-}
-
-
-
-/* END OF MAIN PANEL */

@@ -20,12 +20,12 @@ use App\Http\Controllers\ManufactureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function() {
-    return redirect('/leads');
-});
 
-route::get("/show1", function () {
-    return view("manufaktur.show");
+// Route::get('/', function () {
+//     return view('tests.index');
+// });
+route::get("/manufacture", function () {
+    return view("items.index");
 });
 // route::get("/", function () {
 //     return view("items.index");
