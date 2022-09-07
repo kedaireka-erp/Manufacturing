@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Astral Alumunium allure</title>
     <x-style></x-style>
+    @stack('style')
 </head>
 
 <body>
@@ -30,8 +31,6 @@
     <!-- container-scroller -->
     <x-script></x-script>
     @stack('script')
-        
-    
 </body>
 
 </html>
