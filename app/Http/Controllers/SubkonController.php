@@ -85,19 +85,25 @@ class SubkonController extends Controller
         if ($request->ajax()) {
             $output="";
          
-            $subkons = DB::table('subkons')->where('employee_number','LIKE','%'.$request->search."%")->paginate(6);
+            $subkons = DB::table('subkons')->where('deleted_at',null)->Where('subkon_name','LIKE','%'.$request->search."%")->paginate(6);
 
             if ($subkons) {
                 foreach ($subkons as $key => $subkon) {
-                    $output.='<tr>'.
+                    if ($subkon->is_active == 1) {
+                        $is_active = 'Active';
+                    }else{
+                        $is_active = 'Inactive';
+                    }
+
+                    $output.='<tr class="text-center">'.
                     '<td>'.$subkon->employee_number.'</td>'.
                     '<td>'.$subkon->subkon_name.'</td>'.
                     '<td>'.$subkon->lead_name.'</td>'.
-                    '<td>'.$subkon->is_active.'</td>'.
+                    '<td>'.$is_active.'</td>'.
                     
                     '<td>
-                        <a class="btn btn-success" style="font-size: 10px" href="/edit/'.$subkon->id.'">Edit</a>
-                        <a class="btn btn-danger" style="font-size: 10px" href="/deleteLeads/'.$subkon->id.'">Delete</a>
+                        <a class="btn btn-success" style="font-size: 10px" href="/editsubkon/'.$subkon->id.'">Edit</a>
+                        <a class="btn btn-danger" style="font-size: 10px" href="/deletesubkon/'.$subkon->id.'">Delete</a>
                     </td>'.
                     '</tr>';
                 }

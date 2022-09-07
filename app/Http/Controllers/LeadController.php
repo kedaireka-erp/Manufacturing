@@ -59,7 +59,7 @@ class LeadController extends Controller
         $lead = Lead::findOrFail($id);
         $lead->delete();
 
-        return redirect('');
+        return redirect('/leads');
     }
     public function trash()
     {
@@ -83,17 +83,23 @@ class LeadController extends Controller
         if ($request->ajax()) {
             $output="";
          
-            $leads = DB::table('leads')->where('employee_number','LIKE','%'.$request->search."%")->paginate(6);
+            $leads = DB::table('leads')->where('deleted_at',null)->Where('lead_name','LIKE','%'.$request->search."%")->paginate(6);
 
             if ($leads) {
                 foreach ($leads as $key => $lead) {
-                    $output.='<tr>'.
+                    if ($lead->is_active == 1) {
+                        $is_active = 'Active';
+                    }else{
+                        $is_active = 'Inactive';
+                    }
+
+                    $output.='<tr class="text-center">'.
                     '<td>'.$lead->employee_number.'</td>'.
                     '<td>'.$lead->lead_name.'</td>'.
-                    '<td>'.$lead->is_active.'</td>'.
+                    '<td>'.$is_active.'</td>'.
                     
                     '<td>
-                        <a class="btn btn-success" style="font-size: 10px" href="/edit/'.$lead->id.'">Edit</a>
+                        <a class="btn btn-success" style="font-size: 10px" href="/editleads/'.$lead->id.'">Edit</a>
                         <a class="btn btn-danger" style="font-size: 10px" href="/deleteLeads/'.$lead->id.'">Delete</a>
                     </td>'.
                     '</tr>';

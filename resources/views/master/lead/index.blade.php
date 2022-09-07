@@ -13,24 +13,26 @@
         </div>
     </div>
     <br>
-    <div class="row">
-        <div class="col-lg-12">
-            <a href="/createleads" class="btn btn-info float-end"><i class="mdi mdi-plus"></i> Tambah Lead</a>
-        </div>
-    </div>
+    
     <br>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            
-            <!-- search -->
-                    <form class="col-lg-4 my-md-0">
-                        <div class="input-group" >
-                            <input type="search" name="search" class="form-control bg-light border rounded" id="search" placeholder="Cari Pegawai Berdasarkan Nomor"
-                                aria-label="Search" aria-describedby="basic-addon2">
-                        </div>
-                    </form>
+
+            <div class="row">
+              <div class="col-lg-12 justify-content-between">
+                  <a href="/createleads" class="btn btn-info float-end"><i class="mdi mdi-plus"></i> Tambah Lead</a>
+                  <form class="col-lg-4 my-md-0">
+                    <div class="input-group" >
+                        <input type="search" name="search" class="form-control bg-light border rounded" id="search" placeholder="Cari Pegawai Berdasarkan Nama Pegawai"
+                            aria-label="Search" aria-describedby="basic-addon2">
+                    </div>
+                </form>
+              </div>
+          </div>
+
+                    
 
             <!-- Tabel -->
             <table class="table table-striped">

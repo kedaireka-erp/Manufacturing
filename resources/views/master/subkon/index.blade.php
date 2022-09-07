@@ -13,25 +13,29 @@
         </div>
     </div>
     <br>
-    <div class="row">
-        <div class="col-lg-12">
-            <a href="/createsubkon" class="btn btn-gradient-primary float-end">Tambah Subkon<i class="mdi mdi-plus"></i></a>
-        </div>
-    </div>
+    
     <br>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
 
-            <!-- search -->
-            <form class="col-lg-4 my-md-0" >
-                <div class="input-group" >
-                    <input type="search" name="search"  class="form-control bg-light border rounded" id="search" placeholder="Cari Pegawai Berdasarkan Nomor"
-                        aria-label="Search" aria-describedby="basic-addon2">
-                </div>
-            </form>
+            <div class="row">
+              <div class="col-lg-12 justify-content-between">
+                  <a href="/createsubkon" class="btn btn-info float-end"><i class="mdi mdi-plus"></i>Tambah Subkon</a>
+                  <form class="col-lg-4 my-md-0" >
+                    <div class="input-group" >
+                      <input type="search" name="search" class="form-control bg-light border rounded" id="search" placeholder="Cari Pegawai Berdasarkan Pegawai"
+                          aria-label="Search" aria-describedby="basic-addon2">
+                  </div>
+                </form>
+              </div>
+          </div>
 
+            <!-- search -->
+           
+
+            
         <!-- Tabel -->
         <div class="table-responsive">
             <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -76,7 +80,7 @@
     $value=$(this).val();
     $.ajax({
     type : 'get',
-    url : '{{URL::to('/searchAjaxSubkon')}}',
+    url : '{{URL::to('/serachAjaxSubkon')}}',
     data:{'search':$value},
     success:function(data){
     $('tbody').html(data);
