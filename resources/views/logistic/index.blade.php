@@ -28,7 +28,8 @@
                                 <input type="text" class="form-control" placeholder="Cari ...">
                             </div>
                             <div>
-                                <a href="#" class="btn btn-info h-100 d-flex align-items-center">Buat Surat Jalan <i
+                                <a href="{{ route('logistic_create') }}"
+                                    class="btn btn-info h-100 d-flex align-items-center">Buat Surat Jalan <i
                                         class="mdi mdi-plus ms-1"></i> </a>
                             </div>
                         </div>
