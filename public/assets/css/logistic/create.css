@@ -55,6 +55,15 @@
     height: 8.4375rem;
 }
 
+.content-wrapper .add-form .form-row input,
+.content-wrapper .add-form .form-row select,
+.content-wrapper .add-form .form-row textarea {
+    border: 1px solid rgba(52, 58, 64, 0.3);
+    border-radius: 5px;
+}
+
+
+
 /* end add form */
 
 /* table */
@@ -70,7 +79,8 @@
     font-weight: 700;
 }
 
-.content-wrapper .table-list .table-btn .btn {
+.content-wrapper .table-list .table-btn .btn,
+.content-wrapper .modal-content .modal-footer .modal-btn {
     font-family: "Ubuntu-Medium";
     font-weight: 500;
     font-size: 16px;
@@ -87,3 +97,78 @@
 }
 
 /* end table */
+
+/* modal */
+.content-wrapper .modal-dialog {
+    max-width: 804px;
+    width: 100%;
+
+}
+
+.content-wrapper .modal-content .modal-body {
+    font-family: "Ubuntu-Regular";
+}
+
+.content-wrapper .modal-content {
+    padding: 32px;
+    background-color: #fff;
+}
+
+.content-wrapper .modal-content .btn-close {
+    background-color: rgba(156, 159, 166, 0.25);
+    max-width: 32px;
+    padding: 8px;
+}
+
+.content-wrapper .modal-content .modal-body>div {
+    margin-bottom: 12px;
+}
+
+.content-wrapper .modal-content .modal-body .form-select option,
+.content-wrapper .modal-content .modal-body .form-select {
+    color: var(--font-primary) !important;
+    /* font-family: "Ubuntu-Regular"; */
+}
+
+.content-wrapper .modal-content .modal-body .form-control {
+    padding: 12px;
+    font-size: 16px;
+}
+
+
+.content-wrapper .modal-content .modal-body .form-control {
+    border: 1px solid rgba(52, 58, 64, 0.3);
+    border-radius: 5px;
+}
+
+.content-wrapper .modal-content .modal-body label {
+    margin-bottom: 12px;
+    font-family: "Ubuntu-Medium";
+}
+
+.content-wrapper .modal-content .modal-body .size input {
+    max-width: 80px;
+    width: 100%;
+    text-align: center;
+}
+
+.content-wrapper .modal-content .modal-body .opener input {
+    max-width: 92px;
+    width: 100% !important;
+}
+
+.content-wrapper .modal-content .modal-body .qty input {
+    max-width: 80px;
+    width: 100% !important;
+}
+
+.content-wrapper .modal-content .modal-body .type input,
+.content-wrapper .modal-content .modal-body .status input {
+    max-width: 120px;
+    width: 100% !important;
+}
+
+.content-wrapper .modal-content .modal-body .description textarea {
+    line-height: 15px;
+}
+/* end modal */

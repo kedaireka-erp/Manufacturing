@@ -63,4 +63,4 @@ Route::get('/surat-jalan', function () {
 });
 Route::get('/surat-jalan/create', function () {
     return view('logistic.create');
-});
+})->name('logistic_create');
