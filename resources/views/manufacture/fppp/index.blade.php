@@ -15,16 +15,16 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="col-md-6">
-                                <div class="input-group mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control border border-1 border-secondary"
-                                        placeholder="Cari.."
-                                        name="search"
-                                        id="fppp-seach"
-                                        oninput="getData(this.value,'fppp-table')"
-                                    />
-                                </div>
+                                <div class="search-field d-none d-md-block mb-4">
+            <form class="d-flex align-items-center h-100" action="#">
+              <div class="input-group rounded" style="border: solid rgb(184, 184, 184) 1px">
+                <div class="input-group-prepend bg-transparent">
+                  <i class="input-group-text border-0 mdi mdi-magnify bg-transparent text-dark"></i>
+                </div>
+                <input type="text" class="form-control bg-transparent border-0" placeholder="Cari..." id="fppp-search" name="search">
+              </div>
+            </form>
+          </div>
                         </div>
                         <div class="" id="fppp-content">
                             <table class="table table-striped" >
@@ -185,27 +185,35 @@
 @endsection
 @push('script')
 <!-- Custom js for this page -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('assets/js/file-upload.js') }}"></script>
 <script src="{{ asset('assets/js/dynamic-modal.js') }}"></script>
-<script type="text/javascript">
-function getData(keyword, id){
-    $.ajax({
-        url: '/fppp?search='+keyword, 
-        success: function(html) {
-            var el = $( '<div></div>' );
-            el.html(html);
-            $("#fppp-content").html($('#fppp-content', el).html())
-            $('html', el).remove()
-            console.log("HTML");
-        }
-    });
-}
+<script>
+    const input_search = document.querySelector("#fppp-search")
+    let typingTimer;
+    let doneTypingInterval = 500;
+    console.log(input_search);
 
-// $.("#fppp-search").change(function() {
-//     getData($( this ).text(),'fppp-table')
-// });
+    input_search.addEventListener("keyup", (event) => {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval, input_search.value);
+        });
+    input_search.addEventListener("keydown", (event) => {
+        clearTimeout(typingTimer);
+        });
+    function doneTyping (keyword) {
+        fetch('/fppp?search='+keyword)
+            .then(response => response.text())
+            .then(html => {
+                let el = document.createElement('div')
+                el.innerHTML = html
+                let oldContent = document.querySelector("#fppp-content")
+                let newContent = el.querySelector("#fppp-content")
+                oldContent.innerHTML = newContent.innerHTML;
+                el.remove()
 
+            })
+    }
 </script>
+
 <!-- End custom js for this page -->
 @endpush
