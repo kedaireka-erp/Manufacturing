@@ -259,7 +259,84 @@
                       </div>
                   </td>
                 </tr>
-              </tbody>
+                <tr class=" ">
+                  <td> 2 </td>
+                  <td> B1-002 </td>
+                  <td> Astral AS 01 <br> top hung windo </td>
+                  <td> clear 6mm excluded </td>
+                  <td> 1 </td>
+                  <td> Outside </td>
+                  <td> Allure Black Matte </td>
+                   <!-- cutting button -->
+                  <td>
+                  <div class="dropdown">
+                  </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
+                  <div class="dropdown">
+                  </div> <br> <a class="d btn btn-dark"> - </a>  
+                  <div class="dropdown">
+                  </div> <br> <a class=" btn btn-success"> COMPLETE </a>  
+                  <div class="dropdown">
+                  </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                  </td> 
+                  <!-- Machining button -->
+                  <td>
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Budi (Lead) </a> 
+                    <div class="dropdown">
+                    </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                    </td>
+                  <!-- assembly 1 button -->
+                  <td>
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-primary"> Las </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                    </td>
+                  <!-- assembly 2 button -->
+                  <td>
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-primary"> Cek Opening </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                    </td>
+                  <!-- assembly 3 button -->
+                  <td>
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-primary">Pasang Kaca</a>  
+                    <div class="dropdown">
+                    </div> <br> <a href="" class="btn btn-info ">08/08/2022 <br> 10.00</a>
+                    </td>
+                    <!-- Qc button -->
+                  <td>
+                    <div class="dropdown">
+                    </div> <br> <a href="" class="d btn btn-primary">Lihat QC <br></a>
+                    <div class="dropdown">
+                    </div> <br> <a href="" class="d btn btn-info ">08/08/2022 <br> 10.00</a>
+                    </td>
+                    <!-- assembly 2 button -->
+                  <td>
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
+                    <div class="dropdown">
+                    </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>                        <div class="dropdown">
+                    </div> <br> <a class="d form-control"> 2 </a>  
+                    <div class="dropdown">
+                    </div> <br> <a href="" class="btn btn-info ">08/08/2022 <br> 10.00</a>
+                    </td>
               <!-- my css -->
               <link rel="stylesheet" href="style.css">
             </table>
