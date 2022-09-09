@@ -324,8 +324,8 @@
                   <td>
                     <div class="dropdown">
                     </div> <br> <a href="" class="d btn btn-primary">Lihat QC <br></a>
-                    <div class="dropdown">
-                    </div> <br> <a href="" class="d btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
+                    <div class="text">
+                    </div> <br> <a href=" " class="d btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
                     </td>
                     <!-- assembly 2 button -->
                   <td>
