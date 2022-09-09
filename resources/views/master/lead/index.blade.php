@@ -263,7 +263,7 @@
                   <td> 2 </td>
                   <td> B1-002 </td>
                   <td> Astral AS 01 <br> top hung windo </td>
-                  <td> clear 6mm excluded <br> <br> <a href="" class="d btn btn-gradient-success border-dark-rounded ">COMPLETE</a> </td>
+                  <td> clear 6mm excluded <br> <br> <a href="" class="d btn btn-gradient-success border-dark-rounded ">COMPLETED</a> </td>
                   <td> 1 </td>
                   <td> Outside </td>
                   <td> Allure Black Matte </td>
@@ -272,11 +272,11 @@
                   <div class="dropdown">
                   </div> <br> <a class="d btn btn-gradient-dark">Wahyu (Lead) </a>  
                   <div class="dropdown">
-                  </div> <br> <a class="d btn btn-dark"> - </a>  
+                  </div> <br> <a class="d btn btn-dark"> - </a>   
                   <div class="dropdown">
-                  </div> <br> <a class=" btn btn-gradient-success"> COMPLETE </a>  
-                  <div class="dropdown">
-                  </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
+                  </div> <br> <a class=" btn btn-gradient-info">08/08/2022 <br> 10.00 </a>
+                  <div class="">
+                  </div> <br> <a class=" btn mt-3"></a>
                   </td> 
                   <!-- Machining button -->
                   <td>
