@@ -270,13 +270,13 @@
                    <!-- cutting button -->
                   <td>
                   <div class="dropdown">
-                  </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
+                  </div> <br> <a class="d btn btn-gradient-dark">Wahyu (Lead) </a>  
                   <div class="dropdown">
                   </div> <br> <a class="d btn btn-dark"> - </a>  
                   <div class="dropdown">
-                  </div> <br> <a class=" btn btn-success"> COMPLETE </a>  
+                  </div> <br> <a class=" btn btn-gradient-success"> COMPLETE </a>  
                   <div class="dropdown">
-                  </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                  </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
                   </td> 
                   <!-- Machining button -->
                   <td>
@@ -285,7 +285,7 @@
                     <div class="dropdown">
                     </div> <br> <a class="d btn btn-dark">Budi (Lead) </a> 
                     <div class="dropdown">
-                    </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                    </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
                     </td>
                   <!-- assembly 1 button -->
                   <td>
@@ -294,9 +294,9 @@
                     <div class="dropdown">
                     </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>  
                     <div class="dropdown">
-                    </div> <br> <a class="d btn btn-primary"> Las </a>  
+                    </div> <br> <a class="d btn btn-gradient-primary"> Las </a>  
                     <div class="dropdown">
-                    </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                    </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
                     </td>
                   <!-- assembly 2 button -->
                   <td>
@@ -305,9 +305,9 @@
                     <div class="dropdown">
                     </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>  
                     <div class="dropdown">
-                    </div> <br> <a class="d btn btn-primary"> Cek Opening </a>  
+                    </div> <br> <a class="d btn btn-gradient-primary"> Cek Opening </a>  
                     <div class="dropdown">
-                    </div> <br> <a class=" btn btn-info ">08/08/2022 <br> 10.00 </a>
+                    </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
                     </td>
                   <!-- assembly 3 button -->
                   <td>
@@ -316,16 +316,16 @@
                     <div class="dropdown">
                     </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>  
                     <div class="dropdown">
-                    </div> <br> <a class="d btn btn-primary">Pasang Kaca</a>  
+                    </div> <br> <a class="d btn btn-gradient-primary">Pasang Kaca</a>  
                     <div class="dropdown">
-                    </div> <br> <a href="" class="btn btn-info ">08/08/2022 <br> 10.00</a>
+                    </div> <br> <a href="" class="btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
                     </td>
                     <!-- Qc button -->
                   <td>
                     <div class="dropdown">
                     </div> <br> <a href="" class="d btn btn-primary">Lihat QC <br></a>
                     <div class="dropdown">
-                    </div> <br> <a href="" class="d btn btn-info ">08/08/2022 <br> 10.00</a>
+                    </div> <br> <a href="" class="d btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
                     </td>
                     <!-- assembly 2 button -->
                   <td>
@@ -335,7 +335,7 @@
                     </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>                        <div class="dropdown">
                     </div> <br> <a class="d form-control"> 2 </a>  
                     <div class="dropdown">
-                    </div> <br> <a href="" class="btn btn-info ">08/08/2022 <br> 10.00</a>
+                    </div> <br> <a href="" class="btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
                     </td>
               <!-- my css -->
               <link rel="stylesheet" href="style.css">
