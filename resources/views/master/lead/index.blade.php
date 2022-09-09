@@ -276,7 +276,7 @@
                   <div class="dropdown">
                   </div> <br> <a class=" btn btn-gradient-info">08/08/2022 <br> 10.00 </a>
                   <div class="">
-                  </div> <br> <a class=" btn mt-3"></a>
+                  </div> <br> <a class=" btn mt-2"></a>
                   </td> 
                   <!-- Machining button -->
                   <td>
