@@ -263,7 +263,7 @@
                   <td> 2 </td>
                   <td> B1-002 </td>
                   <td> Astral AS 01 <br> top hung windo </td>
-                  <td> clear 6mm excluded </td>
+                  <td> clear 6mm excluded <br> <br> <a href="" class="d btn btn-gradient-success border-dark-rounded ">COMPLETE</a> </td>
                   <td> 1 </td>
                   <td> Outside </td>
                   <td> Allure Black Matte </td>
@@ -286,6 +286,8 @@
                     </div> <br> <a class="d btn btn-dark">Budi (Lead) </a> 
                     <div class="dropdown">
                     </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
+                    <div class="">
+                    </div> <br> <a class=" btn mt-2"></a>
                     </td>
                   <!-- assembly 1 button -->
                   <td>
@@ -325,7 +327,9 @@
                     <div class="dropdown">
                     </div> <br> <a href="" class="d btn btn-primary">Lihat QC <br></a>
                     <div class="text">
-                    </div> <br> <a href=" " class="d btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
+                    </div> <br> <a href=" " class="btn btn-gradient-info">08/08/2022 <br> 10.00</a>
+                    <div class="dropdown">
+                    </div> <br> <a class=" btn mt-5 "></a>
                     </td>
                     <!-- assembly 2 button -->
                   <td>
