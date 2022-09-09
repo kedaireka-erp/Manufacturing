@@ -23,7 +23,10 @@ use Illuminate\Support\Facades\Route;
 
 route::get("/manufacture", function () {
     return view("items.index");
-
+});
+route::get("/lihatwo", function () {
+    return view("Manufaktur.lihatwo.index");
+});
 //Route leads
 Route::controller(LeadController::class)->group(function(){
     Route::get('/leads','index');
@@ -53,5 +56,3 @@ route::get("/", [ItemController::class, "index"]);
 route::get("/create", [ItemController::class, "create"])->name("create");
 route::post("/store", [ItemController::class, "store"])->name("store");
 route::get("/show", [ItemController::class, "show"])->name("show");
-// route::post("/update/{id}", [ItemController::class, "update"])->name("update");
-// route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
