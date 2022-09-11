@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('tests.index');
 // });
-
-route::get("/manufacture", function () {
+route::get("/show1", function () {
+    return view("manufaktur.show");
+});
+route::get("/", function () {
     return view("items.index");
 });
-route::get("/lihatwo", function () {
-    return view("Manufaktur.lihatwo.index");
-});
+
 //Route leads
 Route::controller(LeadController::class)->group(function(){
     Route::get('/leads','index');

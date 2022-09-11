@@ -85,9 +85,8 @@
                       Progress
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
+                        <li><a class="dropdown-item" href="#">Progress</a></li>
+                        <li><a class="dropdown-item" href="#">Completed</a></li>
                     </ul>
                   </div> <br> <a href="" class="d btn btn-success border-dark-rounded">Konfirmasi</a>
                    </td>
@@ -252,7 +251,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Quantity"></label>
-                        <input type="text" class="form-control text-center" id="Quantity" placeholder="Quantity" >
+                        <input type="number" class="form-control text-center" id="Quantity" placeholder="Quantity" >
                       </div>
                      <a href="" class="d btn btn-success">Konfirmasi</a>
                   </td>
