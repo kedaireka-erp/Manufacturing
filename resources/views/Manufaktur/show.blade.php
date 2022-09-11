@@ -356,45 +356,48 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content bg-white">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Import: Lantai 1 BRI</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Form QC</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form method="POST" action="/fppp" enctype="multipart/form-data">
+        <form method="POST" action="/show" enctype="multipart/form-data">
         @csrf
         <div class="modal-body p-3">
             <input type="text" name="id" hidden>
             
             <div class="form-group mb-3">
-                <label class="col-form-label fs-6">Pilih Jenis</label>
+                <label class="col-form-label fs-6">Nama Subkon</label>
                 <select class="form-select border border-2" aria-label="Default select example" name="type">
-                    <option value="bom_alumunium">BOM Alumunium</option>
-                    <option value="bom_aksesoris">BOM Aksesoris</option>
-                    <option value="wo_alumunium">WO Alumunium</option>
-                    <option value="wo_kaca">WO Kaca</option>
+                    <option value="dropdown-item">Nama Subkon</option>
+                    <option value="dropdown-item">Nama Subkon</option>
+                    <option value="dropdown-item">Nama Subkon</option>
                 </select>
             </div>
             <div class="form-group mb-3">
-                <label class="col-form-label fs-6">Import File</label>
-                <input type="file" name="img[]" class="file-upload-default">
-                <div class="input-group col-xs-12">
-                  <input type="text" class="form-select file-upload-info border border-2" disabled placeholder="Upload File">
-                  <span class="input-group-append">
-                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                  </span>
-                </div>
-              </div>
-    </div>
+              <label class="col-form-label fs-6">Alasan</label>
+              <select class="form-select border border-2" name="type">
+                  <option value="dropdown-item">Nama Subkon</option>
+                  <option value="dropdown-item">Nama Subkon</option>
+                  <option value="dropdown-item">Nama Subkon</option>
+              </select>
+          </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="col-form-control fs-6" for="decription">Keterangan</label>
+              <input class="form-control border-2" type="text" placeholder="Isikan Keterangan di sini">
+          </div>
+  </div>
     </form>
     <div class="mb-3 p-3">
-            <div class="text-primary fw-bold">File yang telah diupload</div>
             <table class="table" id="files_table">
             </table>
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">No. </th>
-                    <th scope="col">Jenis</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Tanggal </th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Alasan</th>
+                    <th scope="col">Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
