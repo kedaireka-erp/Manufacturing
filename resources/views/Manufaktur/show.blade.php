@@ -63,7 +63,7 @@
                                     <td>
                                         <div class="dropdown cutting-sk1">
                                             <select
-                                                class="form-select  bg-transparent text-center select2 js-example-basic-single"
+                                                class="form-select  bg-transparent text-center"
                                                 name="" id="" style="border-color: black;">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
@@ -260,64 +260,64 @@
                                     <td> B1-002 </td>
                                     <td> Astral AS 01 <br> top hung windo </td>
                                     <td> clear 6mm excluded <br> <br> <a href=""
-                                            class="d btn btn-gradient-success border-dark-rounded ">COMPLETED</a> </td>
+                                            class="d btn btn-gradient-success border-dark-rounded pe-none">COMPLETED</a> </td>
                                     <td> 1 </td>
                                     <td> Outside </td>
                                     <td> Allure Black Matte </td>
                                     <!-- cutting button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-dark text-center">Wahyu (Lead) </a>
+                                        </div> <br> <a class="d btn btn-gradient-dark text-center pe-none">Wahyu (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark"> - </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none"> - </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info">08/08/2022 <br> 10.00 </a>
-                                        <div class="">
-                                        </div> <br> <a class=" btn mt-2"></a>
+                                        </div> <br> <a class="d btn btn-gradient-success pe-none"> COMPLETED </a>
+                                        <div class="dropdown">
+                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
                                     </td>
                                     <!-- Machining button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
+                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
                                         <div class="">
-                                        </div> <br> <a class=" btn mt-2"></a>
+                                        </div> <br> <a class=" btn mt-2 pe-none"></a>
                                     </td>
                                     <!-- assembly 1 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-primary"> Las </a>
+                                        </div> <br> <a class="d btn btn-gradient-primary pe-none"> Las </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
+                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
                                     </td>
                                     <!-- assembly 2 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-primary"> Cek Opening </a>
+                                        </div> <br> <a class="d btn btn-gradient-primary pe-none"> Cek Opening </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info ">08/08/2022 <br> 10.00 </a>
+                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
                                     </td>
                                     <!-- assembly 3 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-primary">Pasang Kaca</a>
+                                        </div> <br> <a class="d btn btn-gradient-primary pe-none">Pasang Kaca</a>
                                         <div class="dropdown">
-                                        </div> <br> <a href="" class="btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
+                                        </div> <br> <a href="" class="btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- Qc button -->
                                     <td>
@@ -327,21 +327,21 @@
                                                 data-bs-target="#exampleModal" style="background-color: #51e29f">Lihat
                                                 QC</button>
                                             <div class="text">
-                                            </div> <br> <a href=" " class="btn btn-gradient-info">08/08/2022 <br>
+                                            </div> <br> <a href=" " class="btn btn-gradient-info pe-none">08/08/2022 <br>
                                                 10.00</a>
                                             <div class="dropdown">
-                                            </div> <br> <a class=" btn mt-5 "></a>
+                                            </div> <br> <a class=" btn mt-5 pe-none"></a>
                                     </td>
                                     <!-- packing button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark">Budi (Lead) </a>
+                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d form-control"> 2 </a>
+                                        </div> <br> <a class="d form-control pe-none"> 2 </a>
                                         <div class="dropdown">
-                                        </div> <br> <a href="" class="btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
+                                        </div> <br> <a href="" class="btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
                                     </td>
 
                                     <!-- my css -->
@@ -397,15 +397,23 @@
                                         <th scope="col">Alasan</th>
                                         <th scope="col">Keterangan</th>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row"></th>
-                                        <td> </td>
-                                        <td> </td>
-                                        <td> </td>
+                                    <tr class="table">
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test5</td>
+
                                     </tr>
-                                </tbody>
+                                    </tr>
+                                    <tr class="table">
+                                        <td>test1</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test5010</td>
+
+                                    </tr>
                             </table>
                         </div>
                     </div>
