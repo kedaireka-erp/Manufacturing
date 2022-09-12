@@ -21,7 +21,22 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <form action="/updateleads/{{ $lead->id }}" method="post">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+            <form action="/lead/update/{{ $lead->id }}" method="post">
               @csrf
             <div class="mb-3">
                 <label class="form-label">Nomor Pegawai</label>
@@ -34,9 +49,14 @@
             <div class="mb-3">
                 <label class="form-label">Status</label>
                 <select class="form-select" name="is_active">
-                    <option value="0">Inactive</option>
-                    <option value="1">Active</option>
-                  </select>
+                    @if ($lead->is_active == 0)
+                        <option value="0" selected>Inactive</option>
+                        <option value="1">Active</option>
+                    @else
+                        <option value="0">Inactive</option>
+                        <option value="1" selected>Active</option>
+                    @endif
+                </select>
             </div>
             <button class="btn btn-gradient-success float-end" type="submit">Edit</button>
           </form>

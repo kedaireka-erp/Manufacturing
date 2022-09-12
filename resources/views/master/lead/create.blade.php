@@ -21,7 +21,38 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <form action="/storeleads" method="post">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                  <!-- Flexbox container for aligning the toasts -->
+                    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+                      <!-- Then put toasts within -->
+                      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                          <strong class="mr-auto">Bootstrap</strong>
+                          <small>11 mins ago</small>
+                          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="toast-body">
+                          <strong>{{ $message }}</strong>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            @endif
+
+            <form action="{{ route('storeLead') }}" method="post">
               @csrf
               <div class="mb-3">
                   <label class="form-label">Nomor Pegawai</label>

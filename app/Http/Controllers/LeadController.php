@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,10 +21,14 @@ class LeadController extends Controller
     }
     public function store(Request $request)
     {
+        $messages = [
+            'required' => ':attribute wajib diisi!',
+            'unique' => ':attribute sudah digunakan!'
+        ];
         $request->validate([
-            'employee_number' => 'required',
+            'employee_number' => 'required|unique:leads',
             'lead_name' => 'required'
-        ]);
+        ],$messages);
 
         $newLeads = new Lead();
 
@@ -32,7 +37,7 @@ class LeadController extends Controller
         $newLeads->is_active = $request->is_active;
 
         $newLeads->save();
-
+        toast("Data Berhasil Ditambahkan","success");
         return redirect('/leads');
     }
     public function edit($id)
@@ -41,7 +46,7 @@ class LeadController extends Controller
         return view('master.lead.edit')->with('lead',$lead);
     } 
     public function update(Request $request, $id)
-    {
+    {   
         $lead = Lead::findOrFail($id);
 
         $lead->update([
@@ -49,7 +54,7 @@ class LeadController extends Controller
             'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
-
+        toast("Data Berhasil Diupdate","success");
         return redirect('/leads');
     }
     
@@ -58,7 +63,7 @@ class LeadController extends Controller
     {
         $lead = Lead::findOrFail($id);
         $lead->delete();
-
+        toast("Data Berhasil Dihapus","error");
         return redirect('/leads');
     }
     public function trash()
@@ -72,7 +77,7 @@ class LeadController extends Controller
         $lead = Lead::onlyTrashed()->findOrFail($id);
         $lead->restore();
 
-        return to_route('')->with('success','lead restore successfully');
+        return to_route('leads')->with('success','lead restore successfully');
     }
     
 
@@ -89,18 +94,20 @@ class LeadController extends Controller
                 foreach ($leads as $key => $lead) {
                     if ($lead->is_active == 1) {
                         $is_active = 'Active';
+                        $warna = "success";
                     }else{
                         $is_active = 'Inactive';
+                        $warna = "danger";
                     }
 
                     $output.='<tr class="text-center">'.
                     '<td>'.$lead->employee_number.'</td>'.
                     '<td>'.$lead->lead_name.'</td>'.
-                    '<td>'.$is_active.'</td>'.
+                    '<td><label class="badge badge-'.$warna.'">'.$is_active.'</label></td>'.
                     
                     '<td>
-                        <a class="btn btn-success" style="font-size: 10px" href="/editleads/'.$lead->id.'">Edit</a>
-                        <a class="btn btn-danger" style="font-size: 10px" href="/deleteLeads/'.$lead->id.'">Delete</a>
+                        <a class="btn btn-success" style="font-size: 10px" href="/lead/edit/'.$lead->id.'">Ubah</a>
+                        <button type="button" class="btn btn-danger" onclick="handleDelete('. $lead->id.')">Hapus</button>
                     </td>'.
                     '</tr>';
                 }

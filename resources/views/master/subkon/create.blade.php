@@ -21,7 +21,16 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <form action="/storesubkon" method="post">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="/subkon/store" method="post">
               @csrf
               <div class="mb-3">
                   <label class="form-label">Nomor Pegawai</label>
@@ -30,10 +39,6 @@
               <div class="mb-3">
                   <label class="form-label">Nama</label>
                   <input type="text" name="subkon_name" class="form-control" placeholder="Nama">
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Nama Lead</label>
-                <input type="text" name="lead_name" class="form-control" placeholder="Nama">
               </div>
               <div class="mb-3">
                   <label class="form-label">Status</label>

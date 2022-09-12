@@ -20,20 +20,23 @@ class SubkonController extends Controller
     }
     public function store(Request $request)
     {
+        $messages = [
+            'required' => ':attribute wajib diisi!',
+            'unique' => ':attribute sudah digunakan!'
+        ];
         $request->validate([
-            'employee_number' => 'required',
+            'employee_number' => 'required|unique:subkons',
             'subkon_name' => 'required',
-            'lead_name' => 'required'
-        ]);
+        ],$messages);
 
         $subkon = new Subkon();
 
         $subkon->create([
             'employee_number' => $request->employee_number,
             'subkon_name' => $request->subkon_name,
-            'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
+        toast("Data Berhasil Ditambahkan","success");
         return redirect('/subkons');
     }
     public function edit($id)
@@ -49,30 +52,30 @@ class SubkonController extends Controller
         $subkon->update([
             'employee_number' => $request->employee_number,
             'subkon_name' => $request->subkon_name,
-            'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
+        toast("Data Berhasil Diupdate","success");
         return redirect('/subkons');
     }
 
     //soft delete
     public function destroy($id)
     {
-        $lead = Subkon::findOrFail($id);
-        $lead->delete();
-
+        $subkon = Subkon::findOrFail($id);
+        $subkon->delete();
+        toast("Data Berhasil Dihapus","error");
         return redirect('/subkons');
     }
     public function trash()
     {
-        $leads = Subkon::onlyTrashed()->paginate(5);
+        $subkons = Subkon::onlyTrashed()->paginate(5);
 
-        return view('',compact('leads'));
+        return view('',compact('subkons'));
     }
     public function restore($id)
     {
-        $lead = Subkon::onlyTrashed()->findOrFail($id);
-        $lead->restore();
+        $subkon = Subkon::onlyTrashed()->findOrFail($id);
+        $subkon->restore();
 
         return to_route('master.subkon.index')->with('success','lead restore successfully');
     }
@@ -91,19 +94,20 @@ class SubkonController extends Controller
                 foreach ($subkons as $key => $subkon) {
                     if ($subkon->is_active == 1) {
                         $is_active = 'Active';
+                        $warna = "success";
                     }else{
                         $is_active = 'Inactive';
+                        $warna = "danger";
                     }
 
                     $output.='<tr class="text-center">'.
                     '<td>'.$subkon->employee_number.'</td>'.
                     '<td>'.$subkon->subkon_name.'</td>'.
-                    '<td>'.$subkon->lead_name.'</td>'.
-                    '<td>'.$is_active.'</td>'.
+                    '<td><label class="badge badge-'.$warna.'">'.$is_active.'</label></td>'.
                     
                     '<td>
-                        <a class="btn btn-success" style="font-size: 10px" href="/editsubkon/'.$subkon->id.'">Edit</a>
-                        <a class="btn btn-danger" style="font-size: 10px" href="/deletesubkon/'.$subkon->id.'">Delete</a>
+                            <a class="btn btn-success" style="font-size: 10px" href="/subkon/edit/'.$subkon->id.'">Ubah</a>
+                            <button type="button" class="btn btn-danger" onclick="handleDelete('. $subkon->id.')" >Hapus</button>
                     </td>'.
                     '</tr>';
                 }
