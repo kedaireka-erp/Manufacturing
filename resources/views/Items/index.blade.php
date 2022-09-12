@@ -4,8 +4,7 @@
             <div class="shadow p-3 mb-3 bg-body rounded">FPPP
             <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#" class="text-primary">FPPP</a></h5>
             </div>
-
-        <div class="row">
+            <div class="row">
             <div class="scontent-wrapper bg-img">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">

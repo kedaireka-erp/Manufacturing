@@ -4,7 +4,7 @@
 <div class="content-wrapper bg-img">
     <div class="row">
         <div class="col-lg-12">
-              <div class="shadow p-3 mb-3 bg-body rounded">Lihat WO</h2>
+              <div class="shadow p-3 mb-2 bg-body rounded">Lihat WO</h2>
                     <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#" class="text-secondary">FPPP</a>/<a href="#" class="lihatfppp">Lihat FPPP</a></h5>
                   </div>
         </div>
@@ -265,7 +265,7 @@
                    <!-- cutting button -->
                   <td>
                   <div class="dropdown">
-                  </div> <br> <a class="d btn btn-gradient-dark">Wahyu (Lead) </a>  
+                  </div> <br> <a class="d btn btn-gradient-dark text-center">Wahyu (Lead) </a>  
                   <div class="dropdown">
                   </div> <br> <a class="d btn btn-dark"> - </a>   
                   <div class="dropdown">
