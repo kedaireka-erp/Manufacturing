@@ -48,7 +48,8 @@
                                             style="background-color: #51e29f"
                                             data-bs-id="{{ $fppp->id }}"
                                             data-bs-title="{{ $fppp->project_name }}"
-                                            data-bs-files="{{ "{$fppp->file_bom_alumunium} {$fppp->file_bom_aksesoris} {$fppp->file_wo_alumunium} {$fppp->file_wo_kaca}" }}" > Import
+                                            data-bs-base-path="{{ asset("storage/") }}"
+                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_alumunium}")." ".asset("storage/{$fppp->file_wo_kaca}")}}" > Import
                                         </button>
                                         <a href="" class="btn btn-info btn-sm"
                                             >Lihat</a
@@ -93,7 +94,7 @@
             </div>
             <form
                 method="POST"
-                action="/fppp"
+                action="/manufactures"
                 enctype="multipart/form-data"
             >
                 @csrf
@@ -135,7 +136,7 @@
                         <div class="input-group col-xs-12">
                             <input
                                 type="text"
-                                class="form-select file-upload-info border border-2"
+                                class="text-wrap form-select file-upload-info border border-2"
                                 disabled
                                 placeholder="Upload File"
                             />
@@ -182,6 +183,46 @@
         </div>
     </div>
 </div>
+@if (session()->has("success"))
+    
+<div style="position: fixed; right: 3%;">
+    <div class="toast show border-5 border-success" id="toast-success">
+        <div class="toast-container text-success">
+            <div class="toast-header bg-transparent border-0">
+                <div class="btn-close"></div>
+                
+            </div>
+            <div class="toast-body">
+                <div class="">
+                    Sukses Impot File! <i class="mdi mdi-check"></i>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+@if (session()->has("failed"))
+    
+<div style="position: fixed; right: 3%;">
+    <div class="toast show border-5 border-danger" id="toast-danger">
+        <div class="toast-container text-danger">
+            <div class="toast-header bg-transparent border-0">
+                <button class="btn-close" onclick="alert('aa')">Hello</button>
+                
+            </div>
+            <div class="toast-body">
+                <div class="">
+                    {{ session("failed") }}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 @endsection
 @push('script')
 <!-- Custom js for this page -->
@@ -201,7 +242,7 @@
         clearTimeout(typingTimer);
         });
     function doneTyping (keyword) {
-        fetch('/fppp?search='+keyword)
+        fetch('/manufactures?search='+keyword)
             .then(response => response.text())
             .then(html => {
                 let el = document.createElement('div')
@@ -214,6 +255,11 @@
             })
     }
 </script>
+<script>
+    const toastCloseBtn = document.querySelector(".toast-header .btn-close")
+    console.log(toastCloseBtn);
+</script>
+
 
 <!-- End custom js for this page -->
 @endpush

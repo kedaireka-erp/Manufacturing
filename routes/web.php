@@ -40,10 +40,9 @@ Route::controller(LeadController::class)->group(function () {
 
 // Route FPPP
 Route::controller(ManufactureController::class)->group(function () {
-    Route::get("/fppp", "index");
-    Route::get("/fppp/file", "show_file");
-    Route::post("/fppp", "store");
-    Route::get("/fppp/file/delete", "delete_file");
+    Route::get("/manufactures", "index");
+    Route::post("/manufactures", "store");
+    Route::get("/manufactures/delete", "delete");
 });
 
 
