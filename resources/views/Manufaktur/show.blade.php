@@ -4,12 +4,9 @@
 <div class="content-wrapper bg-img">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                <h2 class="card-title float-start">Lihat WO</h2>
+              <div class="shadow p-3 mb-3 bg-body rounded">Lihat WO</h2>
                     <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#" class="text-secondary">FPPP</a>/<a href="#" class="lihatfppp">Lihat FPPP</a></h5>
-                </div>
-            </div>
+                  </div>
         </div>
     </div>
     <br>
@@ -17,7 +14,6 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            
             <!-- search -->
                     <form class="col-lg-4 my-md-0">
                         <div class="input-group" >
@@ -331,7 +327,7 @@
                     <div class="dropdown">
                     </div> <br> <a class=" btn mt-5 "></a>
                     </td>
-                    <!-- assembly 2 button -->
+                    <!-- packing button -->
                   <td>
                     <div class="dropdown">
                     </div> <br> <a class="d btn btn-dark">Wahyu (Lead) </a>  
@@ -342,7 +338,7 @@
                     <div class="dropdown">
                     </div> <br> <a href="" class="btn btn-gradient-info ">08/08/2022 <br> 10.00</a>
                     </td>
-                    
+
               <!-- my css -->
               <link rel="stylesheet" href="style.css">
             </table>
@@ -382,8 +378,8 @@
           </div>
             </div>
             <div class="form-group mb-3">
-              <label class="col-form-control fs-6" for="decription">Keterangan</label>
-              <input class="form-control border-2" type="text" placeholder="Isikan Keterangan di sini">
+              <label class="col-form-control fs-6" for="Description">Keterangan</label>
+              <input class="form-control border-2"  id="Description" placeholder="Isikan Keterangan di sini">
           </div>
   </div>
     </form>
@@ -413,13 +409,13 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-info">Simpan      <i class="mdi mdi-content-save fs-3"></i></button>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
-</div>
+  </div>
 
 
 @endsection
