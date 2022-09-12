@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@push("style")
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 @section('content')
 <div class="content-wrapper bg-img">
     <div class="row">
@@ -44,7 +48,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="">
+              <tr class="">
                   <td> 1 </td>
                   <td> B1-001 </td>
                   <td> Astral AS 01 <br> top hung windo </td>
@@ -52,204 +56,174 @@
                   <td> 1 </td>
                   <td> Outside </td>
                   <td> Allure Black Matte </td>
-                   <!-- cutting button -->
-                   <td>
-                   <div class="dropdown">
-                      <button type="button" class="d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 1
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                  <!-- cutting button -->
+                  <td>
+                  <div class="dropdown cutting-sk1">
+                      <select class="form-select  bg-transparent text-center select2 js-example-basic-single"name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 1</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 2
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                      <select class="form-select bg-transparent text-center"name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 2</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                   <div class="dropdown">
-                    <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                      Progress
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Progress</a></li>
-                        <li><a class="dropdown-item" href="#">Completed</a></li>
-                    </ul>
-                  </div> <br> <a href="" class="d btn btn-success border-dark-rounded">Konfirmasi</a>
-                   </td>
+                      <select class="form-select bg-transparent text-center"name="" id="" style="border-color: black;">
+                        <option value="">Progress</option>
+                        <option value="">Completed</option>
+                      </select>
+                  </div> <br> <a href="" class="d btn btn-success border-dark-rounded text-center ">Konfirmasi</a>
+                  </td>
                   <td>  
                     <!-- Machining button -->
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 1
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black; margin-top: -50px">
+                        <option disabled selected>Subkon 1</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 2
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center"name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 2</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
-                    <br><a href="" class="d btn btn-success border-dark-rounded">Konfirmasi</a>
+                    <br><a href="" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</a>
                   </td>
                   <!-- assembly 1 button -->
                   <td>  
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 1
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center"name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 1</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 2
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                      <select class="form-select bg-transparent text-center"name="" id="" style="border-color: black;">
+                      <option disabled selected>Subkon 2</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                   <div class="dropdown">
-                    <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                      Kegiatan
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#"> Las </a></li>
-                      <li><a class="dropdown-item" href="#">Cek Opening</a></li>
-                      <li><a class="dropdown-item" href="#">Pasang Kaca</a></li>
-                      <li><a class="dropdown-item" href="#">Sealant Kaca</a></li>
-                    </ul>
-                  </div> <br> <a href="" class="d btn btn-success">Konfirmasi</a>
+                  <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Kegiatan</option>
+                        <option value="">Las</option>
+                        <option value="">Cek Opening</option>
+                        <option value="">Pasang Kaca</option>
+                        <option value="">Sealant Kaca</option>
+                      </select>
+                  </div> <br> <a href="" class="d btn btn-success text-center">Konfirmasi</a>
                   </td>
                   <!-- assembly 2 button -->
                   <td>  
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 1
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 1</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 2
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 2</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                   <div class="dropdown">
-                    <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                      Kegiatan
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#"> Las </a></li>
-                      <li><a class="dropdown-item" href="#">Cek Opening</a></li>
-                      <li><a class="dropdown-item" href="#">Pasang Kaca</a></li>
-                      <li><a class="dropdown-item" href="#">Sealant Kaca</a></li>
-                    </ul>
-                  </div> <br> <a href="" class="d btn btn-success">Konfirmasi</a>
+                  <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Kegiatan</option>
+                        <option value="">Las</option>
+                        <option value="">Cek Opening</option>
+                        <option value="">Pasang Kaca</option>
+                        <option value="">Sealant Kaca</option>
+                      </select>
+                  </div> <br> <a href="" class="d btn btn-success text-center">Konfirmasi</a>
                   </td>
                   <!-- assembly 3 button -->
                   <td>  
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 1
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 1</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 2
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                      <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 2</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                   <div class="dropdown">
-                    <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                      Kegiatan
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#"> Las </a></li>
-                      <li><a class="dropdown-item" href="#">Cek Opening</a></li>
-                      <li><a class="dropdown-item" href="#">Pasang Kaca</a></li>
-                      <li><a class="dropdown-item" href="#">Sealant Kaca</a></li>
-                    </ul>
-                  </div> <br> <a href="" class="d btn btn-success border-dark-rounded">Konfirmasi</a>
+                  <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Kegiatan</option>
+                        <option value="">Las</option>
+                        <option value="">Cek Opening</option>
+                        <option value="">Pasang Kaca</option>
+                        <option value="">Sealant Kaca</option>
+                      </select>
+                  </div> <br> <a href="" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</a>
                   </td>
                   <td>
                     <!-- Qc button -->
-                    <button type="button" class="d btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #51e29f">Isi Keterangan</button>
-                        <!-- assembly 2 button -->
+                    <button type="button" class="d btn btn-primary text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #51e29f">Isi Keterangan</button>
+                    <div class="dropdown">
+                    </div> <br> <a class=" btn mt-5 "></a>   
+                    <div class="dropdown">
+                    </div> <br> <a class=" btn mt-4 "></a>   
+                    <!-- assembly 2 button -->
                   <td>  
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 1
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 1</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
                     <br>
                     <div class="dropdown">
-                      <button type="button" class=" d dropdown-toggle vertical-align:top " data-bs-toggle="dropdown" aria-expanded="false">
-                        Subkon 2
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                        <li><a class="dropdown-item" href="#">Nama Subkon</a></li>
-                      </ul>
+                    <select class="form-select bg-transparent text-center" name="" id="" style="border-color: black;">
+                        <option disabled selected>Subkon 2</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                        <option value="">Nama Subkon</option>
+                      </select>
                     </div>
-                    <div class="form-group">
+                    <div class="hy form-group bg-transparent">
                         <label for="Quantity"></label>
-                        <input type="number" class="form-control text-center" id="Quantity" placeholder="Quantity" >
+                        <input type="number" class="form-control text-center bg-transparent" id="Quantity" placeholder="Quantity" style="border-color: black;border-radius:5px; padding:10px" >
                       </div>
-                     <a href="" class="d btn btn-success">Konfirmasi</a>
+                    <a href="" class="d btn btn-success" style="margin-top:-10px">Konfirmasi</a>
                   </td>
                       </div>
                   </td>
@@ -419,3 +393,15 @@
 
 
 @endsection
+
+@push("script")
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+// In your Javascript (external .js resource or <script> tag)
+<script>
+$(document).ready(function() {
+    $('.js-example-basic-single').select2({
+      dropdownParent: '.cutting-sk1'
+    });
+});
+</script>
+@endpush
