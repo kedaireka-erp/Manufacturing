@@ -339,7 +339,7 @@
                                         <div class="dropdown">
                                         </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d form-control pe-none"> 2 </a>
+                                        </div> <br> <a class="d form-control text-center pe-none"> 2 </a>
                                         <div class="dropdown">
                                         </div> <br> <a href="" class="btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
                                     </td>
@@ -375,9 +375,9 @@
                         <div class="form-group mb-3">
                             <label class="col-form-label fs-6">Alasan</label>
                             <select class="form-select border border-2" name="type">
-                                <option value="dropdown-item">Nama Subkon</option>
-                                <option value="dropdown-item">Nama Subkon</option>
-                                <option value="dropdown-item">Nama Subkon</option>
+                                <option value="dropdown-item">Alasan 1</option>
+                                <option value="dropdown-item">Alasan 2</option>
+                                <option value="dropdown-item">Alasan 3</option>
                             </select>
                         </div>
                         <div class="form-group mb-3">
@@ -418,9 +418,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-info">Simpan <i
-                                class="mdi mdi-content-save fs-3"></i></button>
+                                class="mdi mdi-content-save fs-4"></i></button>
                     </div>
                 </form>
             </div>
