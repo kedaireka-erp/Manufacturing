@@ -61,10 +61,10 @@
                                     <td> Allure Black Matte </td>
                                     <!-- cutting button -->
                                     <td>
-                                        <div class="dropdown cutting-sk1">
+                                        <div class="dropdown">
                                             <select
-                                                class="form-select  bg-transparent text-center"
-                                                name="" id="" style="border-color: black;">
+                                                class="form-select  bg-transparent text-center search"
+                                                name="state" id="" style="border-color: black;">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
                                                 <option value="">Nama Subkon</option>
@@ -73,7 +73,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 2</option>
                                                 <option value="">Nama Subkon</option>
@@ -83,18 +83,18 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option value="">Progress</option>
                                                 <option value="">Completed</option>
                                             </select>
                                         </div> <br> <a href=""
-                                            class="d btn btn-success border-dark-rounded text-center ">Konfirmasi</a>
+                                            class="d btn btn-success border-dark-rounded text-center">Konfirmasi</a>
                                     </td>
                                     <td>
                                         <!-- Machining button -->
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black; margin-top: -50px">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
@@ -104,7 +104,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 2</option>
                                                 <option value="">Nama Subkon</option>
@@ -117,7 +117,7 @@
                                     <!-- assembly 1 button -->
                                     <td>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
@@ -127,7 +127,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 2</option>
                                                 <option value="">Nama Subkon</option>
@@ -137,7 +137,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Kegiatan</option>
                                                 <option value="">Las</option>
@@ -150,7 +150,7 @@
                                     <!-- assembly 2 button -->
                                     <td>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
@@ -160,7 +160,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 2</option>
                                                 <option value="">Nama Subkon</option>
@@ -170,7 +170,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Kegiatan</option>
                                                 <option value="">Las</option>
@@ -183,7 +183,7 @@
                                     <!-- assembly 3 button -->
                                     <td>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
@@ -193,7 +193,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 2</option>
                                                 <option value="">Nama Subkon</option>
@@ -203,7 +203,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Kegiatan</option>
                                                 <option value="">Las</option>
@@ -216,18 +216,16 @@
                                     </td>
                                     <td>
                                         <!-- Qc button -->
-                                        <button type="button" class="d btn btn-primary text-center"
+                                        <button type="button" class="d btn btn-success text-center"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             style="background-color: #51e29f">Isi Keterangan</button>
-                                        <div class="dropdown">
-                                        </div> <br> <a class=" btn mt-5 "></a>
-                                        <div class="dropdown">
-                                        </div> <br> <a class=" btn mt-4 "></a>
+                                         <br> <a class=" btn mt-5 "></a>
+                                         <br> <a class=" btn mt-3 "></a>
                                         <!-- assembly 2 button -->
                                     </td>
                                     <td>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
@@ -237,7 +235,7 @@
                                         </div>
                                         <br>
                                         <div class="dropdown">
-                                            <select class="form-select bg-transparent text-center" name="" id=""
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
                                                 style="border-color: black;">
                                                 <option disabled selected>Subkon 2</option>
                                                 <option value="">Nama Subkon</option>
@@ -247,7 +245,7 @@
                                         </div>
                                         <div class="hy form-group bg-transparent">
                                             <label for="Quantity"></label>
-                                            <input type="number" class="form-control text-center bg-transparent"
+                                            <input type="number" class="form-control bg-transparent text-center"
                                                 id="Quantity" placeholder="Quantity"
                                                 style="border-color: black;border-radius:5px; padding:10px">
                                         </div>
@@ -339,7 +337,7 @@
                                         <div class="dropdown">
                                         </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d form-control text-center pe-none"> 2 </a>
+                                        </div> <br> <button class="d form-control text-center pe-none disabled bg-transparent"> 2 </button>
                                         <div class="dropdown">
                                         </div> <br> <a href="" class="btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
                                     </td>
@@ -436,9 +434,8 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
-    $('.js-example-basic-single').select2({
-      dropdownParent: '.cutting-sk1'
-    });
+    $('.search').select2();
+    theme : "classic"
 });
 </script>
 @endpush

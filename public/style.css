@@ -1,8 +1,12 @@
 .lihatfppp {
     color: #6f42c1;
 }
-.d {
+.search {
+    width: 150px;
+    height: 200px;
+    text-align: center;
+}
+.d{
     width: 150px;
     height: 40px;
-    vertical-align: text-top;
 }
