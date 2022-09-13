@@ -420,7 +420,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-info">Simpan <i
-                                class="mdi mdi-content-save fs-4"></i></button>
+                                class="mdi mdi-content-save fs-3"></i></button>
                     </div>
                 </form>
             </div>
