@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LeadController;
-use App\Http\Controllers\SubkonController;
 
-use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\SubkonController;
+use App\Http\Controllers\PerProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +23,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('tests.index');
 // });
 
-route::get("/manufacture", function () {
-    return view("items.index");
+// route::get("/manufacture", function () {
+//     return view("items.index");
+// });
+
+route::get("/perproject", function () {
+    return view("manufaktur.perproject");
+});
 
 //Route leads
 Route::controller(LeadController::class)->group(function(){
@@ -55,3 +62,5 @@ route::post("/store", [ItemController::class, "store"])->name("store");
 route::get("/show", [ItemController::class, "show"])->name("show");
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
+
+route::get("/perproject", [PerProjectController::class, "index"]);
