@@ -12,7 +12,7 @@ class LeadController extends Controller
     public function index()
     {
         $leads = Lead::paginate(5);
-       
+
         return view('master.lead.index')->with('leads',$leads);
     }
     public function create()
@@ -23,10 +23,11 @@ class LeadController extends Controller
     {
         $messages = [
             'required' => ':attribute wajib diisi!',
-            'unique' => ':attribute sudah digunakan!'
+            'unique' => ':attribute sudah digunakan!',
+            'numeric' => ':attribute harus angka!'
         ];
         $request->validate([
-            'employee_number' => 'required|unique:leads',
+            'employee_number' => 'required|unique:leads|numeric',
             'lead_name' => 'required'
         ],$messages);
 
@@ -44,9 +45,9 @@ class LeadController extends Controller
     {
         $lead = Lead::findOrFail($id);
         return view('master.lead.edit')->with('lead',$lead);
-    } 
+    }
     public function update(Request $request, $id)
-    {   
+    {
         $lead = Lead::findOrFail($id);
 
         $lead->update([
@@ -57,7 +58,7 @@ class LeadController extends Controller
         toast("Data Berhasil Diupdate","success");
         return redirect('/leads');
     }
-    
+
     //soft delete
     public function destroy($id)
     {
@@ -69,7 +70,7 @@ class LeadController extends Controller
     public function trash()
     {
         $leads = Lead::onlyTrashed()->paginate(5);
-        
+
         return view('',compact('leads'));
     }
     public function restore($id)
@@ -79,15 +80,15 @@ class LeadController extends Controller
 
         return to_route('leads')->with('success','lead restore successfully');
     }
-    
+
 
     //search with ajax
     public function search(Request $request)
     {
-        
+
         if ($request->ajax()) {
             $output="";
-         
+
             $leads = DB::table('leads')->where('deleted_at',null)->Where('lead_name','LIKE','%'.$request->search."%")->paginate(6);
 
             if ($leads) {
@@ -104,7 +105,7 @@ class LeadController extends Controller
                     '<td>'.$lead->employee_number.'</td>'.
                     '<td>'.$lead->lead_name.'</td>'.
                     '<td><label class="badge badge-'.$warna.'">'.$is_active.'</label></td>'.
-                    
+
                     '<td>
                         <a class="btn btn-success" style="font-size: 10px" href="/lead/edit/'.$lead->id.'">Ubah</a>
                         <button type="button" class="btn btn-danger" onclick="handleDelete('. $lead->id.')">Hapus</button>

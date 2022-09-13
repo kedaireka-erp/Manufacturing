@@ -14,7 +14,7 @@
     </div>
     <br>
     <div class="row">
-        
+
     </div>
     <br>
     <div class="row">
@@ -44,7 +44,7 @@
                   <label class="form-label">Status</label>
                   <select class="form-select" name="is_active">
                       <option value="0">Inactive</option>
-                      <option value="1">Active</option>
+                      <option value="1" selected>Active</option>
                     </select>
               </div>
               <button class="btn btn-gradient-primary float-end" type="submit">Tambah</button>

@@ -11,7 +11,7 @@ class SubkonController extends Controller
     public function index()
     {
         $subkons = Subkon::paginate(5);
-        
+
         return view('master.subkon.index',compact('subkons'));
     }
     public function create()
@@ -22,10 +22,11 @@ class SubkonController extends Controller
     {
         $messages = [
             'required' => ':attribute wajib diisi!',
-            'unique' => ':attribute sudah digunakan!'
+            'unique' => ':attribute sudah digunakan!',
+            'numeric' => ':attribute harus angka!'
         ];
         $request->validate([
-            'employee_number' => 'required|unique:subkons',
+            'employee_number' => 'required|unique:subkons|numeric',
             'subkon_name' => 'required',
         ],$messages);
 
@@ -79,15 +80,15 @@ class SubkonController extends Controller
 
         return to_route('master.subkon.index')->with('success','lead restore successfully');
     }
-    
+
 
     //search with ajax
     public function search(Request $request)
     {
-        
+
         if ($request->ajax()) {
             $output="";
-         
+
             $subkons = DB::table('subkons')->where('deleted_at',null)->Where('subkon_name','LIKE','%'.$request->search."%")->paginate(6);
 
             if ($subkons) {
@@ -104,7 +105,7 @@ class SubkonController extends Controller
                     '<td>'.$subkon->employee_number.'</td>'.
                     '<td>'.$subkon->subkon_name.'</td>'.
                     '<td><label class="badge badge-'.$warna.'">'.$is_active.'</label></td>'.
-                    
+
                     '<td>
                             <a class="btn btn-success" style="font-size: 10px" href="/subkon/edit/'.$subkon->id.'">Ubah</a>
                             <button type="button" class="btn btn-danger" onclick="handleDelete('. $subkon->id.')" >Hapus</button>
