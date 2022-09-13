@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
+
+use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\PerunitController;
@@ -69,6 +71,13 @@ route::get("/perproject", function () {
     return view("manufaktur.perproject");
 });
 
+// Route Surat Jalan (Logistic)
+Route::controller(LogisticController::class)->group(function () {
+    Route::get('/logistic', 'index')->name('logistic_index');
+    Route::get('/logistic/create', 'create')->name('logistic_create');
+    Route::get('/logistic/show', 'show')->name('logistic_show');
+});
+
 
 // Route FPPP
 Route::controller(ManufactureController::class)->group(function () {
@@ -95,11 +104,3 @@ Route::controller(WorkOrderController::class)->group(function () {
 
 
 route::get("/perproject", [PerProjectController::class, "index"]);
-
-// route surat jalan sementara
-Route::get('/surat-jalan', function () {
-    return view('logistic.index');
-});
-Route::get('/surat-jalan/create', function () {
-    return view('logistic.create');
-})->name('logistic_create');

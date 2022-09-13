@@ -54,9 +54,9 @@
                                     <td>8</td>
                                     <td>Irwan</td>
                                     <td class="d-flex justify-content-around">
-                                        <div class="btn btn-success" title="View">
+                                        <a href="{{ route('logistic_show') }}" class="btn btn-success" title="View">
                                             <i class="mdi mdi-eye"></i>
-                                        </div>
+                                        </a>
                                         <div class="btn btn-primary" title="Download">
                                             <i class="mdi mdi-download"></i>
                                         </div>
@@ -73,9 +73,9 @@
                                     <td>8</td>
                                     <td>Irwan</td>
                                     <td class="d-flex justify-content-around">
-                                        <div class="btn btn-success" title="View">
+                                        <a href="{{ route('logistic_show') }}" class="btn btn-success" title="View">
                                             <i class="mdi mdi-eye"></i>
-                                        </div>
+                                        </a>
                                         <div class="btn btn-primary" title="Download">
                                             <i class="mdi mdi-download"></i>
                                         </div>
