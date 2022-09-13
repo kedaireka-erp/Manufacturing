@@ -6,6 +6,7 @@ use App\Http\Controllers\LeadController;
 
 
 use App\Http\Controllers\SubkonController;
+use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\PerProjectController;
 
 /*
@@ -64,3 +65,5 @@ route::get("/show", [ItemController::class, "show"])->name("show");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
 route::get("/perproject", [PerProjectController::class, "index"]);
+
+route::get("/perunit", [PerunitController::class, "index"]);
