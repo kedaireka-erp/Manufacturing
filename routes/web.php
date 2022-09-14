@@ -21,7 +21,7 @@ use App\Http\Controllers\PerProjectController;
 |
 */
 Route::get('/',function() {
-    echo "Hello";
+    return redirect()->route('/leads');
 });
 
 //Route leads
