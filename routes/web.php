@@ -47,6 +47,7 @@ Route::controller(SubkonController::class)->group(function(){
     Route::get('/subkon/trash','trash');
     Route::get('/subkon/restore/{id}','restore');
     Route::get('/subkon/search','search');
+});
 
 
 
@@ -74,4 +75,3 @@ Route::controller(ManufactureController::class)->group(function () {
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
-route::get("/perproject", [PerProjectController::class, "index"]);
