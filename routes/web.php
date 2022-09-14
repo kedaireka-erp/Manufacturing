@@ -1,8 +1,12 @@
 <?php
 
-use App\Http\Controllers\LeadController;
-use App\Http\Controllers\SubkonController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LeadController;
+
+
+use App\Http\Controllers\SubkonController;
+use App\Http\Controllers\PerProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get(function() {
+    echo "Hello";
+});
 
 //Route leads
 Route::controller(LeadController::class)->group(function(){
@@ -39,3 +46,11 @@ Route::controller(SubkonController::class)->group(function(){
     Route::get('/subkon/restore/{id}','restore');
     Route::get('/subkon/search','search');
 });
+route::get("/", [ItemController::class, "index"]);
+route::get("/create", [ItemController::class, "create"])->name("create");
+route::post("/store", [ItemController::class, "store"])->name("store");
+route::get("/show", [ItemController::class, "show"])->name("show");
+// route::post("/update/{id}", [ItemController::class, "update"])->name("update");
+// route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
+
+route::get("/perproject", [PerProjectController::class, "index"]);

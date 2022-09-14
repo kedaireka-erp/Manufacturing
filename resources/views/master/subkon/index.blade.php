@@ -14,7 +14,7 @@
         </div>
     </div>
     <br>
-    
+
     <br>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
@@ -34,9 +34,9 @@
           </div>
 
             <!-- search -->
-           
 
-            
+
+
         <!-- Tabel -->
         <div class="table-responsive">
             <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -65,9 +65,9 @@
                         <td>
                           <label class="badge badge-{{ $warna }}">{{ $is_active }}</label>
                         </td>
-                        <td> 
+                        <td>
                           <a class="btn btn-success" style="font-size: 10px" href="/subkon/edit/{{ $subkon->id }}">Ubah</a>
-                          <button type="button" style="font-size: 10px" class="btn btn-danger" onclick="handleDelete({{ $subkon->id }})" >Hapus</button>         
+                          <button type="button" style="font-size: 10px" class="btn btn-danger" onclick="handleDelete({{ $subkon->id }})" >Hapus</button>
                         </td>
                       </tr>
                     @endforeach
@@ -79,7 +79,7 @@
               </tbody>
             </table>
              </div>
-              
+
           </div>
           <div class="container">
             {{ $subkons->links() }}
@@ -106,7 +106,7 @@
                   </div>
               </div>
             </div>
-          </div>   
+          </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script type="text/javascript">

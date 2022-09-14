@@ -14,7 +14,7 @@
         </div>
     </div>
     <br>
-    
+
     <br>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
@@ -32,7 +32,6 @@
                 </form>
               </div>
           </div>
-
 
             <!-- Tabel -->
             <table class="table table-striped">
@@ -61,7 +60,7 @@
                               <td>
                                 <label class="badge badge-{{ $warna }}">{{ $is_active }}</label>
                               </td>
-                              <td> 
+                              <td>
                                 <a class="btn btn-success" style="font-size: 10px" href="/lead/edit/{{ $lead->id }}">Ubah</a>
                                 <button type="button" style="font-size: 10px" class="btn btn-danger" onclick="handleDelete({{ $lead->id }})">Hapus</button>
                               </td>
@@ -72,10 +71,10 @@
                       <td colspan="10" align="center">Tidak ada data</td>
                     </tr>
                 @endif
-                
+
               </tbody>
             </table>
-            
+
           </div>
             <div class="container">
               {{ $leads->links() }}
@@ -129,6 +128,6 @@
         $('#modalDelete').modal('show');
       }
     </script>
-    
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
