@@ -21,24 +21,30 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            
-            <div class="mb-3">
-                <label class="form-label">Nomor Pegawai</label>
-                <input type="text" class="form-control" value="">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Nama</label>
-                <input type="text" class="form-control" value="">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Status</label>
-                <select class="form-select">
-                    <option>Inactive</option>
-                    <option>Active</option>
-                  </select>
-            </div>
-            <button class="btn btn-gradient-success float-end" type="submit">Edit</button>
-
+            <form action="/subkon/update/{{ $subkon->id }}" method="post">
+              @csrf
+              <div class="mb-3">
+                  <label class="form-label">Nomor Pegawai</label>
+                  <input type="text" name="employee_number" class="form-control" value="{{ $subkon->employee_number }}">
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">Nama</label>
+                  <input type="text" name="subkon_name" class="form-control" value="{{ $subkon->subkon_name }}">
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">Status</label>
+                  <select class="form-select" name="is_active">
+                    @if ($subkon->is_active == 0)
+                        <option value="0" selected>Inactive</option>
+                        <option value="1">Active</option>
+                    @else
+                        <option value="0">Inactive</option>
+                        <option value="1" selected>Active</option>
+                    @endif
+                    </select>
+              </div>
+              <button class="btn btn-gradient-success float-end" type="submit">Edit</button>
+          </form>
           </div>
         </div>
       </div>
