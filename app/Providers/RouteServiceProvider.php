@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->removeIndexPHPFromURL();
+        // $this->removeIndexPHPFromURL();
 
         $this->configureRateLimiting();
 
