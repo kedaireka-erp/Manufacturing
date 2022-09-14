@@ -27,8 +27,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->removeIndexPHPFromURL();
-
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -41,17 +39,6 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    protected function removeIndexPHPFromURL()
-    {
-        if (Str::contains(request()->getRequestUri(), '/index.php/')) {
-            $url = str_replace('index.php/', '', request()->getRequestUri());
-
-            if (strlen($url) > 0) {
-                header("Location: $url", true, 301);
-                exit;
-            }
-        }
-    }
 
     /**
      * Configure the rate limiters for the application.
