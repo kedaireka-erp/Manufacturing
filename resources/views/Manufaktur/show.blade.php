@@ -332,8 +332,8 @@
                                     </td>
                                     <!-- Qc button -->
                                     <td>
-                                            <button type="button" class="d btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal" class=" btn btn-primary btn-sm button">Lihat QC</button>
+                                            <a type="button" class=" btn btn-primary btn-xl" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal" class="d btn btn-primary">Lihat QC</a>
                                                 <div class="number">
                                                 </div> <br> <a href=" " class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
                                             <div class="dropdown">
@@ -370,17 +370,17 @@
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
-            <div class="modal-content bg-white">
+            <div class="modal-content bg-white px-4">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Form QC</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="/show" enctype="multipart/form-data">
                     @csrf
-                    <div class="modal-body p-3">
+                    <div class="modal-body">
                         <input type="text" name="id" hidden>
 
-                        <div class="form-group mb-3">
+                        <div class="form-group" style="margin-bottom: 12px">
                             <label class="col-form-label fs-6">Nama Subkon</label>
                             <select class="form-select border border-2" aria-label="Default select example" name="type">
                                 <option disabled selected>Pilih Salah Satu</option>
@@ -389,7 +389,7 @@
                                 <option value="dropdown-item">Nama Subkon</option>
                             </select>
                         </div>
-                        <div class="form-group mb-3">
+                        <div class="form-group " style="margin-bottom: 12px">
                             <label class="col-form-label fs-6">Alasan</label>
                             <select class="form-select border border-2" name="type">
                                 <option disabled selected>Pilih Salah Satu</option>
@@ -398,11 +398,11 @@
                                 <option value="dropdown-item">Alasan 3</option>
                             </select>
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="col-form-control fs-6" for="Description">Keterangan</label>
+                        <div class="form-group" style="margin-bottom: 12px">
+                            <label class="col-form-label fs-6" for="Description">Keterangan</label>
                             <textarea name="keterangan" class="form-control" id="" placeholder="Isikan Keterangan di sini" rows="5"></textarea>
                         </div>
-                        <div class="mb-3 p-3">
+                        <div class="" style="margin-bottom: 12px">
                             <table class="table table-striped text-center" id=files_table>
                                 <thead>
                                   <tr>
@@ -435,7 +435,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-info">Simpan <i
-                                class="mdi mdi-content-save fs-3"></i></button>
+                                class="mdi mdi-content-save "></i></button>
                     </div>
                 </form>
             </div>
