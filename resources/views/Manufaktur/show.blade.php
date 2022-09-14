@@ -272,8 +272,7 @@
                                     <td> 2 </td>
                                     <td> B1-002 </td>
                                     <td> Astral AS 01 <br> top hung windo </td>
-                                    <td> clear 6mm excluded <br> <br> <a href=""
-                                            class="d btn btn-gradient-success border-dark-rounded pe-none">COMPLETED</a> </td>
+                                    <td> clear 6mm excluded <br> <br> <button type="button" class="d btn btn-gradient-success btn-sm button pe-none">COMPLETED</button>
                                     <td> 1 </td>
                                     <td> Outside </td>
                                     <td> Allure Black Matte </td>
