@@ -96,7 +96,7 @@
                                         <!-- Machining button -->
                                         <div class="dropdown">
                                             <select class="form-select bg-transparent text-center search" name="" id=""
-                                                style="border-color: black; margin-top: -50px">
+                                                style="border-color: black; ">
                                                 <option disabled selected>Subkon 1</option>
                                                 <option value="">Nama Subkon</option>
                                                 <option value="">Nama Subkon</option>
@@ -114,7 +114,10 @@
                                         </div>
                                         <br><a href=""
                                             class="d btn btn-success border-dark-rounded text-center">Konfirmasi</a>
-                                    </td>
+                                            <div style="margin-top: 42px">
+
+                                        </div>
+                                        </td>
                                     <!-- assembly 1 button -->
                                     <td>
                                         <div class="dropdown">
@@ -220,9 +223,7 @@
                                         {{-- <button type="button" class="d btn btn-info text-center"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
                                         
-                                        <button type="submit" class="d btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
-                                            Keterangan
-                                        </button>
+                                        <button type="submit" class="d btn btn-info text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan   </button>
                                          <br> <a class=" btn mt-5 "></a>
                                          <br> <a class=" btn mt-3 "></a>
                                         <!-- assembly 2 button -->
@@ -247,7 +248,7 @@
                                                 <option value="">Nama Subkon</option>
                                             </select>
                                         </div>
-                                        <div class="hy form-group bg-transparent">
+                                        <div class="hy form-group bg-transparent px-1">
                                             <label for="Quantity"></label>
                                             <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-2 border-opacity-10 "
                                                 id="Quantity" placeholder="Quantity"
@@ -259,9 +260,11 @@
                                     {{-- Status --}}
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-gradient-dark btn-sm button">QUEUED</button>
-                                        <br> <a class=" btn mt-5 "></a>
-                                        <br> <a class=" btn mt-3 "></a>
+                                        </div> <br> <button type="button" class="d btn btn-gradient-dark btn-sm button" >QUEUED</button>
+                                        <div class="">
+                                        </div> <br> <a class=" btn pe-none" style="margin-top: 15px"></a>
+                                        <div class="">
+                                        </div> <br> <a class="d btn mt-4 pe-none"></a>
                                     </td>
 
                                     {{-- number 2 --}}
