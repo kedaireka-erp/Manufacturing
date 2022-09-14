@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ManufactureController;
+use App\Models\FPPP;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LeadController;
@@ -45,11 +47,30 @@ Route::controller(SubkonController::class)->group(function(){
     Route::get('/subkon/trash','trash');
     Route::get('/subkon/restore/{id}','restore');
     Route::get('/subkon/search','search');
+
+
+
+// route::get("/manufacture", function () {
+//     return view("items.index");
+// });
+
+route::get("/perproject", function () {
+    return view("manufaktur.perproject");
 });
-route::get("/", [ItemController::class, "index"]);
-route::get("/create", [ItemController::class, "create"])->name("create");
-route::post("/store", [ItemController::class, "store"])->name("store");
-route::get("/show", [ItemController::class, "show"])->name("show");
+
+
+// Route FPPP
+Route::controller(ManufactureController::class)->group(function () {
+    Route::get("/manufactures", "index");
+    Route::post("/manufactures", "store");
+    Route::get("/manufactures/delete", "delete");
+});
+
+
+// route::get("/", [ItemController::class, "index"]);
+// route::get("/create", [ItemController::class, "create"])->name("create");
+// route::post("/store", [ItemController::class, "store"])->name("store");
+// route::get("/show", [ItemController::class, "show"])->name("show");
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
