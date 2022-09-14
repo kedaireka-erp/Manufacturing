@@ -30,8 +30,10 @@ class ManufactureController extends Controller
             "file" => ["required", "mimes:" . $mimes]
         ]);
         if ($validator->fails()) {
+
+            toast("File format untuk {$request->type} harus ." . $mimes, "error");
             return
-                redirect("manufactures")->with("failed", "File format harus ." . $mimes);
+                redirect("manufactures")->with("failed", "File format untuk {$request->type} harus ." . $mimes);
         }
         $fppp = Manufacture::find($request->id);
         if ($fppp["file_" . $request->type] != null) {
@@ -39,6 +41,7 @@ class ManufactureController extends Controller
         }
         $file_path = $request->file("file")->store($request->type);
         $fppp->update(["file_" . $request->type => $file_path]);
+        toast("File berhasil diunggah", "success");
         return redirect("manufactures")->with("success", "Sukses upload file!");
     }
 
@@ -53,6 +56,7 @@ class ManufactureController extends Controller
         $fppp["file_" . $request->type] = null;
         $fppp->save();
 
+        toast("File berhasil dihapus", "success");
         return redirect("/manufactures");
     }
 
