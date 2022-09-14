@@ -55,9 +55,7 @@ Route::controller(SubkonController::class)->group(function(){
 //     return view("items.index");
 // });
 
-route::get("/perproject", function () {
-    return view("manufaktur.perproject");
-});
+Route::get('/perproject',[PerProjectController::class,'index']);
 
 
 // Route FPPP

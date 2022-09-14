@@ -52,72 +52,45 @@
                         <th>Tgl Kirim Akhir</th>
                         <th>Status</th>
                     </tr>
+                    @foreach ($monitoring as $mtr)
+                        
                     <tr class="text-center">
                         <td>1</td>
-                        <td><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> 021/FPPP/AST/02/2022</td>
-                        <td>11/02/2022</td>
-                        <td>21/03/2022</td>
-                        <td>Bina Bakti (PT Kencana) Astral</td>
-                        <td>Jakarta</td>
-                        <td>Allure Black Matte</td>
+                        <td><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> {{ $mtr['no_fppp'] }}</td>
+                        <td>{{ $mtr['tgl_terima_fppp'] }}</td>
+                        <td>{{ $mtr['deadline'] }}</td>
+                        <td>{{ $mtr['project'] }}</td>
+                        <td>{{ $mtr['luar_dalam_kota'] }}</td>
+                        <td>{{ $mtr["warna"] }}</td>
+                        <td>{{ $mtr['sales'] }}</td>
+                        <td>{{ $mtr['sm'] }}</td>
+                        <td>{{ $mtr['no_co_quo'] }}</td>
+                        <td>-</td>
+                        <td>{{ $mtr['total_unit'] }}</td> 
+                        <td>{{ $mtr['unit_hold_cancel_revisi'] }}</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>529/FPPP/AST/03/2022</td>
-                        <td>13</td>
-                        <td>86</td>
-                        <td>10</td>
-                        <td>15/02/2022</td>
-                        <td>20/02/2022</td>
-                        <td>20</td>
-                        <td>02/03/2022</td>
-                        <td>20</td>
-                        <td>16</td>
-                        <td>10</td>
-                        <td>15</td>
-                        <td>5</td>
-                        <td>10</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>{{ $mtr['jumlah_cutting'] }}</td>
+                        <td>{{ $mtr['jumlah_machining'] }}</td>
+                        <td>{{ $mtr['jumlah_asembly'] }}</td>
+                        <td>{{ $mtr['jumlah_qc'] }}</td>
+                        <td>{{ $mtr['jumlah_packing'] }}</td>
+                        <td>{{ $mtr['jumlah_delivery'] }}</td>
                         <td>05/03/2022</td>
-                        <td>20</td>
-                        <td>56</td>
+                        <td>{{ $mtr['unit_belum_kirim'] }}</td>
+                        <td>{{ $mtr['unit_terkirim'] }}</td>
                         <td>07/03/2022</td>
                         <td>20/03/2022</td>
                         <td>
-                            <button type="button" class="btn btn-gradient-warning" disabled>PARSIAL</button>
+                            <button type="button" class="btn btn-gradient-warning" disabled>{{ $mtr['status'] }}</button>
                         </td>
                     </tr>
-                    <tr class="text-center">
-                        <td>2</td>
-                        <td><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> 037/FPPP/AST/06/2022</td>
-                        <td>14/06/2022</td>
-                        <td>01/08/2022</td>
-                        <td>Raffles (CV Allutech) Surabaya Astral</td>
-                        <td>Surabaya</td>
-                        <td>Sand Black Metallic</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>529/FPPP/AST/03/2022</td>
-                        <td>6</td>
-                        <td>6</td>
-                        <td>2</td>
-                        <td>22/02/2022</td>
-                        <td>15/03/2022</td>
-                        <td>4</td>
-                        <td>15/04/2022</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>01/06/2022</td>
-                        <td>2</td>
-                        <td>4</td>
-                        <td>03/06/2022</td>
-                        <td>15/06/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-gradient-warning" disabled>PARSIAL</button>
-                        </td>
-                    </tr>
+                    @endforeach
+                    
+                    
+                    
                     
                 </table>
             </div>
