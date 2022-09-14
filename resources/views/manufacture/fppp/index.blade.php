@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="content-wrapper bg-img">
+      @include('sweetalert::alert')
+
     <div class="shadow p-3 mb-3 bg-body rounded">
         FPPP
         <h5 class="float-end">
@@ -184,26 +186,6 @@
     </div>
 </div>
 
-@if (session()->has("failed"))
-    
-{{-- <div style="position: fixed; right: 3%;">
-    <div class="toast show border-5 border-danger" id="toast-danger">
-        <div class="toast-container text-danger">
-            <div class="toast-header bg-transparent border-0">
-                <button class="btn-close" onclick="alert('aa')">Hello</button>
-                
-            </div>
-            <div class="toast-body">
-                <div class="">
-                    {{ session("failed") }}
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div> --}}
-@endif
-
 @endsection
 @push('script')
 <!-- Custom js for this page -->
@@ -236,58 +218,9 @@
             })
     }
 </script>
-<script>
-    const toastCloseBtn = document.querySelector(".toast-header .btn-close")
-    console.log(toastCloseBtn);
-</script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@if (session()->has("success"))
 
-<script>
-    const Toast = Swal.mixin({
-  toast: true,
-  width: "500",
-  position: 'top-end',
-  showConfirmButton: false,
-  showCloseButton: true,
-  timer: 5000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
 
-Toast.fire({
-  icon: 'success',
-  title: 'Berhasil upload file!'
-})
-</script>
-@endif
-@if (session()->has("failed"))
-
-<script>
-    const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  width: "500",
-  showConfirmButton: false,
-  showCloseButton: true,
-  timer: 5000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
-
-Toast.fire({
-  icon: 'error',
-  title: '{{ session("failed") }}'
-})
-</script>
-@endif
 
 <!-- End custom js for this page -->
 @endpush
