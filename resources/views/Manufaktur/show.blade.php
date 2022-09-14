@@ -47,6 +47,7 @@
                                     <th width="250px"> Assembly 3 </th>
                                     <th width="250px"> QC </th>
                                     <th width="250px"> Packing </th>
+                                    <th width="250px"> Status </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -216,9 +217,12 @@
                                     </td>
                                     <td>
                                         <!-- Qc button -->
-                                        <button type="button" class="d btn btn-success text-center"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                            style="background-color: #51e29f">Isi Keterangan</button>
+                                        {{-- <button type="button" class="d btn btn-info text-center"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
+                                        
+                                        <button type="submit" class="d btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
+                                            Keterangan
+                                        </button>
                                          <br> <a class=" btn mt-5 "></a>
                                          <br> <a class=" btn mt-3 "></a>
                                         <!-- assembly 2 button -->
@@ -245,13 +249,22 @@
                                         </div>
                                         <div class="hy form-group bg-transparent">
                                             <label for="Quantity"></label>
-                                            <input type="number" class="form-control bg-transparent text-center"
+                                            <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-2 border-opacity-10 "
                                                 id="Quantity" placeholder="Quantity"
-                                                style="border-color: black;border-radius:5px; padding:10px">
+                                            >
                                         </div>
                                         <a href="" class="d btn btn-success" style="margin-top:-10px">Konfirmasi</a>
                                     </td>
 
+                                    {{-- Status --}}
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class="d btn btn-gradient-dark btn-sm button">QUEUED</button>
+                                        <br> <a class=" btn mt-5 "></a>
+                                        <br> <a class=" btn mt-3 "></a>
+                                    </td>
+
+                                    {{-- number 2 --}}
                                 </tr>
                                 <tr class=" ">
                                     <td> 2 </td>
@@ -265,83 +278,88 @@
                                     <!-- cutting button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-dark text-center pe-none">Wahyu (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none"> - </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">-</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-success pe-none"> COMPLETED </a>
+                                        </div> <br> <button type="button" class="d btn btn-gradient-success btn-sm button pe-none">COMPLETED</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- Machining button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                         <div class="">
                                         </div> <br> <a class=" btn mt-2 pe-none"></a>
                                     </td>
                                     <!-- assembly 1 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-primary pe-none"> Las </a>
+                                        </div> <br> <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none">Cek Opening</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- assembly 2 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-primary pe-none"> Cek Opening </a>
+                                        </div> <br> <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none">Cek Opening</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00 </a>
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- assembly 3 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
+                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-gradient-primary pe-none">Pasang Kaca</a>
+                                        </div> <br> <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none">Pasang Kaca</button>
                                         <div class="dropdown">
-                                        </div> <br> <a href="" class="btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- Qc button -->
                                     <td>
-                                        <div class="dropdown">
-
                                             <button type="button" class="d btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal" style="background-color: #51e29f">Lihat
-                                                QC</button>
-                                            <div class="text">
-                                            </div> <br> <a href=" " class="btn btn-gradient-info pe-none">08/08/2022 <br>
-                                                10.00</a>
+                                                data-bs-target="#exampleModal" class=" btn btn-primary btn-sm button">Lihat QC</button>
+                                                <div class="number">
+                                                </div> <br> <a href=" " class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
                                             <div class="dropdown">
                                             </div> <br> <a class=" btn mt-5 pe-none"></a>
                                     </td>
                                     <!-- packing button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Wahyu (Lead) </a>
+                                            <div class="dropdown">
+                                            </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
+                                            <div class="dropdown">
+                                            </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <a class="d btn btn-dark pe-none">Budi (Lead) </a>
+                                        </div> <br> <button type="button" class="d form-control text-center pe-none bg-secpndary bg-opacity-50 text-bold"> 2 </button>
                                         <div class="dropdown">
-                                        </div> <br> <button class="d form-control text-center pe-none disabled bg-transparent"> 2 </button>
-                                        <div class="dropdown">
-                                        </div> <br> <a href="" class="btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
-
+                                    {{-- Status --}}
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class="d btn btn-gradient-info btn-sm button pe-none">ON DELIVERY</button>
+                                        <div class="">
+                                        </div> <br> <a class="d btn mt-5 pe-none"></a>
+                                        <div class="">
+                                        </div> <br> <a class="d btn mt-4 pe-none"></a>
+                                    </td>
                                     <!-- my css -->
                                     <link rel="stylesheet" href="style.css">
                         </table>
@@ -365,6 +383,7 @@
                         <div class="form-group mb-3">
                             <label class="col-form-label fs-6">Nama Subkon</label>
                             <select class="form-select border border-2" aria-label="Default select example" name="type">
+                                <option disabled selected>Pilih Salah Satu</option>
                                 <option value="dropdown-item">Nama Subkon</option>
                                 <option value="dropdown-item">Nama Subkon</option>
                                 <option value="dropdown-item">Nama Subkon</option>
@@ -373,6 +392,7 @@
                         <div class="form-group mb-3">
                             <label class="col-form-label fs-6">Alasan</label>
                             <select class="form-select border border-2" name="type">
+                                <option disabled selected>Pilih Salah Satu</option>
                                 <option value="dropdown-item">Alasan 1</option>
                                 <option value="dropdown-item">Alasan 2</option>
                                 <option value="dropdown-item">Alasan 3</option>
@@ -380,39 +400,36 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="col-form-control fs-6" for="Description">Keterangan</label>
-                            <input class="form-control border-2" id="Description"
-                                placeholder="Isikan Keterangan di sini">
+                            <textarea name="keterangan" class="form-control" id="" placeholder="Isikan Keterangan di sini" rows="5"></textarea>
                         </div>
                         <div class="mb-3 p-3">
-                            <table class="table" id="files_table">
-                            </table>
-                            <table class="table">
+                            <table class="table table-striped text-center" id=files_table>
                                 <thead>
-                                    <tr>
-                                        <th scope="col">Tanggal </th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Alasan</th>
-                                        <th scope="col">Keterangan</th>
-                                    </tr>
-                                    <tr class="table">
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test5</td>
-
-                                    </tr>
-                                    </tr>
-                                    <tr class="table">
-                                        <td>test1</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test</td>
-                                        <td>test5010</td>
-
-                                    </tr>
-                            </table>
+                                  <tr>
+                                    <th scope="col">Tanggal</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Alasan</th>
+                                    <th scope="col">Keterangan</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>27/07/2022</td>
+                                    <td>Budddd</td>
+                                    <td>OK!</td>
+                                    <td>Alasan</td>
+                                    <td>Keterangan</td>
+                                  </tr>
+                                  <tr>
+                                    <td>27/07/2022</td>
+                                    <td>Buddiiiiii</td>
+                                    <td>OK!</td>
+                                    <td>Alasan</td>
+                                    <td>Keterangan</td>
+                                  </tr>
+                                </tbody>
+                              </table>
                         </div>
                     </div>
                     <div class="modal-footer">
