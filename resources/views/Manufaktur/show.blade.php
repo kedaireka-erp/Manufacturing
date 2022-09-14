@@ -184,7 +184,7 @@
                                             </select>
                                         </div> <br> <a href="" class="d btn btn-success text-center">Konfirmasi</a>
                                     </td>
-                                    <!-- assembly 3 button -->
+                                    <!-- packing button -->
                                     <td>
                                         <div class="dropdown">
                                             <select class="form-select bg-transparent text-center search" name="" id=""
@@ -216,14 +216,13 @@
                                                 <option value="">Sealant Kaca</option>
                                             </select>
                                         </div> <br> <a href=""
-                                            class="d btn btn-success border-dark-rounded text-center">Konfirmasi</a>
+                                            class="btn btn-success border-dark-rounded text-center">Konfirmasi</a>
                                     </td>
                                     <td>
                                         <!-- Qc button -->
                                         {{-- <button type="button" class="d btn btn-info text-center"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
-                                        
-                                        <button type="submit" class="d btn btn-info text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan   </button>
+                                         <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#exampleModal" class="d btn btn-primary">Isi Keterangan</a>
                                          <br> <a class=" btn mt-5 "></a>
                                          <br> <a class=" btn mt-3 "></a>
                                         <!-- assembly 2 button -->
@@ -260,7 +259,7 @@
                                     {{-- Status --}}
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-gradient-dark btn-sm button" >QUEUED</button>
+                                        </div> <br> <button type="button" class="d btn btn-gradient-dark btn-sm button pe-none" >QUEUED</button>
                                         <div class="">
                                         </div> <br> <a class=" btn pe-none" style="margin-top: 15px"></a>
                                         <div class="">
