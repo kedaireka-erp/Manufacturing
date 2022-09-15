@@ -1,5 +1,6 @@
-@extends('layouts.admin')
 
+
+@extends('layouts.admin')
 @section('content')
 <div class="content-wrapper bg-img">
   @include('sweetalert::alert')
@@ -131,3 +132,9 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
+
+@push('script')
+    <!-- Custom js for this page -->
+    <script src="{{ asset('assets/js/file-upload.js') }}"></script>
+    <!-- End custom js for this page -->
+@endpush

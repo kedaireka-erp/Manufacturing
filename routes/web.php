@@ -1,14 +1,11 @@
 <?php
 
 use App\Http\Controllers\ManufactureController;
-use App\Models\FPPP;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LeadController;
-
-
 use App\Http\Controllers\SubkonController;
-use App\Http\Controllers\PerProjectController;
+
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,29 +21,39 @@ Route::get('/',function() {
     return redirect('/leads');
 });
 
+route::get("/show1", function () {
+    return view("manufaktur.show");
+});
+// route::get("/", function () {
+//     return view("items.index");
+// });
+// Route::get(function () {
+//     echo "Hello";
+// });
+
 //Route leads
-Route::controller(LeadController::class)->group(function(){
-    Route::get('/leads','index')->name('leads');
-    Route::get('/lead/create','create')->name('createLead');
-    Route::post('/lead/store','store')->name('storeLead');
-    Route::get('/lead/edit/{id}','edit')->name('editLead');
-    Route::post('/lead/update/{id}','update')->name('updateLead');
-    Route::get('/lead/delete/{id}','destroy')->name('deleteLead');
-    Route::get('/lead/trash','trash');
-    Route::post('/lead/restore/{id}','restore');
-    Route::get('/lead/search','search');
+Route::controller(LeadController::class)->group(function () {
+    Route::get('/leads', 'index')->name('leads');
+    Route::get('/lead/create', 'create')->name('createLead');
+    Route::post('/lead/store', 'store')->name('storeLead');
+    Route::get('/lead/edit/{id}', 'edit')->name('editLead');
+    Route::post('/lead/update/{id}', 'update')->name('updateLead');
+    Route::get('/lead/delete/{id}', 'destroy')->name('deleteLead');
+    Route::get('/lead/trash', 'trash');
+    Route::post('/lead/restore/{id}', 'restore');
+    Route::get('/lead/search', 'search');
 });
 //Route Subkons
-Route::controller(SubkonController::class)->group(function(){
-    Route::get('/subkons','index')->name('subkons');
-    Route::get('/subkon/create','create')->name('createSubkon');
-    Route::post('/subkon/store','store')->name('storeSubkon');
-    Route::get('/subkon/edit/{id}','edit')->name('editSubkon');
-    Route::post('/subkon/update/{id}','update')->name('updateSubkon');
-    Route::get('/subkon/delete/{id}','destroy')->name('deleteSubkon');
-    Route::get('/subkon/trash','trash');
-    Route::get('/subkon/restore/{id}','restore');
-    Route::get('/subkon/search','search');
+Route::controller(SubkonController::class)->group(function () {
+    Route::get('/subkons', 'index')->name('subkons');
+    Route::get('/subkon/create', 'create')->name('createSubkon');
+    Route::post('/subkon/store', 'store')->name('storeSubkon');
+    Route::get('/subkon/edit/{id}', 'edit')->name('editSubkon');
+    Route::post('/subkon/update/{id}', 'update')->name('updateSubkon');
+    Route::get('/subkon/delete/{id}', 'destroy')->name('deleteSubkon');
+    Route::get('/subkon/trash', 'trash');
+    Route::get('/subkon/restore/{id}', 'restore');
+    Route::get('/subkon/search', 'search');
 });
 
 
