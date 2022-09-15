@@ -348,7 +348,7 @@
                                             <div class="dropdown">
                                             </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d form-control text-center pe-none bg-secpndary bg-opacity-50 text-bold"> 2 </button>
+                                        </div> <br> <button type="button" class="d form-control text-center pe-none bg-secpndary bg-opacity-50"><b>2</b></button>
                                         <div class="dropdown">
                                         </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
