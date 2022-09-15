@@ -22,6 +22,21 @@ return new class extends Migration
             $table->string("file_bom_aksesoris")->nullable();
             $table->string("file_wo_alumunium")->nullable();
             $table->string("file_wo_kaca")->nullable();
+            $table->string("production_phase")->nullable();
+            $table->string("user_name")->nullable();
+            $table->string("production_time")->nullable();
+            $table->string("color")->nullable();
+            $table->string("glass_type")->nullable();
+            $table->text("note")->nullable();
+            $table->integer("quotation_id")->nullable();
+            $table->enum("fppp_type", ["produksi", "memo"])->nullable();
+            $table->enum("order_status", ["baru", "tambahan", "revisino", "lainlain"])->nullable();
+            $table->enum("glass", ["included", "excluded", "included_excluded"])->nullable();
+            $table->boolean("box_usage")->nullable();
+            $table->boolean("sealant_usage")->nullable();
+            $table->boolean("delivery_to_expedition")->nullable();
+            $table->date("retrieval_deadline")->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

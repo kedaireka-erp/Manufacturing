@@ -17,4 +17,9 @@ class Manufacture extends Model
             return $query->where('FPPP_number', 'like', '%' . $search . '%')->orWhere('project_name', 'like', '%' . $search . '%')->orWhere('applicator_name', 'like', '%' . $search . '%');
         });
     }
+
+    public function workOrder()
+    {
+        return $this->hasMany("work_order");
+    }
 }

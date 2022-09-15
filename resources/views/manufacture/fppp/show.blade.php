@@ -8,7 +8,7 @@
 <div class="content-wrapper bg-img">
     <div class="row">
         <div class="col-lg-12">
-            <div class="shadow p-3 mb-2 bg-body rounded">Lihat WO</h2>
+            <div class="shadow p-3 mb-2 bg-body rounded">Lihat WO - {{ $manufacture->FPPP_number }}</h2>
                 <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#"
                         class="text-secondary">FPPP</a>/<a href="#" class="lihatfppp">Lihat FPPP</a></h5>
             </div>
@@ -34,7 +34,8 @@
                             <thead>
                                 <tr>
                                     <th width="250px"> No. </th>
-                                    <th width="250px"> Kode Gambar </th>
+                                    <th width="250px"> Kode Op </th>
+                                    <th width="250px"> Kode Unit </th>
                                     <th width="250px"> Item </th>
                                     <th width="250px"> Glass Specification </th>
                                     <th width="250px"> Leaves </th>
@@ -51,6 +52,224 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($workOrders as $no => $unit)
+                                <tr class="">
+                                    <td> {{ $no+1 }} </td>
+                                    <td> {{ $unit->kode_op }} </td>
+                                    <td> {{ $unit->kode_unit }} </td>
+                                    <td> {{ $unit->nama_item }} </td>
+                                    <td> {{ $unit->jenis_kaca }} <br> <br> <a href=""
+                                            class="d btn btn-success border-dark-rounded ">OK!</a> </td>
+                                    <td> Allure Black Matte </td>
+                                    <!-- cutting button -->
+                                    <td>
+                                        <div class="dropdown">
+                                            <select
+                                                class="form-select  bg-transparent text-center search"
+                                                name="state" id="" style="border-color: black;">
+                                                <option disabled selected>Subkon 1</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 2</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option value="">Progress</option>
+                                                <option value="">Completed</option>
+                                            </select>
+                                        </div> <br> <a href=""
+                                            class="d btn btn-success border-dark-rounded text-center">Konfirmasi</a>
+                                    </td>
+                                    <td>
+                                        <!-- Machining button -->
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black; ">
+                                                <option disabled selected>Subkon 1</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 2</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br><a href=""
+                                            class="d btn btn-success border-dark-rounded text-center">Konfirmasi</a>
+                                            <div style="margin-top: 42px">
+
+                                        </div>
+                                        </td>
+                                    <!-- assembly 1 button -->
+                                    <td>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 1</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 2</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Kegiatan</option>
+                                                <option value="">Las</option>
+                                                <option value="">Cek Opening</option>
+                                                <option value="">Pasang Kaca</option>
+                                                <option value="">Sealant Kaca</option>
+                                            </select>
+                                        </div> <br> <a href="" class="d btn btn-success text-center">Konfirmasi</a>
+                                    </td>
+                                    <!-- assembly 2 button -->
+                                    <td>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 1</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 2</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Kegiatan</option>
+                                                <option value="">Las</option>
+                                                <option value="">Cek Opening</option>
+                                                <option value="">Pasang Kaca</option>
+                                                <option value="">Sealant Kaca</option>
+                                            </select>
+                                        </div> <br> <a href="" class="d btn btn-success text-center">Konfirmasi</a>
+                                    </td>
+                                    <!-- packing button -->
+                                    <td>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 1</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 2</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Kegiatan</option>
+                                                <option value="">Las</option>
+                                                <option value="">Cek Opening</option>
+                                                <option value="">Pasang Kaca</option>
+                                                <option value="">Sealant Kaca</option>
+                                            </select>
+                                        </div> <br> <a href=""
+                                            class="btn btn-success border-dark-rounded text-center">Konfirmasi</a>
+                                    </td>
+                                    <td>
+                                        <!-- Qc button -->
+                                        {{-- <button type="button" class="d btn btn-info text-center"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
+                                         <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#exampleModal" class="d btn btn-primary">Isi Keterangan</a>
+                                         <br> <a class=" btn mt-5 "></a>
+                                         <br> <a class=" btn mt-3 "></a>
+                                        <!-- assembly 2 button -->
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 1</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="" id=""
+                                                style="border-color: black;">
+                                                <option disabled selected>Subkon 2</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                                <option value="">Nama Subkon</option>
+                                            </select>
+                                        </div>
+                                        <div class="hy form-group bg-transparent px-1">
+                                            <label for="Quantity"></label>
+                                            <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-2 border-opacity-10 "
+                                                id="Quantity" placeholder="Quantity"
+                                            >
+                                        </div>
+                                        <a href="" class="d btn btn-success" style="margin-top:-10px">Konfirmasi</a>
+                                    </td>
+
+                                    {{-- Status --}}
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class="d btn btn-gradient-dark btn-sm button pe-none" >QUEUED</button>
+                                        <div class="">
+                                        </div> <br> <a class=" btn pe-none" style="margin-top: 15px"></a>
+                                        <div class="">
+                                        </div> <br> <a class="d btn mt-4 pe-none"></a>
+                                    </td>
+
+                                    {{-- number 2 --}}
+                                </tr>
+                                @endforeach
                                 <tr class="">
                                     <td> 1 </td>
                                     <td> B1-001 </td>

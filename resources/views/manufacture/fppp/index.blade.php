@@ -53,7 +53,7 @@
                                             data-bs-base-path="{{ asset("storage/") }}"
                                             data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_alumunium}")." ".asset("storage/{$fppp->file_wo_kaca}")}}" > Import
                                         </button>
-                                        <a href="" class="btn btn-info btn-sm"
+                                        <a href="{{ route("manufactures.show", $fppp->id) }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >
                                         <a href="" class="btn btn-primary btn-sm"
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-            
+
             <div class="mb-3 p-3">
                 <div class="text-primary fw-bold">
                     File yang telah diupload
@@ -164,7 +164,7 @@
                     class="table"
                     id="files_table"
                 ></table>
-                
+
             </div>
             <div class="modal-footer">
                 <button
