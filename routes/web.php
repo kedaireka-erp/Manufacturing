@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
-
 use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\DetailfpppController;
@@ -23,11 +22,12 @@ use App\Http\Controllers\ManufactureController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('tests.index');
-// });
-route::get("/manufacture", function () {
-    return view("items.index");
+Route::get('/', function () {
+    return redirect('/leads');
+});
+
+route::get("/show1", function () {
+    return view("manufaktur.show");
 });
 // route::get("/", function () {
 //     return view("items.index");
@@ -67,10 +67,6 @@ Route::controller(SubkonController::class)->group(function () {
 //     return view("items.index");
 // });
 
-route::get("/perproject", function () {
-    return view("manufaktur.perproject");
-});
-
 // Route Surat Jalan (Logistic)
 Route::controller(LogisticController::class)->group(function () {
     Route::get('/logistic', 'index')->name('logistic_index');
@@ -102,5 +98,3 @@ Route::controller(WorkOrderController::class)->group(function () {
 });
 
 
-
-route::get("/perproject", [PerProjectController::class, "index"]);

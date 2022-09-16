@@ -75,6 +75,10 @@
     font-size: 16px;
 }
 
+.content-wrapper .table-list .card-header__wrapper .btn.btn-info {
+    padding: 10px 23px;
+}
+
 .content-wrapper .table-list tr th {
     font-weight: 700;
 }
@@ -171,4 +175,5 @@
 .content-wrapper .modal-content .modal-body .description textarea {
     line-height: 15px;
 }
+
 /* end modal */
