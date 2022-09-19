@@ -20,15 +20,31 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <!-- search -->
+                    {{-- <!-- search -->
                     <form class="col-lg-4 my-md-0">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-dark-rounded"
                                 placeholder="Cari Pegawai Berdasarkan Nomor atau Nama.." aria-label="Search"
                                 aria-describedby="basic-addon2">
                         </div>
-                    </form>
-
+                    </form> --}}
+                    <div class="table-borderless">
+                        <table class="table-borderless">
+ 
+                            <tr>
+                                <th width="120px">No FPPP</th>
+                                <th>: 124/FPPP/B04/07/2022</th>
+                            </tr>
+                            <tr>
+                                <th width="120px">Nama Proyek</th>
+                                <th>: Lantai 2 BRI</th>
+                            </tr>
+                            <tr>
+                                <th width="120px">Aplikator</th>
+                                <th>: PT.BRI</th><br>
+                            </tr>
+                        </table>
+                      </div>
                     <!-- Tabel -->
                     <div class="table-responsive">
                         <table class="table table-striped text-center">
@@ -47,6 +63,7 @@
                                     <th width="250px"> QC </th>
                                     <th width="250px"> Packing </th>
                                     <th width="250px"> Status </th>
+                                    <th width="250px"> Keterangan </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -599,27 +616,27 @@
                                     <td> 2 </td>
                                     <td> B1-002 </td>
                                     <td> Astral AS 01 <br> top hung windo </td>
-                                    <td> clear 6mm excluded <br> <br> <button type="button" class="d btn btn-gradient-success btn-sm button pe-none">COMPLETED</button>
+                                    <td> clear 6mm excluded <br> </div> <br> <button type="button" class=" btn btn-gradient-success btn-sm button col-12 mx-auto pe-none">COMPLETED</button>
                                     <td> 1 </td>
                                     <td> Outside </td>
                                     <td> Allure Black Matte </td>
                                     <!-- cutting button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
+                                        <div class="dropdown ">
+                                        </div> <br> <button type="button" class=" btn btn-dark button col-12 mx-auto pe-none">-</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">-</button>
-                                        <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-gradient-success btn-sm button pe-none">COMPLETED</button>
+                                        </div> <br> <button type="button" class=" btn btn-gradient-success btn-sm button col-12 mx-auto pe-none">COMPLETED</button>
                                         <div class="dropdown">
                                         </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- Machining button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
                                         </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                         <div class="">
@@ -628,33 +645,33 @@
                                     <!-- assembly 1 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none">Cek Opening</button>
+                                        </div> <br> <button type="button" class=" btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">Cek Opening</button>
                                         <div class="dropdown">
                                         </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- assembly 2 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none">Cek Opening</button>
+                                        </div> <br> <button type="button" class=" btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">Cek Opening</button>
                                         <div class="dropdown">
                                         </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     <!-- assembly 3 button -->
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none">Pasang Kaca</button>
+                                        </div> <br> <button type="button" class=" btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">Pasang Kaca</button>
                                         <div class="dropdown">
                                         </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
@@ -671,9 +688,9 @@
                                     <td>
                                         <div class="dropdown">
                                             <div class="dropdown">
-                                            </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Wahyu (Lead)</button>
+                                            </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
                                             <div class="dropdown">
-                                            </div> <br> <button type="button" class="d btn btn-dark btn-sm button pe-none">Budi (Lead)</button>
+                                            </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
                                         <div class="dropdown">
                                         </div> <br> <button type="button" class="d form-control text-center pe-none bg-secondary bg-opacity-50"><b>2</b></button>
                                         <div class="dropdown">
@@ -682,7 +699,7 @@
                                     {{-- Status --}}
                                     <td>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn btn-gradient-info btn-sm button pe-none">ON DELIVERY</button>
+                                        </div> <br> <button type="button" class=" btn btn-gradient-info btn-sm button col-12 mx-auto pe-none">ON DELIVERY</button>
                                         <div class="">
                                         </div> <br> <a class="d btn mt-5 pe-none"></a>
                                         <div class="">
