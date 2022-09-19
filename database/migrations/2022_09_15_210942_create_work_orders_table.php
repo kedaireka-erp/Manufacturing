@@ -50,6 +50,7 @@ return new class extends Migration
             $table->string("lead1_assembly3")->nullable();
             $table->string("subkon2_assembly3")->nullable();
             $table->string("lead2_assembly3")->nullable();
+            $table->enum("process_assembly3", ["Assembly", "Las", "Cek Opening", "Pasang Kaca", "Sealant Kaca"])->nullable();
             $table->datetime("tanggal_packing")->nullable();
             $table->string("subkon1_packing")->nullable();
             $table->string("lead1_packing")->nullable();

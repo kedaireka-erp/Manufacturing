@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manufacture;
+use App\Models\Subkon;
+use App\Models\WorkOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -45,8 +47,12 @@ class ManufactureController extends Controller
         return redirect("manufactures")->with("success", "Sukses upload file!");
     }
 
-    public function show()
+    public function show($id)
     {
+        $manufacture    = Manufacture::findOrFail($id);
+        $workOrders     = WorkOrder::where("manufacture_id", $manufacture->id)->get();
+        $subkons        = Subkon::where("is_active", 1)->get();
+        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons"));
     }
 
     public function delete(Request $request)

@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\ManufactureController;
-use App\Http\Controllers\ItemController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\SubkonController;
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WorkOrderController;
+use App\Http\Controllers\ManufactureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,13 +72,18 @@ Route::controller(ManufactureController::class)->group(function () {
     Route::get("/manufactures", "index");
     Route::post("/manufactures", "store");
     Route::get("/manufactures/delete", "delete");
+    Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
+});
+
+Route::controller(WorkOrderController::class)->group(function () {
+    Route::post('/update-cutting', 'update_cutting')->name("update-cutting");
+    Route::post('/update-machining', 'update_machining')->name("update-machining");
+    Route::post('/update-assembly1', 'update_assembly1')->name("update-assembly1");
+    Route::post('/update-assembly2', 'update_assembly2')->name("update-assembly2");
+    Route::post('/update-assembly3', 'update_assembly3')->name("update-assembly3");
+    Route::post('/create-qc', 'create_qc')->name("create-qc");
+    Route::post('/update-packing', 'update_packing')->name("update-packing");
 });
 
 
-// route::get("/", [ItemController::class, "index"]);
-// route::get("/create", [ItemController::class, "create"])->name("create");
-// route::post("/store", [ItemController::class, "store"])->name("store");
-// route::get("/show", [ItemController::class, "show"])->name("show");
-// route::post("/update/{id}", [ItemController::class, "update"])->name("update");
-// route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
