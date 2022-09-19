@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function() {
+
+Route::get('/', function () {
     return redirect('/leads');
 });
 
@@ -72,6 +73,7 @@ Route::controller(ManufactureController::class)->group(function () {
     Route::get("/manufactures", "index");
     Route::post("/manufactures", "store");
     Route::get("/manufactures/delete", "delete");
+    Route::get("/manufactures/show", "show");
 });
 
 
@@ -81,4 +83,3 @@ Route::controller(ManufactureController::class)->group(function () {
 // route::get("/show", [ItemController::class, "show"])->name("show");
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
-

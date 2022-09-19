@@ -51,9 +51,9 @@
                                             data-bs-id="{{ $fppp->id }}"
                                             data-bs-title="{{ $fppp->project_name }}"
                                             data-bs-base-path="{{ asset("storage/") }}"
-                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_alumunium}")." ".asset("storage/{$fppp->file_wo_kaca}")}}" > Import
+                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
                                         </button>
-                                        <a href="{{ route("manufactures.show", $fppp->id) }}" class="btn btn-info btn-sm"
+                                        <a href="/manufactures/show?id={{ $fppp->id }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >
                                         <a href="" class="btn btn-primary btn-sm"
@@ -112,17 +112,17 @@
                             aria-label="Default select example"
                             name="type"
                         >
+                            <option value="detail_wo">
+                                Detail WO
+                            </option>
                             <option value="bom_alumunium">
                                 BOM Alumunium
                             </option>
                             <option value="bom_aksesoris">
                                 BOM Aksesoris
                             </option>
-                            <option value="wo_alumunium">
-                                WO Alumunium
-                            </option>
-                            <option value="wo_kaca">
-                                WO Kaca
+                            <option value="wo_potong_alumunium">
+                                WO Potong Alumunium
                             </option>
                         </select>
                     </div>

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string("applicator_name");
             $table->string("file_bom_alumunium")->nullable();
             $table->string("file_bom_aksesoris")->nullable();
-            $table->string("file_wo_alumunium")->nullable();
-            $table->string("file_wo_kaca")->nullable();
+            $table->string("file_detail_wo")->nullable();
+            $table->string("file_wo_potong_alumunium")->nullable();
             $table->string("production_phase")->nullable();
             $table->string("user_name")->nullable();
             $table->string("production_time")->nullable();
