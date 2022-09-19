@@ -32,7 +32,7 @@
                                     <div class="form-wrap">
                                         <label for="input-date" class="form-label">Tanggal Input</label>
                                         <input type="date" class="form-control fs-6 text-uppercase" id="input-date"
-                                            name="input-date">
+                                            name="inputDate">
                                     </div>
                                 </div>
                                 {{-- depart date --}}
@@ -40,7 +40,7 @@
                                     <div class="form-wrap">
                                         <label for="depart-date" class="form-label">Tanggal Berangkat</label>
                                         <input type="date" class="form-control fs-6 text-uppercase" id="depart-date"
-                                            name="depart-date">
+                                            name="departDate">
                                     </div>
                                 </div>
                                 {{-- brand --}}
@@ -87,7 +87,7 @@
                                         <div class="col-6">
                                             <div class="mb-3 form-row">
                                                 <label for="plate-number" class="form-label">Nomor Polisi</label>
-                                                <input class="form-control" id="plate-number" name="plate-number"
+                                                <input class="form-control" id="plate-number" name="plateNumber"
                                                     placeholder="Nomor Polisi" />
                                             </div>
                                         </div>
