@@ -3,6 +3,7 @@
 use App\Http\Controllers\ManufactureController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\SubkonController;
 
 use Illuminate\Support\Facades\Route;
@@ -82,3 +83,7 @@ Route::controller(ManufactureController::class)->group(function () {
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
+// Route Monitoring
+Route::controller(MonitoringController::class)->group(function(){
+    Route::get('/monitoringperproject','indexPerProject');
+});
