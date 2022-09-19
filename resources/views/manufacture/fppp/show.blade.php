@@ -39,6 +39,7 @@
                                     <th width="250px"> Kode Unit </th>
                                     <th width="250px"> Item </th>
                                     <th width="250px"> Glass Specification </th>
+                                    <th width="250px"> Warna </th>
                                     <th width="250px"> Cutting </th>
                                     <th width="250px"> Machining </th>
                                     <th width="250px"> Assembly 1 </th>
@@ -57,6 +58,7 @@
                                     <td> {{ $unit->kode_unit }} </td>
                                     <td> {{ $unit->nama_item }} </td>
                                     <td> {{ $unit->jenis_kaca }} <br> <br> <a href="" class="d btn btn-success border-dark-rounded ">OK!</a> </td>
+                                    <td>{{ $manufacture->color }}</td>
                                     <!-- cutting button -->
                                     <td>
                                         @if ($unit->tanggal_cutting == null)

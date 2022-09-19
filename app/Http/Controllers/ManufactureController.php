@@ -48,10 +48,10 @@ class ManufactureController extends Controller
             foreach ($excel_data as $row) {
                 WorkOrder::create([
                     "manufacture_id" => $request->id,
-                    "kode_op" => $row[1],
-                    "kode_unit" => $row[2],
-                    "nama_item" => $row[3],
-                    "jenis_kaca" => $row[4]
+                    "kode_op" => $row[0],
+                    "kode_unit" => $row[1],
+                    "nama_item" => $row[2],
+                    "jenis_kaca" => $row[3]
                 ]);
             }
         }

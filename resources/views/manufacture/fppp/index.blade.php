@@ -53,7 +53,7 @@
                                             data-bs-base-path="{{ asset("storage/") }}"
                                             data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
                                         </button>
-                                        <a href="/manufactures/show?id={{ $fppp->id }}" class="btn btn-info btn-sm"
+                                        <a href="{{ route("manufactures.show",$fppp->id) }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >
                                         <a href="" class="btn btn-primary btn-sm"
@@ -113,16 +113,16 @@
                             name="type"
                         >
                             <option value="detail_wo">
-                                Detail WO
+                                Detail WO(.xlsx)
                             </option>
                             <option value="bom_alumunium">
-                                BOM Alumunium
+                                BOM Alumunium(.xlsx)
                             </option>
                             <option value="bom_aksesoris">
-                                BOM Aksesoris
+                                BOM Aksesoris(.xlsx)
                             </option>
                             <option value="wo_potong_alumunium">
-                                WO Potong Alumunium
+                                WO Potong Alumunium(.pdf)
                             </option>
                         </select>
                     </div>
@@ -153,6 +153,9 @@
                                 </button>
                             </span>
                         </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <a href="{{ asset("template/document/template.xlsx") }}" class="text-decoration-none">Unduh Template File Detail WO</a>
                     </div>
                 </div>
 

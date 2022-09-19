@@ -75,7 +75,8 @@ Route::controller(ManufactureController::class)->group(function () {
     Route::get("/manufactures", "index");
     Route::post("/manufactures", "store");
     Route::get("/manufactures/delete", "delete");
-    Route::get("/manufactures/show", "show");
+    // Route::get("/manufactures/show", "show");
+    Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
 });
 
 
@@ -85,8 +86,6 @@ Route::controller(ManufactureController::class)->group(function () {
 // route::get("/show", [ItemController::class, "show"])->name("show");
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
-    Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
-});
 
 route::get("/perproject", [PerProjectController::class, "index"]);
 
@@ -100,6 +99,3 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/create-qc', 'create_qc')->name("create-qc");
     Route::post('/update-packing', 'update_packing')->name("update-packing");
 });
-
-
-
