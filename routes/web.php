@@ -21,9 +21,7 @@ Route::get('/',function() {
     return redirect('/leads');
 });
 
-route::get("/show1", function () {
-    return view("manufaktur.show");
-});
+route::get("/show1/{id}",[ManufactureController::class,"show"]);
 // route::get("/", function () {
 //     return view("items.index");
 // });
