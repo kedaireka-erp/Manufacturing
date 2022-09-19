@@ -88,6 +88,11 @@ class ManufactureController extends Controller
         return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons"));
     }
 
+    public function detail(Manufacture $manufacture)
+    {
+        return view("manufacture.fppp.detail", ["manufacture" => $manufacture]);
+    }
+
     public function delete(Request $request)
     {
         $fppp = Manufacture::find($request->id);

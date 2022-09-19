@@ -56,7 +56,7 @@
                                         <a href="{{ route("manufactures.show",$fppp->id) }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >
-                                        <a href="" class="btn btn-primary btn-sm"
+                                        <a href="{{ route("manufactures.detail",$fppp) }}" class="btn btn-primary btn-sm"
                                             >Detail</a
                                         >
                                     </td>

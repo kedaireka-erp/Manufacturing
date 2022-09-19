@@ -78,6 +78,7 @@ Route::controller(ManufactureController::class)->group(function () {
     Route::get("/manufactures/delete", "delete");
     // Route::get("/manufactures/show", "show");
     Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
+    Route::get('/manufactures/detail/{manufacture}', 'detail')->name("manufactures.detail");
 });
 
 
