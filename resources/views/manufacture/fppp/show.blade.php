@@ -34,11 +34,12 @@
                         <table class="table table-striped text-center">
                             <thead>
                                 <tr>
-                                    <th width="250px"> No. </th>
-                                    <th width="250px"> Kode Op </th>
-                                    <th width="250px"> Kode Unit </th>
+                                    <th width="250px" class="headcol"> No. </th>
+                                    <th width="250px" class="headcol"> Kode Op </th>
+                                    <th width="250px" class="headcol"> Kode Unit </th>
                                     <th width="250px"> Item </th>
                                     <th width="250px"> Glass Specification </th>
+                                    <th width="250px"> Warna </th>
                                     <th width="250px"> Cutting </th>
                                     <th width="250px"> Machining </th>
                                     <th width="250px"> Assembly 1 </th>
@@ -47,6 +48,7 @@
                                     <th width="250px"> QC </th>
                                     <th width="250px"> Packing </th>
                                     <th width="250px"> Status </th>
+                                    <th width="250px"> Keterangan </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,6 +59,7 @@
                                     <td> {{ $unit->kode_unit }} </td>
                                     <td> {{ $unit->nama_item }} </td>
                                     <td> {{ $unit->jenis_kaca }} <br> <br> <a href="" class="d btn btn-success border-dark-rounded ">OK!</a> </td>
+                                    <td> {{ $unit->nama_warna }} </td>
                                     <!-- cutting button -->
                                     <td>
                                         @if ($unit->tanggal_cutting == null)
@@ -113,7 +116,7 @@
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
                                             <input type="hidden" name="lead1_machining" value="Steven">
                                             <input type="hidden" name="lead2_machining" value="Rhey">
-                                            <div class="dropdown">
+                                            <div class="dropdown" mt-3>
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
                                                     name="subkon1_machining" id="" style="border-color: black;">
@@ -375,6 +378,17 @@
                                         </div> <br> <a class=" btn pe-none" style="margin-top: 15px"></a>
                                         <div class="">
                                         </div> <br> <a class="d btn mt-4 pe-none"></a>
+                                    </td>
+                                    <td>
+                                    <div class="dropdown">
+                                                <select class="form-select bg-transparent text-center search" name="process_assembly3" id=""
+                                                    style="border-color: black;">
+                                                    <option value="">Keterangan</option>
+                                                    <option value=""> Hold </option>
+                                                    <option value=""> Revisi </option>
+                                                    <option value=""> Cancel </option>
+                                                </select>
+                                            </div>
                                     </td>
                                 </tr>
                                 @endforeach
