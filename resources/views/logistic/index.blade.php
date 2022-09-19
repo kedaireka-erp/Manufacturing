@@ -38,7 +38,7 @@
                                 <tr>
                                     <th> No. Surat Jalan </th>
                                     <th> No. FPPP </th>
-                                    <th> No. Quatation </th>
+                                    <th> No. Quotation </th>
                                     <th> Tgl Pengiriman </th>
                                     <th> Jml Unit </th>
                                     <th> Driver </th>
