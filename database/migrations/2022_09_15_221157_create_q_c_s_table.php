@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('per_projects', function (Blueprint $table) {
+        Schema::create('q_c_s', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("work_order_id")->constrained("work_orders")->onUpdate("cascade");
+            $table->string("subkon")->nullable();
+            $table->string("alasan")->nullable();
+            $table->text("keterangan")->nullable();
+            $table->enum("status", ["REJECTED", "OK!"])->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('per_projects');
+        Schema::dropIfExists('q_c_s');
     }
 };

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,19 +12,24 @@ class LeadController extends Controller
     public function index()
     {
         $leads = Lead::paginate(5);
-       
-        return view('')->with('leads',$leads);
+
+        return view('master.lead.index')->with('leads',$leads);
     }
     public function create()
     {
-        return view();
+        return view('master.lead.create');
     }
     public function store(Request $request)
     {
+        $messages = [
+            'required' => ':attribute wajib diisi!',
+            'unique' => ':attribute sudah digunakan!',
+            'numeric' => ':attribute harus angka!'
+        ];
         $request->validate([
-            'employee_number' => 'required',
+            'employee_number' => 'required|unique:leads|numeric',
             'lead_name' => 'required'
-        ]);
+        ],$messages);
 
         $newLeads = new Lead();
 
@@ -32,39 +38,39 @@ class LeadController extends Controller
         $newLeads->is_active = $request->is_active;
 
         $newLeads->save();
-
-        return redirect('');
+        toast("Data Berhasil Ditambahkan","success");
+        return redirect('/leads');
     }
     public function edit($id)
     {
-        $lead = Lead::findOrFaill($id);
-        return view('')->with('lead',$lead);
-    } 
+        $lead = Lead::findOrFail($id);
+        return view('master.lead.edit')->with('lead',$lead);
+    }
     public function update(Request $request, $id)
     {
-        $lead = Lead::findOrFaill($id);
+        $lead = Lead::findOrFail($id);
 
         $lead->update([
             'employee_number' => $request->employee_number,
             'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
-
-        return redirect('');
+        toast("Data Berhasil Diupdate","success");
+        return redirect('/leads');
     }
-    
+
     //soft delete
     public function destroy($id)
     {
         $lead = Lead::findOrFail($id);
         $lead->delete();
-
-        return redirect('');
+        toast("Data Berhasil Dihapus","error");
+        return redirect('/leads');
     }
     public function trash()
     {
         $leads = Lead::onlyTrashed()->paginate(5);
-        
+
         return view('',compact('leads'));
     }
     public function restore($id)
@@ -72,29 +78,37 @@ class LeadController extends Controller
         $lead = Lead::onlyTrashed()->findOrFail($id);
         $lead->restore();
 
-        return to_route('')->with('success','lead restore successfully');
+        return to_route('leads')->with('success','lead restore successfully');
     }
-    
+
 
     //search with ajax
     public function search(Request $request)
     {
-        
+
         if ($request->ajax()) {
             $output="";
-         
-            $leads = DB::table('leads')->where('employee_number','LIKE','%'.$request->search."%")->paginate(6);
+
+            $leads = DB::table('leads')->where('deleted_at',null)->Where('lead_name','LIKE','%'.$request->search."%")->paginate(6);
 
             if ($leads) {
                 foreach ($leads as $key => $lead) {
-                    $output.='<tr>'.
+                    if ($lead->is_active == 1) {
+                        $is_active = 'Active';
+                        $warna = "success";
+                    }else{
+                        $is_active = 'Inactive';
+                        $warna = "danger";
+                    }
+
+                    $output.='<tr class="text-center">'.
                     '<td>'.$lead->employee_number.'</td>'.
                     '<td>'.$lead->lead_name.'</td>'.
-                    '<td>'.$lead->is_active.'</td>'.
-                    
+                    '<td><label class="badge badge-'.$warna.'">'.$is_active.'</label></td>'.
+
                     '<td>
-                        <a class="btn btn-success" style="font-size: 10px" href="/edit/'.$lead->id.'">Edit</a>
-                        <a class="btn btn-danger" style="font-size: 10px" href="/deleteLeads/'.$lead->id.'">Delete</a>
+                        <a class="btn btn-success" style="font-size: 10px" href="/lead/edit/'.$lead->id.'">Ubah</a>
+                        <button type="button" class="btn btn-danger" onclick="handleDelete('. $lead->id.')">Hapus</button>
                     </td>'.
                     '</tr>';
                 }

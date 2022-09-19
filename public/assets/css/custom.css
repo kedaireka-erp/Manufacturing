@@ -151,5 +151,15 @@ body {
     font-size: 1.25rem;
 }
 
+.cutting{
+    height: 50px;
+}
+
+.button{
+    height: 40px;
+    opacity: 1;
+}
+
+
 
 /* END OF MAIN PANEL */
