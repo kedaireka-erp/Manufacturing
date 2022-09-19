@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->integer('employee_number')->unique();
             $table->string('subkon_name', 100);
-            $table->string('lead_name', 100);
             $table->boolean('is_active');
             $table->softDeletes();
             $table->timestamps();
