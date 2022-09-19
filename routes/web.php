@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\SubkonController;
+use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\PerProjectController;
 
@@ -89,6 +90,7 @@ Route::controller(ManufactureController::class)->group(function () {
 
 route::get("/perproject", [PerProjectController::class, "index"]);
 
+route::get("/detailfppp", [DetailfpppController::class, "index"]);
 route::get("/perunit", [PerunitController::class, "index"]);
 Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-cutting', 'update_cutting')->name("update-cutting");
