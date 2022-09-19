@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manufacture;
+use App\Models\Subkon;
 use App\Models\WorkOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -60,25 +61,31 @@ class ManufactureController extends Controller
         return redirect("manufactures")->with("success", "Sukses upload file!");
     }
 
-    public function show(Request $request)
+    // public function show(Request $request)
+    // {
+    //     $work_orders = WorkOrder::where("manufacture_id", $request->id)->get();
+    //     echo "<table>";
+    //     echo "<tr>";
+    //     echo "<th>Kode OP</th>";
+    //     echo "<th>Kode Unit</th>";
+    //     echo "<th>Item</th>";
+    //     echo "<th>Glass Spec</th>";
+    //     echo "</tr>";
+    //     foreach ($work_orders as $key => $wo) {
+    //         echo "<tr>";
+    //         echo "<td>{$wo->kode_op}</td>";
+    //         echo "<td>{$wo->kode_unit}</td>";
+    //         echo "<td>{$wo->nama_item}</td>";
+    //         echo "<td>{$wo->jenis_kaca}</td>";
+    //         echo "</tr>";
+    //     }
+    //     echo "</table>";
+    public function show($id)
     {
-        $work_orders = WorkOrder::where("manufacture_id", $request->id)->get();
-        echo "<table>";
-        echo "<tr>";
-        echo "<th>Kode OP</th>";
-        echo "<th>Kode Unit</th>";
-        echo "<th>Item</th>";
-        echo "<th>Glass Spec</th>";
-        echo "</tr>";
-        foreach ($work_orders as $key => $wo) {
-            echo "<tr>";
-            echo "<td>{$wo->kode_op}</td>";
-            echo "<td>{$wo->kode_unit}</td>";
-            echo "<td>{$wo->nama_item}</td>";
-            echo "<td>{$wo->jenis_kaca}</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
+        $manufacture    = Manufacture::findOrFail($id);
+        $workOrders     = WorkOrder::where("manufacture_id", $manufacture->id)->get();
+        $subkons        = Subkon::where("is_active", 1)->get();
+        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons"));
     }
 
     public function delete(Request $request)

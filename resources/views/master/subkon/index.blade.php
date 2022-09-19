@@ -1,4 +1,4 @@
-{{-- @extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('content')
 <div class="content-wrapper bg-img">
@@ -54,10 +54,11 @@
                     <?php if ($subkon->is_active == 1) {
                       $is_active = "Active";
                       $warna = "success";
-                    }else{
+                    } else {
                       $is_active = "Inactive";
                       $warna = "danger";
-                    } ?>
+                    }
+                    ?>
                       <tr class="text-center">
                         <td> {{ $subkon->employee_number }} </td>
                         <td> {{ $subkon->subkon_name }} </td>
