@@ -9,6 +9,7 @@ use App\Http\Controllers\PerProjectController;
 
 use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\ManufactureController;
+use App\Http\Controllers\MonitoringController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,5 +93,8 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-packing', 'update_packing')->name("update-packing");
 });
 
-
-
+//monitoring
+Route::controller(MonitoringController::class)->group(function(){
+    Route::get('/monitoringperproject','indexPerProject');
+    Route::get('/monitoringperunit/{id}','indexPerUnit');
+});

@@ -16,34 +16,34 @@
                                         <tr> 
                                             <td>Tanggal Terima</td> 
                                             <td>:</td> 
-                                            <td>11 Februari 2022</td> 
+                                            <td>{{ $FPPP->created_at }}</td> 
                                         </tr> 
                                         <tr> 
                                             <td>No. FPPP</td> 
                                             <td>:</td> 
-                                            <td>02/FPPP/AST/02/2022</td> 
+                                            <td>{{ $FPPP->FPPP_number }}</td> 
                                         </tr> 
                                         <tr> 
                                             <td>Deadline</td> 
                                             <td>:</td> 
-                                            <td>21 Maret 2022</td> 
+                                            <td>{{ $FPPP->retrieval_deadline }}</td> 
                                         </tr> 
                                 </table> 
                                 <table>
                                         <tr> 
                                             <td>Nama Proyek</td> 
                                             <td>:</td> 
-                                            <td>Bina Bakti(PT. Kencana) Astral</td> 
+                                            <td>{{ $FPPP->project_name }}</td> 
                                         </tr>
                                         <tr> 
                                             <td>Aplikator</td> 
                                             <td>:</td> 
-                                            <td>PT.Kencana</td> 
+                                            <td>{{ $FPPP->applicator_name }}</td> 
                                         </tr> 
                                         <tr> 
                                             <td>Luar/Dalam Kota</td> 
                                             <td>:</td> 
-                                            <td>Depok</td> 
+                                            <td>belum ada kolom db</td> 
                                         </tr> 
                                  </table> 
                                  
@@ -80,7 +80,7 @@
                            <th>Proses Cutting</th> 
                            <th>Keterangan</th> 
                            <th>Tanggal Machining</th> 
-                           <th>User MAchining</th> 
+                           <th>User Machining</th> 
                            <th>Tanggal Assembly</th> 
                            <th>User Assembly</th> 
                            <th>Subkon Assembly</th> 
@@ -93,147 +93,46 @@
                            <th>User PAck</th> 
                            <th>Tanggal Kirim</th> 
                            <th>No.Surat Jalan</th> 
-                        </tr> 
-                        <tr class="text-center"> 
-                            <td>1</td> 
-                            <td>AW4</td> 
-                            <td>AW4.1</td> 
-                            <td>Allure Black Mate</td> 
-                            <td>-</td> 
-                            <td>Terkirim</td> 
-                            <td>Astral Top Hug Window (SG-SB)</td> 
-                            <td>EXCLUDE 6mm</td> 
-                            <td>16 Februari 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>08 Maret 2022</td> 
-                            <td>Budi</td> 
-                            <td>Lunas</td> 
-                            <td>-</td> 
-                            <td>09 Maret 2022</td> 
-                            <td>Sugeng</td> 
-                            <td>10 Maret 2022</td> 
-                            <td>Andi</td> 
-                            <td>Arno</td> 
-                            <td>13 Maret 2022</td> 
-                            <td>Frans</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>14 Maret 2022</td> 
-                            <td>1</td> 
-                            <td>Farhan</td> 
-                            <td>22 Maret 2022</td> 
-                            <td>SJAST2022030412</td> 
-                        </tr> 
-                        <tr class="text-center"> 
-                            <td>1</td> 
-                            <td>AW4</td> 
-                            <td>AW4.2</td> 
-                            <td>Allure Black Mate</td> 
-                            <td>-</td> 
-                            <td>Terkirim</td> 
-                            <td>Astral Top Hug Window (SG-SB)</td> 
-                            <td>EXCLUDE 6mm</td> 
-                            <td>16 Februari 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>08 Maret 2022</td> 
-                            <td>Budi</td> 
-                            <td>Lunas</td> 
-                            <td>-</td> 
-                            <td>09 Maret 2022</td> 
-                            <td>Sugeng</td> 
-                            <td>10 Maret2022</td> 
-                            <td>Andi</td> 
-                            <td>Arno</td> 
-                            <td>13 Maret 2022</td> 
-                            <td>Frans</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>14 Maret 2022</td> 
-                            <td>1</td> 
-                            <td>Farhan</td> 
-                            <td>22 Maret 2022</td> 
-                            <td>SJAST2022030412</td> 
-                        </tr> 
-                        <tr class="text-center"> 
-                            <td>1</td> 
-                            <td>AW4</td> 
-                            <td>AW4.3</td> 
-                            <td>Allure Black Mate</td> 
-                            <td>-</td> 
-                            <td>Terkirim</td> 
-                            <td>Astral Top Hug Window (SG-SB)</td> 
-                            <td>EXCLUDE 6mm</td> 
-                            <td>16 Februari 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>08 Maret 2022</td> 
-                            <td>Budi</td> 
-                            <td>Lunas</td> 
-                            <td>-</td> 
-                            <td>09 Maret 2022</td> 
-                            <td>Sugeng</td> 
-                            <td>10 Maret 2022</td> 
-                            <td>Andi</td> 
-                            <td>Arno</td> 
-                            <td>13 Maret 2022</td> 
-                            <td>Frans</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>14 Maret 2022</td> 
-                            <td>1</td> 
-                            <td>Farhan</td> 
-                            <td>22 Maret 2022</td> 
-                            <td>SJAST2022030412</td> 
-                        </tr> 
-                        <tr class="text-center"> 
-                            <td>1</td> 
-                            <td>AW4</td> 
-                            <td>AW4.4</td> 
-                            <td>Allure Black Mate</td> 
-                            <td>-</td> 
-                            <td>Terkirim</td> 
-                            <td>Astral Top Hug Window (SG-SB)</td> 
-                            <td>EXCLUDE 6mm</td> 
-                            <td>16 Februari 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>05 Maret 2022</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>08 Maret 2022</td> 
-                            <td>Budi</td> 
-                            <td>Lunas</td> 
-                            <td>-</td> 
-                            <td>09 Maret 2022</td> 
-                            <td>Sugeng</td> 
-                            <td>10 Maret 2022</td> 
-                            <td>Andi</td> 
-                            <td>Arno</td> 
-                            <td>13 Maret 2022</td> 
-                            <td>Frans</td> 
-                            <td>-</td> 
-                            <td>-</td> 
-                            <td>14 Maret 2022</td> 
-                            <td>1</td> 
-                            <td>Farhan</td> 
-                            <td>22 Maret 2022</td> 
-                            <td>SJAST2022030412</td> 
-                        </tr> 
+                        </tr>
+                        @foreach ($MPU as $key => $MP)
+                            <tr class="text-center"> 
+                                <td>{{ $key+1 }}</td> 
+                                <td>{{ $MP['kode_op'] }}</td> 
+                                <td>{{ $MP['kode_unit'] }}</td> 
+                                <td>{{ $MP['warna'] }}</td> 
+                                <td>
+                                    tombol
+                                </td> 
+                                <td>{{ $MP['last_process'] }}</td> 
+                                <td>{{ $MP['tipe_barang'] }}</td> 
+                                <td>{{ $MP['jenis_kaca'] }}</td> 
+                                <td>{{ $MP['upload_bom_alumunium'] }}</td> 
+                                <td>{{ $MP['upload_bom_aksesoris'] }}</td> 
+                                <td>{{ $MP['upload_wo_alumunium'] }}</td> 
+                                <td>{{ $MP['upload_wo_lembaran'] }}</td> 
+                                <td>{{ $MP['upload_wo_kaca'] }}</td> 
+                                <td>{{ $MP['tanggal_proses_kaca'] }}</td> 
+                                <td>{{ $MP['user_kaca'] }}</td> 
+                                <td>{{ $MP['tanggal_cutting'] }}</td> 
+                                <td>{{ $MP['user_cutting'] }}</td> 
+                                <td>{{ $MP['proses_cutting'] }}</td> 
+                                <td>{{ $MP['keterangan'] }}</td> 
+                                <td>{{ $MP['tanggal_machining'] }}</td> 
+                                <td>{{ $MP['user_machining'] }}</td> 
+                                <td>{{ $MP['tanggal_assembly'] }}</td> 
+                                <td>{{ $MP['user_assembly'] }}</td> 
+                                <td>{{ $MP['subkon_assembly'] }}</td> 
+                                <td>{{ $MP['finish_qc'] }}</td> 
+                                <td>{{ $MP['subkon_qc'] }}</td> 
+                                <td>tanggal reject</td> 
+                                <td>{{ $MP['alasan_qc'] }}</td> 
+                                <td>{{ $MP['tanggal_pack'] }}</td> 
+                                <td>{{ $MP['qty_pack'] }}</td> 
+                                <td>{{ $MP['user_pack'] }}</td> 
+                                <td>{{ $MP['tanggal_kirim'] }}</td> 
+                                <td>{{ $MP['no_surat_jalan'] }}</td> 
+                            </tr> 
+                        @endforeach 
                     </table>
             </div>
         </div>
