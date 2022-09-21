@@ -28,19 +28,18 @@
                                 aria-describedby="basic-addon2">
                         </div>
                     </form> --}}
-                    <div class="table-borderless">
+                    <div class="table-borderless p-3">
                         <table class="table-borderless">
- 
                             <tr>
-                                <th width="120px">No FPPP</th>
+                                <th width="120px" height="50px">No FPPP</th>
                                 <th>: 124/FPPP/B04/07/2022</th>
                             </tr>
                             <tr>
-                                <th width="120px">Nama Proyek</th>
+                                <th width="120px" height="50px">Nama Proyek</th>
                                 <th>: Lantai 2 BRI</th>
                             </tr>
                             <tr>
-                                <th width="120px">Aplikator</th>
+                                <th width="120px" height="50px">Aplikator</th>
                                 <th>: PT.BRI</th><br>
                             </tr>
                         </table>
@@ -716,7 +715,7 @@
                                         <div class="">
                                         </div> <br> <a class="d btn mt-5 pe-none"></a>
                                         <div class="">
-                                        </div> <br> <a class="d btn mt-4 pe-none"></a>
+                                        </div> <br> <a class="d btn mt-5 pe-none"></a>
                                     </td>
                                     <!-- my css -->
                                     <link rel="stylesheet" href="style.css">
