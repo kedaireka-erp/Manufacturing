@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\SubkonController;
+use App\Http\Controllers\DetailfpppController;
+use App\Http\Controllers\PerunitController;
+use App\Http\Controllers\PerProjectController;
 
 use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\ManufactureController;
@@ -73,6 +76,10 @@ Route::controller(ManufactureController::class)->group(function () {
     Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
 });
 
+route::get("/perproject", [PerProjectController::class, "index"]);
+
+route::get("/detailfppp", [DetailfpppController::class, "index"]);
+route::get("/perunit", [PerunitController::class, "index"]);
 Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-cutting', 'update_cutting')->name("update-cutting");
     Route::post('/update-machining', 'update_machining')->name("update-machining");
