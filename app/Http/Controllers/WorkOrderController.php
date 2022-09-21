@@ -90,7 +90,7 @@ class WorkOrderController extends Controller
             "subkon"            => $request->subkon,
             "alasan"            => $request->alasan,
             "keterangan"        => $request->keterangan,
-            "status"            => "OK!"
+            "status"            => $request->status
         ]);
         toast("Data qc ".$unit->kode_unit."  berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);

@@ -9,7 +9,7 @@
     @include('sweetalert::alert')
     <div class="row">
         <div class="col-lg-12">
-            <div class="shadow p-3 mb-2 bg-body rounded">Lihat WO - {{ $manufacture->FPPP_number }}</h2>
+            <div class="shadow p-4 mb-2 bg-body rounded">Lihat WO - {{ $manufacture->FPPP_number }}</h2>
                 <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#"
                         class="text-secondary">FPPP</a>/<a href="#" class="lihatfppp">Lihat FPPP</a></h5>
             </div>
@@ -28,19 +28,19 @@
                                 aria-describedby="basic-addon2">
                         </div>
                     </form> --}}
-                    <div class="table-borderless p-3">
+                    <div class="table-borderless">
                         <table class="table-borderless">
                             <tr>
-                                <th width="120px" height="50px">No FPPP</th>
-                                <th>: 124/FPPP/B04/07/2022</th>
+                                <td width="120px" height="50px">No FPPP</td>
+                                <td>: 124/FPPP/B04/07/2022</td>
                             </tr>
                             <tr>
-                                <th width="120px" height="50px">Nama Proyek</th>
-                                <th>: Lantai 2 BRI</th>
+                                <td width="120px" height="50px">Nama Proyek</td>
+                                <td>: Lantai 2 BRI</td>
                             </tr>
                             <tr>
-                                <th width="120px" height="50px">Aplikator</th>
-                                <th>: PT.BRI</th><br>
+                                <td width="120px" height="50px">Aplikator</td>
+                                <td>: PT.BRI</td><br>
                             </tr>
                         </table>
                       </div>
@@ -744,6 +744,14 @@
                                 @foreach ($subkons as $subkon)
                                     <option value="{{ $subkon->subkon_name }}">{{ $subkon->subkon_name }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group " style="margin-bottom: 12px">
+                            <label class="col-form-label fs-6">Status</label>
+                            <select class="form-select border border-2" name="status">
+                                <option disabled selected>Pilih Salah Satu</option>
+                                <option value="OK">OK!</option>
+                                <option value="REJECTED">Rejected</option>
                             </select>
                         </div>
                         <div class="form-group " style="margin-bottom: 12px">
