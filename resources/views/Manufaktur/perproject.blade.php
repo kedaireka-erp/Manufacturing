@@ -55,7 +55,7 @@
                     @foreach ($monitoringPerProject as $key => $mPP)
                         <tr class="text-center">
                             <td>{{ $key+1 }}</td>
-                            <td><a href="/monitoringperunit/{{ $mPP['id'] }}" class="nav-link"><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button></a>{{ $mPP['no_fppp'] }}</td>
+                            <td><a href="/monitoringperunit/{{ $mPP['id'] }}" class="nav-link"><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> {{ $mPP['no_fppp'] }}</a></td>
                             <td>{{ $mPP['tgl_terima_fppp'] }}</td>
                             <td>{{ $mPP['deadline'] }}</td>
                             <td>{{ $mPP['project'] }}</td>

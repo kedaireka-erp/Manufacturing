@@ -16,6 +16,8 @@ class MonitoringController extends Controller
         $work_orders = WorkOrder::all();
 
         $monitoringPerProject = [];
+        $tanggalKirim = [];
+        $i = 0;
 
         //mengambil data dari manufactures dimasukan ke monitoring
         foreach ($manufactures as $key => $mft) {
@@ -45,9 +47,16 @@ class MonitoringController extends Controller
             $monitoringPerProject[$key]['acc_pengiriman_finance'] = "-";
             $monitoringPerProject[$key]['unit_belum_kirim'] = 0;
             $monitoringPerProject[$key]['unit_terkirim'] = 0;
-            $monitoringPerProject[$key]['tgl_kirim_awal'] = 0;
-            $monitoringPerProject[$key]['tgl_kirim_akhir'] = 0;
+            $monitoringPerProject[$key]['tgl_kirim_awal'] = "-";
+            $monitoringPerProject[$key]['tgl_kirim_akhir'] = "-";
             $monitoringPerProject[$key]['status'] = "BLANK";
+            foreach ($work_orders as $work) {
+                if ($work->manufacture_id == $mft->id) {
+                    if ($work['kode_unit']) {
+                        $monitoringPerProject[$key]['total_unit'] += 1;
+                    }
+                }
+            }
         }
 
         $WO = []; //array tampungan untuk variabel work_orders
@@ -57,6 +66,8 @@ class MonitoringController extends Controller
              $WO[$key]['kode_op'] = $wrkOrder->kode_op;
              $WO[$key]['kode_unit'] = $wrkOrder->kode_unit;
              $WO[$key]['last_process'] =$wrkOrder->last_process;
+             $WO[$key]['status_hold'] =$wrkOrder->status_hold;
+             $WO[$key]['tanggal_kirim']= $wrkOrder->tanggal_kirim;
 
         }
 
@@ -65,11 +76,6 @@ class MonitoringController extends Controller
         for ($i=0; $i < count($monitoringPerProject); $i++) { 
             for ($j=0; $j < count($WO); $j++) { 
                 if ($WO[$j]['manufacture_id'] == $monitoringPerProject[$i]['id']) {
-
-                    if ($WO[$j]['kode_unit']) {
-                        $monitoringPerProject[$i]['total_unit'] += 1;
-                    }
-
 
                     if ($WO[$j]['last_process'] == 'queued') {
                         
@@ -87,6 +93,15 @@ class MonitoringController extends Controller
                         $monitoringPerProject[$i]['delivery'] += 1;
                     }elseif ($WO[$j]['last_process'] == 'delivered') {
                         $monitoringPerProject[$i]['unit_terkirim'] += 1;
+                        if ($monitoringPerProject[$i]['unit_terkirim'] == $monitoringPerProject[$i]['total_unit']) {
+                            $monitoringPerProject[$i]['tgl_kirim_akhir'] = $WO[$j]['tanggal_kirim'];
+                        }elseif ($monitoringPerProject[$i]['unit_terkirim'] == 1) {
+                            $monitoringPerProject[$i]['tgl_kirim_awal'] = $WO[$j]['tanggal_kirim'];
+                        }
+                    }
+
+                    if ($WO[$j]['status_hold']) {
+                        $monitoringPerProject[$i]['unit_hold_revisi_cancel'] += 1;
                     }
 
                     if ($monitoringPerProject[$i]['unit_terkirim'] == $monitoringPerProject[$i]['total_unit']) {
@@ -140,7 +155,11 @@ class MonitoringController extends Controller
             $MPU[$key]['upload_wo_lembaran'] = "null";
             $MPU[$key]['upload_wo_kaca'] = "null";
             $MPU[$key]['warna'] = $mft->color;
-            $MPU[$key]['hold/revisi/cancel'] = "-";
+            if($mft->status_hold){
+                $MPU[$key]['status_hold'] = $mft->status_hold;
+            }else{
+                $MPU[$key]['status_hold'] = "-";
+            }
             $MPU[$key]['id_wo'] = $mft->id_wo;
             $MPU[$key]['manufacture_id'] = $mft->manufacture_id;
             $MPU[$key]['kode_op'] = $mft->kode_op;
@@ -151,22 +170,30 @@ class MonitoringController extends Controller
             $MPU[$key]['tanggal_proses_kaca'] = $mft->tanggal_kaca;
             $MPU[$key]['user_kaca'] = $mft->user_kaca;
             $MPU[$key]['tanggal_cutting'] = $mft->tanggal_cutting;
-            $MPU[$key]['user_cutting'] = $mft->lead1_cutting;
+            $MPU[$key]['user_cutting'] = $mft->subkon1_cutting;
             $MPU[$key]['proses_cutting'] = $mft->proses_cutting;
             $MPU[$key]['keterangan'] = "null";
             $MPU[$key]['tanggal_machining'] = $mft->tanggal_machining;
-            $MPU[$key]['user_machining'] = $mft->lead1_machining;
+            $MPU[$key]['user_machining'] = $mft->subkon1_machining;
             $MPU[$key]['tanggal_assembly'] = $mft->tanggal_assembly3;
-            $MPU[$key]['user_assembly'] = $mft->lead1_assembly3;
-            $MPU[$key]['subkon_assembly'] = $mft->subkon1_assembly3;
+            $MPU[$key]['user_assembly'] = $mft->subkon1_assembly3;
+            $MPU[$key]['subkon_assembly'] = $mft->subkon2_assembly3;
             $MPU[$key]['finish_qc'] = "-";
-                    $MPU[$key]['subkon_qc'] = "-";
-                    $MPU[$key]['alasan_qc'] = "-";
-                    $MPU[$key]['keterangan_qc'] = "-";
-                    $MPU[$key]['status_qc'] = "-";
+            $MPU[$key]['subkon_qc'] = "-";
+            $MPU[$key]['alasan_qc'] = "-";
+            $MPU[$key]['keterangan_qc'] = "-";
+            $MPU[$key]['status_qc'] = "-";
+            $MPU[$key]['finish_qc'] = "-";
+                    $MPU[$key]['tanggal_rejected'] = "-";
             foreach ($q_c_s as $qc) {
                 if ($qc['work_order_id'] == $MPU[$key]['id_wo']) {
-                    $MPU[$key]['finish_qc'] = $qc->updated_at;
+                    if ($qc['status'] == 'REJECTED') {
+                        $MPU[$key]['finish_qc'] = $qc->updated_at;
+                        $MPU[$key]['tanggal_rejected'] = $qc->created_at;
+                    } elseif ($qc['status'] == 'OK!') {
+                        $MPU[$key]['finish_qc'] = $qc->created_at;
+                        $MPU[$key]['tanggal_rejected'] = $qc->updated_at;
+                    }
                     $MPU[$key]['subkon_qc'] = $qc->subkon;
                     $MPU[$key]['alasan_qc'] = $qc->alasan;
                     $MPU[$key]['keterangan_qc'] = $qc->keterangan;
@@ -179,6 +206,7 @@ class MonitoringController extends Controller
             $MPU[$key]['tanggal_kirim'] = $mft->tanggal_kirim;
             $MPU[$key]['no_surat_jalan'] = $mft->no_surat_jalan;
         }
+        //dd($tanggalKirim);
         return view('Manufaktur.perunit')->with([
             'MPU' => $MPU,
             'FPPP' => $FPPP

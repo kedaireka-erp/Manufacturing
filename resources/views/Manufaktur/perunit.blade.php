@@ -100,9 +100,7 @@
                                 <td>{{ $MP['kode_op'] }}</td> 
                                 <td>{{ $MP['kode_unit'] }}</td> 
                                 <td>{{ $MP['warna'] }}</td> 
-                                <td>
-                                    tombol
-                                </td> 
+                                <td>{{ $MP['status_hold'] }}</td> 
                                 <td>{{ $MP['last_process'] }}</td> 
                                 <td>{{ $MP['tipe_barang'] }}</td> 
                                 <td>{{ $MP['jenis_kaca'] }}</td> 
@@ -124,7 +122,7 @@
                                 <td>{{ $MP['subkon_assembly'] }}</td> 
                                 <td>{{ $MP['finish_qc'] }}</td> 
                                 <td>{{ $MP['subkon_qc'] }}</td> 
-                                <td>tanggal reject</td> 
+                                <td>{{ $MP['tanggal_rejected'] }}</td> 
                                 <td>{{ $MP['alasan_qc'] }}</td> 
                                 <td>{{ $MP['tanggal_pack'] }}</td> 
                                 <td>{{ $MP['qty_pack'] }}</td> 
