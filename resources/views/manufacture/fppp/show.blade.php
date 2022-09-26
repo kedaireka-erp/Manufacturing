@@ -45,38 +45,38 @@
                         </table>
                       </div>
                     <!-- Tabel -->
-                    <div class="table-responsive">
+                    <div class= "table-responsive">
                         <table class="table table-striped text-center">
                             <thead>
                                 <tr>
                                     <th width="250px" class="headcol"> No. </th>
                                     <th width="250px" class="headcol"> Kode Op </th>
                                     <th width="250px" class="headcol"> Kode Unit </th>
-                                    <th width="250px"> Item </th>
-                                    <th width="250px"> Glass Specification </th>
-                                    <th width="250px"> Warna </th>
-                                    <th width="250px"> Cutting </th>
-                                    <th width="250px"> Machining </th>
-                                    <th width="250px"> Assembly 1 </th>
-                                    <th width="250px"> Assembly 2 </th>
-                                    <th width="250px"> Assembly 3 </th>
-                                    <th width="250px"> QC </th>
-                                    <th width="250px"> Packing </th>
-                                    <th width="250px"> Status </th>
-                                    <th width="250px"> Keterangan </th>
+                                    <th width="250px" class="long"> Item </th>
+                                    <th width="250px" class="long"> Glass Specification </th>
+                                    <th width="250px" class="long"> Warna </th>
+                                    <th width="250px" class="long"> Cutting </th>
+                                    <th width="250px" class="long"> Machining </th>
+                                    <th width="250px" class="long"> Assembly 1 </th>
+                                    <th width="250px" class="long"> Assembly 2 </th>
+                                    <th width="250px" class="long"> Assembly 3 </th>
+                                    <th width="250px" class="long"> QC </th>
+                                    <th width="250px" class="long"> Packing </th>
+                                    <th width="250px" class="long"> Status </th>
+                                    <th width="250px" class="long"> Keterangan </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($workOrders as $no => $unit)
-                                <tr class="">
-                                    <td> {{ $no+1 }} </td>
-                                    <td> {{ $unit->kode_op }} </td>
-                                    <td> {{ $unit->kode_unit }} </td>
-                                    <td> {{ $unit->nama_item }} </td>
-                                    <td> {{ $unit->jenis_kaca }} <br> <br> <a href="" class="d btn btn-success border-dark-rounded ">OK!</a> </td>
-                                    <td> {{ $unit->nama_warna }} </td>
+                                <tr class=" ">
+                                    <td class="headcol"> {{ $no+1 }} </td>
+                                    <td class="headcol"> {{ $unit->kode_op }} </td>
+                                    <td class="headcol"> {{ $unit->kode_unit }} </td>
+                                    <td class="long"> {{ $unit->nama_item }} </td>
+                                    <td class="long"> {{ $unit->jenis_kaca }} <br> <br> <a href="" class="d btn btn-success border-dark-rounded ">OK!</a> </td>
+                                    <td class="long"> {{ $unit->warna }} </td>
                                     <!-- cutting button -->
-                                    <td>
+                                    <td class="long">
                                         @if ($unit->tanggal_cutting == null)
                                         <form action="{{ route("update-cutting") }}" method="POST">
                                         @csrf
@@ -124,7 +124,7 @@
                                         @endif
                                     </td>
                                     {{-- Machining --}}
-                                    <td>
+                                    <td class="long">
                                         @if ($unit->tanggal_machining == null)
                                         <form action="{{ route("update-machining") }}" method="POST">
                                         @csrf
@@ -164,7 +164,7 @@
                                     </td>
                                     <!-- assembly 1 button -->
                                     {{-- assembly --}}
-                                    <td>
+                                    <td class="long">
                                         @if ($unit->tanggal_assembly1 == null)
                                         <form action="{{ route("update-assembly1") }}" method="POST">
                                         @csrf
@@ -215,8 +215,8 @@
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_assembly1) + 25200) }}</a>
                                         @endif
                                     </td>
-                                    {{-- assembly --}}
-                                    <td>
+                                    {{-- assembly 2 --}}
+                                    <td class="long">
                                         @if ($unit->tanggal_assembly2 == null)
                                         <form action="{{ route("update-assembly2") }}" method="POST">
                                         @csrf
@@ -267,8 +267,8 @@
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_assembly2) + 25200) }}</a>
                                         @endif
                                     </td>
-                                    {{-- assembly --}}
-                                    <td>
+                                    {{-- assembly 3 --}}
+                                    <td class="long">
                                         @if ($unit->tanggal_assembly3 == null)
                                         <form action="{{ route("update-assembly3") }}" method="POST">
                                         @csrf
@@ -319,16 +319,15 @@
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_assembly3) + 25200) }}</a>
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="long">
                                         <!-- Qc button -->
                                         {{-- <button type="button" class="d btn btn-info text-center"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
                                          <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#qcModal{{ $unit->id }}" class="d btn btn-primary">Isi Keterangan</a>
                                          <br> <a class=" btn mt-5 "></a>
                                          <br> <a class=" btn mt-3 "></a>
-                                        <!-- assembly 2 button -->
                                     </td>
-                                    <td>
+                                    <td class="long">
                                         @if ($unit->tanggal_packing == null)
                                         <form action="{{ route("update-packing") }}" method="POST">
                                         @csrf
@@ -376,7 +375,7 @@
                                     </td>
 
                                     {{-- Status --}}
-                                    <td>
+                                    <td class="long"
                                         <div class="dropdown">
                                         </div> <br> <button type="button" class="d btn
                                         @if ($unit->last_process == "queued")
@@ -394,17 +393,27 @@
                                         <div class="">
                                         </div> <br> <a class="d btn mt-4 pe-none"></a>
                                     </td>
-                                    <td>
+                                    <!-- keterangan -->
+                                    <td class="long">
+                                    <form action="{{ route("update-keterangan") }}" method="POST">
+                                        @csrf
+                                            <input type="hidden" name="id" value="{{ $unit->id }}">
+                                            <input type="hidden" name="" value="hold">
+                                            <div class="dropdown">
                                     <div class="dropdown">
                                                 <select class="form-select bg-transparent text-center search" name="process_assembly3" id=""
                                                     style="border-color: black;">
-                                                    <option value="">Keterangan</option>
-                                                    <option value=""> Hold </option>
-                                                    <option value=""> Revisi </option>
-                                                    <option value=""> Cancel </option>
+                                                    <option disabled selected value="">Keterangan</option>
+                                                    <option value="hold"> Hold </option>
+                                                    <option value="revisi"> Revisi </option>
+                                                    <option value="cancel"> Cancel </option>
                                                 </select>
-                                            </div>
-                                    </td>
+                                            </div> <br>
+                                            <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                        </form>
+                                            <br> <a class=" btn mt-3 "></a>
+                                         <br> <a class=" btn mt-3 "></a>
+                                        </td>
                                 </tr>
                                 @endforeach
                                 <tr class="">

@@ -88,6 +88,8 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-assembly3', 'update_assembly3')->name("update-assembly3");
     Route::post('/create-qc', 'create_qc')->name("create-qc");
     Route::post('/update-packing', 'update_packing')->name("update-packing");
+    Route::post('/update-keterangan', 'update_keterangan')->name("update-keterangan");
+
 });
 
 

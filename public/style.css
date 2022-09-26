@@ -11,43 +11,40 @@
     height: 40px;
 }
 /* fix column */
-table {
+/* .table {
     border-collapse: separate;
-    border-spacing: 0;
-    border-top: 1px solid grey;
-}
-
-td,
-th {
+  }
+  
+  .table td,
+  .table tr {
     margin: 0;
     border: 1px solid grey;
     white-space: nowrap;
     border-top-width: 0px;
-}
-
-div {
+  }
+    .div {
     width: 500px;
     overflow-x: scroll;
     margin-left: 5em;
     overflow-y: visible;
     padding: 0;
-}
-
-.headcol {
+  }
+  
+  .headcol {
     position: absolute;
     width: 5em;
     left: 0;
     top: auto;
     border-top-width: 1px;
     /*only relevant for first row*/
-    margin-top: -1px;
+    /* margin-top: -1px; */
     /*compensate for top border*/
-}
-
-.headcol:before {
-    content: "Row ";
-}
-
-.long {
+  /* }
+  
+  .headcol:before {
+    content: 'Row ';
+  }
+  
+  .long {
     letter-spacing: 1em;
-}
+  /* }
