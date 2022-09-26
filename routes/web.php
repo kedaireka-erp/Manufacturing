@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SubkonController;
-use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\PerunitController;
-use App\Http\Controllers\PerProjectController;
-
 use App\Http\Controllers\WorkOrderController;
+
+use App\Http\Controllers\DetailfpppController;
+use App\Http\Controllers\PerProjectController;
 use App\Http\Controllers\ManufactureController;
 
 /*
@@ -92,5 +93,7 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-packing', 'update_packing')->name("update-packing");
 });
 
+
+route::get("/login", [LoginController::class, "index"]);
 
 
