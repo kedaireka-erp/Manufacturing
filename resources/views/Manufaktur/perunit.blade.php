@@ -50,9 +50,10 @@
                                 </div> 
                             </div>
             <div class="col-md-6">
-                <form action="">
+                <form action="/search-unit/{{ $FPPP->id }}" method="GET">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Cari.." name="search">
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan kode unit" name="search">
+                        <button class="btn btn-outline-success" type="submit">Cari</button>
                     </div>
                 </form>
             </div>

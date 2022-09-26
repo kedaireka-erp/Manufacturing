@@ -97,4 +97,6 @@ Route::controller(WorkOrderController::class)->group(function () {
 Route::controller(MonitoringController::class)->group(function(){
     Route::get('/monitoringperproject','indexPerProject');
     Route::get('/monitoringperunit/{id}','indexPerUnit');
+    Route::get('/search-project','searchPerProject');
+    Route::get('/search-unit/{id}','searchPerUnit');
 });

@@ -11,10 +11,11 @@
                     <div class="card">
                         <div class="card-body">
             <div class="col-md-6">
-                <form action="">
+                <form action="/search-project" method="GET">
+                    @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Cari.." name="search">
-                  
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan no fppp" name="search">
+                        <button class="btn btn-outline-success" type="submit">Cari</button>
                     </div>
                 </form>
             </div>
