@@ -760,7 +760,7 @@
                             <label class="col-form-label fs-6">Status</label>
                             <select class="form-select border border-2" name="status">
                                 <option disabled selected>Pilih Salah Satu</option>
-                                <option value="OK">OK!</option>
+                                <option value="OK!">OK!</option>
                                 <option value="REJECTED">Rejected</option>
                             </select>
                         </div>
