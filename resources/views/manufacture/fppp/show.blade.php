@@ -48,6 +48,7 @@
                     <div class= "table-responsive">
                         <table class="table table-striped text-center">
                             <thead>
+                                <div class="sticky-bottom">
                                 <tr>
                                     <th width="250px" class="headcol"> No. </th>
                                     <th width="250px" class="headcol"> Kode Op </th>
@@ -85,7 +86,7 @@
                                             <input type="hidden" name="lead2_cutting" value="Rhey">
                                             <div class="dropdown">
                                                 <select
-                                                    class="form-select  bg-transparent text-center search"
+                                                    class="form-select bg-transparent text-center search"
                                                     name="subkon1_cutting" id="" style="border-color: black;">
                                                     <option disabled selected>Subkon 1</option>
                                                     @foreach ($subkons as $subkon)
@@ -114,13 +115,13 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon1_cutting }} ({{ $unit->lead1_cutting }})</button>
+                                        <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_cutting }} ({{ $unit->lead1_cutting }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon2_cutting }} ({{ $unit->lead2_cutting }})</button>
+                                        <button type="button" class=" btn btn-dark btn-sm button  col-12 mx-auto pe-none">{{ $unit->subkon2_cutting }} ({{ $unit->lead2_cutting }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-gradient-success btn-sm button pe-none mt-2">{{ strtoupper($unit->proses_cutting) }}</button>
+                                        <button type="button" class=" btn btn-gradient-success btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->proses_cutting) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- Machining --}}
@@ -155,11 +156,13 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon1_machining }} ({{ $unit->lead1_machining }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_machining }} ({{ $unit->lead1_machining }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_machining) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <br>
+                                        <br> <button type="button" class="btn btn-transparent btn-xl button col-12 mx-auto pe-none"></button>
                                         @endif
                                     </td>
                                     <!-- assembly 1 button -->
@@ -206,13 +209,13 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon1_assembly1 }} ({{ $unit->lead1_assembly1 }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_assembly1 }} ({{ $unit->lead1_assembly1 }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon2_assembly1 }} ({{ $unit->lead2_assembly1 }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_assembly1 }} ({{ $unit->lead2_assembly1 }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none mt-2">{{ strtoupper($unit->process_assembly1) }}</button>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->process_assembly1) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_assembly1) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- assembly 2 --}}
@@ -258,13 +261,13 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon1_assembly2 }} ({{ $unit->lead1_assembly2 }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_assembly2 }} ({{ $unit->lead1_assembly2 }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon2_assembly2 }} ({{ $unit->lead2_assembly2 }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_assembly2 }} ({{ $unit->lead2_assembly2 }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none mt-2">{{ strtoupper($unit->process_assembly2) }}</button>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_assembly2) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- assembly 3 --}}
@@ -310,13 +313,13 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon1_assembly3 }} ({{ $unit->lead1_assembly3 }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_assembly3 }} ({{ $unit->lead1_assembly3 }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon2_assembly3 }} ({{ $unit->lead2_assembly3 }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_assembly3 }} ({{ $unit->lead2_assembly3 }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-gradient-primary btn-sm button pe-none mt-2">{{ strtoupper($unit->process_assembly3) }}</button>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_assembly3) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     <td class="long">
@@ -363,19 +366,17 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button> <br>
                                         <br>
-                                        <button type="button" class="d btn btn-dark btn-sm button pe-none mt-2">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
-                                        <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
                                         <div class="dropdown">
                                         </div> <br> <button type="button" class="d form-control text-center pe-none bg-secondary bg-opacity-50"><b>{{ $unit->qty_packing }}</b></button>
-                                        <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y H:i", strtotime($unit->tanggal_packing) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
 
                                     {{-- Status --}}
-                                    <td class="long"
+                                    <td class="long">
                                         <div class="dropdown">
                                         </div> <br> <button type="button" class="d btn
                                         @if ($unit->last_process == "queued")
@@ -420,7 +421,7 @@
 
                                 </tr>
                                 @endforeach
-                                <tr class="">
+                                {{-- <tr class="">
                                     <td> 1 </td>
                                     <td> B1-001 </td>
                                     <td> Astral AS 01 <br> top hung windo </td>
@@ -591,7 +592,7 @@
                                         <!-- Qc button -->
                                         {{-- <button type="button" class="d btn btn-info text-center"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
-                                         <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#exampleModal" class="d btn btn-primary">Isi Keterangan</a>
+                                         {{-- <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#exampleModal" class="d btn btn-primary">Isi Keterangan</a>
                                          <br> <a class=" btn mt-5 "></a>
                                          <br> <a class=" btn mt-3 "></a>
                                         <!-- assembly 2 button -->
@@ -626,18 +627,18 @@
                                     </td>
 
                                     {{-- Status --}}
-                                    <td>
+                                    {{-- <td>
                                         <div class="dropdown">
                                         </div> <br> <button type="button" class="d btn btn-gradient-dark btn-sm button pe-none" >QUEUED</button>
                                         <div class="">
                                         </div> <br> <a class=" btn pe-none" style="margin-top: 15px"></a>
                                         <div class="">
                                         </div> <br> <a class="d btn mt-4 pe-none"></a>
-                                    </td>
+                                    </td> --}}    
+                                {{-- </tr>  --}}
 
-                                    {{-- number 2 --}}
-                                </tr>
-                                <tr class=" ">
+                                {{-- number 2 --}}
+                                {{-- <tr class=" ">
                                     <td> 2 </td>
                                     <td> B1-002 </td>
                                     <td> Astral AS 01 <br> top hung windo </td>
@@ -722,14 +723,14 @@
                                         </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
                                     </td>
                                     {{-- Status --}}
-                                    <td>
-                                        <div class="dropdown">
+                                    {{-- <td> --}}
+                                        {{-- <div class="dropdown">
                                         </div> <br> <button type="button" class=" btn btn-gradient-info btn-sm button col-12 mx-auto pe-none">ON DELIVERY</button>
                                         <div class="">
                                         </div> <br> <a class="d btn mt-5 pe-none"></a>
                                         <div class="">
-                                        </div> <br> <a class="d btn mt-5 pe-none"></a>
-                                    </td>
+                                        </div> <br> <a class="d btn mt-5 pe-none"></a> --}}
+                                    {{-- </td> --}}
                                     <!-- my css -->
                                     <link rel="stylesheet" href="style.css">
                         </table>
@@ -763,7 +764,7 @@
                             <label class="col-form-label fs-6">Status</label>
                             <select class="form-select border border-2" name="status">
                                 <option disabled selected>Pilih Salah Satu</option>
-                                <option value="OK">OK!</option>
+                                <option value="OK!">OK!</option>
                                 <option value="REJECTED">Rejected</option>
                             </select>
                         </div>
@@ -815,12 +816,10 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
     @endforeach
 </div>
-
 
 @endsection
 
