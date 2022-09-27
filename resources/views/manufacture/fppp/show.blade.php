@@ -395,25 +395,29 @@
                                     </td>
                                     <!-- keterangan -->
                                     <td class="long">
-                                    <form action="{{ route("update-keterangan") }}" method="POST">
+                                       
+                                       <form action="{{ route("update-keterangan") }}" method="POST">
                                         @csrf
-                                            <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="" value="hold">
-                                            <div class="dropdown">
-                                    <div class="dropdown">
-                                                <select class="form-select bg-transparent text-center search" name="process_assembly3" id=""
-                                                    style="border-color: black;">
-                                                    <option disabled selected value="">Keterangan</option>
-                                                    <option value="hold"> Hold </option>
-                                                    <option value="revisi"> Revisi </option>
-                                                    <option value="cancel"> Cancel </option>
-                                                </select>
-                                            </div> <br>
-                                            <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
-                                        </form>
-                                            <br> <a class=" btn mt-3 "></a>
-                                         <br> <a class=" btn mt-3 "></a>
-                                        </td>
+                                       
+                                       <input type="hidden" name="id" value="{{ $unit->id }}">
+                                       <input type="hidden" name="" value="{{$unit->process_assembly3}}">
+                                       <div class="dropdown">
+                               <div class="dropdown">
+                                           <select class="form-select bg-transparent text-center search" name="process_assembly3" id=""
+                                               style="border-color: black;">
+                                               <option disabled selected value="">Keterangan</option>
+                                               <option value="hold"> Hold </option>
+                                               <option value="revisi"> Revisi </option>
+                                               <option value="cancel"> Cancel </option>
+                                           </select>
+                                       </div> <br>
+                                       <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                   </form>
+                                       <br> <a class=" btn mt-3 "></a>
+                                    <br> <a class=" btn mt-3 "></a>
+                                   </td>
+                                
+
                                 </tr>
                                 @endforeach
                                 <tr class="">
