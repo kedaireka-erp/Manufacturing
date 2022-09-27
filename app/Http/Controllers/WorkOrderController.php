@@ -110,4 +110,13 @@ class WorkOrderController extends Controller
         toast("Data packing ".$unit->kode_unit."  berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
     }
+    public function update_keterangan(Request $request)
+    {
+        $unit = WorkOrder::findOrFail($request->id);
+        $unit->update([
+            "status_hold"   => $request->process_assembly3 ?? $unit->process_assembly3,
+        ]);
+        toast("Data keterangan ".$unit->kode_unit."  berhasil diupdate", "success");
+        return redirect("/manufactures/". $unit->manufacture_id);
+    }
 }
