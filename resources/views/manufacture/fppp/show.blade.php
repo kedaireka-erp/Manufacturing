@@ -376,7 +376,7 @@
                                     </td>
 
                                     {{-- Status --}}
-                                    <td class="long"
+                                    <td class="long">
                                         <div class="dropdown">
                                         </div> <br> <button type="button" class="d btn
                                         @if ($unit->last_process == "queued")
