@@ -2,6 +2,7 @@
 
 @push("style")
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('style.css') }}">
 @endpush
 
 @section('content')
@@ -45,14 +46,16 @@
                         </table>
                       </div>
                     <!-- Tabel -->
+                    <div class="view">
+                    <div class="wrapper">
                     <div class= "table-responsive">
                         <table class="table table-striped text-center">
                             <thead>
-                                <div class="sticky-bottom">
+                                <div class="data-fixed-columns" >
                                 <tr>
-                                    <th width="250px" class="headcol"> No. </th>
-                                    <th width="250px" class="headcol"> Kode Op </th>
-                                    <th width="250px" class="headcol"> Kode Unit </th>
+                                    <th width="250px" class="sticky-col first-col"> No. </th>
+                                    <th width="250px" class="sticky-col second-col"> Kode Op </th>
+                                    <th width="250px" class="sticky-col third-col"> Kode Unit </th>
                                     <th width="250px" class="long"> Item </th>
                                     <th width="250px" class="long"> Glass Specification </th>
                                     <th width="250px" class="long"> Warna </th>
@@ -66,13 +69,14 @@
                                     <th width="250px" class="long"> Status </th>
                                     <th width="250px" class="long"> Keterangan </th>
                                 </tr>
+                               
                             </thead>
                             <tbody>
                                 @foreach ($workOrders as $no => $unit)
                                 <tr class=" ">
-                                    <td class="headcol"> {{ $no+1 }} </td>
-                                    <td class="headcol"> {{ $unit->kode_op }} </td>
-                                    <td class="headcol"> {{ $unit->kode_unit }} </td>
+                                    <td class="headcol sticky-col first-col"> {{ $no+1 }} </td>
+                                    <td class="headcol sticky-col second-col"> {{ $unit->kode_op }} </td>
+                                    <td class="headcol sticky-col third-col"> {{ $unit->kode_unit }} </td>
                                     <td class="long"> {{ $unit->nama_item }} </td>
                                     <td class="long"> {{ $unit->jenis_kaca }} <br> <br> <a href="" class="d btn btn-success border-dark-rounded ">OK!</a> </td>
                                     <td class="long"> {{ $unit->warna }} </td>
@@ -115,11 +119,11 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_cutting }} ({{ $unit->lead1_cutting }})</button> <br>
+                                        <button type="button" class=" btn btn-dark btn-sm button mt-4 col-12 pe-none">{{ $unit->subkon1_cutting }} ({{ $unit->lead1_cutting }})</button> 
                                         <br>
-                                        <button type="button" class=" btn btn-dark btn-sm button  col-12 mx-auto pe-none">{{ $unit->subkon2_cutting }} ({{ $unit->lead2_cutting }})</button> <br>
+                                        <button type="button" class=" btn btn-dark btn-sm button mt-2 col-12 pe-none">{{ $unit->subkon2_cutting }} ({{ $unit->lead2_cutting }})</button>
                                         <br>
-                                        <button type="button" class=" btn btn-gradient-success btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->proses_cutting) }}</button>
+                                        <button type="button" class=" btn btn-gradient-success btn-sm button mt-2 col-12 pe-none">{{ strtoupper($unit->proses_cutting) }}</button>
                                         <br>
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
@@ -154,15 +158,17 @@
                                             </div>
                                             <br>
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                            <br>
+                                            <button type="button" class="btn btn-transparent btn-sm button col-12 mt-1 pe-none"></button>
                                         </form>
                                         @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_machining }} ({{ $unit->lead1_machining }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_machining }} ({{ $unit->lead1_machining }})</button>
                                         <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
                                         <br>
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         <br>
-                                        <br> <button type="button" class="btn btn-transparent btn-xl button col-12 mx-auto pe-none"></button>
+                                        <button type="button" class="btn btn-transparent btn-sm button col-12 mt-2 pe-none"></button>
                                         @endif
                                     </td>
                                     <!-- assembly 1 button -->
@@ -209,11 +215,11 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_assembly1 }} ({{ $unit->lead1_assembly1 }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly1 }} ({{ $unit->lead1_assembly1 }})</button>
                                         <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_assembly1 }} ({{ $unit->lead2_assembly1 }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly1 }} ({{ $unit->lead2_assembly1 }})</button>
                                         <br>
-                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->process_assembly1) }}</button>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly1) }}</button>
                                         <br>
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
@@ -261,11 +267,11 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_assembly2 }} ({{ $unit->lead1_assembly2 }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly2 }} ({{ $unit->lead1_assembly2 }})</button>
                                         <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_assembly2 }} ({{ $unit->lead2_assembly2 }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly2 }} ({{ $unit->lead2_assembly2 }})</button> 
                                         <br>
-                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
                                         <br>
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
@@ -313,11 +319,11 @@
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_assembly3 }} ({{ $unit->lead1_assembly3 }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly3 }} ({{ $unit->lead1_assembly3 }})</button>
                                         <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_assembly3 }} ({{ $unit->lead2_assembly3 }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly3 }} ({{ $unit->lead2_assembly3 }})</button>
                                         <br>
-                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
                                         <br>
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
@@ -328,7 +334,7 @@
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
                                          <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#qcModal{{ $unit->id }}" class="d btn btn-primary">Isi Keterangan</a>
                                          <br> <a class=" btn mt-5 "></a>
-                                         <br> <a class=" btn mt-3 "></a>
+                                         <br> <a class=" btn mt-4 "></a>
                                     </td>
                                     <td class="long">
                                         @if ($unit->tanggal_packing == null)
@@ -359,18 +365,18 @@
                                             </div>
                                             <div class="hy form-group bg-transparent px-1">
                                                 <label for="Quantity"></label>
-                                                <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-2 border-opacity-10 "
+                                                <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-4 border-opacity-10 "
                                                     id="Quantity" name="qty_packing"  placeholder="Quantity"
                                                 >
                                             </div>
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
                                         @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button> <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
                                         <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mx-auto pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d form-control text-center pe-none bg-secondary bg-opacity-50"><b>{{ $unit->qty_packing }}</b></button>
+                                        </div> <button type="button" class="form-control text-center pe-none bg-secondary bg-opacity-50 mt-2"><b>{{ $unit->qty_packing }}</b></button>
                                         <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
@@ -412,7 +418,7 @@
                                             </div> <br>
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
-                                            <br> <a class=" btn mt-3 "></a>
+                                            <br> <a class=" btn mt-1"></a>
                                          <br> <a class=" btn mt-3 "></a>
                                         </td>
                                 </tr>
@@ -727,10 +733,108 @@
                                         <div class="">
                                         </div> <br> <a class="d btn mt-5 pe-none"></a> --}}
                                     {{-- </td> --}}
+
+                                {{-- number 3 --}}
+                                {{-- <tr class=" ">
+                                    <td> 3 </td>
+                                    <td> B1-002 </td>
+                                    <td> Astral AS 01 <br> top hung windo </td>
+                                    <td> clear 6mm excluded <br> </div> <br> <button type="button" class=" btn btn-gradient-success btn-sm button col-12 mx-auto pe-none">COMPLETED</button>
+                                    <td> 1 </td>
+                                    <td> Outside </td>
+                                    <td> Allure Black Matte </td>
+                                    <!-- cutting button -->
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
+                                        <div class="dropdown ">
+                                        </div> <br> <button type="button" class=" btn btn-dark button col-12 mx-auto pe-none">-</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-gradient-success btn-sm button col-12 mx-auto pe-none">COMPLETED</button>
+                                        <div class="dropdown">
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
+                                    </td>
+                                    <!-- Machining button -->
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
+                                        <div class="">
+                                        </div> <br> <a class=" btn mt-2 pe-none"></a>
+                                    </td>
+                                    <!-- assembly 1 button -->
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">Cek Opening</button>
+                                        <div class="dropdown">
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
+                                    </td>
+                                    <!-- assembly 2 button -->
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">Cek Opening</button>
+                                        <div class="dropdown">
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
+                                    </td>
+                                    <!-- assembly 3 button -->
+                                    <td>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-gradient-primary btn-sm button col-12 mx-auto pe-none">Pasang Kaca</button>
+                                        <div class="dropdown">
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
+                                    </td>
+                                    <!-- Qc button -->
+                                    <td>
+                                            <a type="button" class=" btn btn-primary btn-xl" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal" class="d btn btn-primary">Lihat QC</a>
+                                                <div class="number">
+                                                </div> <br> <a href=" " class=" btn btn-gradient-info pe-none">08/08/2022 <br> 10.00</a>
+                                            <div class="dropdown">
+                                            </div> <br> <a class=" btn mt-5 pe-none"></a>
+                                    </td>
+                                    <!-- packing button -->
+                                    <td>
+                                        <div class="dropdown">
+                                            <div class="dropdown">
+                                            </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Wahyu (Lead)</button>
+                                            <div class="dropdown">
+                                            </div> <br> <button type="button" class=" btn btn-dark btn-sm button col-12 mx-auto pe-none">Budi (Lead)</button>
+                                        <div class="dropdown">
+                                        </div> <br> <button type="button" class="d form-control text-center pe-none bg-secondary bg-opacity-50"><b>2</b></button>
+                                        <div class="dropdown">
+                                        </div> <br> <a href=" " class=" btn btn-gradient-info pe-none" >08/08/2022 <br> 10.00</a>
+                                    </td>
+                                    {{-- Status --}}
+                                    {{-- <td> --}}
+                                        {{-- <div class="dropdown">
+                                        </div> <br> <button type="button" class=" btn btn-gradient-info btn-sm button col-12 mx-auto pe-none">ON DELIVERY</button>
+                                        <div class="">
+                                        </div> <br> <a class="d btn mt-5 pe-none"></a>
+                                        <div class="">
+                                        </div> <br> <a class="d btn mt-5 pe-none"></a> --}}
+                                    {{-- </td> --}}
+                                    {{-- </tr> --}}
                                     <!-- my css -->
                                     <link rel="stylesheet" href="style.css">
                         </table>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
