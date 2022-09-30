@@ -21,7 +21,8 @@ use App\Http\Controllers\MonitoringController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function() {
+
+Route::get('/', function () {
     return redirect('/leads');
 });
 
@@ -76,8 +77,18 @@ Route::controller(ManufactureController::class)->group(function () {
     Route::get("/manufactures", "index");
     Route::post("/manufactures", "store");
     Route::get("/manufactures/delete", "delete");
+    // Route::get("/manufactures/show", "show");
     Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
+    Route::get('/manufactures/detail/{manufacture}', 'detail')->name("manufactures.detail");
 });
+
+
+// route::get("/", [ItemController::class, "index"]);
+// route::get("/create", [ItemController::class, "create"])->name("create");
+// route::post("/store", [ItemController::class, "store"])->name("store");
+// route::get("/show", [ItemController::class, "show"])->name("show");
+// route::post("/update/{id}", [ItemController::class, "update"])->name("update");
+// route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
 route::get("/perproject", [PerProjectController::class, "index"]);
 
