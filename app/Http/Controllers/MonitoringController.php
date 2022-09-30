@@ -22,8 +22,8 @@ class MonitoringController extends Controller
         foreach ($manufactures as $key => $mft) {
             $monitoringPerProject[$key]['id'] = $mft->id;
             $monitoringPerProject[$key]['no_fppp'] = $mft->FPPP_number;
-            $monitoringPerProject[$key]['tgl_terima_fppp'] = $mft->created_at;
-            $monitoringPerProject[$key]['deadline'] = $mft->retrieval_deadline;
+            $monitoringPerProject[$key]['tgl_terima_fppp'] = $this->ubahTanggal($mft->created_at);
+            $monitoringPerProject[$key]['deadline'] = $this->ubahTanggal($mft->retrieval_deadline);
             $monitoringPerProject[$key]['project'] = $mft->project_name;
             $monitoringPerProject[$key]['luar/dalamKota'] = "-";
             $monitoringPerProject[$key]['warna'] = $mft->color;
@@ -70,14 +70,14 @@ class MonitoringController extends Controller
 
         }
 
-        
 
-        for ($i=0; $i < count($monitoringPerProject); $i++) { 
-            for ($j=0; $j < count($WO); $j++) { 
+
+        for ($i=0; $i < count($monitoringPerProject); $i++) {
+            for ($j=0; $j < count($WO); $j++) {
                 if ($WO[$j]['manufacture_id'] == $monitoringPerProject[$i]['id']) {
 
                     if ($WO[$j]['last_process'] == 'queued') {
-                        
+
                     }elseif ($WO[$j]['last_process'] == 'cutting') {
                         $monitoringPerProject[$i]['cutting'] += 1;
                     }elseif ($WO[$j]['last_process'] == 'machining') {
@@ -114,24 +114,24 @@ class MonitoringController extends Controller
 
         $temp = array_unique(array_column($WO,'kode_op'));
         $unique_kodeOP = array_intersect_key($WO,$temp);
-        
-        
-        
-        for ($l=0; $l < count($monitoringPerProject); $l++) { 
+
+
+
+        for ($l=0; $l < count($monitoringPerProject); $l++) {
             foreach ($unique_kodeOP as $key => $uop) {
                 if ($uop['manufacture_id'] == $monitoringPerProject[$l]['id']) {
                     $monitoringPerProject[$l]['total_op'] += 1;
                 }
             }
         }
-        
-        
-        
+
+
+
        return view('Manufaktur.perproject')->with('monitoringPerProject',$monitoringPerProject);
     }
 
     public function indexPerUnit($id)
-    {   
+    {
         $FPPP = Manufacture::findOrFail($id);
         $manufacture = DB::table('manufactures')
                         ->where('manufactures.id','=',$id)
@@ -142,17 +142,17 @@ class MonitoringController extends Controller
         $MPU = [];
         foreach ($manufacture as $key => $mft) {
             $MPU[$key]['id_manufaktur'] = $mft->id;
-            $MPU[$key]['tanggal_terimafppp'] = $mft->created_at;
+            $MPU[$key]['tanggal_terimafppp'] = $this->ubahTanggal($mft->created_at);
             $MPU[$key]['no_fppp'] = $mft->FPPP_number;
-            $MPU[$key]['deadline'] = $mft->retrieval_deadline;
+            $MPU[$key]['deadline'] = $this->ubahTanggal($mft->retrieval_deadline);
             $MPU[$key]['nama_proyek'] = $mft->project_name;
             $MPU[$key]['aplikator'] = $mft->applicator_name;
             $MPU[$key]['luar/dalamkota'] = "-";
-            $MPU[$key]['upload_bom_alumunium'] = "null";
-            $MPU[$key]['upload_bom_aksesoris'] = "null";
-            $MPU[$key]['upload_wo_alumunium'] = "null";
-            $MPU[$key]['upload_wo_lembaran'] = "null";
-            $MPU[$key]['upload_wo_kaca'] = "null";
+            $MPU[$key]['upload_bom_alumunium'] = "-";
+            $MPU[$key]['upload_bom_aksesoris'] = "-";
+            $MPU[$key]['upload_wo_alumunium'] = "-";
+            $MPU[$key]['upload_wo_lembaran'] = "-";
+            $MPU[$key]['upload_wo_kaca'] = "-";
             $MPU[$key]['warna'] = $mft->color;
             if($mft->status_hold){
                 $MPU[$key]['status_hold'] = $mft->status_hold;
@@ -163,18 +163,18 @@ class MonitoringController extends Controller
             $MPU[$key]['manufacture_id'] = $mft->manufacture_id;
             $MPU[$key]['kode_op'] = $mft->kode_op;
             $MPU[$key]['kode_unit'] = $mft->kode_unit;
-            $MPU[$key]['last_process'] = $mft->last_process;
+            $MPU[$key]['last_process'] = ucwords($mft->last_process);
             $MPU[$key]['tipe_barang'] = $mft->nama_item;
             $MPU[$key]['jenis_kaca'] = $mft->jenis_kaca;
             $MPU[$key]['tanggal_proses_kaca'] = $mft->tanggal_kaca;
             $MPU[$key]['user_kaca'] = $mft->user_kaca;
-            $MPU[$key]['tanggal_cutting'] = $mft->tanggal_cutting;
+            $MPU[$key]['tanggal_cutting'] = $this->ubahTanggal($mft->tanggal_cutting);
             $MPU[$key]['user_cutting'] = $mft->subkon1_cutting;
-            $MPU[$key]['proses_cutting'] = $mft->proses_cutting;
-            $MPU[$key]['keterangan'] = $mft->proses_cutting;
-            $MPU[$key]['tanggal_machining'] = $mft->tanggal_machining;
+            $MPU[$key]['proses_cutting'] = ucwords($mft->proses_cutting);
+            $MPU[$key]['keterangan'] = ucwords($mft->proses_cutting);
+            $MPU[$key]['tanggal_machining'] = $this->ubahTanggal($mft->tanggal_machining);
             $MPU[$key]['user_machining'] = $mft->subkon1_machining;
-            $MPU[$key]['tanggal_assembly'] = $mft->tanggal_assembly3;
+            $MPU[$key]['tanggal_assembly'] = $this->ubahTanggal($mft->tanggal_assembly3);
             $MPU[$key]['user_assembly'] = $mft->subkon1_assembly3;
             $MPU[$key]['subkon_assembly'] = $mft->subkon2_assembly3;
             $MPU[$key]['finish_qc'] = "-";
@@ -187,11 +187,11 @@ class MonitoringController extends Controller
             foreach ($q_c_s as $qc) {
                 if ($qc['work_order_id'] == $MPU[$key]['id_wo']) {
                     if ($qc['status'] == 'REJECTED') {
-                        $MPU[$key]['finish_qc'] = $qc->updated_at;
-                        $MPU[$key]['tanggal_rejected'] = $qc->created_at;
+                        $MPU[$key]['finish_qc'] = $this->ubahTanggal($qc->updated_at);
+                        $MPU[$key]['tanggal_rejected'] = $this->ubahTanggal($qc->created_at);
                     } elseif ($qc['status'] == 'OK!') {
-                        $MPU[$key]['finish_qc'] = $qc->created_at;
-                        $MPU[$key]['tanggal_rejected'] = $qc->updated_at;
+                        $MPU[$key]['finish_qc'] = $this->ubahTanggal($qc->created_at);
+                        $MPU[$key]['tanggal_rejected'] = $this->ubahTanggal($qc->updated_at);
                     }
                     $MPU[$key]['subkon_qc'] = $qc->subkon;
                     $MPU[$key]['alasan_qc'] = $qc->alasan;
@@ -199,10 +199,10 @@ class MonitoringController extends Controller
                     $MPU[$key]['status_qc'] = $qc->status;
                 }
             }
-            $MPU[$key]['tanggal_pack'] = $mft->tanggal_packing;
+            $MPU[$key]['tanggal_pack'] = $this->ubahTanggal($mft->tanggal_packing);
             $MPU[$key]['qty_pack'] = $mft->qty_packing;
             $MPU[$key]['user_pack'] = $mft->lead1_packing;
-            $MPU[$key]['tanggal_kirim'] = $mft->tanggal_kirim;
+            $MPU[$key]['tanggal_kirim'] = $this->ubahTanggal($mft->tanggal_kirim);
             $MPU[$key]['no_surat_jalan'] = $mft->no_surat_jalan;
         }
         //dd($tanggalKirim);
@@ -210,6 +210,10 @@ class MonitoringController extends Controller
             'MPU' => $MPU,
             'FPPP' => $FPPP
         ]);
+    }
+
+    private function ubahTanggal($tanggal) {
+        return date("d/m/Y", strtotime($tanggal) + 25200) . " " . date("H:i", strtotime($tanggal) + 25200);
     }
 
     public function searchPerProject(Request $request){
@@ -270,14 +274,14 @@ class MonitoringController extends Controller
 
         }
 
-        
 
-        for ($i=0; $i < count($monitoringPerProject); $i++) { 
-            for ($j=0; $j < count($WO); $j++) { 
+
+        for ($i=0; $i < count($monitoringPerProject); $i++) {
+            for ($j=0; $j < count($WO); $j++) {
                 if ($WO[$j]['manufacture_id'] == $monitoringPerProject[$i]['id']) {
 
                     if ($WO[$j]['last_process'] == 'queued') {
-                        
+
                     }elseif ($WO[$j]['last_process'] == 'cutting') {
                         $monitoringPerProject[$i]['cutting'] += 1;
                     }elseif ($WO[$j]['last_process'] == 'machining') {
@@ -314,19 +318,19 @@ class MonitoringController extends Controller
 
         $temp = array_unique(array_column($WO,'kode_op'));
         $unique_kodeOP = array_intersect_key($WO,$temp);
-        
-        
-        
-        for ($l=0; $l < count($monitoringPerProject); $l++) { 
+
+
+
+        for ($l=0; $l < count($monitoringPerProject); $l++) {
             foreach ($unique_kodeOP as $key => $uop) {
                 if ($uop['manufacture_id'] == $monitoringPerProject[$l]['id']) {
                     $monitoringPerProject[$l]['total_op'] += 1;
                 }
             }
         }
-        
-        
-        
+
+
+
         return view('Manufaktur.perproject')->with('monitoringPerProject',$monitoringPerProject);
     }
 
