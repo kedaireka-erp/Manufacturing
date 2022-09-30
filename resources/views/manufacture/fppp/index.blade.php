@@ -12,21 +12,21 @@
     </div>
 
     <div class="row">
-        <div class="scontent-wrapper bg-img">
+        <div class="content-wrapper bg-img">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="col-md-6">
                                 <div class="search-field d-none d-md-block mb-4">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group rounded" style="border: solid rgb(184, 184, 184) 1px">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify bg-transparent text-dark"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Cari..." id="fppp-search" name="search">
-              </div>
-            </form>
-          </div>
+                                <form class="d-flex align-items-center h-100" action="#">
+                                    <div class="input-group rounded" style="border: solid rgb(184, 184, 184) 1px">
+                                        <div class="input-group-prepend bg-transparent">
+                                        <i class="input-group-text border-0 mdi mdi-magnify bg-transparent text-dark"></i>
+                                        </div>
+                                        <input type="text" class="form-control bg-transparent border-0" placeholder="Cari..." id="fppp-search" name="search">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <div class="" id="fppp-content">
                             <table class="table table-striped" >

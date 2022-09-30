@@ -692,6 +692,7 @@
                                     </td>
                                     <!-- my css -->
                                     <link rel="stylesheet" href="style.css">
+                                </tr>
                         </table>
                     </div>
                 </div>
@@ -785,3 +786,4 @@ $(document).ready(function() {
 });
 </script>
 @endpush
+

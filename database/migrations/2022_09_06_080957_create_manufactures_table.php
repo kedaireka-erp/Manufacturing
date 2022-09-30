@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string("file_wo_potong_alumunium")->nullable();
             $table->string("production_phase")->nullable();
             $table->string("user_name")->nullable();
+            $table->string("SM")->nullable();
             $table->string("production_time")->nullable();
             $table->string("color")->nullable();
             $table->string("glass_type")->nullable();

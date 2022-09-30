@@ -9,6 +9,7 @@ use App\Http\Controllers\PerProjectController;
 
 use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\ManufactureController;
+use App\Http\Controllers\MonitoringController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,4 +102,12 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-assembly3', 'update_assembly3')->name("update-assembly3");
     Route::post('/create-qc', 'create_qc')->name("create-qc");
     Route::post('/update-packing', 'update_packing')->name("update-packing");
+});
+
+//monitoring
+Route::controller(MonitoringController::class)->group(function(){
+    Route::get('/monitoringperproject','indexPerProject');
+    Route::get('/monitoringperunit/{id}','indexPerUnit');
+    Route::get('/search-project','searchPerProject');
+    Route::get('/search-unit/{id}','searchPerUnit');
 });
