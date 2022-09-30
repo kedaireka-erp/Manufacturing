@@ -53,9 +53,9 @@
                             <thead>
                                 <div class="data-fixed-columns" >
                                 <tr>
-                                    <th width="250px" class="sticky-col first-col"> No. </th>
-                                    <th width="250px" class="sticky-col second-col"> Kode Op </th>
-                                    <th width="250px" class="sticky-col third-col"> Kode Unit </th>
+                                    <th width="250px" class="sticky-col first-col bg-white"> No. </th>
+                                    <th width="250px" class="sticky-col second-col bg-white"> Kode Op </th>
+                                    <th width="250px" class="sticky-col third-col bg-white"> Kode Unit </th>
                                     <th width="250px" class="long"> Item </th>
                                     <th width="250px" class="long"> Glass Specification </th>
                                     <th width="250px" class="long"> Warna </th>
@@ -74,12 +74,13 @@
                             <tbody>
                                 @foreach ($workOrders as $no => $unit)
                                 <tr class=" ">
-                                    <td class="headcol sticky-col first-col"> {{ $no+1 }} </td>
-                                    <td class="headcol sticky-col second-col"> {{ $unit->kode_op }} </td>
-                                    <td class="headcol sticky-col third-col"> {{ $unit->kode_unit }} </td>
+                                    <td class="headcol sticky-col first-col bg-white"> {{ $no+1 }} </td>
+                                    <td class="headcol sticky-col second-col bg-white"> {{ $unit->kode_op }} </td>
+                                    <td class="headcol sticky-col third-col bg-white"> {{ $unit->kode_unit }} </td>
                                     <td class="long"> {{ $unit->nama_item }} </td>
-                                    <td class="long"> {{ $unit->jenis_kaca }} <br> <br> <a href="" class="d btn btn-success border-dark-rounded ">OK!</a> </td>
+                                    <td class="long"> {{ $unit->jenis_kaca }} <br> <br> <button type="submit" class="d btn btn-success border-dark-rounded">OK!</button> </td>
                                     <td class="long"> {{ $unit->warna }} </td>
+                                    {{-- glass spesification button --}}
                                     <!-- cutting button -->
                                     <td class="long">
                                         @if ($unit->tanggal_cutting == null)
@@ -125,7 +126,7 @@
                                         <br>
                                         <button type="button" class=" btn btn-gradient-success btn-sm button mt-2 col-12 pe-none">{{ strtoupper($unit->proses_cutting) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- Machining --}}
@@ -166,7 +167,7 @@
                                         <br>
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         <br>
                                         <button type="button" class="btn btn-transparent btn-sm button col-12 mt-2 pe-none"></button>
                                         @endif
@@ -221,7 +222,7 @@
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly1) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- assembly 2 --}}
@@ -273,7 +274,7 @@
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- assembly 3 --}}
@@ -325,7 +326,7 @@
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     <td class="long">
@@ -345,7 +346,7 @@
                                             <input type="hidden" name="lead2_packing" value="Rhey">
                                             <div class="dropdown">
                                                 <select
-                                                    class="form-select  bg-transparent text-center search"
+                                                    class="form-select bg-transparent text-center search"
                                                     name="subkon1_packing" id="" style="border-color: black;">
                                                     <option disabled selected>Subkon 1</option>
                                                     @foreach ($subkons as $subkon)
@@ -365,11 +366,10 @@
                                             </div>
                                             <div class="hy form-group bg-transparent px-1">
                                                 <label for="Quantity"></label>
-                                                <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-4 border-opacity-10 "
-                                                    id="Quantity" name="qty_packing"  placeholder="Quantity"
-                                                >
-                                            </div>
-                                            <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                                <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-3 border-opacity-10 "
+                                                    id="Quantity" name="qty_packing" placeholder="Quantity">
+                                                <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>    
+                                            </div>  
                                         </form>
                                         @else
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
@@ -377,7 +377,7 @@
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
                                         <div class="dropdown">
                                         </div> <button type="button" class="form-control text-center pe-none bg-secondary bg-opacity-50 mt-2"><b>{{ $unit->qty_packing }}</b></button>
-                                        <a href="#" class=" btn btn-gradient-info pe-none disabled mt-2" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
 
