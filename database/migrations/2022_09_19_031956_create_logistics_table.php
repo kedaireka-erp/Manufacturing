@@ -6,19 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('logistic', function (Blueprint $table) {
+        Schema::create('logistics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("fppp_id")->constrained("f_p_p_p_s")->onUpdate("cascade");
+            $table->foreignId("fppp_id")->constrained("manufactures")->onUpdate("cascade");
             $table->string('no_logistic')->nullable();
-            $table->date('tgl_input')->nullable();
-            $table->date('tgl_berangkat')->nullable();
+            $table->timestamp('tgl_input')->nullable();
+            $table->timestamp('tgl_berangkat')->nullable();
             $table->string('driver')->nullable();
             $table->string('no_polisi')->nullable();
             $table->text('alamat')->nullable();
@@ -27,13 +22,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('logistic');
+        Schema::dropIfExists('logistics');
     }
 };
