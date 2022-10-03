@@ -94,14 +94,6 @@ Route::controller(ManufactureController::class)->group(function () {
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
-// route surat jalan sementara
-Route::get('/surat-jalan', function () {
-    return view('logistic.index');
-});
-Route::get('/surat-jalan/create', function () {
-    return view('logistic.create');
-})->name('logistic_create');
-route::get("/perproject", [PerProjectController::class, "index"]);
 
 route::get("/detailfppp", [DetailfpppController::class, "index"]);
 route::get("/perunit", [PerunitController::class, "index"]);
