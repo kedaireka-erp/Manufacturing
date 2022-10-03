@@ -11,36 +11,40 @@ class SubkonController extends Controller
     public function index()
     {
         $subkons = Subkon::paginate(5);
-        
-        return view('',compact('subkons'));
+
+        return view('master.subkon.index',compact('subkons'));
     }
     public function create()
     {
-        return view('');
+        return view('master.subkon.create');
     }
     public function store(Request $request)
     {
+        $messages = [
+            'required' => ':attribute wajib diisi!',
+            'unique' => ':attribute sudah digunakan!',
+            'numeric' => ':attribute harus angka!'
+        ];
         $request->validate([
-            'employee_number' => 'required',
+            'employee_number' => 'required|unique:subkons|numeric',
             'subkon_name' => 'required',
-            'lead_name' => 'required'
-        ]);
+        ],$messages);
 
         $subkon = new Subkon();
 
         $subkon->create([
             'employee_number' => $request->employee_number,
             'subkon_name' => $request->subkon_name,
-            'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
-        return redirect('');
+        toast("Data Berhasil Ditambahkan","success");
+        return redirect('/subkons');
     }
     public function edit($id)
     {
         $subkon = Subkon::findOrFail($id);
 
-        return view('',compact('subkon'));
+        return view('master.subkon.edit',compact('subkon'));
     }
     public function update(Request $request,$id)
     {
@@ -49,55 +53,62 @@ class SubkonController extends Controller
         $subkon->update([
             'employee_number' => $request->employee_number,
             'subkon_name' => $request->subkon_name,
-            'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
-        return redirect('');
+        toast("Data Berhasil Diupdate","success");
+        return redirect('/subkons');
     }
 
     //soft delete
     public function destroy($id)
     {
-        $lead = Subkon::findOrFail($id);
-        $lead->delete();
-
-        return redirect('');
+        $subkon = Subkon::findOrFail($id);
+        $subkon->delete();
+        toast("Data Berhasil Dihapus","error");
+        return redirect('/subkons');
     }
     public function trash()
     {
-        $leads = Subkon::onlyTrashed()->paginate(5);
+        $subkons = Subkon::onlyTrashed()->paginate(5);
 
-        return view('',compact('leads'));
+        return view('',compact('subkons'));
     }
     public function restore($id)
     {
-        $lead = Subkon::onlyTrashed()->findOrFail($id);
-        $lead->restore();
+        $subkon = Subkon::onlyTrashed()->findOrFail($id);
+        $subkon->restore();
 
-        return to_route('subkons.index')->with('success','lead restore successfully');
+        return to_route('master.subkon.index')->with('success','lead restore successfully');
     }
-    
+
 
     //search with ajax
     public function search(Request $request)
     {
-        
+
         if ($request->ajax()) {
             $output="";
-         
-            $subkons = DB::table('subkons')->where('employee_number','LIKE','%'.$request->search."%")->paginate(6);
+
+            $subkons = DB::table('subkons')->where('deleted_at',null)->Where('subkon_name','LIKE','%'.$request->search."%")->paginate(6);
 
             if ($subkons) {
                 foreach ($subkons as $key => $subkon) {
-                    $output.='<tr>'.
+                    if ($subkon->is_active == 1) {
+                        $is_active = 'Active';
+                        $warna = "success";
+                    }else{
+                        $is_active = 'Inactive';
+                        $warna = "danger";
+                    }
+
+                    $output.='<tr class="text-center">'.
                     '<td>'.$subkon->employee_number.'</td>'.
                     '<td>'.$subkon->subkon_name.'</td>'.
-                    '<td>'.$subkon->lead_name.'</td>'.
-                    '<td>'.$subkon->is_active.'</td>'.
-                    
+                    '<td><label class="badge badge-'.$warna.'">'.$is_active.'</label></td>'.
+
                     '<td>
-                        <a class="btn btn-success" style="font-size: 10px" href="/edit/'.$subkon->id.'">Edit</a>
-                        <a class="btn btn-danger" style="font-size: 10px" href="/deleteLeads/'.$subkon->id.'">Delete</a>
+                            <a class="btn btn-success" style="font-size: 10px" href="/subkon/edit/'.$subkon->id.'">Ubah</a>
+                            <button type="button" class="btn btn-danger" onclick="handleDelete('. $subkon->id.')" >Hapus</button>
                     </td>'.
                     '</tr>';
                 }

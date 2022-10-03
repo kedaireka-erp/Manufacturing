@@ -146,7 +146,8 @@
                                 <p class="text-center table-description">Belum ada barang yang ditambahkan</p>
                             </div>
                             <div class="table-btn d-flex justify-content-end mt-5">
-                                <button class="btn btn-dark d-flex align-items-center">Kembali</button>
+                                <a href="{{ route('logistic_index') }}"
+                                    class="btn btn-dark d-flex align-items-center">Kembali</a>
                                 <button class="btn btn-info d-flex align-items-center ms-4">Simpan
                                     <i class="mdi mdi-content-save ms-1"></i>
                                 </button>
@@ -216,7 +217,8 @@
                             </div>
                             <div class="modal-footer p-0 border-top-0">
                                 <div class="d-flex justify-content-end">
-                                    <button class="modal-btn btn btn-dark d-flex align-items-center">Kembali</button>
+                                    <button class="modal-btn btn btn-dark d-flex align-items-center" aria-label="Close"
+                                        data-bs-dismiss="modal">Kembali</button>
                                     <button class="modal-btn btn btn-info d-flex align-items-center ms-4">Simpan
                                         <i class="mdi mdi-content-save ms-1"></i>
                                     </button>
@@ -225,6 +227,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Modal -->
             </div>
         </div>
     </div>
