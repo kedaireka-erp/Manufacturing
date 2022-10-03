@@ -19,4 +19,9 @@ class WorkOrder extends Model
     {
         return $this->hasMany(\App\Models\QC::class);
     }
+
+    public function logistic()
+    {
+        return $this->belongsToMany(Logistic::class, 'logistic_work_order', 'work_order_id', 'logistic_id');
+    }
 }
