@@ -92,35 +92,6 @@
                             <td>{{ $mPP['unit_terkirim'] }}</td>
                             <td>{{ $mPP['tgl_kirim_awal'] }}</td>
                             <td>{{ $mPP['tgl_kirim_akhir'] }}</td>
-                            <th class="sticky-col first-col bg-white">No.</th>
-                            <th width="500px" class="sticky-col second-col bg-white">No. FPPP</th>
-                            <th width="500px" class="sticky-col third-col bg-white">Tgl. Terima FPPP</th>
-                            <th>Deadline</th>
-                            <th>Project</th>
-                            <th>Luar/Dalam Kota</th>
-                            <th>Warna</th>
-                            <th>Sales</th>
-                            <th>SM</th>
-                            <th>No. Co/Quo</th>
-                            <th>Total OP</th>
-                            <th>Total Unit</th>
-                            <th>Unit Hold/Revisi/Cancel</th>
-                            <th>Proses Alumunium</th>
-                            <th>Proses Aksesoris</th>
-                            <th>Proses Kaca</th>
-                            <th>Proses Lembaran</th>
-                            <th>Cutting</th>
-                            <th>Machining</th>
-                            <th>Assembly</th>
-                            <th>QC</th>
-                            <th>Packing</th>
-                            <th>Delivery</th>
-                            <th>Acc Pengiriman Finance</th>
-                            <th>Unit Belum Kirim</th>
-                            <th>Unit Terkirim</th>
-                            <th>Tgl Kirim Awal</th>
-                            <th>Tgl Kirim Akhir</th>
-                            <th>Status</th>
                         </tr>
                         <tr class="text-center">
                             <td class="sticky-col first-col bg-white">1</td>
@@ -190,7 +161,6 @@
                             </td>
                         </tr>
                         @endforeach
-                    </table>
                     </table>
                 </div>
             </div>
