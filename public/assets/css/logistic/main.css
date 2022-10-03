@@ -41,11 +41,14 @@
     font-size: 14px;
     font-weight: 700;
     text-align: center;
+    /* white-space: normal; */
 }
 
 .main-panel .content-wrapper .table td {
     font-size: 14px;
     font-family: "Ubuntu-Regular";
+    /* white-space: normal; */
+
 }
 
 .main-panel .content-wrapper .table td .btn {
@@ -58,5 +61,10 @@
 }
 
 /* End Table */
+
+.pagination .small.text-muted {
+    margin-bottom: 0;
+    margin-right: 15px;
+}
 
 /* END MAIN PANEL */
