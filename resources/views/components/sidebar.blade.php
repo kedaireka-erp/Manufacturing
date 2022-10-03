@@ -19,7 +19,7 @@
                             <i class="mdi mdi-radiobox-blank"></i>Surat Jalan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="/monitoringperproject">
+                        <a class="nav-link" onclick="subMenuClick(this)" href="/monitoring">
                             <i class="mdi mdi-radiobox-blank"></i>Monitoring</a>
                     </li>
                 </ul>
