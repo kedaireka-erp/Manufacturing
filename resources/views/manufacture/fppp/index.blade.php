@@ -12,21 +12,21 @@
     </div>
 
     <div class="row">
-        <div class="scontent-wrapper bg-img">
+        <div class="content-wrapper bg-img">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="col-md-6">
                                 <div class="search-field d-none d-md-block mb-4">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group rounded" style="border: solid rgb(184, 184, 184) 1px">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify bg-transparent text-dark"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Cari..." id="fppp-search" name="search">
-              </div>
-            </form>
-          </div>
+                                <form class="d-flex align-items-center h-100" action="#">
+                                    <div class="input-group rounded" style="border: solid rgb(184, 184, 184) 1px">
+                                        <div class="input-group-prepend bg-transparent">
+                                        <i class="input-group-text border-0 mdi mdi-magnify bg-transparent text-dark"></i>
+                                        </div>
+                                        <input type="text" class="form-control bg-transparent border-0" placeholder="Cari..." id="fppp-search" name="search">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <div class="" id="fppp-content">
                             <table class="table table-striped" >
@@ -51,12 +51,12 @@
                                             data-bs-id="{{ $fppp->id }}"
                                             data-bs-title="{{ $fppp->project_name }}"
                                             data-bs-base-path="{{ asset("storage/") }}"
-                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_alumunium}")." ".asset("storage/{$fppp->file_wo_kaca}")}}" > Import
+                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
                                         </button>
-                                        <a href="{{ route("manufactures.show", $fppp->id) }}" class="btn btn-info btn-sm"
+                                        <a href="{{ route("manufactures.show",$fppp->id) }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >
-                                        <a href="" class="btn btn-primary btn-sm"
+                                        <a href="{{ route("manufactures.detail",$fppp) }}" class="btn btn-primary btn-sm"
                                             >Detail</a
                                         >
                                     </td>
@@ -112,17 +112,17 @@
                             aria-label="Default select example"
                             name="type"
                         >
+                            <option value="detail_wo">
+                                Detail WO(.xlsx)
+                            </option>
                             <option value="bom_alumunium">
-                                BOM Alumunium
+                                BOM Alumunium(.xlsx)
                             </option>
                             <option value="bom_aksesoris">
-                                BOM Aksesoris
+                                BOM Aksesoris(.xlsx)
                             </option>
-                            <option value="wo_alumunium">
-                                WO Alumunium
-                            </option>
-                            <option value="wo_kaca">
-                                WO Kaca
+                            <option value="wo_potong_alumunium">
+                                WO Potong Alumunium(.pdf)
                             </option>
                         </select>
                     </div>
@@ -153,6 +153,9 @@
                                 </button>
                             </span>
                         </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <a href="{{ asset("template/document/template.xlsx") }}" class="text-decoration-none">Unduh Template File Detail WO</a>
                     </div>
                 </div>
 
