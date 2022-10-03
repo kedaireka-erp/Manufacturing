@@ -81,6 +81,7 @@ route::get("/perproject", [PerProjectController::class, "index"]);
 route::get("/detailfppp", [DetailfpppController::class, "index"]);
 route::get("/perunit", [PerunitController::class, "index"]);
 Route::controller(WorkOrderController::class)->group(function () {
+    Route::post('/update-kaca', 'update_kaca')->name("update-kaca");
     Route::post('/update-cutting', 'update_cutting')->name("update-cutting");
     Route::post('/update-machining', 'update_machining')->name("update-machining");
     Route::post('/update-assembly1', 'update_assembly1')->name("update-assembly1");

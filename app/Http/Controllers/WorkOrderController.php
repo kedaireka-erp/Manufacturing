@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 
 class WorkOrderController extends Controller
 {
+    public function update_kaca(Request $request)
+    {
+        $unit = WorkOrder::findOrFail($request->id);
+        $unit->update([
+            "tanggal_kaca"  => Carbon::now() ?? $unit->tanggal_kaca,
+            "user_kaca"     => "alice"
+        ]);
+        toast("Data kaca ".$unit->kode_unit." berhasil diupdate", "success");
+        return redirect("/manufactures/". $unit->manufacture_id);
+    }
+
     public function update_cutting(Request $request)
     {
         $unit = WorkOrder::findOrFail($request->id);
@@ -114,7 +125,7 @@ class WorkOrderController extends Controller
     {
         $unit = WorkOrder::findOrFail($request->id);
         $unit->update([
-            "status_hold"   => $request->process_assembly3 ?? $unit->process_assembly3,
+            "status_hold"   => $request->keterangan ?? $unit->keterangan,
         ]);
         toast("Data keterangan ".$unit->kode_unit."  berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
