@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\PerunitController;
@@ -67,8 +68,11 @@ Route::controller(SubkonController::class)->group(function () {
 //     return view("items.index");
 // });
 
-route::get("/perproject", function () {
-    return view("manufaktur.perproject");
+// Route Surat Jalan (Logistic)
+Route::controller(LogisticController::class)->group(function () {
+    Route::get('/logistic', 'index')->name('logistic_index');
+    Route::get('/logistic/create', 'create')->name('logistic_create');
+    Route::get('/logistic/show', 'show')->name('logistic_show');
 });
 
 
@@ -103,6 +107,7 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/create-qc', 'create_qc')->name("create-qc");
     Route::post('/update-packing', 'update_packing')->name("update-packing");
 });
+
 
 //monitoring
 Route::controller(MonitoringController::class)->group(function(){

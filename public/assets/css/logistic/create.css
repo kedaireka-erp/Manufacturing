@@ -1,0 +1,179 @@
+.main-panel .card-header__wrapper {
+    margin-bottom: 28px !important;
+}
+
+/* add form */
+
+.add-form {
+    margin-bottom: 49px;
+}
+
+.content-wrapper .add-form .form-row input[type="date"],
+.content-wrapper .add-form .form-row input {
+    font-weight: 400;
+    font-family: "Ubuntu-Regular";
+    font-size: 16px;
+}
+
+.content-wrapper .add-form .form-row input,
+.content-wrapper .add-form .form-row select {
+    padding-left: 17px !important;
+}
+
+.content-wrapper .add-form .form-row input::placeholder {
+    color: rgba(52, 58, 64, 0.4) !important;
+}
+
+.content-wrapper .add-form .form-row input {
+    max-height: 45px !important;
+    height: 100% !important;
+}
+
+.content-wrapper .add-form .form-row #quotation {
+    border: 1px solid rgba(52, 58, 64, 0.3);
+    font-size: 16px;
+    /* padding-left: 17px !important; */
+}
+
+.content-wrapper .add-form .form-row .form-wrap {
+    margin-bottom: 20px !important;
+}
+
+.content-wrapper .add-form .form-row select {
+    font-family: "Ubuntu-Regular";
+    height: 45px;
+    color: var(--font-primary) !important;
+}
+
+.main-panel .card-body .form-row label {
+    margin-bottom: 10px;
+}
+
+.content-wrapper .add-form .form-row textarea {
+    padding: 12px 17px;
+    line-height: 15px;
+    height: 8.4375rem;
+}
+
+.content-wrapper .add-form .form-row input,
+.content-wrapper .add-form .form-row select,
+.content-wrapper .add-form .form-row textarea {
+    border: 1px solid rgba(52, 58, 64, 0.3);
+    border-radius: 5px;
+}
+
+
+
+/* end add form */
+
+/* table */
+.content-wrapper .table-list h4 {
+    width: fit-content;
+}
+
+.content-wrapper .table-list .table-list__subtitle {
+    font-size: 16px;
+}
+
+.content-wrapper .table-list .card-header__wrapper .btn.btn-info {
+    padding: 10px 23px;
+}
+
+.content-wrapper .table-list tr th {
+    font-weight: 700;
+}
+
+.content-wrapper .table-list .table-btn .btn,
+.content-wrapper .modal-content .modal-footer .modal-btn {
+    font-family: "Ubuntu-Medium";
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 12px;
+    height: 38px;
+}
+
+.content-wrapper .table-list .table-btn .btn i {
+    font-size: 20px;
+}
+
+.content-wrapper .table-description {
+    color: var(--font-secondary);
+}
+
+/* end table */
+
+/* modal */
+.content-wrapper .modal-dialog {
+    max-width: 804px;
+    width: 100%;
+
+}
+
+.content-wrapper .modal-content .modal-body {
+    font-family: "Ubuntu-Regular";
+}
+
+.content-wrapper .modal-content {
+    padding: 32px;
+    background-color: #fff;
+}
+
+.content-wrapper .modal-content .btn-close {
+    background-color: rgba(156, 159, 166, 0.25);
+    max-width: 32px;
+    padding: 8px;
+}
+
+.content-wrapper .modal-content .modal-body>div {
+    margin-bottom: 12px;
+}
+
+.content-wrapper .modal-content .modal-body .form-select option,
+.content-wrapper .modal-content .modal-body .form-select {
+    color: var(--font-primary) !important;
+    /* font-family: "Ubuntu-Regular"; */
+}
+
+.content-wrapper .modal-content .modal-body .form-control {
+    padding: 12px;
+    font-size: 16px;
+}
+
+
+.content-wrapper .modal-content .modal-body .form-control {
+    border: 1px solid rgba(52, 58, 64, 0.3);
+    border-radius: 5px;
+}
+
+.content-wrapper .modal-content .modal-body label {
+    margin-bottom: 12px;
+    font-family: "Ubuntu-Medium";
+}
+
+.content-wrapper .modal-content .modal-body .size input {
+    max-width: 80px;
+    width: 100%;
+    text-align: center;
+}
+
+.content-wrapper .modal-content .modal-body .opener input {
+    max-width: 92px;
+    width: 100% !important;
+}
+
+.content-wrapper .modal-content .modal-body .qty input {
+    max-width: 80px;
+    width: 100% !important;
+}
+
+.content-wrapper .modal-content .modal-body .type input,
+.content-wrapper .modal-content .modal-body .status input {
+    max-width: 120px;
+    width: 100% !important;
+}
+
+.content-wrapper .modal-content .modal-body .description textarea {
+    line-height: 15px;
+}
+
+/* end modal */
