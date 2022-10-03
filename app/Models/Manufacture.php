@@ -22,4 +22,9 @@ class Manufacture extends Model
     {
         return $this->hasMany("work_order");
     }
+
+    public function logistic()
+    {
+        return $this->hasMany(Logistic::class, 'fppp_id', 'id');
+    }
 }

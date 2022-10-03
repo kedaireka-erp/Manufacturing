@@ -13,4 +13,9 @@ class WorkOrder extends Model
     {
         return $this->belongsTo("manufactures", "manufacture_id", "id");
     }
+
+    public function logistic()
+    {
+        return $this->belongsToMany(Logistic::class, 'logistic_work_order', 'work_order_id', 'logistic_id');
+    }
 }
