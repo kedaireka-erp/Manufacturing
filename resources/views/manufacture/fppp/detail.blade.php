@@ -13,7 +13,7 @@
                             <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-info btn-fw">Download File <i class="mdi mdi-download"></i></button>
                             </div>
-                            <h2>DETAIL FPPP No. {{ $manufacture->FPPP_number }}prduksi tahap 1</h2> 
+                            <h2>DETAIL FPPP No. {{ $manufacture->fppp_no }} prduksi tahap 1</h2> 
                             <table class="table table-bordered table-hover"> 
                             <thead> 
                             </thead> 
@@ -26,29 +26,29 @@
                                 </tr> 
                                 <tr> 
                                     <td>Aplikator</td> 
-                                    <td>{{ $manufacture->applicator_name }}</td> 
+                                    <td>{{ $manufacture->quotation->Aplikator->aplikator }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Nama Proyek</td> 
-                                    <td>{{ $manufacture->project_name }}</td> 
+                                    <td>{{ $manufacture->quotation->DataQuotation->nama_proyek}}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Alamat Proyek</td> 
-                                    <td>Jl. Pegangsaan Timur 36 Jakarta Timur</td> 
+                                    <td>{{ $manufacture->quotation->DataQuotation->alamat_proyek}}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Sales/Site Manager</td> 
-                                    <td>Wahyu</td>
+                                    <td>Wahyu(Dummy)</td>
                                     <td>Koordinator</td> 
-                                    <td>Clivia</td>  
+                                    <td>Clivia(Dummy)</td>  
                                 </tr> 
                                 <tr> 
                                     <td>Status Order</td> 
-                                    <td>Baru</td> 
+                                    <td>{{ $manufacture->order_status }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Waktu Prodeksi</td> 
-                                    <td>30 Hari</td> 
+                                    <td>{{ $manufacture->production_time }}</td> 
                                 </tr>   
                             </tbody> 
                             <table><br> 
@@ -61,27 +61,27 @@
                             <tbody> 
                                 <tr> 
                                     <td>Gambar</td> 
-                                    <td>4 Lembar</td> 
+                                    <td>{{ $workOrders->count() }} Lembar</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Kode Item</td> 
-                                    <td>#AW4, AW5, AW6, AW7</td> 
+                                    <td>#AW4, AW5, AW6, AW7 Dummy</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Warna</td> 
-                                    <td>Allure Black Matte</td> 
+                                    <td>{{ $manufacture->color }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Kaca</td> 
-                                    <td>Exclude</td> 
+                                    <td>{{ $manufacture->glass }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Jenis Kaca</td> 
-                                    <td>Clear 6mm & Tempered 8mm</td> 
+                                    <td>{{ $manufacture->glass_type }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Note</td> 
-                                    <td>Minta urgent, 45 hari, deal proyek dari bulan September 2022</td> 
+                                    <td>{{ $manufacture->note }}</td> 
                                 </tr> 
                             </tbody> 
                             <table><br> 
@@ -94,35 +94,35 @@
                             <tbody> 
                                 <tr> 
                                     <td>Jenis Pengiriman</td> 
-                                    <td>Luar Kota</td> 
+                                    <td>Luar Kota(Ini tidak jadi?)</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Deadline</td> 
-                                    <td>4 September 2022</td> 
+                                    <td>{{ $manufacture->retrieval_deadline }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Ditujukan Kepada</td> 
-                                    <td>Andi</td> 
+                                    <td>Andi(Dummy)</td> 
                                 </tr> 
                                 <tr> 
                                     <td>No. Telepon Tujuan</td> 
-                                    <td>089234567890</td> 
+                                    <td>089234567890(dummy)</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Nama & Alamat Ekspedisi</td> 
-                                    <td>Andi, Jl. Kebun Jeruk 36 Jakarta Timur</td> 
+                                    <td>Andi, Jl. Kebun Jeruk 36 Jakarta Timur (Dummy)</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Pembayaran Ekspedisi</td> 
-                                    <td>Tidak</td> 
+                                    <td>{{ $manufacture->delivery_to_expedition }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Penggunaan Peti</td> 
-                                    <td>Tidak</td> 
+                                    <td>{{ $manufacture->box_usage }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Penggunaan Sealent</td> 
-                                    <td>Tidak dikirim, Warna tidak sesuai standar</td> 
+                                    <td>{{ $manufacture->sealant_usage }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Note</td> 

@@ -2,13 +2,43 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Znck\Eloquent\Traits\BelongsToThrough;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class FPPP extends Model
+class Fppp extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    protected $table = "fppps";
     protected $guarded = ["id"];
+    // protected $fillable = [
+    //     "fppp_no",
+    //     "number",
+    //     "fppp_type",
+    //     "production_phase",
+    //     "quotation_id",
+    //     "order_status",
+    //     "fppp_revisino",
+    //     "fppp_keterangan",
+    //     "production_time",
+    //     "color",
+    //     "glass",
+    //     "glass_type",
+    //     "retrieval_deadline",
+    //     "box_usage",
+    //     "sealant_usage",
+    //     "delivery_to_expedition",
+    //     "note",
+    //     "attachment",
+    //     "user_id"
+    // ];
+
+    protected $dates = ['created_at'];
 
     public function scopeSearch($query, array $filters)
     {
@@ -16,5 +46,116 @@ class FPPP extends Model
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('FPPP_number', 'like', '%' . $search . '%')->orWhere('project_name', 'like', '%' . $search . '%')->orWhere('applicator_name', 'like', '%' . $search . '%');
         });
+    }
+
+    protected function number(): Attribute
+    {
+        return Attribute::make(
+            set: function ($value) {
+                $now_month = Carbon::now()->format('m');
+                $last_data_month = Fppp::latest()->first() ? Fppp::latest()->first()->created_at->format('m') : 0;
+
+                if ($now_month == $last_data_month) {
+                    $num = Fppp::latest()->first()->number;
+                    return $num + 1;
+                }
+                return 1;
+            },
+        );
+    }
+
+    protected function deliveryToExpedition(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if ($value == 0) {
+                    return "tidak";
+                } else {
+                    return "ya";
+                }
+            }
+        );
+    }
+    protected function sealantUsage(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if ($value == 0) {
+                    return "tidak";
+                } else {
+                    return "ya";
+                }
+            }
+        );
+    }
+
+    protected function boxUsage(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if ($value == 0) {
+                    return "tidak";
+                } else {
+                    return "ya";
+                }
+            }
+        );
+    }
+
+    protected function orderStatus(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if ($value == 'baru') {
+                    return "baru";
+                }
+                if ($value == 'tambahan') {
+                    return "tambahan";
+                }
+                if ($value == 'revisino') {
+                    return "revisi";
+                }
+                if ($value == 'lainlain') {
+                    return "lain-lain";
+                }
+            }
+        );
+    }
+
+    protected function glass(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if ($value == 'included') {
+                    return "included";
+                }
+                if ($value == 'excluded') {
+                    return "excluded";
+                }
+                if ($value == 'included_excluded') {
+                    return "included & excluded";
+                }
+            }
+        );
+    }
+
+    public function quotation()
+    {
+        return $this->belongsto(Quotation::class);
+    }
+
+    public function files()
+    {
+        return $this->hasMany(AttachmentFppp::class, "fppp_id", "id");
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function dataQuotation()
+    {
+        return $this->belongsToThrough(ProyekQuotation::class, Quotation::class);
     }
 }

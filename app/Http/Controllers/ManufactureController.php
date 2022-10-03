@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fppp;
 use App\Models\Manufacture;
 use App\Models\Subkon;
 use App\Models\WorkOrder;
@@ -15,7 +16,7 @@ class ManufactureController extends Controller
     //
     public function index()
     {
-        $all_fppp = Manufacture::latest("updated_at");
+        $all_fppp = Fppp::with(["quotation", "quotation.DataQuotation"])->where("acc_produksi", "ACCEPT")->latest("updated_at");
 
         return view("manufacture.fppp.index", [
             "all_fppp" => $all_fppp->search(request(["search"]))->paginate(5)
@@ -38,7 +39,7 @@ class ManufactureController extends Controller
             return
                 redirect("manufactures")->with("failed", "File format untuk {$request->type} harus ." . $mimes);
         }
-        $fppp = Manufacture::find($request->id);
+        $fppp = Fppp::find($request->id);
         if ($fppp["file_" . $request->type] != null) {
             Storage::delete($fppp["file_" . $request->type]);
         }
@@ -47,7 +48,7 @@ class ManufactureController extends Controller
             $excel_data = $this->read_excel(Storage::path($file_path));
             foreach ($excel_data as $row) {
                 WorkOrder::create([
-                    "manufacture_id" => $request->id,
+                    "fppp_id" => $request->id,
                     "kode_op" => $row[0],
                     "kode_unit" => $row[1],
                     "nama_item" => $row[2],
@@ -82,21 +83,23 @@ class ManufactureController extends Controller
     //     echo "</table>";
     public function show($id)
     {
-        $manufacture    = Manufacture::findOrFail($id);
-        $workOrders     = WorkOrder::where("manufacture_id", $manufacture->id)->get();
+        $manufacture    = Fppp::findOrFail($id);
+        $workOrders     = WorkOrder::where("fppp_id", $manufacture->id)->get();
         $subkons        = Subkon::where("is_active", 1)->get();
         return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons"));
     }
 
-    public function detail(Manufacture $manufacture)
+    public function detail(Fppp $manufacture)
     {
-        return view("manufacture.fppp.detail", ["manufacture" => $manufacture]);
+        $workOrders     = WorkOrder::where("fppp_id", $manufacture->id)->get();
+
+        return view("manufacture.fppp.detail", ["manufacture" => $manufacture, "workOrders" => $workOrders]);
     }
 
     public function delete(Request $request)
     {
-        $fppp = Manufacture::find($request->id);
-        $work_orders = WorkOrder::where("manufacture_id", $fppp->id)->get();
+        $fppp = Fppp::find($request->id);
+        $work_orders = WorkOrder::where("fppp_id", $fppp->id)->get();
 
         foreach ($work_orders as $wo) {
             $wo->delete();
