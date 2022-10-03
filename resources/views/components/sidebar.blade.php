@@ -2,7 +2,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item px-0">
-            <a class="nav-link px-4 mb-2" onclick="navClick(this)" data-bs-toggle="collapse" href="#ui-basic"
+            <a class="nav-link px-4 mb-2 {{ Request::is('manufactures','monitoringperproject','logistic*') ? 'nav-link--active' : ''  }}"  data-bs-toggle="collapse" href="#ui-basic"
                 aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Manufaktur</span>
                 <i class="menu-arrow"></i>
@@ -11,22 +11,37 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="/manufactures">
-                            <i class="mdi mdi-radiobox-blank"></i>FPPP</a>
+                        <a class="nav-link {{ Request::is('manufactures') ? 'sub-menu--active' : ''  }}"  href="/manufactures">
+                            @if (Request::is('manufactures'))
+                            <i class="mdi mdi-radiobox-marked"></i>
+                            @else
+                            <i class="mdi mdi-radiobox-blank"></i>
+                            @endif
+                            FPPP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="#">
-                            <i class="mdi mdi-radiobox-blank"></i>Surat Jalan</a>
+                        <a class="nav-link {{ Request::is('logistic') ? 'sub-menu--active' : ''  }}" href="#">
+                            @if (Request::is('logistic'))
+                            <i class="mdi mdi-radiobox-marked"></i>
+                            @else
+                            <i class="mdi mdi-radiobox-blank"></i>
+                            @endif
+                            Surat Jalan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="/monitoringperproject">
-                            <i class="mdi mdi-radiobox-blank"></i>Monitoring</a>
+                        <a class="nav-link {{ Request::is('monitoringperproject') ? 'sub-menu--active' : ''  }}" href="/monitoringperproject">
+                            @if (Request::is('monitoringperproject'))
+                            <i class="mdi mdi-radiobox-marked"></i>
+                            @else
+                            <i class="mdi mdi-radiobox-blank"></i>
+                            @endif
+                            Monitoring</a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item px-0">
-            <a class="nav-link px-4 mb-2" onclick="navClick(this)" data-bs-toggle="collapse" href="#general-pages"
+            <a class="nav-link px-4 mb-2 {{ Request::is('lead*','subkon*') ? 'nav-link--active' : ''  }}" data-bs-toggle="collapse" href="#general-pages"
                 aria-expanded="false" aria-controls="general-pages">
                 <h2 class="menu-title text-white mb-0">Master</h2>
                 <i class="menu-arrow text-white"></i>
@@ -35,12 +50,22 @@
             <div class="collapse" id="general-pages">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="/leads">
-                            <i class="mdi mdi-radiobox-blank"></i>Lead</a>
+                        <a class="nav-link {{ Request::is('lead*') ? 'sub-menu--active' : ''  }}" href="/leads">
+                            @if (Request::is('lead*'))
+                            <i class="mdi mdi-radiobox-marked"></i>
+                            @else
+                            <i class="mdi mdi-radiobox-blank"></i>
+                            @endif
+                            Lead</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="/subkons">
-                            <i class="mdi mdi-radiobox-blank"></i>Subkon</a>
+                        <a class="nav-link {{ Request::is('subkon*') ? 'sub-menu--active' : ''  }}" href="/subkons">
+                            @if (Request::is('subkon*'))
+                            <i class="mdi mdi-radiobox-marked"></i>
+                            @else
+                            <i class="mdi mdi-radiobox-blank"></i>
+                            @endif
+                            Subkon</a>
                     </li>
                 </ul>
             </div>
