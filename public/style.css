@@ -42,10 +42,10 @@
   left: 100px;
   z-index: 99;
 }
-/* .third-col {
+.third-col {
   width: 150px;
   min-width: 150px;
   max-width: 150px;
   left: 250px;
   z-index: 99; *
-} */
+}

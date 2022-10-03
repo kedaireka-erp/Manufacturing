@@ -65,45 +65,45 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr class="text-center">
-                                <th class="sticky-col first-col">No. </th>
-                                <th class="sticky-col second-col">Kode OP</th>
-                               <th>Kode Unit</th>
-                               <th>Warna</th>
-                               <th>Hold/Cancel/Revisi</th>
-                               <th>Last Process</th>
-                               <th>Tipe Barang</th>
-                               <th>Jenis Kaca</th>
-                               <th>Upload BOM Alumunium</th>
-                               <th>Upload BOM Aksesoris</th>
-                               <th>Upload WO Alumunium</th>
-                               <th>Upload WO Lembaran</th>
-                               <th>Upload Wo Kaca</th>
-                               <th>Tanggal Proses Kaca</th>
-                               <th>User Kaca</th>
-                               <th>Tanggal Cutting</th>
-                               <th>User Cutting</th>
-                               <th>Proses Cutting</th>
-                               <th>Keterangan</th>
-                               <th>Tanggal Machining</th>
-                               <th>User Machining</th>
-                               <th>Tanggal Assembly</th>
-                               <th>User Assembly</th>
-                               <th>Subkon Assembly</th>
-                               <th>Finish QC</th>
-                               <th>User QC</th>
-                               <th>Tanggal Reject</th>
-                               <th>Alasan Reject</th>
-                               <th>Tanggal Pack</th>
-                               <th>Qty Pack</th>    
-                               <th>User PAck</th>
-                               <th>Tanggal Kirim</th>
-                               <th>No.Surat Jalan</th>
+                                <th class="sticky-col first-col bg-white">No. </th>
+                                <th class="sticky-col second-col bg-white">Kode OP</th>
+                                <th class="sticky-col third-col bg-white">Kode Unit</th>
+                                <th>Warna</th>
+                                <th>Hold/Cancel/Revisi</th>
+                                <th>Last Process</th>
+                                <th>Tipe Barang</th>
+                                <th>Jenis Kaca</th>
+                                <th>Upload BOM Alumunium</th>
+                                <th>Upload BOM Aksesoris</th>
+                                <th>Upload WO Alumunium</th>
+                                <th>Upload WO Lembaran</th>
+                                <th>Upload Wo Kaca</th>
+                                <th>Tanggal Proses Kaca</th>
+                                <th>User Kaca</th>
+                                <th>Tanggal Cutting</th>
+                                <th>User Cutting</th>
+                                <th>Proses Cutting</th>
+                                <th>Keterangan</th>
+                                <th>Tanggal Machining</th>
+                                <th>User Machining</th>
+                                <th>Tanggal Assembly</th>
+                                <th>User Assembly</th>
+                                <th>Subkon Assembly</th>
+                                <th>Finish QC</th>
+                                <th>User QC</th>
+                                <th>Tanggal Reject</th>
+                                <th>Alasan Reject</th>
+                                <th>Tanggal Pack</th>
+                                <th>Qty Pack</th>    
+                                <th>User PAck</th>
+                                <th>Tanggal Kirim</th>
+                                <th>No.Surat Jalan</th>
                             </tr>
                             @foreach ($MPU as $key => $MP)
                                 <tr class="text-center">
-                                    <td class="sticky-col first-col">{{ $key+1 }}</td>
-                                    <td class="sticky-col first-col">{{ $MP['kode_op'] }}</td>
-                                    <td>{{ $MP['kode_unit'] }}</td>
+                                    <td class="sticky-col first-col bg-white">{{ $key+1 }}</td>
+                                    <td class="sticky-col second-col bg-white">{{ $MP['kode_op'] }}</td>
+                                    <td class="sticky-col third-col bg-white">{{ $MP['kode_unit'] }}</td>
                                     <td>{{ $MP['warna'] }}</td>
                                     <td>{{ $MP['status_hold'] }}</td>
                                     <td>{{ $MP['last_process'] }}</td>
