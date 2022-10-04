@@ -2,7 +2,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item px-0">
-            <a class="nav-link px-4 mb-2 {{ Request::is('manufactures','monitoring','logistic*') ? 'nav-link--active' : ''  }}"  data-bs-toggle="collapse" href="#ui-basic"
+            <a class="nav-link px-4 mb-2 {{ Request::is('manufactures*','monitoring*','logistic*') ? 'nav-link--active' : ''  }}"  data-bs-toggle="collapse" href="#ui-basic"
                 aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Manufaktur</span>
                 <i class="menu-arrow"></i>
@@ -11,8 +11,8 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('manufactures') ? 'sub-menu--active' : ''  }}"  href="/manufactures">
-                            @if (Request::is('manufactures'))
+                        <a class="nav-link {{ Request::is('manufactures*') ? 'sub-menu--active' : ''  }}"  href="/manufactures">
+                            @if (Request::is('manufactures*'))
                             <i class="mdi mdi-radiobox-marked"></i>
                             @else
                             <i class="mdi mdi-radiobox-blank"></i>
@@ -20,8 +20,8 @@
                             FPPP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('logistic') ? 'sub-menu--active' : ''  }}" href="/logistic">
-                            @if (Request::is('logistic'))
+                        <a class="nav-link {{ Request::is('logistic*') ? 'sub-menu--active' : ''  }}" href="/logistic">
+                            @if (Request::is('logistic*'))
                             <i class="mdi mdi-radiobox-marked"></i>
                             @else
                             <i class="mdi mdi-radiobox-blank"></i>
@@ -29,8 +29,8 @@
                             Surat Jalan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('monitoring') ? 'sub-menu--active' : ''  }}" href="/monitoring">
-                            @if (Request::is('monitoring'))
+                        <a class="nav-link {{ Request::is('monitoring*') ? 'sub-menu--active' : ''  }}" href="/monitoring">
+                            @if (Request::is('monitoring*'))
                             <i class="mdi mdi-radiobox-marked"></i>
                             @else
                             <i class="mdi mdi-radiobox-blank"></i>

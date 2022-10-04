@@ -4,6 +4,18 @@
 <div class="content-wrapper bg-img">
     <div class="row">
         <div class="col-lg-12">
+            <div class="card card-table-header">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h2 class="card-title mb-0">Tambah Lead</h2>
+                    <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Master / </a><a href="/leads" class="text-secondary">Lead / </a><a
+                            href="#" class="text-primary">Tambah Lead</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    {{-- <div class="row">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title float-start">Tambah Lead</h2>
@@ -12,11 +24,11 @@
             </div>
         </div>
     </div>
-    <br>
-    <div class="row">
+    <br> --}}
+    {{-- <div class="row">
 
     </div>
-    <br>
+    <br> --}}
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
