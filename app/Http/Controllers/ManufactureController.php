@@ -90,7 +90,6 @@ class ManufactureController extends Controller
         $manufacture    = Fppp::findOrFail($id);
         $workOrders     = WorkOrder::where("fppp_id", $manufacture->id)->get();
         $subkons        = Subkon::where("is_active", 1)->get();
-        dd($workOrders);
         return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons"));
     }
 

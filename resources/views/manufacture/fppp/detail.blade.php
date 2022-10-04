@@ -66,7 +66,7 @@
                             </tbody> 
                             <table><br> 
                         </div> 
-                        <div class="container"> 
+                        <div class=""> 
                             <h2>PAKET DATA PRODUKSI</h2> 
                             <table class="table table-bordered table-hover"> 
                             <thead> 
@@ -99,7 +99,7 @@
                             </tbody> 
                             <table><br> 
                         </div> 
-                        <div class="container"> 
+                        <div class=""> 
                             <h2>PENGIRIMAN</h2> 
                             <table class="table table-bordered table-hover"> 
                             <thead> 
@@ -145,7 +145,7 @@
                             <table><br> 
                         </div> 
                      
-                        <div class="container">
+                        <div class="">
                             <h2>PENGIRIMAN</h2> 
         <table class="table table-striped"> 
             <thead> 
@@ -178,75 +178,7 @@
         </table> 
         </div> 
 
-                        <div class="container">
-                            <h2>PENGIRIMAN</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr class="text-center">
-                    <th scope="col">No.</th>
-                    <th scope="col">Code Item</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Glass Speification</th>
-                    <th scope="col">Leaves</th>
-                    <th scope="col">Opening Direct</th>
-                    <th scope="col">Finish</th>
-                    <th scope="col">Marketing Approval</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                <td>01</td>
-                <td>-</td>
-                <td>Astral AS 01 top hug windo</td>
-                <td>clear 6mm excluded</td>
-                <td>1</td>
-                <td>Outsite</td>
-                <td>ALLURE BLACK MATTE</td>
-                <td></td>
-                </tr>
-            </tbody>
-            <table>
-        </div>
+                        
 
 
         </div>
