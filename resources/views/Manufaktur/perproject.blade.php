@@ -1,12 +1,15 @@
 @extends('layouts.admin')
+@push("style")
+<link rel="stylesheet" href="{{ asset('style.css')}}">
+@endpush
 @section('content')
-<div class="content-wrapper bg-img">
+        <div class="content-wrapper bg-img">
             <div class="shadow p-3 mb-3 bg-body rounded">Monitoring Per Project
             <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#" class="text-primary">Monitoring Per Project</a></h5>
-            </div>
+        </div>
 
         <div class="row">
-            <div class="scontent-wrapper bg-img">
+            <div class="content-wrapper bg-img">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
@@ -22,9 +25,9 @@
                 <div class="table-responsive">
                 <table class="table table-striped">
                     <tr class="text-center">
-                        <th>No. </th>
-                        <th>No. FPPP</th>
-                        <th>Tgl. Terima FPPP</th>
+                        <th class="sticky-col first-col bg-white" >No. </th>
+                        <th class="sticky-col second-col bg-white width" >No. FPPP</th>
+                        <th class="sticky-col third-col bg-white" >Tgl. Terima FPPP</th>
                         <th>Deadline</th>
                         <th>Project</th>
                         <th>Warna</th>
@@ -48,45 +51,39 @@
                         <th>Status</th>
                     </tr>
                     @foreach ($mpp as $key => $mPP)
-                        <tr class="text-center">
-                            <td>{{ $key+1 }}</td>
-                            <td><a href="/monitoring/{{ $mPP['id_fppp'] }}" class="nav-link"><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> {{ $mPP['no_fppp'] }}</a></td>
-                            <td>{{ $mPP['tanggalTerimaFppp'] }}</td>
-                            <td>{{ $mPP['deadline'] }}</td>
-                            <td>{{ $mPP['project'] }}</td>
-                            <td>{{ $mPP['warna'] }}</td>
-                            <td>{{ $mPP['sales'] }}</td>
-                            <td>{{ $mPP['no_quo'] }}</td>
-                            <td>{{ $mPP['total_op'] }}</td>
-                            <td>{{ $mPP['total_unit'] }}</td>
-                            <td>{{ $mPP['unit_hold'] }}</td>
-                            <td>{{ $mPP['proses_kaca'] }}</td>
-                            <td>{{ $mPP['cutting'] }}</td>
-                            <td>{{ $mPP['machining'] }}</td>
-                            <td>{{ $mPP['assembly'] }}</td>
-                            <td>{{ $mPP['qc'] }}</td>
-                            <td>{{ $mPP['packing'] }}</td>
-                            <td>{{ $mPP['delivery'] }}</td>
-                            <td>{{ $mPP['acc_pengiriman_status'] }}</td>
-                            <td>{{ $mPP['unitBelumKirim'] }}</td>
-                            <td>{{ $mPP['unitTerkirim'] }}</td>
-                            <td>{{ $mPP['tanggalKirimAwal'] }}</td>
-                            <td>{{ $mPP['tanggalKirimAkhir'] }}</td>
-                            <td>
-                                <button type="button" class="btn btn-gradient-warning" disabled>{{ $mPP['status'] }}</button>
-                            </td>
-                        </tr>
+                    <tr class="text-center">
+                        <td class="sticky-col first-col bg-white">{{ $key+1 }}</td>
+                        <td class="sticky-col second-col bg-white width"><a href="/monitoring/{{ $mPP['id_fppp'] }}" class="nav-link"><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> {{ $mPP['no_fppp'] }}</a></td>
+                        <td class="sticky-col third-col bg-white">{{ $mPP['tanggalTerimaFppp'] }}</td>
+                        <td>{{ $mPP['deadline'] }}</td>
+                        <td>{{ $mPP['project'] }}</td>
+                        <td>{{ $mPP['warna'] }}</td>
+                        <td>{{ $mPP['sales'] }}</td>
+                        <td>{{ $mPP['no_quo'] }}</td>
+                        <td>{{ $mPP['total_op'] }}</td>
+                        <td>{{ $mPP['total_unit'] }}</td>
+                        <td>{{ $mPP['unit_hold'] }}</td>
+                        <td>{{ $mPP['proses_kaca'] }}</td>
+                        <td>{{ $mPP['cutting'] }}</td>
+                        <td>{{ $mPP['machining'] }}</td>
+                        <td>{{ $mPP['assembly'] }}</td>
+                        <td>{{ $mPP['qc'] }}</td>
+                        <td>{{ $mPP['packing'] }}</td>
+                        <td>{{ $mPP['delivery'] }}</td>
+                        <td>{{ $mPP['acc_pengiriman_status'] }}</td>
+                        <td>{{ $mPP['unitBelumKirim'] }}</td>
+                        <td>{{ $mPP['unitTerkirim'] }}</td>
+                        <td>{{ $mPP['tanggalKirimAwal'] }}</td>
+                        <td>{{ $mPP['tanggalKirimAkhir'] }}</td>
+                        <td>
+                            <button type="button" class="btn btn-gradient-warning" disabled>{{ $mPP['status'] }}</button>
+                        </td>
+                    </tr>
                     @endforeach
-                    
                 </table>
+                </div>
             </div>
         </div>
-
-</div>
-</div>
-</div>
-</div>
-
 
 @endsection
 

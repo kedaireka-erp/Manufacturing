@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@push("style")
+<link rel="stylesheet" href="{{ asset('style.css')}}">
+@endpush
 @section('content')
 <div class="content-wrapper bg-img">
             <div class="shadow p-3 mb-3 bg-body rounded">Monitoring Per Unit
@@ -49,22 +52,22 @@
                                 </div>
                             </div>
             <div class="col-md-6 mt-2">
-                
+
                 <form action="/search-unit/{{ $fppps->id }}" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Cari berdasarkan kode unit" name="search">
                         <button class="btn btn-outline-success" type="submit">Cari</button>
                     </div>
                 </form>
-                    
+
             </div>
             <div class="">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tr class="text-center">
-                            <th>No. </th>
-                            <th>Kode OP</th>
-                           <th>Kode Unit</th>
+                           <th class="sticky-col first-col bg-white">No. </th>
+                           <th class="sticky-col second-col bg-white">Kode OP</th>
+                           <th class="sticky-col third-col bg-white">Kode Unit</th>
                            <th>Warna</th>
                            <th>Hold/Cancel/Revisi</th>
                            <th>Last Process</th>
@@ -87,15 +90,15 @@
                            <th>Alasan Reject</th>
                            <th>Tanggal Pack</th>
                            <th>Qty Pack</th>
-                           <th>User PAck</th>
+                           <th>User Pack</th>
                            <th>Tanggal Kirim</th>
                            <th>No.Surat Jalan</th>
                         </tr>
                         @foreach ($wo as $key => $w)
                         <tr class="text-center">
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $w->kode_op }}</td>
-                           <td>{{ $w->kode_unit }}</td>
+                           <td class="sticky-col first-col bg-white">{{ $key+1 }}</td>
+                           <td class="sticky-col second-col bg-white">{{ $w->kode_op }}</td>
+                           <td class="sticky-col third-col bg-white">{{ $w->kode_unit }}</td>
                            <td>{{ $w->warna }}</td>
                            <td>@if ($w->status_hold == null)
                                {{ "-" }}
@@ -117,7 +120,7 @@
                            <td>
                             @if ($w->subkon1_cutting == null)
                                 {{ "-" }}
-                            @else 
+                            @else
                                 {{ $w->subkon1_cutting }}
                             @endif
                             </td>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\PerunitController;
@@ -26,9 +27,7 @@ Route::get('/', function () {
     return redirect('/leads');
 });
 
-route::get("/show1", function () {
-    return view("manufaktur.show");
-});
+route::get("/show1/{id}",[ManufactureController::class,"show"]);
 // route::get("/", function () {
 //     return view("items.index");
 // });
@@ -67,8 +66,11 @@ Route::controller(SubkonController::class)->group(function () {
 //     return view("items.index");
 // });
 
-route::get("/perproject", function () {
-    return view("manufaktur.perproject");
+// Route Surat Jalan (Logistic)
+Route::controller(LogisticController::class)->group(function () {
+    Route::get('/logistic', 'index')->name('logistic_index');
+    Route::get('/logistic/create', 'create')->name('logistic_create');
+    Route::get('/logistic/show', 'show')->name('logistic_show');
 });
 
 
@@ -90,11 +92,11 @@ Route::controller(ManufactureController::class)->group(function () {
 // route::post("/update/{id}", [ItemController::class, "update"])->name("update");
 // route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
 
-route::get("/perproject", [PerProjectController::class, "index"]);
 
 route::get("/detailfppp", [DetailfpppController::class, "index"]);
 route::get("/perunit", [PerunitController::class, "index"]);
 Route::controller(WorkOrderController::class)->group(function () {
+    Route::post('/update-kaca', 'update_kaca')->name("update-kaca");
     Route::post('/update-cutting', 'update_cutting')->name("update-cutting");
     Route::post('/update-machining', 'update_machining')->name("update-machining");
     Route::post('/update-assembly1', 'update_assembly1')->name("update-assembly1");
@@ -102,7 +104,10 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-assembly3', 'update_assembly3')->name("update-assembly3");
     Route::post('/create-qc', 'create_qc')->name("create-qc");
     Route::post('/update-packing', 'update_packing')->name("update-packing");
+    Route::post('/update-keterangan', 'update_keterangan')->name("update-keterangan");
+
 });
+
 
 //monitoring
 Route::controller(MonitoringController::class)->group(function(){
