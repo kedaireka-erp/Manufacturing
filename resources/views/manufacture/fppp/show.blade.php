@@ -69,7 +69,7 @@
                                     <th width="250px" class="long"> Status </th>
                                     <th width="250px" class="long"> Keterangan </th>
                                 </tr>
-                               
+
                             </thead>
                             <tbody>
                                 @foreach ($workOrders as $no => $unit)
@@ -78,60 +78,98 @@
                                     <td class="headcol sticky-col second-col bg-white"> {{ $unit->kode_op }} </td>
                                     <td class="headcol sticky-col third-col bg-white"> {{ $unit->kode_unit }} </td>
                                     <td class="long"> {{ $unit->nama_item }} </td>
-                                    <td class="long"> {{ $unit->jenis_kaca }} <br> <br> <button type="submit" class="d btn btn-success border-dark-rounded">OK!</button> </td>
+                                    <td class="long"> {{ $unit->jenis_kaca }} <br> <br>
+                                        @if ($unit->tanggal_kaca)
+                                        <button type="button" class=" btn btn-gradient-success btn-sm button col-12 pe-none">COMPLETED</button>
+                                        @else
+                                        <form action="{{ route("update-kaca") }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $unit->id }}">
+                                        <button type="submit" class="d btn btn-success border-dark-rounded">OK!</button>
+                                        </form>
+                                        @endif
+                                    </td>
                                     <td class="long"> {{ $unit->warna }} </td>
                                     {{-- glass spesification button --}}
                                     <!-- cutting button -->
                                     <td class="long">
-                                        @if ($unit->tanggal_cutting == null)
-                                        <form action="{{ route("update-cutting") }}" method="POST">
-                                        @csrf
-                                            <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_cutting" value="Steven">
-                                            <input type="hidden" name="lead2_cutting" value="Rhey">
-                                            <div class="dropdown">
-                                                <select
-                                                    class="form-select bg-transparent text-center search"
-                                                    name="subkon1_cutting" id="" style="border-color: black;">
-                                                    <option disabled selected>Subkon 1</option>
-                                                    @foreach ($subkons as $subkon)
-                                                        <option value="{{ $subkon->subkon_name }}">{{ $subkon->subkon_name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <br>
-                                            <div class="dropdown">
-                                                <select class="form-select bg-transparent text-center search" name="subkon2_cutting" id=""
-                                                    style="border-color: black;">
-                                                    <option disabled selected>Subkon 2</option>
-                                                    <@foreach ($subkons as $subkon)
-                                                        <option value="{{ $subkon->subkon_name }}">{{ $subkon->subkon_name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <br>
-                                            <div class="dropdown">
-                                                <select class="form-select bg-transparent text-center search" name="proses_cutting" id=""
-                                                    style="border-color: black;">
-                                                    <option value="progress">On Progress</option>
-                                                    <option value="completed">Completed</option>
-                                                </select>
-                                            </div> <br>
-                                            <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
-                                        </form>
-                                        @else
-                                        <button type="button" class=" btn btn-dark btn-sm button mt-4 col-12 pe-none">{{ $unit->subkon1_cutting }} ({{ $unit->lead1_cutting }})</button> 
+                                        @if ($unit->tanggal_cutting)
+                                        <button type="button" class=" btn btn-dark btn-sm button mt-4 col-12 pe-none">{{ $unit->subkon1_cutting }} ({{ $unit->lead1_cutting }})</button>
                                         <br>
                                         <button type="button" class=" btn btn-dark btn-sm button mt-2 col-12 pe-none">{{ $unit->subkon2_cutting }} ({{ $unit->lead2_cutting }})</button>
                                         <br>
                                         <button type="button" class=" btn btn-gradient-success btn-sm button mt-2 col-12 pe-none">{{ strtoupper($unit->proses_cutting) }}</button>
                                         <br>
                                         <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        @elseif ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
+                                        <form action="{{ route("update-cutting") }}" method="POST">
+                                            @csrf
+                                                <input type="hidden" name="id" value="{{ $unit->id }}">
+                                                <input type="hidden" name="lead1_cutting" value="Steven">
+                                                <input type="hidden" name="lead2_cutting" value="Rhey">
+                                                <div class="dropdown">
+                                                    <select
+                                                        class="form-select bg-transparent text-center search"
+                                                        name="subkon1_cutting" id="" style="border-color: black;">
+                                                        <option disabled selected>Subkon 1</option>
+                                                        @foreach ($subkons as $subkon)
+                                                            <option value="{{ $subkon->subkon_name }}">{{ $subkon->subkon_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <br>
+                                                <div class="dropdown">
+                                                    <select class="form-select bg-transparent text-center search" name="subkon2_cutting" id=""
+                                                        style="border-color: black;">
+                                                        <option disabled selected>Subkon 2</option>
+                                                        <@foreach ($subkons as $subkon)
+                                                            <option value="{{ $subkon->subkon_name }}">{{ $subkon->subkon_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <br>
+                                                <div class="dropdown">
+                                                    <select class="form-select bg-transparent text-center search" name="proses_cutting" id=""
+                                                        style="border-color: black;">
+                                                        <option value="progress">On Progress</option>
+                                                        <option value="completed">Completed</option>
+                                                    </select>
+                                                </div> <br>
+                                                <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                            </form>
                                         @endif
                                     </td>
                                     {{-- Machining --}}
                                     <td class="long">
-                                        @if ($unit->tanggal_machining == null)
+                                        @if ($unit->tanggal_machining)
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_machining }} ({{ $unit->lead1_machining }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
+                                        <br>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        <br>
+                                        <button type="button" class="btn btn-transparent btn-sm button col-12 mt-2 pe-none"></button>
+                                        @elseif ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
                                         <form action="{{ route("update-machining") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
@@ -162,20 +200,30 @@
                                             <br>
                                             <button type="button" class="btn btn-transparent btn-sm button col-12 mt-1 pe-none"></button>
                                         </form>
-                                        @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_machining }} ({{ $unit->lead1_machining }})</button>
-                                        <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
-                                        <br>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
-                                        <br>
-                                        <button type="button" class="btn btn-transparent btn-sm button col-12 mt-2 pe-none"></button>
                                         @endif
                                     </td>
                                     <!-- assembly 1 button -->
                                     {{-- assembly --}}
                                     <td class="long">
-                                        @if ($unit->tanggal_assembly1 == null)
+                                        @if ($unit->tanggal_assembly1)
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly1 }} ({{ $unit->lead1_assembly1 }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly1 }} ({{ $unit->lead2_assembly1 }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly1) }}</button>
+                                        <br>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        @elseif ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
                                         <form action="{{ route("update-assembly1") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
@@ -215,19 +263,29 @@
                                             </div> <br>
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
-                                        @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly1 }} ({{ $unit->lead1_assembly1 }})</button>
-                                        <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly1 }} ({{ $unit->lead2_assembly1 }})</button>
-                                        <br>
-                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly1) }}</button>
-                                        <br>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- assembly 2 --}}
                                     <td class="long">
-                                        @if ($unit->tanggal_assembly2 == null)
+                                        @if ($unit->tanggal_assembly2)
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly2 }} ({{ $unit->lead1_assembly2 }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly2 }} ({{ $unit->lead2_assembly2 }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
+                                        <br>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        @elseif ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
                                         <form action="{{ route("update-assembly2") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
@@ -267,19 +325,29 @@
                                             </div> <br>
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
-                                        @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly2 }} ({{ $unit->lead1_assembly2 }})</button>
-                                        <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly2 }} ({{ $unit->lead2_assembly2 }})</button> 
-                                        <br>
-                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
-                                        <br>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     {{-- assembly 3 --}}
                                     <td class="long">
-                                        @if ($unit->tanggal_assembly3 == null)
+                                        @if ($unit->tanggal_assembly3)
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly3 }} ({{ $unit->lead1_assembly3 }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly3 }} ({{ $unit->lead2_assembly3 }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
+                                        <br>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        @elseif ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
                                         <form action="{{ route("update-assembly3") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
@@ -319,14 +387,6 @@
                                             </div> <br>
                                             <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                         </form>
-                                        @else
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly3 }} ({{ $unit->lead1_assembly3 }})</button>
-                                        <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly3 }} ({{ $unit->lead2_assembly3 }})</button>
-                                        <br>
-                                        <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
-                                        <br>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                     </td>
                                     <td class="long">
@@ -346,7 +406,24 @@
                                         @endif  
                                     </td>
                                     <td class="long">
-                                        @if ($unit->tanggal_packing == null)
+                                        @if ($unit->tanggal_packing)
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
+                                        <div class="dropdown">
+                                        </div> <button type="button" class="form-control text-center pe-none bg-secondary bg-opacity-50 mt-2"><b>{{ $unit->qty_packing }}</b></button>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                        @elseif ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
                                         <form action="{{ route("update-packing") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
@@ -376,8 +453,8 @@
                                                 <label for="Quantity"></label>
                                                 <input type="number" class="form-control text-center bg-transparent border border-dark p-2 mb-3 border-opacity-10 "
                                                     id="Quantity" name="qty_packing" placeholder="Quantity">
-                                                <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>    
-                                            </div>  
+                                                <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                            </div>
                                         </form>
                                         @else
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
@@ -410,29 +487,35 @@
                                     </td>
                                     <!-- keterangan -->
                                     <td class="long">
-                                       
-                                       <form action="{{ route("update-keterangan") }}" method="POST">
+                                        @if ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
+                                        <form action="{{ route("update-keterangan") }}" method="POST">
                                         @csrf
-                                       
-                                       <input type="hidden" name="id" value="{{ $unit->id }}">
-                                       <input type="hidden" name="" value="{{$unit->process_assembly3}}">
-                                       <div class="dropdown">
-                               <div class="dropdown">
-                                           <select class="form-select bg-transparent text-center search" name="process_assembly3" id=""
-                                               style="border-color: black;">
-                                               <option disabled selected value="">Keterangan</option>
-                                               <option value="hold"> Hold </option>
-                                               <option value="revisi"> Revisi </option>
-                                               <option value="cancel"> Cancel </option>
-                                           </select>
-                                       </div> <br>
-                                       <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                        <input type="hidden" name="id" value="{{ $unit->id }}">
+                                        <div class="dropdown">
+                                            <select class="form-select bg-transparent text-center search" name="keterangan"
+                                                style="border-color: black;">
+                                                <option disabled selected value="">Keterangan</option>
+                                                <option value="hold"> Hold </option>
+                                                <option value="revisi"> Revisi </option>
+                                                <option value="cancel"> Cancel </option>
+                                            </select>
+                                        </div> <br>
+                                        <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
+                                        @endif
                                    </form>
-                                       <br> <a class=" btn mt-3 "></a>
+                                    <br> <a class=" btn mt-3 "></a>
                                     <br> <a class=" btn mt-3 "></a>
                                    </td>
-                                
-
                                 </tr>
                                 @endforeach
                                 {{-- <tr class="">
@@ -648,7 +731,7 @@
                                         </div> <br> <a class=" btn pe-none" style="margin-top: 15px"></a>
                                         <div class="">
                                         </div> <br> <a class="d btn mt-4 pe-none"></a>
-                                    </td> --}}    
+                                    </td> --}}
                                 {{-- </tr>  --}}
 
                                 {{-- number 2 --}}
