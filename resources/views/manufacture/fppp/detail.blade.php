@@ -13,14 +13,15 @@
                             <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-info btn-fw">Download File <i class="mdi mdi-download"></i></button>
                             </div>
-                            <h2>DETAIL FPPP No. {{ $manufacture->fppp_no }} prduksi tahap 1</h2> 
+                            <h2>DETAIL FPPP No. {{ $manufacture->fppp_no }}</h2> 
                             <table class="table table-bordered table-hover"> 
                             <thead> 
                             </thead> 
                             <tbody> 
                                 <tr> 
                                     <td>Tanggal</td> 
-                                    <td>Kamis, 25 Agustus 2022</td> 
+                                    {{-- <td>Kamis, 25 Agustus 2022</td>  --}}
+                                    <td>{{ \Carbon\Carbon::parse($manufacture->created_at)->translatedFormat('d F Y') }}</td>
                                     <td>Divisi</td>
                                     <td>Astral</td>
                                 </tr> 
@@ -98,7 +99,7 @@
                                 </tr> 
                                 <tr> 
                                     <td>Deadline</td> 
-                                    <td>{{ $manufacture->retrieval_deadline }}</td> 
+                                    <td>{{ \Carbon\Carbon::parse($manufacture->retrival_deadline)->translatedFormat('d F Y') }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Ditujukan Kepada</td> 
@@ -147,59 +148,22 @@
                     <th scope="col">Marketing Approval</th> 
                 </tr> 
             </thead> 
-            <tbody> 
-                <tr class="text-center"> 
-                    <td>01</td> 
-                    <td>-</td> 
-                    <td>Astral AS 01 top hug windo</td> 
-                    <td>clear 6mm excluded</td> 
-                    <td>1</td> 
-                    <td>Outsite</td> 
-                    <td>ALLURE BLACK MATTE</td> 
+            <tbody>
+                @foreach ($workOrders as $no => $wo)
+                    <tr class="text-center"> 
+                    <td>0 {{ $no+1 }}</td> 
+                    <td>{{ $wo->kode_unit }}</td> 
+                    <td>{{ $wo->nama_item }}</td> 
+                    <td>{{ $manufacture->glass }} {{ $manufacture->glass_type }}</td> 
+                    <td>1(Dummy)</td> 
+                    <td>Outsite(Dummy)</td> 
+                    <td>{{ $manufacture->color }}</td> 
                     <td></td> 
-                </tr> 
-                <tr class="text-center"> 
-                    <td>01</td> 
-                    <td>-</td> 
-                    <td>Astral AS 01 top hug windo</td> 
-                    <td>clear 6mm excluded</td> 
-                    <td>1</td> 
-                    <td>Outsite</td> 
-                    <td>ALLURE BLACK MATTE</td> 
-                    <td></td> 
-                </tr> 
-                <tr class="text-center"> 
-                    <td>01</td> 
-                    <td>-</td> 
-                    <td>Astral AS 01 top hug windo</td> 
-                    <td>clear 6mm excluded</td> 
-                    <td>1</td> 
-                    <td>Outsite</td> 
-                    <td>ALLURE BLACK MATTE</td> 
-                    <td></td> 
-                </tr> 
-                <tr class="text-center"> 
-                    <td>01</td> 
-                    <td>-</td> 
-                    <td>Astral AS 01 top hug windo</td> 
-                    <td>clear 6mm excluded</td> 
-                    <td>1</td> 
-                    <td>Outsite</td> 
-                    <td>ALLURE BLACK MATTE</td> 
-                    <td></td> 
-                </tr> 
-                <tr class="text-center"> 
-                <td>01</td> 
-                <td>-</td> 
-                <td>Astral AS 01 top hug windo</td> 
-                <td>clear 6mm excluded</td> 
-                <td>1</td> 
-                <td>Outsite</td> 
-                <td>ALLURE BLACK MATTE</td> 
-                <td></td>
-                </tr> 
+                </tr>
+                @endforeach 
+                
             </tbody> 
-            <table> 
+        </table> 
         </div> 
 
             

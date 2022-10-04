@@ -10,7 +10,7 @@
     @include('sweetalert::alert')
     <div class="row">
         <div class="col-lg-12">
-            <div class="shadow p-4 mb-2 bg-body rounded">Lihat WO - {{ $manufacture->FPPP_number }}</h2>
+            <div class="shadow p-4 mb-2 bg-body rounded">Lihat WO - {{ $manufacture->fppp_no }}</h2>
                 <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#"
                         class="text-secondary">FPPP</a>/<a href="#" class="lihatfppp">Lihat FPPP</a></h5>
             </div>
@@ -33,15 +33,15 @@
                         <table class="table-borderless">
                             <tr>
                                 <td width="120px" height="50px">No FPPP</td>
-                                <td>: 124/FPPP/B04/07/2022</td>
+                                <td>: {{ $manufacture->fppp_no }}</td>
                             </tr>
                             <tr>
                                 <td width="120px" height="50px">Nama Proyek</td>
-                                <td>: Lantai 2 BRI</td>
+                                <td>: {{ $manufacture->quotation->DataQuotation->nama_proyek }}</td>
                             </tr>
                             <tr>
                                 <td width="120px" height="50px">Aplikator</td>
-                                <td>: PT.BRI</td><br>
+                                <td>: {{ $manufacture->quotation->Aplikator->aplikator }}</td><br>
                             </tr>
                         </table>
                       </div>
@@ -78,7 +78,7 @@
                                     <td class="headcol sticky-col second-col bg-white"> {{ $unit->kode_op }} </td>
                                     <td class="headcol sticky-col third-col bg-white"> {{ $unit->kode_unit }} </td>
                                     <td class="long"> {{ $unit->nama_item }} </td>
-                                    <td class="long"> {{ $unit->jenis_kaca }} <br> <br>
+                                    <td class="long"> {{ $manufacture->glass }} {{ $manufacture->glass_type }}<br> <br>
                                         @if ($unit->tanggal_kaca)
                                         <button type="button" class=" btn btn-gradient-success btn-sm button col-12 pe-none">COMPLETED</button>
                                         @else
