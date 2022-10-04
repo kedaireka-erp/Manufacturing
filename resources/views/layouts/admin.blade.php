@@ -31,8 +31,6 @@
     <!-- container-scroller -->
     <x-script></x-script>
     @stack('script')
-        
-    
 </body>
 
 </html>
