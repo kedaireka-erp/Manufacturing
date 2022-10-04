@@ -6,9 +6,13 @@ use App\Models\Fppp;
 use App\Models\Manufacture;
 use App\Models\Subkon;
 use App\Models\WorkOrder;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+
+
 
 
 // use PDF;
@@ -96,16 +100,19 @@ class ManufactureController extends Controller
 
     public function detail(Fppp $manufacture)
     {
-        $workOrders     = WorkOrder::where("fppp_id", $manufacture->id)->get();
+        $workOrders = WorkOrder::where("fppp_id", $manufacture->id)->get();
 
         return view("manufacture.fppp.detail", ["manufacture" => $manufacture, "workOrders" => $workOrders]);
     }
 
-    // public function toPdf(Fppp $fppp)
-    // {
-    //     $pdf = PDF::loadView('fppps.pdf', compact('fppp'));
-    //     return $pdf->download($fppp->fppp_no . '.pdf');
-    // }
+    public function toPdf(Fppp $fppp)
+    {
+        $workOrders = WorkOrder::where("fppp_id", $fppp->id)->get();
+
+        $pdf = Pdf::loadView('manufacture.fppp.pdf', ["manufacture" => $fppp, "workOrders" => $workOrders]);
+        return $pdf->download($fppp->fppp_no . '.pdf');
+        // return view('manufacture.fppp.pdf', ["manufacture" => $fppp, "workOrders" => $workOrders]);
+    }
 
     public function delete(Request $request)
     {
