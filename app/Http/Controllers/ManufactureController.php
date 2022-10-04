@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manufacture;
+use App\Models\QC;
 use App\Models\Subkon;
 use App\Models\WorkOrder;
 use Illuminate\Http\Request;
@@ -52,7 +53,15 @@ class ManufactureController extends Controller
         $manufacture    = Manufacture::findOrFail($id);
         $workOrders     = WorkOrder::where("manufacture_id", $manufacture->id)->get();
         $subkons        = Subkon::where("is_active", 1)->get();
-        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons"));
+        $all_qc         = QC::get();
+
+        $all_wo_id = [];
+        foreach ($all_qc as $key => $value) {
+            array_push($all_wo_id,$value->work_order_id);
+        }
+
+    
+        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons", "all_wo_id"));
     }
 
     public function delete(Request $request)
