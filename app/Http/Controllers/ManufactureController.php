@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
+// use PDF;
+
+
 
 class ManufactureController extends Controller
 {
@@ -95,6 +98,12 @@ class ManufactureController extends Controller
 
         return view("manufacture.fppp.detail", ["manufacture" => $manufacture, "workOrders" => $workOrders]);
     }
+
+    // public function toPdf(Fppp $fppp)
+    // {
+    //     $pdf = PDF::loadView('fppps.pdf', compact('fppp'));
+    //     return $pdf->download($fppp->fppp_no . '.pdf');
+    // }
 
     public function delete(Request $request)
     {
