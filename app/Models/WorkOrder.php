@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class WorkOrder extends Model
 {
@@ -16,6 +17,6 @@ class WorkOrder extends Model
 
     public function qcs()
     {
-        return $this->hasMany("q_c_s");
+        return $this->hasMany(\App\Models\QC::class);
     }
 }

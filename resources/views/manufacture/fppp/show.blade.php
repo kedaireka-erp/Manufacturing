@@ -101,7 +101,7 @@
                                         </form>
                                         @endif
                                     </td>
-                                    <td class="long"> {{ $unit->warna }} </td>
+                                    <td class="long"> {{ $manufacture->color }} </td>
                                     {{-- glass spesification button --}}
                                     <!-- cutting button -->
                                     <td class="long">
@@ -427,7 +427,7 @@
                                         btn-gradient-danger
                                         @endif
                                         btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
-                                        @elseif ($unit)
+                                        @elseif ($unit->qcs)
                                         <form action="{{ route("update-packing") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">

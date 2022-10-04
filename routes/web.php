@@ -24,7 +24,7 @@ use App\Http\Controllers\MonitoringController;
 */
 
 Route::get('/', function () {
-    return redirect('/leads');
+    return redirect('/manufactures');
 });
 
 route::get("/show1/{id}",[ManufactureController::class,"show"]);
