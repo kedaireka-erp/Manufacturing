@@ -456,7 +456,7 @@
                                                 <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                             </div>
                                         </form>
-                                        @else
+                                        
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
                                         <br>
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
