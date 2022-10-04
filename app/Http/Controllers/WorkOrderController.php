@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 
 class WorkOrderController extends Controller
 {
+    public function update_kaca(Request $request)
+    {
+        $unit = WorkOrder::findOrFail($request->id);
+        $unit->update([
+            "tanggal_kaca"  => Carbon::now() ?? $unit->tanggal_kaca,
+            "user_kaca"     => "alice"
+        ]);
+        toast("Data kaca ".$unit->kode_unit." berhasil diupdate", "success");
+        return redirect("/manufactures/". $unit->manufacture_id);
+    }
+
     public function update_cutting(Request $request)
     {
         $unit = WorkOrder::findOrFail($request->id);
@@ -93,7 +104,7 @@ class WorkOrderController extends Controller
             "subkon"            => $request->subkon,
             "alasan"            => $request->alasan,
             "keterangan"        => $request->keterangan,
-            "status"            => "OK!"
+            "status"            => $request->status
         ]);
         $unit->update(["last_process", "qc"]);
         toast("Data qc ".$unit->kode_unit."  berhasil diupdate", "success");
@@ -112,6 +123,15 @@ class WorkOrderController extends Controller
             "qty_packing"       => $request->qty_packing ?? $unit->qty_packing,
         ]);
         toast("Data packing ".$unit->kode_unit."  berhasil diupdate", "success");
+        return redirect("/manufactures/". $unit->manufacture_id);
+    }
+    public function update_keterangan(Request $request)
+    {
+        $unit = WorkOrder::findOrFail($request->id);
+        $unit->update([
+            "status_hold"   => $request->keterangan ?? $unit->keterangan,
+        ]);
+        toast("Data keterangan ".$unit->kode_unit."  berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
     }
 }

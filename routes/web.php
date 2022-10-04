@@ -27,9 +27,7 @@ Route::get('/', function () {
     return redirect('/leads');
 });
 
-route::get("/show1", function () {
-    return view("manufaktur.show");
-});
+route::get("/show1/{id}",[ManufactureController::class,"show"]);
 // route::get("/", function () {
 //     return view("items.index");
 // });
@@ -98,6 +96,7 @@ Route::controller(ManufactureController::class)->group(function () {
 route::get("/detailfppp", [DetailfpppController::class, "index"]);
 route::get("/perunit", [PerunitController::class, "index"]);
 Route::controller(WorkOrderController::class)->group(function () {
+    Route::post('/update-kaca', 'update_kaca')->name("update-kaca");
     Route::post('/update-cutting', 'update_cutting')->name("update-cutting");
     Route::post('/update-machining', 'update_machining')->name("update-machining");
     Route::post('/update-assembly1', 'update_assembly1')->name("update-assembly1");
@@ -105,13 +104,15 @@ Route::controller(WorkOrderController::class)->group(function () {
     Route::post('/update-assembly3', 'update_assembly3')->name("update-assembly3");
     Route::post('/create-qc', 'create_qc')->name("create-qc");
     Route::post('/update-packing', 'update_packing')->name("update-packing");
+    Route::post('/update-keterangan', 'update_keterangan')->name("update-keterangan");
+
 });
 
 
 //monitoring
 Route::controller(MonitoringController::class)->group(function(){
-    Route::get('/monitoringperproject','indexPerProject');
-    Route::get('/monitoringperunit/{id}','indexPerUnit');
+    Route::get('/monitoring','indexPerProject');
+    Route::get('/monitoring/{id}','indexPerUnit');
     Route::get('/search-project','searchPerProject');
     Route::get('/search-unit/{id}','searchPerUnit');
 });
