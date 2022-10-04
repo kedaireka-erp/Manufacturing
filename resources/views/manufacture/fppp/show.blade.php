@@ -10,13 +10,25 @@
     @include('sweetalert::alert')
     <div class="row">
         <div class="col-lg-12">
-            <div class="shadow p-4 mb-2 bg-body rounded">Lihat WO - {{ $manufacture->fppp_no }}</h2>
+            <div class="card card-table-header">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h2 class="card-title mb-0">Lihat WO - {{ $manufacture->fppp_no }}</h2>
+                    <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a href="#" class="text-secondary">FPPP / </a><a
+                            href="#" class="text-primary">Lihat FPPP</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    {{-- <div class="row">
+        <div class="col-lg-12">
+            <div class="shadow p-4 mb-2 bg-body rounded">Lihat WO - {{ $manufacture->FPPP_number }}</h2>
                 <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#"
                         class="text-secondary">FPPP</a>/<a href="#" class="lihatfppp">Lihat FPPP</a></h5>
             </div>
         </div>
     </div>
-    <br>
+    <br> --}}
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
@@ -415,7 +427,7 @@
                                         btn-gradient-danger
                                         @endif
                                         btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
-                                        @else
+                                        @elseif ($unit)
                                         <form action="{{ route("update-packing") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">

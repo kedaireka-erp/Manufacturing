@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Manufacture extends Model
 {
     use HasFactory;
+    protected $table = "fppps";
     protected $guarded = ["id"];
 
     public function scopeSearch($query, array $filters)

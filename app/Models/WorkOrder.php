@@ -9,8 +9,13 @@ class WorkOrder extends Model
 {
     use HasFactory;
     protected $guarded = ["id"];
-    public function manufacture()
+    public function fppp()
     {
-        return $this->belongsTo("manufactures", "manufacture_id", "id");
+        return $this->belongsTo("fppps", "fppp_id", "id");
+    }
+
+    public function qcs()
+    {
+        return $this->hasMany("q_c_s");
     }
 }

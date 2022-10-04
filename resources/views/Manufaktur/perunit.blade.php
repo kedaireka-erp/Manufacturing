@@ -4,9 +4,21 @@
 @endpush
 @section('content')
 <div class="content-wrapper bg-img">
-            <div class="shadow p-3 mb-3 bg-body rounded">Monitoring Per Unit
-            <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#" class="text-primary">Monitoring</a></h5>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-table-header">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h2 class="card-title mb-0">Monitoring Per Unit</h2>
+                    <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a href="/monitoring" class="text-secondary">Monitoring Per Project / </a><a
+                            href="#" class="text-primary">Monitoring Per Unit</a></h5>
+                </div>
             </div>
+        </div>
+    </div>
+    <br>
+            {{-- <div class="shadow p-3 mb-3 bg-body rounded">Monitoring Per Unit
+            <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#" class="text-primary">Monitoring</a></h5>
+            </div> --}}
 
         <div class="row">
             <div class="scontent-wrapper bg-img">

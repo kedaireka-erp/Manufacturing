@@ -1,18 +1,30 @@
 @extends('layouts.admin')
 @section('content')
-<div class="content-wrapper bg-img">
+{{-- <div class="content-wrapper bg-img"> --}}
       @include('sweetalert::alert')
 
-    <div class="shadow p-3 mb-3 bg-body rounded">
+    {{-- <div class="shadow p-3 mb-3 bg-body rounded">
         FPPP
         <h5 class="float-end">
             <a href="#" class="text-secondary">Manufaktur</a> /
             <a href="#" class="text-primary">FPPP</a>
         </h5>
-    </div>
+    </div> --}}
 
+    <div class="content-wrapper bg-img">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-table-header">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h2 class="card-title mb-0">FPPP</h2>
+                        <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a
+                                href="#" class="text-primary">FPPP</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
     <div class="row">
-        <div class="content-wrapper bg-img">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -72,7 +84,7 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 <div
     class="modal fade"
     id="exampleModal"
