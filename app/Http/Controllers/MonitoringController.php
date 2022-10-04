@@ -18,20 +18,22 @@ class MonitoringController extends Controller
                 ->join('users','users.id','=','fppps.user_id')
                 ->select('fppps.*','users.name as sales')
                 ->get();
-
         $quo = DB::table('quotations')
                 ->join('proyek_quotations','quotations.proyek_quotation_id','=','proyek_quotations.id')
                 ->join('master_aplikators','master_aplikators.kode','=','proyek_quotations.kode_aplikator')
                 ->select('quotations.id as id_qtn','proyek_quotations.*','master_aplikators.aplikator','master_aplikators.alamat')
                 ->get();
-        $workOrder = DB::table('work_orders')->get();
-        // dd($quo);
-
+        $workOrder = DB::table('work_orders')
+                    ->orderBy('tanggal_kirim','asc')
+                    ->get();
+        
+        
+        
         //dd($wo);
-
+        
         $mpp = []; //monitoring per project
-        $wor = []; //data work orders
-
+        $wor = []; //data work orders   
+        $tglKirim = [];
 
         foreach ($fppps as $key => $fppp) {
             $mpp[$key]['id_fppp'] = $fppp->id;
@@ -64,7 +66,9 @@ class MonitoringController extends Controller
             $mpp[$key]['tanggalKirimAwal'] = '-';
             $mpp[$key]['tanggalKirimAkhir'] = '-';
             $mpp[$key]['status'] = '-';
+            $mpp[$key]['jumlahtgl'] = 0;
             $jumlahacc = 0;
+            $j =0;
             foreach ($workOrder as $k => $wo) {
                 if ($wo->fppp_id == $mpp[$key]['id_fppp']) {
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
@@ -74,7 +78,7 @@ class MonitoringController extends Controller
                         $mpp[$key]['total_unit'] += 1;
                     }
                     if ($wo->last_process == "queued") {
-
+                        
                     }elseif ($wo->last_process == "cutting") {
                         $mpp[$key]['cutting'] += 1;
                     }elseif ($wo->last_process == "machining") {
@@ -87,13 +91,17 @@ class MonitoringController extends Controller
                         $mpp[$key]['packing'] += 1;
                     }elseif ($wo->last_process == "on delivery") {
                         $mpp[$key]['delivery'] += 1;
-                        if ($mpp[$key]['delivery'] == 1) {
-                            $mpp[$key]['tanggalKirimAwal'] = $this->ubahTanggal($wo->tanggal_kirim);
-                        }
-                        if ($mpp[$key]['delivery'] == $mpp[$key]['total_unit']) {
-                            $mpp[$key]['tanggalKirimAkhir'] = $this->ubahTanggal($wo->tanggal_kirim);
-                        }
                     }
+                    if ($wo->tanggal_kirim != null) {
+                        $tglKirim[$key][$j] = $this->ubahTanggal($wo->tanggal_kirim);
+                        $j++;
+                        $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
+                        $mpp[$key]['jumlahtgl'] += 1;
+                    }
+                    if ($mpp[$key]['jumlahtgl'] == $mpp[$key]['total_unit']) {
+                        $mpp[$key]['tanggalKirimAkhir'] = $tglKirim[$key][$mpp[$key]['total_unit']-1];
+                    }
+                    
                     if ($wo->acc_pengiriman == "ACCEPT") {
                         $mpp[$key]['acc_pengiriman'] += 1;
                         $jumlahacc +=1;
@@ -107,7 +115,7 @@ class MonitoringController extends Controller
                     if ($wo->status_hold) {
                         $mpp[$key]['unit_hold'] += 1;
                     }
-
+                    
                 }
             }
             if ($jumlahacc == 0) {
@@ -118,7 +126,7 @@ class MonitoringController extends Controller
                 $mpp[$key]['acc_pengiriman_status'] = "COMPLETED";
             }
 
-
+            
             if ($mpp[$key]['unitTerkirim'] == 0) {
                 $mpp[$key]['status'] = "BLANK";
             }
@@ -131,15 +139,15 @@ class MonitoringController extends Controller
         $temp = array_unique(array_column($wor,'kode_op'));
         $unique_kodeOP = array_intersect_key($wor,$temp);
 
-        for ($i=0; $i < count($mpp); $i++) {
+        for ($i=0; $i < count($mpp); $i++) { 
             foreach ($unique_kodeOP as $key => $uop) {
                 if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
                     $mpp[$i]['total_op'] += 1;
                 }
             }
         }
-
-        // return $mpp;
+        
+        
        return view('Manufaktur.perproject')->with('mpp',$mpp);
     }
 
@@ -194,8 +202,8 @@ class MonitoringController extends Controller
 
     public function searchPerProject(Request $request){
         $fppps = DB::table('fppps')
-                ->where('fppp_no','LIKE','%'.$request->search."%")
                 ->where('acc_produksi','=','ACCEPT')
+                ->where('fppp_no','LIKE','%'.$request->search."%")
                 ->join('users','users.id','=','fppps.user_id')
                 ->select('fppps.*','users.name as sales')
                 ->get();
@@ -204,14 +212,17 @@ class MonitoringController extends Controller
                 ->join('master_aplikators','master_aplikators.kode','=','proyek_quotations.kode_aplikator')
                 ->select('quotations.id as id_qtn','proyek_quotations.*','master_aplikators.aplikator','master_aplikators.alamat')
                 ->get();
-        $workOrder = DB::table('work_orders')->get();
-
-
+        $workOrder = DB::table('work_orders')
+                    ->orderBy('tanggal_kirim','asc')
+                    ->get();
+        
+        
+        
         //dd($wo);
-
+        
         $mpp = []; //monitoring per project
-        $wor = []; //data work orders
-
+        $wor = []; //data work orders   
+        $tglKirim = [];
 
         foreach ($fppps as $key => $fppp) {
             $mpp[$key]['id_fppp'] = $fppp->id;
@@ -244,14 +255,19 @@ class MonitoringController extends Controller
             $mpp[$key]['tanggalKirimAwal'] = '-';
             $mpp[$key]['tanggalKirimAkhir'] = '-';
             $mpp[$key]['status'] = '-';
+            $mpp[$key]['jumlahtgl'] = 0;
             $jumlahacc = 0;
+            $j =0;
             foreach ($workOrder as $k => $wo) {
                 if ($wo->fppp_id == $mpp[$key]['id_fppp']) {
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
                     $wor[$k]['kode_op'] = $wo->kode_op;
                     $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
+                    if ($wo->kode_unit) {
+                        $mpp[$key]['total_unit'] += 1;
+                    }
                     if ($wo->last_process == "queued") {
-
+                        
                     }elseif ($wo->last_process == "cutting") {
                         $mpp[$key]['cutting'] += 1;
                     }elseif ($wo->last_process == "machining") {
@@ -264,18 +280,20 @@ class MonitoringController extends Controller
                         $mpp[$key]['packing'] += 1;
                     }elseif ($wo->last_process == "on delivery") {
                         $mpp[$key]['delivery'] += 1;
-                        if ($mpp[$key]['delivery'] == 1) {
-                            $mpp[$key]['tanggalKirimAwal'] = $this->ubahTanggal($wo->tanggal_kirim);
-                        }elseif ($mpp[$key]['delivery'] == $mpp[$key]['total_unit']) {
-                            $mpp[$key]['tanggalKirimAkhir'] = $this->ubahTanggal($wo->tanggal_kirim);
-                        }
                     }
+                    if ($wo->tanggal_kirim != null) {
+                        $tglKirim[$key][$j] = $this->ubahTanggal($wo->tanggal_kirim);
+                        $j++;
+                        $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
+                        $mpp[$key]['jumlahtgl'] += 1;
+                    }
+                    if ($mpp[$key]['jumlahtgl'] == $mpp[$key]['total_unit']) {
+                        $mpp[$key]['tanggalKirimAkhir'] = $tglKirim[$key][$mpp[$key]['total_unit']-1];
+                    }
+                    
                     if ($wo->acc_pengiriman == "ACCEPT") {
                         $mpp[$key]['acc_pengiriman'] += 1;
                         $jumlahacc +=1;
-                    }
-                    if ($wo->kode_unit) {
-                        $mpp[$key]['total_unit'] += 1;
                     }
                     if ($wo->last_process == "packing" && $wo->tanggal_kirim == null) {
                         $mpp[$key]['unitBelumKirim'] += 1;
@@ -283,7 +301,10 @@ class MonitoringController extends Controller
                     if ($wo->last_process == "delivered") {
                         $mpp[$key]['unitTerkirim'] += 1;
                     }
-
+                    if ($wo->status_hold) {
+                        $mpp[$key]['unit_hold'] += 1;
+                    }
+                    
                 }
             }
             if ($jumlahacc == 0) {
@@ -294,7 +315,7 @@ class MonitoringController extends Controller
                 $mpp[$key]['acc_pengiriman_status'] = "COMPLETED";
             }
 
-
+            
             if ($mpp[$key]['unitTerkirim'] == 0) {
                 $mpp[$key]['status'] = "BLANK";
             }
@@ -307,15 +328,15 @@ class MonitoringController extends Controller
         $temp = array_unique(array_column($wor,'kode_op'));
         $unique_kodeOP = array_intersect_key($wor,$temp);
 
-        for ($i=0; $i < count($mpp); $i++) {
+        for ($i=0; $i < count($mpp); $i++) { 
             foreach ($unique_kodeOP as $key => $uop) {
                 if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
                     $mpp[$i]['total_op'] += 1;
                 }
             }
         }
-
-
+        
+        
        return view('Manufaktur.perproject')->with('mpp',$mpp);
     }
 
