@@ -18,18 +18,19 @@ class MonitoringController extends Controller
                 ->join('users','users.id','=','fppps.user_id')
                 ->select('fppps.*','users.name as sales')
                 ->get();
+
         $quo = DB::table('quotations')
                 ->join('proyek_quotations','quotations.proyek_quotation_id','=','proyek_quotations.id')
                 ->join('master_aplikators','master_aplikators.kode','=','proyek_quotations.kode_aplikator')
                 ->select('quotations.id as id_qtn','proyek_quotations.*','master_aplikators.aplikator','master_aplikators.alamat')
                 ->get();
         $workOrder = DB::table('work_orders')->get();
-        
-        
+        // dd($quo);
+
         //dd($wo);
-        
+
         $mpp = []; //monitoring per project
-        $wor = []; //data work orders       
+        $wor = []; //data work orders
 
 
         foreach ($fppps as $key => $fppp) {
@@ -73,7 +74,7 @@ class MonitoringController extends Controller
                         $mpp[$key]['total_unit'] += 1;
                     }
                     if ($wo->last_process == "queued") {
-                        
+
                     }elseif ($wo->last_process == "cutting") {
                         $mpp[$key]['cutting'] += 1;
                     }elseif ($wo->last_process == "machining") {
@@ -106,7 +107,7 @@ class MonitoringController extends Controller
                     if ($wo->status_hold) {
                         $mpp[$key]['unit_hold'] += 1;
                     }
-                    
+
                 }
             }
             if ($jumlahacc == 0) {
@@ -117,7 +118,7 @@ class MonitoringController extends Controller
                 $mpp[$key]['acc_pengiriman_status'] = "COMPLETED";
             }
 
-            
+
             if ($mpp[$key]['unitTerkirim'] == 0) {
                 $mpp[$key]['status'] = "BLANK";
             }
@@ -130,15 +131,15 @@ class MonitoringController extends Controller
         $temp = array_unique(array_column($wor,'kode_op'));
         $unique_kodeOP = array_intersect_key($wor,$temp);
 
-        for ($i=0; $i < count($mpp); $i++) { 
+        for ($i=0; $i < count($mpp); $i++) {
             foreach ($unique_kodeOP as $key => $uop) {
                 if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
                     $mpp[$i]['total_op'] += 1;
                 }
             }
         }
-        
 
+        // return $mpp;
        return view('Manufaktur.perproject')->with('mpp',$mpp);
     }
 
@@ -179,7 +180,7 @@ class MonitoringController extends Controller
                 $w->alasanReject = "-";
             }
         }
-        
+
         return view('Manufaktur.perunit')->with([
             'fppp' => $fppp,
             'wo' => $wo,
@@ -204,12 +205,12 @@ class MonitoringController extends Controller
                 ->select('quotations.id as id_qtn','proyek_quotations.*','master_aplikators.aplikator','master_aplikators.alamat')
                 ->get();
         $workOrder = DB::table('work_orders')->get();
-        
-        
+
+
         //dd($wo);
-        
+
         $mpp = []; //monitoring per project
-        $wor = []; //data work orders       
+        $wor = []; //data work orders
 
 
         foreach ($fppps as $key => $fppp) {
@@ -250,7 +251,7 @@ class MonitoringController extends Controller
                     $wor[$k]['kode_op'] = $wo->kode_op;
                     $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
                     if ($wo->last_process == "queued") {
-                        
+
                     }elseif ($wo->last_process == "cutting") {
                         $mpp[$key]['cutting'] += 1;
                     }elseif ($wo->last_process == "machining") {
@@ -282,7 +283,7 @@ class MonitoringController extends Controller
                     if ($wo->last_process == "delivered") {
                         $mpp[$key]['unitTerkirim'] += 1;
                     }
-                    
+
                 }
             }
             if ($jumlahacc == 0) {
@@ -293,7 +294,7 @@ class MonitoringController extends Controller
                 $mpp[$key]['acc_pengiriman_status'] = "COMPLETED";
             }
 
-            
+
             if ($mpp[$key]['unitTerkirim'] == 0) {
                 $mpp[$key]['status'] = "BLANK";
             }
@@ -306,20 +307,20 @@ class MonitoringController extends Controller
         $temp = array_unique(array_column($wor,'kode_op'));
         $unique_kodeOP = array_intersect_key($wor,$temp);
 
-        for ($i=0; $i < count($mpp); $i++) { 
+        for ($i=0; $i < count($mpp); $i++) {
             foreach ($unique_kodeOP as $key => $uop) {
                 if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
                     $mpp[$i]['total_op'] += 1;
                 }
             }
         }
-        
+
 
        return view('Manufaktur.perproject')->with('mpp',$mpp);
     }
 
     public function searchPerUnit(Request $request,$id)
-    {   
+    {
         $fppps = DB::table('fppps')->findOr($id);
         $fppp = DB::table('fppps')
                 ->where('fppps.id','=',$id)
@@ -356,7 +357,7 @@ class MonitoringController extends Controller
                 $w->alasanReject = "-";
             }
         }
-        
+
         return view('Manufaktur.perunit')->with([
             'fppp' => $fppp,
             'wo' => $wo,
