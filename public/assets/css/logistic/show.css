@@ -49,11 +49,11 @@
 }
 
 .card-body .paper-form .table.table-2 {
-    max-width: 297px;
+    max-width: 85%;
 }
 
 .card-body .paper-form .table.table-2 td:nth-child(1) {
-    width: 65px;
+    width: 100%;
 }
 
 .card-body .paper-form .table.table-2 td:nth-child(2) {
@@ -61,7 +61,7 @@
 }
 
 .card-body .paper-form .table.table-2 td:nth-child(3) {
-    width: 85px;
+    width: 100%;
 }
 
 /* end table 1 & 2*/
