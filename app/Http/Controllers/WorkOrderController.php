@@ -63,6 +63,7 @@ class WorkOrderController extends Controller
             "process_assembly1"   => $request->process_assembly1 ?? $unit->process_assembly1,
             "last_process"        => "assembly"
         ]);
+
         toast("Data assembly 1 ".$unit->kode_unit."  berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
     }

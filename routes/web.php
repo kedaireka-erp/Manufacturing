@@ -31,9 +31,9 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/', function () {
-        return redirect('/leads');
+        return redirect('/manufactures');
     });
 
     Route::get("/show1/{id}", [ManufactureController::class, "show"]);
@@ -79,7 +79,11 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(LogisticController::class)->group(function () {
         Route::get('/logistic', 'index')->name('logistic_index');
         Route::get('/logistic/create', 'create')->name('logistic_create');
-        Route::get('/logistic/show', 'show')->name('logistic_show');
+        Route::get('/logistic/show/{id}', 'show')->name('logistic_show');
+        Route::post('/logistic/store', 'store')->name('logistic_store');
+        Route::get('/logistic/delete/{id}', 'destroy')->name('logistic_destroy');
+        Route::get('/logistic/getItems/{id}', 'getItems')->name('logistic_get_items');
+        Route::get('/logistic/getQuotation/{id}', 'getQuotation')->name('logistic_get_quotation');
     });
 
 
