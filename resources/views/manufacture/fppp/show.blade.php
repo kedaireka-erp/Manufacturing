@@ -84,7 +84,9 @@
 
                             </thead>
                             <tbody>
+                                
                                 @foreach ($workOrders as $no => $unit)
+                                   
                                 <tr class=" ">
                                     <td class="headcol sticky-col first-col bg-white"> {{ $no+1 }} </td>
                                     <td class="headcol sticky-col second-col bg-white"> {{ $unit->kode_op }} </td>
@@ -410,6 +412,9 @@
                                          <br> <a class=" btn mt-4 "></a>
                                     </td>
                                     <td class="long">
+                                        @if (in_array("OK!",$qc_statuses[$no]))
+                                            
+                                        
                                         @if ($unit->tanggal_packing)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
                                         <br>
@@ -460,6 +465,7 @@
                                                 <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                             </div>
                                         </form>
+                                        @endif
                                         @endif
                                     </td>
 

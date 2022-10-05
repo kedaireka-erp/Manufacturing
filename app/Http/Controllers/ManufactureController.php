@@ -95,7 +95,16 @@ class ManufactureController extends Controller
         $workOrders     = WorkOrder::with("qcs")->where("fppp_id", $manufacture->id)->get();
         // dd($workOrders);
         $subkons        = Subkon::where("is_active", 1)->get();
-        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons"));
+
+        $qc_statuses = [];
+        foreach ($workOrders as $key => $value) {
+            $qc_status = [];
+            foreach ($value->qcs as $qc) {
+                array_push($qc_status, $qc->status);
+            }
+            $qc_statuses[$key] = $qc_status;
+        }
+        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons", "qc_statuses"));
     }
 
     public function detail(Fppp $manufacture)
