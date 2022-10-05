@@ -1,18 +1,30 @@
 @extends('layouts.admin')
 @section('content')
-<div class="content-wrapper bg-img">
+{{-- <div class="content-wrapper bg-img"> --}}
       @include('sweetalert::alert')
 
-    <div class="shadow p-3 mb-3 bg-body rounded">
+    {{-- <div class="shadow p-3 mb-3 bg-body rounded">
         FPPP
         <h5 class="float-end">
             <a href="#" class="text-secondary">Manufaktur</a> /
             <a href="#" class="text-primary">FPPP</a>
         </h5>
-    </div>
+    </div> --}}
 
+    <div class="content-wrapper bg-img">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-table-header">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h2 class="card-title mb-0">FPPP</h2>
+                        <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a
+                                href="#" class="text-primary">FPPP</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
     <div class="row">
-        <div class="content-wrapper bg-img">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -38,9 +50,9 @@
                                 </tr>
                                 @foreach ($all_fppp as $fppp)
                                 <tr class="text-center">
-                                    <td>{{ $fppp->FPPP_number }}</td>
-                                    <td>{{ $fppp->project_name }}</td>
-                                    <td>{{ $fppp->applicator_name }}</td>
+                                    <td>{{ $fppp->fppp_no }}</td>
+                                    <td>{{ $fppp->quotation->DataQuotation->nama_proyek }}</td>
+                                    <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
                                     <td class="">
                                         <button
                                             type="button"
@@ -49,7 +61,7 @@
                                             data-bs-target="#exampleModal"
                                             style="background-color: #51e29f"
                                             data-bs-id="{{ $fppp->id }}"
-                                            data-bs-title="{{ $fppp->project_name }}"
+                                            data-bs-title="{{ $fppp->quotation->DataQuotation->nama_proyek }}"
                                             data-bs-base-path="{{ asset("storage/") }}"
                                             data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
                                         </button>
@@ -72,7 +84,7 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 <div
     class="modal fade"
     id="exampleModal"

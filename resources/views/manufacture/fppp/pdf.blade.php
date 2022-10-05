@@ -1,30 +1,36 @@
-@extends('layouts.admin')
-@section('content')
-{{-- <div class="content-wrapper bg-img"> --}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Astral Alumunium allure</title>
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"> --}}
+    
+
+</head>
+
+<body>
+    <div class="container-scroller">
+        
+        <div class="container-fluid page-body-wrapper">
+            
+            <div class="main-panel">
+
+                <!-- content-wrapper ends -->
+                {{-- <div class="content-wrapper bg-img"> --}}
             {{-- <div class="shadow p-3 mb-3 bg-body rounded">Detail FPPP
             <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> /<a href="#" class="text-secondary">FPPP</a>/ <a href="#" class="text-primary">Detail FPPP</a></h5>
             </div> --}}
 
-            <div class="content-wrapper bg-img">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card card-table-header">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <h2 class="card-title mb-0">Detail FPPP</h2>
-                                <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a href="/manufactures" class="text-secondary">FPPP / </a><a
-                                        href="#" class="text-primary">Detail FPPP</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
                 <br>
         <div class="row">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-end">
-                            <a class="btn btn-info btn-fw" href="{{ route("manufactures.detail.pdf",$manufacture) }}">Download File <i class="mdi mdi-download"></i></a>
-                            </div>
+ 
                             <h2>DETAIL FPPP No. {{ $manufacture->fppp_no }}</h2> 
                             <table class="table table-bordered table-hover"> 
                             <thead> 
@@ -187,12 +193,21 @@
 </div>
 </div>
 </div>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    
+</body>
+
+</html>
 
 
-@endsection
 
-@push('script')
-    <!-- Custom js for this page -->
-    <script src="{{ asset('assets/js/file-upload.js') }}"></script>
-    <!-- End custom js for this page -->
-@endpush
+
+
+
+

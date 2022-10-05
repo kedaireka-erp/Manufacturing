@@ -4,6 +4,18 @@
 <div class="content-wrapper bg-img">
     <div class="row">
         <div class="col-lg-12">
+            <div class="card card-table-header">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h2 class="card-title mb-0">Edit Subkon</h2>
+                    <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Master / </a><a href="/subkons" class="text-secondary">Subkon / </a><a
+                            href="#" class="text-primary">Edit Subkon</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    {{-- <div class="row">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title float-start">Edit Subkon</h2>
@@ -14,9 +26,9 @@
     </div>
     <br>
     <div class="row">
-        
+
     </div>
-    <br>
+    <br> --}}
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
