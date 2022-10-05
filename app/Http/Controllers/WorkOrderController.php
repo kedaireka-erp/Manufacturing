@@ -30,6 +30,7 @@ class WorkOrderController extends Controller
             "subkon2_cutting"   => $request->subkon2_cutting ?? $unit->subkon2_cutting,
             "lead2_cutting"     => $request->lead2_cutting ?? $unit->lead2_cutting,
             "proses_cutting"    => $request->proses_cutting ?? $unit->proses_cutting,
+            "last_process"      => "cutting"
         ]);
         toast("Data cutting ".$unit->kode_unit." berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
@@ -43,7 +44,8 @@ class WorkOrderController extends Controller
             "subkon1_machining"   => $request->subkon1_machining ?? $unit->subkon1_machining,
             "lead1_machining"     => $request->lead1_machining ?? $unit->lead1_machining,
             "subkon2_machining"   => $request->subkon2_machining ?? $unit->subkon2_machining,
-            "lead2_machining"     => $request->lead2_machining ?? $unit->lead2_machining
+            "lead2_machining"     => $request->lead2_machining ?? $unit->lead2_machining,
+            "last_process"        => "machining"
         ]);
         toast("Data machining ".$unit->kode_unit." berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
@@ -58,7 +60,8 @@ class WorkOrderController extends Controller
             "lead1_assembly1"     => $request->lead1_assembly1 ?? $unit->lead1_assembly1,
             "subkon2_assembly1"   => $request->subkon2_assembly1 ?? $unit->subkon2_assembly1,
             "lead2_assembly1"     => $request->lead2_assembly1 ?? $unit->lead2_assembly1,
-            "process_assembly1"    => $request->process_assembly1 ?? $unit->process_assembly1,
+            "process_assembly1"   => $request->process_assembly1 ?? $unit->process_assembly1,
+            "last_process"        => "assembly"
         ]);
         toast("Data assembly 1 ".$unit->kode_unit."  berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
@@ -103,6 +106,7 @@ class WorkOrderController extends Controller
             "keterangan"        => $request->keterangan,
             "status"            => $request->status
         ]);
+        $unit->update(["last_process", "qc"]);
         toast("Data qc ".$unit->kode_unit."  berhasil diupdate", "success");
         return redirect("/manufactures/". $unit->manufacture_id);
     }

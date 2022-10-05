@@ -58,7 +58,7 @@
 /* .table {
     border-collapse: separate;
   }
-  
+
   .table td,
   .table tr {
     margin: 0;
@@ -73,7 +73,7 @@
     overflow-y: visible;
     padding: 0;
   }
-  
+
   .headcol {
     position: absolute;
     width: 5em;
@@ -84,11 +84,11 @@
     /* margin-top: -1px; */
     /*compensate for top border*/
   /* }
-  
+
   .headcol:before {
     content: 'Row ';
   }
-  
+
   .long {
     letter-spacing: 1em;
   /* }

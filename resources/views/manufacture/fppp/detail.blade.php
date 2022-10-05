@@ -11,7 +11,7 @@
                         <div class="card card-table-header">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <h2 class="card-title mb-0">Detail FPPP</h2>
-                                <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a href="#" class="text-secondary">FPPP / </a><a
+                                <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a href="/manufactures" class="text-secondary">FPPP / </a><a
                                         href="#" class="text-primary">Detail FPPP</a></h5>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-info btn-fw">Download File <i class="mdi mdi-download"></i></button>
                             </div>
-                            <h2>DETAIL FPPP No. 021/FPPP/AST/02/2002/prduksi tahap 1</h2>
+                            <h2>DETAIL FPPP No. {{ $manufacture->FPPP_number }}prduksi tahap 1</h2>
                             <table class="table table-bordered table-hover">
                             <thead>
                             </thead>
@@ -38,11 +38,11 @@
                                 </tr>
                                 <tr>
                                     <td>Aplikator</td>
-                                    <td>PT. Allure Alumunium</td>
+                                    <td>{{ $manufacture->applicator_name }}</td>
                                 </tr>
                                 <tr>
                                     <td>Nama Proyek</td>
-                                    <td>Pembuatan Kaca</td>
+                                    <td>{{ $manufacture->project_name }}</td>
                                 </tr>
                                 <tr>
                                     <td>Alamat Proyek</td>
