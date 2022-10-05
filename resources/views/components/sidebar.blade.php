@@ -15,7 +15,7 @@
                             <i class="mdi mdi-radiobox-blank"></i>FPPP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="subMenuClick(this)" href="#">
+                        <a class="nav-link" onclick="subMenuClick(this)" href="{{ route('logistic_index') }}">
                             <i class="mdi mdi-radiobox-blank"></i>Surat Jalan</a>
                     </li>
                     <li class="nav-item">
