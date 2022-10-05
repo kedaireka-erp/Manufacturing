@@ -43,32 +43,35 @@
                                 <div class="col-6">
                                     <table class="table table-1 table-borderless mb-3">
                                         <tbody>
+                                            @php
+                                                $data = $getLogistic;
+                                            @endphp
                                             <tr>
                                                 <td>Tanggal Pengiriman</td>
                                                 <td>:</td>
                                                 <td>
-                                                    2022-08-08
+                                                    {{ date('Y-m-d', strtotime($data->tgl_berangkat)) }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Input</td>
                                                 <td>:</td>
                                                 <td>
-                                                    2022-08-08 15:43:30
+                                                    {{ date('Y-m-d H:i:s', strtotime($data->tgl_input)) }}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>No. Permintaan</td>
+                                                <td>No. FPPP</td>
                                                 <td>:</td>
                                                 <td>
-                                                    53/orde/07/2022
+                                                    {{ $data->fppp_no }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Brand</td>
                                                 <td>:</td>
                                                 <td>
-                                                    Alphamax
+                                                    Astral
                                                 </td>
                                             </tr>
                                             <tr>
@@ -77,7 +80,7 @@
                                                 <td>
 
                                                     Bintang Selatan Otista (Lam Linda Suherlin) Telp. 089888989146 /
-                                                    022-42374487
+                                                    022-42374487 (DUMMY)
 
                                                 </td>
                                             </tr>
@@ -86,9 +89,7 @@
                                                 <td>:</td>
                                                 <td>
                                                     <span>
-                                                        Jl. Otto Iskandar Dinata No. 347A, Balonggede, Kec. Regol, Kota
-                                                        Bandung,
-                                                        Jawa Barat 40251
+                                                        {{ $data->alamat }}
                                                     </span>
                                                 </td>
                                             </tr>
@@ -98,38 +99,40 @@
 
                                 {{-- table 2 --}}
                                 <div class="col-6">
-                                    <table class="table table-2 table-borderless mb-3 ms-auto">
-                                        <tbody>
-                                            <tr>
-                                                <td>No. Surat Jalan</td>
-                                                <td>:</td>
-                                                <td>
-                                                    154/send/08/2022
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>No. PO/SO</td>
-                                                <td>:</td>
-                                                <td>
-                                                    IM 068/ALP/2907202
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Driver</td>
-                                                <td>:</td>
-                                                <td>
-                                                    Danu
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>No. Polisi</td>
-                                                <td>:</td>
-                                                <td>
-                                                    B 9914 UAL
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="d-flex justify-content-end">
+                                        <table class="table table-2 table-borderless mb-3">
+                                            <tbody>
+                                                <tr>
+                                                    <td>No. Surat Jalan</td>
+                                                    <td>:</td>
+                                                    <td>
+                                                        {{ $data->no_logistic }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>No. Quotation</td>
+                                                    <td>:</td>
+                                                    <td>
+                                                        {{ $getQuotationNo->no_quotation }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Driver</td>
+                                                    <td>:</td>
+                                                    <td>
+                                                        {{ $data->driver }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>No. Polisi</td>
+                                                    <td>:</td>
+                                                    <td>
+                                                        {{ $data->no_polisi }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             {{-- special instruction --}}
@@ -144,17 +147,27 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Item</th>
-                                            <th>Ukuran</th>
                                             <th>Warna</th>
-                                            <th>Bukaan</th>
                                             <th>Qty</th>
+                                            {{-- <th>Ukuran</th>
+                                            <th>Bukaan</th>
                                             <th>Tipe</th>
-                                            <th>Status</th>
+                                            <th>Status</th> --}}
                                             <th>Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        @foreach ($getItems as $key => $item)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $item->nama_item }}</td>
+                                                <td>{{ $item->warna }}</td>
+                                                <td>{{ $item->qty }}</td>
+                                                <td>{{ $item->keterangan ? $item->keterangan : '-' }}</td>
+                                            </tr>
+                                        @endforeach
+
+                                        {{-- <tr>
                                             <td>1</td>
                                             <td>MAX 9 PU2</td>
                                             <td>900x2200</td>
@@ -208,12 +221,12 @@
                                             <td>Common</td>
                                             <td>Display</td>
                                             <td>DISPLAY TANPA RANGKA</td>
-                                        </tr>
+                                        </tr> --}}
                                         {{-- total column --}}
                                         <tr>
-                                            <td colspan="5">Total Item</td>
-                                            <td>16</td>
-                                            <td colspan="3"></td>
+                                            <td colspan="3">Total Item</td>
+                                            <td>{{ $getTotalQty->total ?? '0' }}</td>
+                                            <td colspan="2"></td>
                                         </tr>
                                     </tbody>
                                 </table>

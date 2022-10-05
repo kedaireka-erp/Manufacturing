@@ -27,12 +27,7 @@ class Logistic extends Model
 
     public function workOrder()
     {
-        return $this->belongsToMany(WorkOrder::class, 'logistic_work_order', 'logistic_id', 'work_order_id');
-    }
-
-    public function myItem()
-    {
-        return $this->belongsToMany(MyItem::class, 'logistic_my_item', 'logistic_id', 'my_item_id')
+        return $this->belongsToMany(WorkOrder::class, 'logistic_work_order', 'logistic_id', 'work_order_id')
             ->withPivot(['keterangan']);
     }
 }
