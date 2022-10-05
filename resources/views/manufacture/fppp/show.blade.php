@@ -60,7 +60,7 @@
                     <!-- Tabel -->
                     <div class="view">
                     <div class="wrapper">
-                    <div class= "table-responsive">
+                    <div class= "table-responsive-scroll">
                         <table class="table table-striped text-center">
                             <thead>
                                 <div class="data-fixed-columns" >
@@ -407,9 +407,17 @@
                                         <!-- Qc button -->
                                         {{-- <button type="button" class="d btn btn-info text-center"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
-                                         <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#qcModal{{ $unit->id }}" class="d btn btn-primary">Isi Keterangan</a>
-                                         <br> <a class=" btn mt-5 "></a>
-                                         <br> <a class=" btn mt-4 "></a>
+                                        @if (!in_array($unit->id ,$all_wo_id))
+                                            <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#qcModal{{ $unit->id }}" class="d btn btn-primary">Isi Keterangan</a>
+                                            <br> <a class=" btn mt-5 "></a>
+                                            <br> <a class=" btn mt-4 "></a>   
+                                            @else
+                                            <a type="button" class="btn btn-gradient-primary btn-sm button col-9 mt-2 text-center" data-bs-toggle="modal" data-bs-target="#qcModal{{ $unit->id }}" class="d btn btn-primary">Lihat QC</a>
+                                            <br>
+                                            <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
+                                            <br> <a class=" btn mt-1 "></a>
+                                            <br> <a class=" btn mt-4 "></a>
+                                        @endif  
                                     </td>
                                     <td class="long">
                                         @if (in_array("OK!",$qc_statuses[$no]))
@@ -465,6 +473,13 @@
                                                 <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                             </div>
                                         </form>
+                                        
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
+                                        <br>
+                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
+                                        <div class="dropdown">
+                                        </div> <button type="button" class="form-control text-center pe-none bg-secondary bg-opacity-50 mt-2"><b>{{ $unit->qty_packing }}</b></button>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 col-12 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                         @endif
                                     </td>
@@ -971,9 +986,10 @@
                             <label class="col-form-label fs-6">Alasan</label>
                             <select class="form-select border border-2" name="alasan">
                                 <option disabled selected>Pilih Salah Satu</option>
-                                <option value="alasan 1">Alasan 1</option>
-                                <option value="alasan 2">Alasan 2</option>
-                                <option value="alasan 3">Alasan 3</option>
+                                <option value="-"> - </option>
+                                <option value="Visual">Visual</option>
+                                <option value="Dimensi">Dimensi</option>
+                                <option value="Fungsi"> Fungsi</option>
                             </select>
                         </div>
                         <div class="form-group" style="margin-bottom: 12px">

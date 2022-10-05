@@ -15,9 +15,13 @@
   margin: auto;
 }
 
+.table-responsive{
+  overflow: scroll;
+}
+
 .wrapper {
   position: relative;
-  overflow: auto;
+  overflow: scroll;
   white-space: nowrap;
 }
 
