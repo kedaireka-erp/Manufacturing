@@ -11,8 +11,11 @@
                 <div class="card card-table-header">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h2 class="card-title mb-0">Lihat Surat Jalan</h2>
-                        <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / FPPP / </a><a
-                                href="#" class="text-primary">Lihat Surat Jalan</a></h5>
+                        <h5 class="card-bredcrumb mb-0">
+                            <a href="/manufactures" class="text-secondary">Manufaktur / </a>
+                             <a href="{{ route('logistic_index') }}" class="text-secondary"> Surat Jalan / </a>
+                            <a href="#" class="text-primary">Lihat Surat Jalan</a>
+                        </h5>
                     </div>
                 </div>
             </div>

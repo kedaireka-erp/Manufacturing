@@ -13,8 +13,10 @@
                 <div class="card card-table-header">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h2 class="card-title mb-0">Surat Jalan</h2>
-                        <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a
-                                href="#" class="text-primary">Surat Jalan</a></h5>
+                        <h5 class="card-bredcrumb mb-0">
+                            <a href="/manufactures" class="text-secondary">Manufaktur / </a>
+                            <a href="#" class="text-primary">Surat Jalan</a>
+                        </h5>
                     </div>
                 </div>
             </div>
