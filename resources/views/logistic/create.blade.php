@@ -6,6 +6,8 @@
 
 @section('content')
     <div class="content-wrapper bg-img">
+        @include('sweetalert::alert')
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-table-header">
@@ -50,7 +52,7 @@
                                         <div class="form-wrap">
                                             <label for="depart-date" class="form-label">Tanggal Berangkat</label>
                                             <input type="date" class="form-control fs-6 text-uppercase" id="depart-date"
-                                                name="departDate" required>
+                                                name="departDate" value="{{ old('departDate') }}" required>
                                         </div>
                                     </div>
                                     {{-- brand --}}
@@ -70,12 +72,14 @@
                                             <div class="col-6">
                                                 {{-- fppp --}}
                                                 <div class="mb-3 form-row">
-                                                    <label for="fppp" class="form-label">Nomor FPPP</label>
+                                                    <label for="codeFPPP" class="form-label">Nomor FPPP</label>
                                                     <select class="form-select" aria-label="Select fppp" id="codeFPPP"
                                                         name="fppp" required>
                                                         <option selected disabled>Pilih Nomor FPPP</option>
                                                         @foreach ($getFppps as $data)
-                                                            <option value="{{ $data->id }}">{{ $data->FPPP_no }}
+                                                            <option value="{{ $data->id }}"
+                                                                {{ $data->id == old('fppp') ? 'selected' : '' }}>
+                                                                {{ $data->FPPP_no }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -87,7 +91,8 @@
                                                     <label for="quotation" class="form-label">Nomor
                                                         Quotation</label>
                                                     <input type="text" class="form-control" id="quotation"
-                                                        name="quotation" value="Nomor Quotation" disabled />
+                                                        name="quotation" value="{{ old('quotation') ?? 'Nomor Quotation' }}"
+                                                        readonly />
                                                 </div>
                                             </div>
                                             {{-- sopir --}}
@@ -95,7 +100,7 @@
                                                 <div class="mb-3 form-row">
                                                     <label for="driver" class="form-label">Driver</label>
                                                     <input class="form-control" id="driver" name="driver"
-                                                        placeholder="Driver" required />
+                                                        placeholder="Alex Dudung" value="{{ old('driver') }}" required />
                                                 </div>
                                             </div>
                                             {{-- no polisi --}}
@@ -103,7 +108,8 @@
                                                 <div class="mb-3 form-row">
                                                     <label for="plate-number" class="form-label">Nomor Polisi</label>
                                                     <input class="form-control" id="plate-number" name="plateNumber"
-                                                        placeholder="Nomor Polisi" required />
+                                                        placeholder="B 1234 AMD" value="{{ old('plateNumber') }}"
+                                                        required />
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +118,7 @@
                                     <div class="col-4">
                                         <div class="mb-3">
                                             <label for="address" class="form-label">Alamat</label>
-                                            <textarea class="form-control" id="address" name="address" placeholder="Alamat" required></textarea>
+                                            <textarea class="form-control" id="address" name="address" placeholder="Alamat" required>{{ old('address') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -134,13 +140,13 @@
                                         <tr class="text-center">
                                             <th>No.</th>
                                             <th>Item</th>
-                                            {{-- <th>Ukuran</th>
                                             <th>Warna</th>
-                                            <th>Bukaan</th>
                                             <th>Qty</th>
+                                            <th>Keterangan</th>
+                                            {{-- <th>Ukuran</th>
+                                            <th>Bukaan</th>
                                             <th>Tipe</th>
                                             <th>Status</th> --}}
-                                            <th>Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -178,10 +184,6 @@
                                         <select class="form-select" aria-label="Select code-item" name="codeItem"
                                             id="codeItem">
                                             <option selected disabled>Pilih Salah Satu</option>
-                                            @foreach ($getItems as $item)
-                                                <option value="{{ $item->id }}">{{ $item->kode_op }} -
-                                                    {{ $item->nama_item }} ({{ $item->qty_packing }})</option>
-                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="color">
@@ -198,8 +200,8 @@
                                                 id="sizeWidth">
                                         </div>
                                     </div> --}}
-                                    <div class="d-flex input-wrap flex-wrap">
-                                        {{-- <div class="opener">
+                                    {{-- <div class="d-flex input-wrap flex-wrap">
+                                        <div class="opener">
                                             <label for="opener" class="form-label">Bukaan</label>
                                             <input class="form-control" type="text" readonly id="opener"
                                                 name="opener">
@@ -218,8 +220,8 @@
                                             <label for="status" class="form-label">Status</label>
                                             <input class="form-control" type="text" readonly id="status"
                                                 name="status">
-                                        </div> --}}
-                                    </div>
+                                        </div>
+                                    </div> --}}
                                     <div class="description">
                                         <label for="description" class="form-label">Keterangan</label>
                                         <textarea class="form-control" id="description" name="description" placeholder="Isikan Keterangan di sini"
@@ -247,26 +249,6 @@
 @endsection
 
 @push('script')
-    {{-- autofill modal by dropdown --}}
-    <script>
-        $('#codeItem').change(function() {
-            var id = $(this).val();
-            var url = '{{ route('logistic_get_items', ':id') }}';
-            url = url.replace(':id', id);
-
-            $.ajax({
-                url: url,
-                type: 'get',
-                dataType: 'json',
-                success: function(response) {
-                    if (response != null) {
-                        $('#color').val(response.color);
-                    }
-                }
-            });
-        });
-    </script>
-
     {{-- autofill quotation by dropdown --}}
     <script>
         $('#codeFPPP').change(function() {
@@ -287,19 +269,53 @@
         });
     </script>
 
-    {{-- store from modal to table --}}
     <script>
         $(document).ready(function() {
-            let counter = 0;
-            var id;
+            let counter = 0,
+                id;
 
+            // get items by fppps' id for dropdown
+            $('#codeFPPP').change(function() {
+                let id = $(this).val(),
+                    url = '{{ route('logistic_get_dropdown_items', ':id') }}',
+                    selectElement = $('#codeItem');
+                url = url.replace(':id', id);
+
+                // remove select's child that has value
+                selectElement.children("option[value]").remove()
+
+                // remove items in table if exist
+                if ($('#tableItems tbody').children()) {
+                    $('#tableItems tbody').children().remove();
+                    $('.table-description').removeClass('d-none');
+                    id = 0;
+                    counter = 0;
+                }
+
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response != null) {
+                            $.each(response, function(i, item) {
+                                option =
+                                    `<option value="${item.id}" id="item${item.id}" data-name="${item.nama_item}" data-qty="${item.qty_packing}">${item.kode_op} - ${item.nama_item} (${item.qty_packing})</option>`
+
+                                selectElement.append(option);
+                            });
+                        }
+                    }
+                });
+            })
+
+            // store from modal to table
             $('#itemForm').on('submit', function(e) {
                 e.preventDefault();
 
                 let rows = [];
                 $.each($(this).serializeArray(), function(i, field) {
                     if (i > 0 && field.name === rows[rows.length - 1].name) {
-                        // id = counter;
                         rows[rows.length - 1].value += ';' + field.value;
                     } else {
                         if (field.name === 'codeItem') {
@@ -315,17 +331,35 @@
                             rows.push(field);
                         }
                     }
-                    // console.log(field);
                 });
+
                 let list = '<tr>';
 
                 if (rows.length > 0) {
+                    let nama_item = $(`#item${id}`).data("name"),
+                        qty = $(`#item${id}`).data("qty");
+
                     $.each(rows, function(i, field) {
-                        // list += '<td class="text-center">' + field.value + '</td>';
-                        list += '<td class="text-center">' + field.value +
-                            '<input type="hidden" name="items[' +
-                            String(id) + '][' + field.name + ']" value="' + field.value +
-                            '"/>' + '</td>';
+                        // console.log(field);
+                        if (i === 1) {
+                            // nama item
+                            list +=
+                                `<td class="text-center">${nama_item}<input type="hidden" name="items[${String(id)}][namaItem]" value="${nama_item}"/></td>`;
+
+                            // value
+                            list +=
+                                `<td class="text-center">${field.value}<input type="hidden" name="items[${String(id)}][${field.name}]" value="${field.value}"/></td>`
+
+                            // qty
+                            list +=
+                                `<td class="text-center">${qty}<input type="hidden" name="items[${String(id)}][qty]" value="${qty}"/></td>`;
+
+                            // remove selected option from dropdrown (avoid duplicate)
+                            $(`#item${id}[value="${id}"]`).remove();
+                        } else {
+                            list +=
+                                `<td class="text-center">${field.value}<input type="hidden" name="items[${String(id)}][${field.name}]" value="${field.value}"/></td>`
+                        }
                     });
 
                     $('.table-description').addClass('d-none')
@@ -335,8 +369,27 @@
                 }
 
                 $('#addFormModal').modal('hide');
-
                 $(this)[0].reset();
+            });
+        });
+    </script>
+
+    {{-- autofill item's color by dropdown --}}
+    <script>
+        $('#codeItem').change(function() {
+            var id = $(this).val();
+            var url = '{{ route('logistic_get_item_color', ':id') }}';
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                success: function(response) {
+                    if (response != null) {
+                        $('#color').val(response.color);
+                    }
+                }
             });
         });
     </script>
@@ -347,5 +400,14 @@
             $("#itemForm")[0].reset();
             return false;
         });
+    </script>
+
+    {{-- trigger onchange function --}}
+    <script>
+        $(document).ready(function() {
+            if ($('#codeFPPP').val()) {
+                $('#codeFPPP').trigger("change");
+            };
+        })
     </script>
 @endpush

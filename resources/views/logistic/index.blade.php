@@ -70,7 +70,7 @@
                                                     @endif
                                                 @endforeach
                                             </td>
-                                            <td>{{ $data->driver }}</td>
+                                            <td>{{ ucwords($data->driver, ' ') }}</td>
                                             <td class="d-flex justify-content-around">
                                                 <a href="{{ route('logistic_show', $data->id) }}" class="btn btn-success"
                                                     title="View">

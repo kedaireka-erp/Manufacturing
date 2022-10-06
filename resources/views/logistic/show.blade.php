@@ -92,7 +92,7 @@
                                                 <td>:</td>
                                                 <td>
                                                     <span>
-                                                        {{ $data->alamat }}
+                                                        {{ ucwords($data->alamat, ',. ') }}
                                                     </span>
                                                 </td>
                                             </tr>
@@ -123,7 +123,7 @@
                                                     <td>Driver</td>
                                                     <td>:</td>
                                                     <td>
-                                                        {{ $data->driver }}
+                                                        {{ ucfirst($data->driver) }}
                                                     </td>
                                                 </tr>
                                                 <tr>
