@@ -115,97 +115,97 @@
                            <td>@if ($w->status_hold == null)
                                {{ "-" }}
                            @else
-                               {{ $w->status_hold }}
+                               {{ Str::ucfirst($w->status_hold) }}
                            @endif</td>
-                           <td>{{ $w->last_process }}</td>
-                           <td>{{ $w->nama_item }}</td>
-                           <td>{{ $w->jenis_kaca }}</td>
-                           <td>{{ $w->tanggal_kaca }}</td>
-                           <td>{{ $w->user_kaca }}</td>
+                           <td>{{ Str::ucfirst($w->last_process) }}</td>
+                           <td>{{ Str::ucfirst($w->nama_item) }}</td>
+                           <td>{{ Str::ucfirst($w->jenis_kaca) }}</td>
+                           <td>{{ date("d/m/Y", strtotime($w->tanggal_kaca) + 25200) . " " . date("H:i", strtotime($w->tanggal_kaca) + 25200) }}</td>
+                           <td>{{ Str::ucfirst($w->user_kaca) }}</td>
                            <td>
                             @if ($w->tanggal_cutting == null)
                                {{ "-" }}
                             @else
-                                {{ $w->tanggal_cutting }}
+                                {{ date("d/m/Y", strtotime($w->tanggal_cutting) + 25200) . " " . date("H:i", strtotime($w->tanggal_cutting) + 25200) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->subkon1_cutting == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->subkon1_cutting }}
+                                {{ Str::ucfirst($w->subkon1_cutting) }}
                             @endif
                             </td>
                            <td>
                             @if ($w->proses_cutting == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->proses_cutting }}
+                                {{ Str::ucfirst($w->proses_cutting) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->proses_cutting == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->proses_cutting }}
+                                {{ Str::ucfirst($w->proses_cutting) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->tanggal_machining == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->tanggal_machining }}
+                                {{ date("d/m/Y", strtotime($w->tanggal_machining) + 25200) . " " . date("H:i", strtotime($w->tanggal_machining) + 25200) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->subkon1_machining == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->subkon1_machining }}
+                                {{ Str::ucfirst($w->subkon1_machining) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->tanggal_assembly1 == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->tanggal_assembly1 }}
+                                {{ date("d/m/Y", strtotime($w->tanggal_assembly1) + 25200) . " " . date("H:i", strtotime($w->tanggal_assembly1) + 25200) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->subkon1_assembly1 == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->subkon1_assembly1 }}
+                                {{ Str::ucfirst($w->subkon1_assembly1) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->subkon2_assembly1 == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->subkon2_assembly1 }}
+                                {{ Str::ucfirst($w->subkon2_assembly1) }}
                             @endif
                            </td>
-                           <td>{{ $w->tanggalFinishQC }}</td>
+                           <td>{{ date("d/m/Y", strtotime($w->tanggalFinishQC) + 25200) . " " . date("H:i", strtotime($w->tanggalFinishQC) + 25200) }}</td>
                            <td>
                             @if ($w->subkon_qcs == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->subkon_qcs }}
+                                {{ Str::ucfirst($w->subkon_qcs) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->tanggalReject)
-                                {{ $w->tanggalReject }}
+                                {{ date("d/m/Y", strtotime($w->tanggalReject) + 25200) . " " . date("H:i", strtotime($w->tanggalReject) + 25200) }}
                             @else
                                 {{ "-" }}
                             @endif
                            </td>
-                           <td>{{ $w->alasanReject }}</td>
+                           <td>{{ Str::ucfirst($w->alasanReject) }}</td>
                            <td>
                             @if ($w->tanggal_packing == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->tanggal_packing }}
+                                {{ date("d/m/Y", strtotime($w->tanggal_packing) + 25200) . " " . date("H:i", strtotime($w->tanggal_packing) + 25200) }}
                             @endif
                            </td>
                            <td>
@@ -219,14 +219,14 @@
                             @if ($w->subkon1_packing == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->subkon1_packing }}
+                                {{ Str::ucfirst($w->subkon1_packing) }}
                             @endif
                            </td>
                            <td>
                             @if ($w->tanggal_kirim == null)
                                 {{ "-" }}
                             @else
-                                {{ $w->tanggal_kirim }}
+                                {{ date("d/m/Y", strtotime($w->tanggal_kirim) + 25200) . " " . date("H:i", strtotime($w->tanggal_kirim) + 25200) }}
                             @endif
                            </td>
                            <td>
