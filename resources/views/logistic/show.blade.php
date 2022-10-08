@@ -13,7 +13,7 @@
                         <h2 class="card-title mb-0">Lihat Surat Jalan</h2>
                         <h5 class="card-bredcrumb mb-0">
                             <a href="/manufactures" class="text-secondary">Manufaktur / </a>
-                             <a href="{{ route('logistic_index') }}" class="text-secondary"> Surat Jalan / </a>
+                            <a href="{{ route('logistic_index') }}" class="text-secondary"> Surat Jalan / </a>
                             <a href="#" class="text-primary">Lihat Surat Jalan</a>
                         </h5>
                     </div>
@@ -80,11 +80,10 @@
                                             <tr>
                                                 <td>Mitra/Store</td>
                                                 <td>:</td>
-                                                <td>
-
-                                                    Bintang Selatan Otista (Lam Linda Suherlin) Telp. 089888989146 /
-                                                    022-42374487 (DUMMY)
-
+                                                <td style="line-height: 1.2rem">
+                                                    {{ $getAplicator->nama }} ({{ $getAplicator->kontak }})
+                                                    <br>
+                                                    {{ $getAplicator->alamat }}
                                                 </td>
                                             </tr>
                                             <tr>

@@ -17,10 +17,15 @@ class LogisticController extends Controller
             ->orderBy('logistics.updated_at', 'desc')
             ->paginate(5);
 
-        $getQuotations = DB::table('fppps')
-            ->select('fppps.id as fppp_id', 'quotations.id as quotation_id', 'fppp_no', 'proyek_quotations.no_quotation')
-            ->join('quotations', 'fppps.quotation_id', '=', 'quotations.id')
-            ->join('proyek_quotations', 'quotations.proyek_quotation_id', '=', 'proyek_quotations.id')
+        // $getQuotations = DB::table('fppps')
+        //     ->select('fppps.id as fppp_id', 'quotations.id as quotation_id', 'fppp_no', 'proyek_quotations.no_quotation')
+        //     ->join('quotations', 'fppps.quotation_id', '=', 'quotations.id')
+        //     ->join('proyek_quotations', 'quotations.proyek_quotation_id', '=', 'proyek_quotations.id')
+        //     ->get();
+
+        $getStatus = DB::table('work_orders as wo')
+            ->select('wo.id as wo_id', 'lwo.logistic_id as l_id', 'wo.last_process as last_process')
+            ->join('logistic_work_order as lwo', 'wo.id', 'lwo.work_order_id')
             ->get();
 
         $getQtyPacking = DB::table('work_orders')
@@ -28,8 +33,8 @@ class LogisticController extends Controller
             ->join('logistic_work_order as lwo', 'work_orders.id', '=', 'lwo.work_order_id')
             ->groupBy('lwo.logistic_id')
             ->get();
-
-        return view('logistic.index', compact('getLogistics', 'getQuotations', 'getQtyPacking'));
+        // dd($getStatus);
+        return view('logistic.index', compact('getLogistics', 'getQtyPacking', 'getStatus'));
     }
 
     public function create()
@@ -107,35 +112,48 @@ class LogisticController extends Controller
 
     public function show($id)
     {
-        $getLogistic = DB::table('logistics')
-            ->select('logistics.*', 'fppps.fppp_no')
-            ->join('fppps', 'logistics.fppp_id', '=', 'fppps.id')
-            ->where('logistics.id', '=', $id)
-            ->first();
+        $logistic = Logistic::find($id);
 
-        $getQuotationNo = DB::table('fppps')
-            ->select('pq.no_quotation')
-            ->join('quotations', 'fppps.quotation_id', 'quotations.id')
-            ->where('fppps.id', '=', $getLogistic->fppp_id)
-            ->join('proyek_quotations as pq', 'quotations.proyek_quotation_id', '=', 'pq.id')
-            ->first();
+        if ($logistic) {
+            $getLogistic = DB::table('logistics')
+                ->select('logistics.*', 'fppps.fppp_no')
+                ->join('fppps', 'logistics.fppp_id', '=', 'fppps.id')
+                ->where('logistics.id', '=', $id)
+                ->first();
 
-        $getItems = DB::table('logistic_work_order')
-            ->select('wo.nama_item as nama_item', 'fppps.color as warna', 'logistic_work_order.keterangan as keterangan', 'wo.qty_packing as qty')
-            ->join('work_orders as wo', 'logistic_work_order.work_order_id', '=', 'wo.id')
-            ->where('logistic_work_order.logistic_id', '=', $id)
-            ->join('fppps', 'wo.fppp_id', '=', 'fppps.id')
-            ->get();
+            $getQuotationNo = DB::table('fppps')
+                ->select('pq.no_quotation', 'quotations.id as q_id')
+                ->join('quotations', 'fppps.quotation_id', 'quotations.id')
+                ->where('fppps.id', '=', $getLogistic->fppp_id)
+                ->join('proyek_quotations as pq', 'quotations.proyek_quotation_id', '=', 'pq.id')
+                ->first();
 
-        $getTotalQty = DB::table('work_orders')
-            ->selectRaw('sum(work_orders.qty_packing) as total')
-            ->join('logistic_work_order as lwo', 'work_orders.id', '=', 'lwo.work_order_id')
-            ->where('lwo.logistic_id', '=', $id)
-            ->groupBy('lwo.logistic_id')
-            ->first();
+            $getItems = DB::table('logistic_work_order')
+                ->select('wo.nama_item as nama_item', 'fppps.color as warna', 'logistic_work_order.keterangan as keterangan', 'wo.qty_packing as qty')
+                ->join('work_orders as wo', 'logistic_work_order.work_order_id', '=', 'wo.id')
+                ->where('logistic_work_order.logistic_id', '=', $id)
+                ->join('fppps', 'wo.fppp_id', '=', 'fppps.id')
+                ->get();
 
-        // dd($getTotalQty);
-        return view('logistic.show', compact('getLogistic', 'getQuotationNo', 'getItems', 'getTotalQty'));
+            $getTotalQty = DB::table('work_orders')
+                ->selectRaw('sum(work_orders.qty_packing) as total')
+                ->join('logistic_work_order as lwo', 'work_orders.id', '=', 'lwo.work_order_id')
+                ->where('lwo.logistic_id', '=', $id)
+                ->groupBy('lwo.logistic_id')
+                ->first();
+
+            $getAplicator = DB::table('quotations')
+                ->select('ma.aplikator as nama', 'ma.alamat', 'ma.kontak')
+                ->where('quotations.id', '=', $getQuotationNo->q_id)
+                ->join('master_aplikators as ma', 'quotations.aplikator_id', '=', 'ma.id')
+                ->first();
+
+            // dd($getAplicator);
+            return view('logistic.show', compact('getLogistic', 'getQuotationNo', 'getItems', 'getTotalQty', 'getAplicator'));
+        } else {
+            toast("Surat Jalan tidak ditemukan!", "error")->timerProgressBar();
+            return redirect('logistic');
+        }
     }
 
     public function edit(Logistic $logistic)
@@ -150,10 +168,34 @@ class LogisticController extends Controller
 
     public function destroy($id)
     {
-        $logistic = Logistic::findOrFail($id);
-        $logistic->delete(); // soft delete
+        $logistic = Logistic::find($id);
 
-        toast("Surat Jalan ({$logistic->no_logistic}) berhasil dihapus!", "success")->timerProgressBar();
+        if ($logistic) {
+            $getItemsId = DB::table('work_orders as wo')
+                ->select('wo.id as id', 'lwo.logistic_id')
+                ->where('lwo.logistic_id', '=', $id)
+                ->join('logistic_work_order as lwo', 'lwo.work_order_id', '=', 'wo.id')
+                ->get();
+
+            $items = collect($getItemsId);
+
+            // change 'last_process' to 'packing'
+            foreach ($items as $item) {
+                $wo = WorkOrder::find($item->id);
+                $wo->update([
+                    "last_process" => 'packing',
+                ]);
+            }
+            $logistic->delete(); // soft delete
+
+            $msg = "Surat Jalan ({$logistic->no_logistic}) berhasil dihapus!";
+            $msgStatus = "success";
+        } else {
+            $msg = "Surat Jalan gagal dihapus!";
+            $msgStatus = "error";
+        }
+
+        toast($msg, $msgStatus)->timerProgressBar();
         return redirect()->back();
     }
 
@@ -192,5 +234,34 @@ class LogisticController extends Controller
             ->first();
 
         return response()->json($getQuotationNo);
+    }
+
+    public function handleChangeStatus()
+    {
+        $id = $_GET['id'];
+        $status = $_GET['status'];
+
+        $getItemsId = DB::table('work_orders as wo')
+            ->select('wo.id as id', 'lwo.logistic_id')
+            ->where('lwo.logistic_id', '=', $id)
+            ->join('logistic_work_order as lwo', 'lwo.work_order_id', '=', 'wo.id')
+            ->get();
+
+        $items = collect($getItemsId);
+
+        // change 'last_process' to given status
+        foreach ($items as $item) {
+            $wo = WorkOrder::find($item->id);
+            $wo->update([
+                "last_process" => $status,
+            ]);
+        }
+
+        $res = (object) [
+            "id" =>  $id,
+            "status" => $status,
+        ];
+
+        return response()->json($res);
     }
 }

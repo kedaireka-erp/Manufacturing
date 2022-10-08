@@ -358,7 +358,7 @@
                             $(`#item${id}[value="${id}"]`).remove();
                         } else {
                             list +=
-                                `<td class="text-center">${field.value}<input type="hidden" name="items[${String(id)}][${field.name}]" value="${field.value}"/></td>`
+                                `<td class="text-center">${field?.value || "-"}<input type="hidden" name="items[${String(id)}][${field.name}]" value="${field.value}"/></td>`
                         }
                     });
 
