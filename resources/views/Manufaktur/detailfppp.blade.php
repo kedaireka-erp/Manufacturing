@@ -1,32 +1,34 @@
 @extends('layouts.admin')
 @section('content')
-{{-- <div class="content-wrapper bg-img"> --}}
-            {{-- <div class="shadow p-3 mb-3 bg-body rounded">Detail FPPP
+    {{-- <div class="content-wrapper bg-img"> --}}
+    {{-- <div class="shadow p-3 mb-3 bg-body rounded">Detail FPPP
             <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> /<a href="#" class="text-secondary">FPPP</a>/ <a href="#" class="text-primary">Detail FPPP</a></h5>
             </div> --}}
 
-            <div class="content-wrapper bg-img">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card card-table-header">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <h2 class="card-title mb-0">Detail FPPP</h2>
-                                <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a href="#" class="text-secondary">FPPP / </a><a
-                                        href="#" class="text-primary">Detail FPPP</a></h5>
-                            </div>
-                        </div>
+    <div class="content-wrapper bg-img">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-table-header">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h2 class="card-title mb-0">Detail FPPP</h2>
+                        <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a
+                                href="#" class="text-secondary">FPPP / </a><a href="#"
+                                class="text-primary">Detail FPPP</a></h5>
                     </div>
                 </div>
-                <br>
+            </div>
+        </div>
+        <br>
         <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-info btn-fw">Download File <i class="mdi mdi-download"></i></button>
-                            </div>
-                            <h2>DETAIL FPPP No. 021/FPPP/AST/02/2002/prduksi tahap 1</h2>
-                            <table class="table table-bordered table-hover">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-info btn-fw">Download File <i
+                                    class="mdi mdi-download"></i></button>
+                        </div>
+                        <h2>DETAIL FPPP No. 021/FPPP/AST/02/2002/prduksi tahap 1</h2>
+                        <table class="table table-bordered table-hover">
                             <thead>
                             </thead>
                             <tbody>
@@ -64,10 +66,10 @@
                                 </tr>
                             </tbody>
                             <table><br>
-                        </div>
-                        <div class="container">
-                            <h2>PAKET DATA PRODUKSI</h2>
-                            <table class="table table-bordered table-hover">
+                    </div>
+                    <div class="container">
+                        <h2>PAKET DATA PRODUKSI</h2>
+                        <table class="table table-bordered table-hover">
                             <thead>
                             </thead>
                             <tbody>
@@ -97,10 +99,10 @@
                                 </tr>
                             </tbody>
                             <table><br>
-                        </div>
-                        <div class="container">
-                            <h2>PENGIRIMAN</h2>
-                            <table class="table table-bordered table-hover">
+                    </div>
+                    <div class="container">
+                        <h2>PENGIRIMAN</h2>
+                        <table class="table table-bordered table-hover">
                             <thead>
                             </thead>
                             <tbody>
@@ -142,87 +144,85 @@
                                 </tr>
                             </tbody>
                             <table><br>
-                        </div>
+                    </div>
 
-                        <div class="container">
-                            <h2>PENGIRIMAN</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr class="text-center">
-                    <th scope="col">No.</th>
-                    <th scope="col">Code Item</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Glass Speification</th>
-                    <th scope="col">Leaves</th>
-                    <th scope="col">Opening Direct</th>
-                    <th scope="col">Finish</th>
-                    <th scope="col">Marketing Approval</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                    <td>01</td>
-                    <td>-</td>
-                    <td>Astral AS 01 top hug windo</td>
-                    <td>clear 6mm excluded</td>
-                    <td>1</td>
-                    <td>Outsite</td>
-                    <td>ALLURE BLACK MATTE</td>
-                    <td></td>
-                </tr>
-                <tr class="text-center">
-                <td>01</td>
-                <td>-</td>
-                <td>Astral AS 01 top hug windo</td>
-                <td>clear 6mm excluded</td>
-                <td>1</td>
-                <td>Outsite</td>
-                <td>ALLURE BLACK MATTE</td>
-                <td></td>
-                </tr>
-            </tbody>
-            <table>
+                    <div class="container">
+                        <h2>PENGIRIMAN</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Code Item</th>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Glass Speification</th>
+                                    <th scope="col">Leaves</th>
+                                    <th scope="col">Opening Direct</th>
+                                    <th scope="col">Finish</th>
+                                    <th scope="col">Marketing Approval</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>01</td>
+                                    <td>-</td>
+                                    <td>Astral AS 01 top hug windo</td>
+                                    <td>clear 6mm excluded</td>
+                                    <td>1</td>
+                                    <td>Outsite</td>
+                                    <td>ALLURE BLACK MATTE</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>01</td>
+                                    <td>-</td>
+                                    <td>Astral AS 01 top hug windo</td>
+                                    <td>clear 6mm excluded</td>
+                                    <td>1</td>
+                                    <td>Outsite</td>
+                                    <td>ALLURE BLACK MATTE</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>01</td>
+                                    <td>-</td>
+                                    <td>Astral AS 01 top hug windo</td>
+                                    <td>clear 6mm excluded</td>
+                                    <td>1</td>
+                                    <td>Outsite</td>
+                                    <td>ALLURE BLACK MATTE</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>01</td>
+                                    <td>-</td>
+                                    <td>Astral AS 01 top hug windo</td>
+                                    <td>clear 6mm excluded</td>
+                                    <td>1</td>
+                                    <td>Outsite</td>
+                                    <td>ALLURE BLACK MATTE</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>01</td>
+                                    <td>-</td>
+                                    <td>Astral AS 01 top hug windo</td>
+                                    <td>clear 6mm excluded</td>
+                                    <td>1</td>
+                                    <td>Outsite</td>
+                                    <td>ALLURE BLACK MATTE</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <table>
+                    </div>
+
+
+                </div>
+
+                {{-- </div> --}}
+            </div>
         </div>
-
-
-        </div>
-
-{{-- </div> --}}
-</div>
-</div>
-</div>
-
-
+    </div>
 @endsection
 
 @push('script')
