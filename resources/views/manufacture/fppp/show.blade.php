@@ -407,7 +407,19 @@
                                         <!-- Qc button -->
                                         {{-- <button type="button" class="d btn btn-info text-center"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Isi Keterangan</button> --}}
-                                        @if (!in_array($unit->id ,$all_wo_id))
+                                        @if ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
+                                        @if (empty($qc_statuses[$no]))
                                             <a type="button" class=" btn btn-info btn-xl" data-bs-toggle="modal" data-bs-target="#qcModal{{ $unit->id }}" class="d btn btn-primary">Isi Keterangan</a>
                                             <br> <a class=" btn mt-5 "></a>
                                             <br> <a class=" btn mt-4 "></a>   
@@ -417,10 +429,10 @@
                                             <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                             <br> <a class=" btn mt-1 "></a>
                                             <br> <a class=" btn mt-4 "></a>
-                                        @endif  
+                                        @endif 
+                                        @endif
                                     </td>
                                     <td class="long">
-                                        @if (in_array("OK!",$qc_statuses[$no]))
                                             
                                         
                                         @if ($unit->tanggal_packing)
@@ -440,7 +452,7 @@
                                         btn-gradient-danger
                                         @endif
                                         btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
-                                        @elseif ($unit->qcs)
+                                        @elseif (in_array("OK!",$qc_statuses[$no]))
                                         <form action="{{ route("update-packing") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
@@ -474,13 +486,26 @@
                                             </div>
                                         </form>
                                         @endif
-                                        @endif
+                                        
                                     </td>
 
                                     {{-- Status --}}
                                     <td class="long">
                                         <div class="dropdown">
-                                        </div> <br> <button type="button" class="d btn
+                                        </div> <br>
+                                       @if ($unit->status_hold)
+                                        <button type="button" class=" btn
+                                        @if ($unit->status_hold == "hold")
+                                        btn-gradient-info
+                                        @elseif ($unit->status_hold == "revisi")
+                                        btn-gradient-warning
+                                        @else
+                                        btn-gradient-danger
+                                        @endif
+
+                                        btn-sm button mt-4 col-12 pe-none">{{ ucfirst($unit->status_hold) }}</button>
+                                        @else
+                                        <button type="button" class="d btn
                                         @if ($unit->last_process == "queued")
                                             btn-gradient-secondary
                                         @elseif ($unit->last_process == "cutting" || $unit->last_process == "machining" || $unit->last_process == "assembly" || $unit->last_process == "qc" || $unit->last_process == "packing")
@@ -495,6 +520,8 @@
                                         </div> <br> <a class=" btn pe-none" style="margin-top: 15px"></a>
                                         <div class="">
                                         </div> <br> <a class="d btn mt-4 pe-none"></a>
+                                        @endif
+                                        
                                     </td>
                                     <!-- keterangan -->
                                     <td class="long">

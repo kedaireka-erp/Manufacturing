@@ -106,15 +106,12 @@ class ManufactureController extends Controller
             }
             $qc_statuses[$key] = $qc_status;
         }
-        $all_qc         = QC::get();
 
-        $all_wo_id = [];
-        foreach ($all_qc as $key => $value) {
-            array_push($all_wo_id, $value->work_order_id);
-        }
+        // dd($qc_statuses);
 
 
-        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons", "all_wo_id", "qc_statuses"));
+
+        return view("manufacture.fppp.show", compact("manufacture", "workOrders", "subkons", "qc_statuses"));
     }
 
     public function detail(Fppp $manufacture)
