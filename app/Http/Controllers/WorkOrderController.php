@@ -16,8 +16,8 @@ class WorkOrderController extends Controller
             "tanggal_kaca"  => Carbon::now() ?? $unit->tanggal_kaca,
             "user_kaca"     => "alice"
         ]);
-        toast("Data kaca ".$unit->kode_unit." berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        toast("Data kaca " . $unit->kode_unit . " berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
 
     public function update_cutting(Request $request)
@@ -32,8 +32,8 @@ class WorkOrderController extends Controller
             "proses_cutting"    => $request->proses_cutting ?? $unit->proses_cutting,
             "last_process"      => "cutting"
         ]);
-        toast("Data cutting ".$unit->kode_unit." berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        toast("Data cutting " . $unit->kode_unit . " berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
 
     public function update_machining(Request $request)
@@ -47,8 +47,8 @@ class WorkOrderController extends Controller
             "lead2_machining"     => $request->lead2_machining ?? $unit->lead2_machining,
             "last_process"        => "machining"
         ]);
-        toast("Data machining ".$unit->kode_unit." berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        toast("Data machining " . $unit->kode_unit . " berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
 
     public function update_assembly1(Request $request)
@@ -64,8 +64,8 @@ class WorkOrderController extends Controller
             "last_process"        => "assembly"
         ]);
 
-        toast("Data assembly 1 ".$unit->kode_unit."  berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        toast("Data assembly 1 " . $unit->kode_unit . "  berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
     public function update_assembly2(Request $request)
     {
@@ -78,8 +78,8 @@ class WorkOrderController extends Controller
             "lead2_assembly2"     => $request->lead2_assembly2 ?? $unit->lead2_assembly2,
             "process_assembly2"    => $request->process_assembly2 ?? $unit->process_assembly2,
         ]);
-        toast("Data assembly 2 ".$unit->kode_unit."  berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        toast("Data assembly 2 " . $unit->kode_unit . "  berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
 
     public function update_assembly3(Request $request)
@@ -93,8 +93,8 @@ class WorkOrderController extends Controller
             "lead2_assembly3"     => $request->lead2_assembly3 ?? $unit->lead2_assembly3,
             "process_assembly3"    => $request->process_assembly3 ?? $unit->process_assembly3,
         ]);
-        toast("Data assembly 3 ".$unit->kode_unit."  berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        toast("Data assembly 3 " . $unit->kode_unit . "  berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
 
     public function create_qc(Request $request)
@@ -107,9 +107,9 @@ class WorkOrderController extends Controller
             "keterangan"        => $request->keterangan,
             "status"            => $request->status
         ]);
-        $unit->update(["last_process", "qc"]);
-        toast("Data qc ".$unit->kode_unit."  berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        $unit->update(["last_process"      => "qc"]);
+        toast("Data qc " . $unit->kode_unit . "  berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
 
     public function update_packing(Request $request)
@@ -122,9 +122,11 @@ class WorkOrderController extends Controller
             "subkon2_packing"   => $request->subkon2_packing ?? $unit->subkon2_packing,
             "lead2_packing"     => $request->lead2_packing ?? $unit->lead2_packing,
             "qty_packing"       => $request->qty_packing ?? $unit->qty_packing,
+            "last_process"      => "packing"
         ]);
-        toast("Data packing ".$unit->kode_unit."  berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+
+        toast("Data packing " . $unit->kode_unit . "  berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
     public function update_keterangan(Request $request)
     {
@@ -132,7 +134,7 @@ class WorkOrderController extends Controller
         $unit->update([
             "status_hold"   => $request->keterangan ?? $unit->keterangan,
         ]);
-        toast("Data keterangan ".$unit->kode_unit."  berhasil diupdate", "success");
-        return redirect("/manufactures/". $unit->manufacture_id);
+        toast("Data keterangan " . $unit->kode_unit . "  berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
 }

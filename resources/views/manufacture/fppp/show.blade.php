@@ -473,13 +473,6 @@
                                                 <button type="submit" class="d btn btn-success border-dark-rounded text-center">Konfirmasi</button>
                                             </div>
                                         </form>
-                                        
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
-                                        <br>
-                                        <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
-                                        <div class="dropdown">
-                                        </div> <button type="button" class="form-control text-center pe-none bg-secondary bg-opacity-50 mt-2"><b>{{ $unit->qty_packing }}</b></button>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 col-12 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting) + 25200) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting) + 25200) }}</a>
                                         @endif
                                         @endif
                                     </td>

@@ -61,7 +61,8 @@ class ManufactureController extends Controller
                     "kode_op" => $row[0],
                     "kode_unit" => $row[1],
                     "nama_item" => $row[2],
-                    "jenis_kaca" => $row[3]
+                    "jenis_kaca" => $row[3],
+                    "last_process" => "queued"
                 ]);
             }
         }
