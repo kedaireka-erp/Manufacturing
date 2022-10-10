@@ -116,9 +116,10 @@
                                                         class="btn btn-success" title="View">
                                                         <i class="mdi mdi-eye"></i>
                                                     </a>
-                                                    <div class="btn btn-primary" title="Download">
+                                                    <a href="{{ route('logistic_generate_pdf', $data->id) }}"
+                                                        target="_blank" class="btn btn-primary" title="Download">
                                                         <i class="mdi mdi-download"></i>
-                                                    </div>
+                                                    </a>
 
                                                     {{-- <form action="{{ route('logistic_destroy', $data->id) }}" method="post"> --}}
                                                     {{-- @csrf --}}

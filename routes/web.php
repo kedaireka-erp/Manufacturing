@@ -86,6 +86,7 @@ Route::middleware([])->group(function () {
         Route::get('/logistic/getQuotation/{id}', 'getQuotation')->name('logistic_get_quotation');
         Route::get('/logistic/getDropdownItems/{id}', 'getDropdownItems')->name('logistic_get_dropdown_items'); // get items by fppp's id for dropdown
         Route::get('/logistic/handleChangeStatus/{id}', 'handleChangeStatus')->name('logistic_handle_change_status');
+        Route::get('/logistic/generatePDF/{id}', 'generatePDF')->name('logistic_generate_pdf');
     });
 
 

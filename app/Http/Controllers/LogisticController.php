@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logistic;
 use App\Models\WorkOrder;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -148,7 +149,7 @@ class LogisticController extends Controller
                 ->join('master_aplikators as ma', 'quotations.aplikator_id', '=', 'ma.id')
                 ->first();
 
-            // dd($getAplicator);
+            // dd($getItemsId);
             return view('logistic.show', compact('getLogistic', 'getQuotationNo', 'getItems', 'getTotalQty', 'getAplicator'));
         } else {
             toast("Surat Jalan tidak ditemukan!", "error")->timerProgressBar();
@@ -263,5 +264,54 @@ class LogisticController extends Controller
         ];
 
         return response()->json($res);
+    }
+
+    public function generatePDF($id)
+    {
+        $getLogistic = DB::table('logistics')
+            ->select('logistics.*', 'fppps.fppp_no')
+            ->join('fppps', 'logistics.fppp_id', '=', 'fppps.id')
+            ->where('logistics.id', '=', $id)
+            ->first();
+
+        $getQuotationNo = DB::table('fppps')
+            ->select('pq.no_quotation', 'quotations.id as q_id')
+            ->join('quotations', 'fppps.quotation_id', 'quotations.id')
+            ->where('fppps.id', '=', $getLogistic->fppp_id)
+            ->join('proyek_quotations as pq', 'quotations.proyek_quotation_id', '=', 'pq.id')
+            ->first();
+
+        $getItems = DB::table('logistic_work_order')
+            ->select('wo.nama_item as nama_item', 'fppps.color as warna', 'logistic_work_order.keterangan as keterangan', 'wo.qty_packing as qty')
+            ->join('work_orders as wo', 'logistic_work_order.work_order_id', '=', 'wo.id')
+            ->where('logistic_work_order.logistic_id', '=', $id)
+            ->join('fppps', 'wo.fppp_id', '=', 'fppps.id')
+            ->get();
+
+        $getTotalQty = DB::table('work_orders')
+            ->selectRaw('sum(work_orders.qty_packing) as total')
+            ->join('logistic_work_order as lwo', 'work_orders.id', '=', 'lwo.work_order_id')
+            ->where('lwo.logistic_id', '=', $id)
+            ->groupBy('lwo.logistic_id')
+            ->first();
+
+        $getAplicator = DB::table('quotations')
+            ->select('ma.aplikator as nama', 'ma.alamat', 'ma.kontak')
+            ->where('quotations.id', '=', $getQuotationNo->q_id)
+            ->join('master_aplikators as ma', 'quotations.aplikator_id', '=', 'ma.id')
+            ->first();
+
+        $data = [
+            'logistic' => $getLogistic,
+            'aplikator' => $getAplicator,
+            'quotation' => $getQuotationNo,
+            'items' => $getItems,
+            'totalQty' => $getTotalQty
+        ];
+
+        // dd($data);
+
+        $pdf = Pdf::loadView('logistic.generatePDF', $data);
+        return $pdf->download($getLogistic->no_logistic . '.pdf');
     }
 }
