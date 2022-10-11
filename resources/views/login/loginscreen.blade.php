@@ -13,21 +13,13 @@
             <div class="brand-logo d-flex justify-content-center">
                 <img src="{{ asset("assets/images/logo-astral.svg") }}">
             </div>
-            <h4 class="d-flex justify-content-center">Selamat Datang!</h4>
-              <h6 class="font-weight-light d-flex justify-content-center">Masuk untuk melanjutkan.</h6>
-              <form class="pt-3">
-                <div class="form-group">
-                    <label for="">Nomor Pegawai</label>
-                  <input type="number" class="form-control form-control-lg " id="exampleInputEmail1" placeholder="Nomor Pegawai">
-                </div>
-                <div class="form-group">
-                    <label for="">Kata Sandi</label>
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Kata Sandi">
-                </div>
+            <h4 class="d-flex justify-content-center">Selamat Datang, Alfat Mutoriq</h4>
+              <h6 class="font-weight-light d-flex justify-content-center">Anda akan mengakses Sistem Manufaktur</h6>
+              {{-- <form class="pt-3 "> --}}
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary font-weight-medium auth-form-btn" style="width: 100%;" href="">Masuk</a>
+                  <a class="btn btn-block btn-primary font-weight-medium auth-form-btn" style="width: 100%; margin-top: 110px;" href="">Klik untuk melanjutkan</a>
                 </div>
-              </form>
+              {{-- </form> --}}
         </div>
       </div>
     </div>
