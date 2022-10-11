@@ -65,7 +65,7 @@
                     @foreach ($mpp as $key => $mPP)
                     <tr class="text-center">
                         <td class="sticky-col first-col bg-white">{{ $key+1 }}</td>
-                        <td class="sticky-col second-col bg-white width"><a href="/monitoring/{{ $mPP['id_fppp'] }}" class="nav-link"><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> {{ $mPP['no_fppp'] }}</a></td>
+                        <td class="sticky-col second-col bg-white"><a href="/monitoring/{{ $mPP['id_fppp'] }}" class="nav-link"><button type="button" class="btn btn-info btn-icon"><i class="mdi mdi-magnify"></i></button> {{ $mPP['no_fppp'] }}</a></td>
                         <td class="sticky-col third-col bg-white">{{ $mPP['tanggalTerimaFppp'] }}</td>
                         <td>{{ $mPP['deadline'] }}</td>
                         <td>{{ $mPP['project'] }}</td>
