@@ -426,7 +426,7 @@
                                             @else
                                             <a type="button" class="btn btn-gradient-primary btn-sm button col-9 mt-2 text-center" data-bs-toggle="modal" data-bs-target="#qcModal{{ $unit->id }}" class="d btn btn-primary">Lihat QC</a>
                                             <br>
-                                            <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting)) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting)) }}</a>
+                                            <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->qcs->last()->created_at)) }} <br> {{ date("H:i", strtotime($unit->qcs->last()->created_at)) }}</a>
                                             <br> <a class=" btn mt-1 "></a>
                                             <br> <a class=" btn mt-4 "></a>
                                         @endif
