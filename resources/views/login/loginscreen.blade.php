@@ -15,11 +15,9 @@
             </div>
             <h4 class="d-flex justify-content-center">Selamat Datang, Alfat Mutoriq</h4>
               <h6 class="font-weight-light d-flex justify-content-center">Anda akan mengakses Sistem Manufaktur</h6>
-              {{-- <form class="pt-3 "> --}}
                 <div class="mt-3">
                   <a class="btn btn-block btn-primary font-weight-medium auth-form-btn" style="width: 100%; margin-top: 110px;" href="">Klik untuk melanjutkan</a>
                 </div>
-              {{-- </form> --}}
         </div>
       </div>
     </div>
