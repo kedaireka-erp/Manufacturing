@@ -44,7 +44,7 @@ class Fppp extends Model
     {
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('FPPP_number', 'like', '%' . $search . '%')->orWhere('project_name', 'like', '%' . $search . '%')->orWhere('applicator_name', 'like', '%' . $search . '%');
+            return $query->where('fppp_no', 'like', '%' . $search . '%');
         });
     }
 
