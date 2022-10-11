@@ -35,6 +35,7 @@ class LogisticController extends Controller
             ->groupBy('lwo.logistic_id')
             ->get();
         // dd($getStatus);
+
         return view('logistic.index', compact('getLogistics', 'getQtyPacking', 'getStatus'));
     }
 
@@ -258,6 +259,12 @@ class LogisticController extends Controller
             ]);
         }
 
+        $updateLogistic = DB::table('logistics')
+            ->where('id', '=', $id)
+            ->update([
+                'updated_at' => now()
+            ]);
+
         $res = (object) [
             "id" =>  $id,
             "status" => $status,
@@ -313,5 +320,38 @@ class LogisticController extends Controller
 
         $pdf = Pdf::loadView('logistic.generatePDF', $data);
         return $pdf->download($getLogistic->no_logistic . '.pdf');
+    }
+
+    public function logisticSearch()
+    {
+        $query = $_GET['query'];
+
+        $getLogistics = Logistic::select('logistics.id', 'no_logistic', 'fppp.id as fppp_id', 'fppp.FPPP_no', 'tgl_berangkat', 'driver')
+            ->join('fppps as fppp', 'logistics.fppp_id', '=', 'fppp.id')
+            ->orWhere('no_logistic', 'LIKE', '%' . $query . '%')
+            ->orWhere('fppp.FPPP_no', 'LIKE', '%' . $query . '%')
+            // ->orderBy('logistics.updated_at', 'desc')
+            ->limit(5)
+            ->get();
+
+        $getStatus = DB::table('work_orders as wo')
+            ->select('wo.id as wo_id', 'lwo.logistic_id as l_id', 'wo.last_process as last_process')
+            ->join('logistic_work_order as lwo', 'wo.id', 'lwo.work_order_id')
+            ->get();
+
+        $getQtyPacking = DB::table('work_orders')
+            ->selectRaw('lwo.logistic_id as l_id, sum(work_orders.qty_packing) as total')
+            ->join('logistic_work_order as lwo', 'work_orders.id', '=', 'lwo.work_order_id')
+            ->groupBy('lwo.logistic_id')
+            ->get();
+
+        // get the search term
+        $res = (object) [
+            "logistics" =>  $getLogistics,
+            "statuses" => $getStatus,
+            "qty" => $getQtyPacking,
+        ];
+
+        return response()->json($res);
     }
 }
