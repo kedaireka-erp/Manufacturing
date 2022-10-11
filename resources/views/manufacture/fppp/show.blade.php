@@ -288,7 +288,7 @@
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting)) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting)) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_assembly2)) }} <br> {{ date("H:i", strtotime($unit->tanggal_assembly2)) }}</a>
                                         @elseif ($unit->status_hold)
                                         <button type="button" class=" btn
                                         @if ($unit->status_hold == "hold")
@@ -350,7 +350,7 @@
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
                                         <br>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting)) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting)) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_assembly3)) }} <br> {{ date("H:i", strtotime($unit->tanggal_assembly3)) }}</a>
                                         @elseif ($unit->status_hold)
                                         <button type="button" class=" btn
                                         @if ($unit->status_hold == "hold")
@@ -433,15 +433,13 @@
                                         @endif
                                     </td>
                                     <td class="long">
-
-
                                         @if ($unit->tanggal_packing)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
                                         <br>
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
                                         <div class="dropdown">
                                         </div> <button type="button" class="form-control text-center pe-none bg-secondary bg-opacity-50 mt-2"><b>{{ $unit->qty_packing }}</b></button>
-                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_cutting)) }} <br> {{ date("H:i", strtotime($unit->tanggal_cutting)) }}</a>
+                                        <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_packing)) }} <br> {{ date("H:i", strtotime($unit->tanggal_packing)) }}</a>
                                         @elseif ($unit->status_hold)
                                         <button type="button" class=" btn
                                         @if ($unit->status_hold == "hold")
