@@ -74,6 +74,9 @@ class MonitoringController extends Controller
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
                     $wor[$k]['kode_op'] = $wo->kode_op;
                     $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
+                    if ($wo->tanggal_kaca) {
+                        $mpp[$key]['proses_kaca'] += 1;
+                    }
                     if ($wo->kode_unit) {
                         $mpp[$key]['total_unit'] += 1;
                     }
@@ -176,7 +179,7 @@ class MonitoringController extends Controller
             $w->alasanReject = "-";
             $w->tanggalFinishQC = "-";
             if ($w->status_qc == "REJECTED") {
-                $w->tanggalReject = $w->created_at;
+                $w->tanggalReject = $this->ubahTanggal($w->created_at);
                 $w->alasanReject = $w->alasanqc;
             }elseif ($w->status_qc == "OK!") {
                 if ($w->alasanqc != null) {
@@ -263,6 +266,9 @@ class MonitoringController extends Controller
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
                     $wor[$k]['kode_op'] = $wo->kode_op;
                     $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
+                    if ($wo->tanggal_kaca) {
+                        $mpp[$key]['proses_kaca'] += 1;
+                    }
                     if ($wo->kode_unit) {
                         $mpp[$key]['total_unit'] += 1;
                     }
@@ -366,7 +372,7 @@ class MonitoringController extends Controller
             $w->alasanReject = "-";
             $w->tanggalFinishQC = "-";
             if ($w->status_qc == "REJECTED") {
-                $w->tanggalReject = $w->created_at;
+                $w->tanggalReject = $this->ubahTanggal($w->created_at);
                 $w->alasanReject = $w->alasanqc;
             }elseif ($w->status_qc == "OK!") {
                 if ($w->alasanqc != null) {
