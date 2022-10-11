@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\QC;
+use App\Models\RekapSubkon;
 use App\Models\WorkOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -64,9 +65,36 @@ class WorkOrderController extends Controller
             "last_process"        => "assembly"
         ]);
 
+        $kode = 0;
+
+        switch ($request->process_assembly1) {
+            case 'Assembly':
+                $kode = 1;
+                break;
+            case 'Las':
+                $kode = 2;
+                break;
+            case 'Cek Opening':
+                $kode = 3;
+                break;
+            case 'Pasang Kaca':
+                $kode = 4;
+                break;
+            case 'Sealant Kaca':
+                $kode = 5;
+                break;
+        }
+
+        $assembly = RekapSubkon::create([
+            "work_order_id"     => $request->id,
+            "assembly_id"       => $kode,
+            "kode_assembly"     => 1,
+        ]);
+
         toast("Data assembly 1 " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
+
     public function update_assembly2(Request $request)
     {
         $unit = WorkOrder::findOrFail($request->id);
@@ -78,6 +106,33 @@ class WorkOrderController extends Controller
             "lead2_assembly2"     => $request->lead2_assembly2 ?? $unit->lead2_assembly2,
             "process_assembly2"    => $request->process_assembly2 ?? $unit->process_assembly2,
         ]);
+
+        $kode = 0;
+
+        switch ($request->process_assembly1) {
+            case 'Assembly':
+                $kode = 1;
+                break;
+            case 'Las':
+                $kode = 2;
+                break;
+            case 'Cek Opening':
+                $kode = 3;
+                break;
+            case 'Pasang Kaca':
+                $kode = 4;
+                break;
+            case 'Sealant Kaca':
+                $kode = 5;
+                break;
+        }
+
+        $assembly = RekapSubkon::create([
+            "work_order_id"     => $request->id,
+            "assembly_id"       => $kode,
+            "kode_assembly"     => 2,
+        ]);
+
         toast("Data assembly 2 " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -93,6 +148,33 @@ class WorkOrderController extends Controller
             "lead2_assembly3"     => $request->lead2_assembly3 ?? $unit->lead2_assembly3,
             "process_assembly3"    => $request->process_assembly3 ?? $unit->process_assembly3,
         ]);
+
+        $kode = 0;
+
+        switch ($request->process_assembly1) {
+            case 'Assembly':
+                $kode = 1;
+                break;
+            case 'Las':
+                $kode = 2;
+                break;
+            case 'Cek Opening':
+                $kode = 3;
+                break;
+            case 'Pasang Kaca':
+                $kode = 4;
+                break;
+            case 'Sealant Kaca':
+                $kode = 5;
+                break;
+        }
+
+        $assembly = RekapSubkon::create([
+            "work_order_id"     => $request->id,
+            "assembly_id"       => $kode,
+            "kode_assembly"     => 3,
+        ]);
+
         toast("Data assembly 3 " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -136,8 +218,7 @@ class WorkOrderController extends Controller
             "status_hold"   => $request->keterangan ?? $unit->status_hold
         ]);
 
-        toast("Data status hold ". $unit->kode_unit." berhasil diupdate", "success");
-        return redirect("/manufactures/".$unit->manufacture_id);
+        toast("Data status hold " . $unit->kode_unit . " berhasil diupdate", "success");
+        return redirect("/manufactures/" . $unit->fppp_id);
     }
-
 }

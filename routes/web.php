@@ -82,8 +82,11 @@ Route::middleware([])->group(function () {
         Route::get('/logistic/show/{id}', 'show')->name('logistic_show');
         Route::post('/logistic/store', 'store')->name('logistic_store');
         Route::get('/logistic/delete/{id}', 'destroy')->name('logistic_destroy');
-        Route::get('/logistic/getItems/{id}', 'getItems')->name('logistic_get_items');
+        Route::get('/logistic/getItemColor/{id}', 'getItemColor')->name('logistic_get_item_color'); // item color
         Route::get('/logistic/getQuotation/{id}', 'getQuotation')->name('logistic_get_quotation');
+        Route::get('/logistic/getDropdownItems/{id}', 'getDropdownItems')->name('logistic_get_dropdown_items'); // get items by fppp's id for dropdown
+        Route::get('/logistic/handleChangeStatus/{id}', 'handleChangeStatus')->name('logistic_handle_change_status');
+        Route::get('/logistic/generatePDF/{id}', 'generatePDF')->name('logistic_generate_pdf');
     });
 
 

@@ -60,6 +60,36 @@
     padding: 4px !important;
 }
 
+.main-panel .content-wrapper .table td #logisticStatus {
+    background-color: transparent;
+    border: none;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown span {
+    width: 100%;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown li {
+    cursor: pointer;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown .on-delivery {
+    color: var(--blue) !important;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown .delivered {
+    color: #3dd6bf !important;
+}
+
 /* End Table */
 
 .pagination .small.text-muted {
