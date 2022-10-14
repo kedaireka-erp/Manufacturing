@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,12 +33,20 @@ class LeadController extends Controller
         ],$messages);
 
         $newLeads = new Lead();
+        $newUser  = new User();
 
         $newLeads->employee_number = $request->employee_number;
         $newLeads->lead_name = $request->lead_name;
         $newLeads->is_active = $request->is_active;
+        //register
+        $newUser->name = $request->lead_name;
+        $newUser->email = $request->lead_name."@mail.com";
+        $newUser->gender = "laki-laki";
+        $newUser->active = $request->is_active;
+        $newUser->password = "Lead123";
 
         $newLeads->save();
+        $newUser->save();
         toast("Data Berhasil Ditambahkan","success");
         return redirect('/leads');
     }

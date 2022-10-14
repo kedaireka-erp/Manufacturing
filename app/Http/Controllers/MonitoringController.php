@@ -73,6 +73,10 @@ class MonitoringController extends Controller
                 if ($wo->fppp_id == $mpp[$key]['id_fppp']) {
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
                     $wor[$k]['kode_op'] = $wo->kode_op;
+                    if($wo->kode_op){
+                        $op[$key][$k] = $wo->kode_op;
+                        $mpp[$key]['total_op'] = count(array_unique($op[$key]));
+                    }
                     $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
                     if ($wo->tanggal_kaca) {
                         $mpp[$key]['proses_kaca'] += 1;
@@ -109,7 +113,7 @@ class MonitoringController extends Controller
                         $mpp[$key]['acc_pengiriman'] += 1;
                         $jumlahacc +=1;
                     }
-                    if ($wo->last_process == "packing" && $wo->tanggal_kirim == null) {
+                    if ($wo->last_process != "delivered") {
                         $mpp[$key]['unitBelumKirim'] += 1;
                     }
                     if ($wo->last_process == "delivered") {
@@ -137,16 +141,6 @@ class MonitoringController extends Controller
                 $mpp[$key]['status'] = 'LUNAS';
             }elseif ($mpp[$key]['unitTerkirim'] != $mpp[$key]['total_unit']) {
                 $mpp[$key]['status'] = 'PARSIAL';
-            }
-        }
-        $temp = array_unique(array_column($wor,'kode_op'));
-        $unique_kodeOP = array_intersect_key($wor,$temp);
-
-        for ($i=0; $i < count($mpp); $i++) { 
-            foreach ($unique_kodeOP as $key => $uop) {
-                if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
-                    $mpp[$i]['total_op'] += 1;
-                }
             }
         }
         
@@ -265,6 +259,10 @@ class MonitoringController extends Controller
                 if ($wo->fppp_id == $mpp[$key]['id_fppp']) {
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
                     $wor[$k]['kode_op'] = $wo->kode_op;
+                    if($wo->kode_op){
+                        $op[$key][$k] = $wo->kode_op;
+                        $mpp[$key]['total_op'] = count(array_unique($op[$key]));
+                    }
                     $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
                     if ($wo->tanggal_kaca) {
                         $mpp[$key]['proses_kaca'] += 1;
@@ -301,7 +299,7 @@ class MonitoringController extends Controller
                         $mpp[$key]['acc_pengiriman'] += 1;
                         $jumlahacc +=1;
                     }
-                    if ($wo->last_process == "packing" && $wo->tanggal_kirim == null) {
+                    if ($wo->last_process != "delivered" ) {
                         $mpp[$key]['unitBelumKirim'] += 1;
                     }
                     if ($wo->last_process == "delivered") {
@@ -329,16 +327,6 @@ class MonitoringController extends Controller
                 $mpp[$key]['status'] = 'LUNAS';
             }elseif ($mpp[$key]['unitTerkirim'] != $mpp[$key]['total_unit']) {
                 $mpp[$key]['status'] = 'PARSIAL';
-            }
-        }
-        $temp = array_unique(array_column($wor,'kode_op'));
-        $unique_kodeOP = array_intersect_key($wor,$temp);
-
-        for ($i=0; $i < count($mpp); $i++) { 
-            foreach ($unique_kodeOP as $key => $uop) {
-                if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
-                    $mpp[$i]['total_op'] += 1;
-                }
             }
         }
         
