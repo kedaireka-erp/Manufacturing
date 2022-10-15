@@ -87,11 +87,11 @@ class LogisticController extends Controller
 
         $getItems = collect($request->input('items', []));
 
-        // change 'last_process' to 'on delivery'
+        // change 'last_process' to 'delivered'
         foreach ($getItems as $key => $item) {
             $wo = WorkOrder::find($key);
             $wo->update([
-                "last_process" => 'on delivery',
+                "last_process" => 'delivered',
             ]);
         }
 
@@ -315,7 +315,6 @@ class LogisticController extends Controller
             'items' => $getItems,
             'totalQty' => $getTotalQty
         ];
-
         // dd($data);
 
         $pdf = Pdf::loadView('logistic.generatePDF', $data);
