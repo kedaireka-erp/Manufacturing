@@ -6,8 +6,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\LogisticController;
-use App\Http\Controllers\WorkOrderController;
+use App\Http\Controllers\DashboardController;
 
+use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\PerProjectController;
@@ -132,4 +133,6 @@ Route::middleware([])->group(function () {
         Route::get('/search-project', 'searchPerProject');
         Route::get('/search-unit/{id}', 'searchPerUnit');
     });
+
+    route::get("/dashboard", [DashboardController::class, "index"]);
 });
