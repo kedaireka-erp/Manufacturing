@@ -114,7 +114,13 @@
                            <td>{{ Str::ucfirst($w->last_process) }}</td>
                            <td>{{ Str::ucfirst($w->nama_item) }}</td>
                            <td>{{ Str::ucfirst($w->jenis_kaca) }}</td>
-                           <td>{{ date("d/m/Y", strtotime($w->tanggal_kaca) + 25200) . " " . date("H:i", strtotime($w->tanggal_kaca) + 25200) }}</td>
+                           <td>
+                                @if ($w->tanggal_kaca != null)
+                                    {{ $w->tanggal_kaca }}
+                                @else
+                                    {{ "-" }}
+                                @endif
+                            </td>
                            <td>{{ Str::ucfirst($w->user_kaca) }}</td>
                            <td>
                             @if ($w->tanggal_cutting == null)
@@ -179,7 +185,13 @@
                                 {{ Str::ucfirst($w->subkon2_assembly1) }}
                             @endif
                            </td>
-                           <td>{{ date("d/m/Y", strtotime($w->tanggalFinishQC) + 25200) . " " . date("H:i", strtotime($w->tanggalFinishQC) + 25200) }}</td>
+                           <td>
+                            @if ($w->tanggalFinishQC != null)
+                                {{ $w->tanggalFinishQC }}
+                            @else
+                                {{ "-" }}
+                            @endif
+                            </td>
                            <td>
                             @if ($w->subkon_qcs == null)
                                 {{ "-" }}
@@ -188,8 +200,8 @@
                             @endif
                            </td>
                            <td>
-                            @if ($w->tanggalReject)
-                                {{ date("d/m/Y", strtotime($w->tanggalReject) + 25200) . " " . date("H:i", strtotime($w->tanggalReject) + 25200) }}
+                            @if ($w->tanggalReject != null)
+                                {{ $w->tanggalReject }}
                             @else
                                 {{ "-" }}
                             @endif
