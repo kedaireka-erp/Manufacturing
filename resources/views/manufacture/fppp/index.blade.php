@@ -54,17 +54,19 @@
                                     <td>{{ $fppp->quotation->DataQuotation->nama_proyek }}</td>
                                     <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
                                     <td class="">
-                                        <button
-                                            type="button"
-                                            class="btn btn-purple btn-sm text-white"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"
-                                            style="background-color: #51e29f"
-                                            data-bs-id="{{ $fppp->id }}"
-                                            data-bs-title="{{ $fppp->quotation->DataQuotation->nama_proyek }}"
-                                            data-bs-base-path="{{ asset("storage/") }}"
-                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
-                                        </button>
+                                        @if (Auth::user()->roles == "admin")
+                                            <button
+                                                type="button"
+                                                class="btn btn-purple btn-sm text-white"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"
+                                                style="background-color: #51e29f"
+                                                data-bs-id="{{ $fppp->id }}"
+                                                data-bs-title="{{ $fppp->quotation->DataQuotation->nama_proyek }}"
+                                                data-bs-base-path="{{ asset("storage/") }}"
+                                                data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
+                                            </button>
+                                        @endif
                                         <a href="{{ route("manufactures.show",$fppp->id) }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >
