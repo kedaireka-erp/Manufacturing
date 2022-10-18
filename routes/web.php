@@ -7,7 +7,6 @@ use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\WorkOrderController;
-
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\PerProjectController;
@@ -28,6 +27,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name("login");
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->name("logout");
+    route::get("/welcome", 'welcome')->name("welcome");
 });
 
 
@@ -134,3 +134,8 @@ Route::middleware([])->group(function () {
         Route::get('/search-unit/{id}', 'searchPerUnit');
     });
 });
+
+
+
+
+
