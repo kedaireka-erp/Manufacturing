@@ -13,30 +13,29 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('manufactures', function (Blueprint $table) {
+        Schema::create('fppps', function (Blueprint $table) {
             $table->id();
-            $table->string("FPPP_number");
-            $table->string("project_name");
-            $table->string("applicator_name");
+            $table->integer("number")->default(0)->nullable();
+            $table->string("fppp_no")->nullable();
             $table->string("file_bom_alumunium")->nullable();
             $table->string("file_bom_aksesoris")->nullable();
             $table->string("file_detail_wo")->nullable();
             $table->string("file_wo_potong_alumunium")->nullable();
             $table->string("production_phase")->nullable();
-            $table->string("user_name")->nullable();
-            $table->string("SM")->nullable();
             $table->string("production_time")->nullable();
+            $table->string("fppp_revisino")->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
+            $table->string("fppp_keterangan")->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
             $table->string("color")->nullable();
             $table->string("glass_type")->nullable();
-            $table->text("note")->nullable();
-            $table->integer("quotation_id")->nullable();
+            $table->date("retrieval_deadline")->nullable();
             $table->enum("fppp_type", ["produksi", "memo"])->nullable();
             $table->enum("order_status", ["baru", "tambahan", "revisino", "lainlain"])->nullable();
             $table->enum("glass", ["included", "excluded", "included_excluded"])->nullable();
             $table->boolean("box_usage")->nullable();
             $table->boolean("sealant_usage")->nullable();
             $table->boolean("delivery_to_expedition")->nullable();
-            $table->date("retrieval_deadline")->nullable();
+            $table->text("note")->nullable();
+            $table->enum('acc_produksi', ['ACCEPT', 'PENDING'])->default('PENDING');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -49,6 +48,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manufactures');
+        Schema::dropIfExists('fppps');
     }
 };

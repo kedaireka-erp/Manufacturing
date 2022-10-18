@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('perunits', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('work_orders', function (Blueprint $table) {
+            $table->string("warna")->after("jenis_kaca")->nullable();
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('perunits');
+        Schema::table('work_orders', function (Blueprint $table) {
+            $table->dropColumn("warna");
+        });
     }
 };

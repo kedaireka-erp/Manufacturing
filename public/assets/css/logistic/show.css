@@ -1,0 +1,100 @@
+.card-body .card-header__wrapper {
+    margin-bottom: 32px;
+}
+
+.card-body .card-header__wrapper .btn-download {
+    padding: 0.625rem 1.6255rem;
+}
+
+.card-body .divider {
+    height: 4px;
+    background-color: #000;
+    opacity: 1;
+}
+
+.card-body .paper-form__title {
+    margin-left: calc(50% - 10rem);
+}
+
+/* table 1 & 2*/
+.card-body .paper-form .table.table-1,
+.card-body .paper-form .table.table-2 {
+    table-layout: fixed;
+    max-width: 441px;
+    width: 100%;
+}
+
+.card-body .paper-form .table.table-1 td:nth-child(1) {
+    width: 147px;
+}
+
+.card-body .paper-form .table.table-1 td:nth-child(2) {
+    width: 24px;
+    text-align: center;
+}
+
+.card-body .paper-form .table.table-1 td:nth-child(3) {
+    width: fit-content;
+}
+
+.card-body .paper-form .table.table-1 td,
+.card-body .paper-form .table.table-2 td {
+    font-size: 16px !important;
+    font-weight: 500;
+    vertical-align: middle;
+    padding: 0 !important;
+    padding-bottom: 16px !important;
+    vertical-align: baseline;
+    white-space: normal;
+}
+
+.card-body .paper-form .table.table-2 {
+    max-width: 85%;
+}
+
+.card-body .paper-form .table.table-2 td:nth-child(1) {
+    width: 100%;
+}
+
+.card-body .paper-form .table.table-2 td:nth-child(2) {
+    width: 12px;
+}
+
+.card-body .paper-form .table.table-2 td:nth-child(3) {
+    width: 100%;
+}
+
+/* end table 1 & 2*/
+
+.card-body .paper-form .table td p {
+    margin-bottom: 0 !important;
+}
+
+.card-body .paper-form .instruction {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--font-primary);
+    border-color: var(--font-primary);
+    height: 89px;
+}
+
+/* table last */
+.card-body .paper-form .table.table-detail th,
+.card-body .paper-form .table.table-detail td,
+.card-body .paper-form .table.table-last th,
+.card-body .paper-form .table.table-last td {
+    font-size: 16px;
+    font-weight: 500;
+    white-space: normal;
+}
+
+.card-body .paper-form .table.table-last,
+.card-body .paper-form .table.table-last th {
+    border: 1px solid var(--font-primary) !important;
+}
+
+.card-body .paper-form .table.table-last td {
+    text-align: start;
+    padding: 10px !important;
+}
+/* end table last */

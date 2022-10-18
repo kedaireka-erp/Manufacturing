@@ -1,32 +1,44 @@
 @extends('layouts.admin')
 @section('content')
-<div class="content-wrapper bg-img">
+{{-- <div class="content-wrapper bg-img"> --}}
       @include('sweetalert::alert')
 
-    <div class="shadow p-3 mb-3 bg-body rounded">
+    {{-- <div class="shadow p-3 mb-3 bg-body rounded">
         FPPP
         <h5 class="float-end">
             <a href="#" class="text-secondary">Manufaktur</a> /
             <a href="#" class="text-primary">FPPP</a>
         </h5>
-    </div>
+    </div> --}}
 
+    <div class="content-wrapper bg-img">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-table-header">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h2 class="card-title mb-0">FPPP</h2>
+                        <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a
+                                href="#" class="text-primary">FPPP</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
     <div class="row">
-        <div class="scontent-wrapper bg-img">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="col-md-6">
                                 <div class="search-field d-none d-md-block mb-4">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group rounded" style="border: solid rgb(184, 184, 184) 1px">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify bg-transparent text-dark"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Cari..." id="fppp-search" name="search">
-              </div>
-            </form>
-          </div>
+                                <form class="d-flex align-items-center h-100" action="#">
+                                    <div class="input-group rounded" style="border: solid rgb(184, 184, 184) 1px">
+                                        <div class="input-group-prepend bg-transparent">
+                                        <i class="input-group-text border-0 mdi mdi-magnify bg-transparent text-dark"></i>
+                                        </div>
+                                        <input type="text" class="form-control bg-transparent border-0" placeholder="Cari..." id="fppp-search" name="search">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <div class="" id="fppp-content">
                             <table class="table table-striped" >
@@ -38,9 +50,9 @@
                                 </tr>
                                 @foreach ($all_fppp as $fppp)
                                 <tr class="text-center">
-                                    <td>{{ $fppp->FPPP_number }}</td>
-                                    <td>{{ $fppp->project_name }}</td>
-                                    <td>{{ $fppp->applicator_name }}</td>
+                                    <td>{{ $fppp->fppp_no }}</td>
+                                    <td>{{ $fppp->quotation->DataQuotation->nama_proyek }}</td>
+                                    <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
                                     <td class="">
                                         <button
                                             type="button"
@@ -49,14 +61,14 @@
                                             data-bs-target="#exampleModal"
                                             style="background-color: #51e29f"
                                             data-bs-id="{{ $fppp->id }}"
-                                            data-bs-title="{{ $fppp->project_name }}"
+                                            data-bs-title="{{ $fppp->quotation->DataQuotation->nama_proyek }}"
                                             data-bs-base-path="{{ asset("storage/") }}"
-                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_alumunium}")." ".asset("storage/{$fppp->file_wo_kaca}")}}" > Import
+                                            data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
                                         </button>
-                                        <a href="{{ route("manufactures.show", $fppp->id) }}" class="btn btn-info btn-sm"
+                                        <a href="{{ route("manufactures.show",$fppp->id) }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >
-                                        <a href="" class="btn btn-primary btn-sm"
+                                        <a href="{{ route("manufactures.detail",$fppp) }}" class="btn btn-primary btn-sm"
                                             >Detail</a
                                         >
                                     </td>
@@ -72,7 +84,7 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 <div
     class="modal fade"
     id="exampleModal"
@@ -112,17 +124,17 @@
                             aria-label="Default select example"
                             name="type"
                         >
+                            <option value="detail_wo">
+                                Detail WO(.xlsx)
+                            </option>
                             <option value="bom_alumunium">
-                                BOM Alumunium
+                                BOM Alumunium(.xlsx)
                             </option>
                             <option value="bom_aksesoris">
-                                BOM Aksesoris
+                                BOM Aksesoris(.xlsx)
                             </option>
-                            <option value="wo_alumunium">
-                                WO Alumunium
-                            </option>
-                            <option value="wo_kaca">
-                                WO Kaca
+                            <option value="wo_potong_alumunium">
+                                WO Potong Alumunium(.pdf)
                             </option>
                         </select>
                     </div>
@@ -153,6 +165,9 @@
                                 </button>
                             </span>
                         </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <a href="{{ asset("template/document/template.xlsx") }}" class="text-decoration-none">Unduh Template File Detail WO</a>
                     </div>
                 </div>
 

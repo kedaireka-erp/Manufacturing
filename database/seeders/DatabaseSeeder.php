@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            FPPPSeeder::class
+            FPPPSeeder::class,
+            LogisticSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 

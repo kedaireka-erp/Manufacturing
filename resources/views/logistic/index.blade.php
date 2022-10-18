@@ -1,0 +1,201 @@
+@extends('layouts.admin')
+
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/css/logistic/main.css') }}">
+@endpush
+
+@section('content')
+    <div class="content-wrapper bg-img">
+        @include('sweetalert::alert')
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-table-header">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h2 class="card-title mb-0">Surat Jalan</h2>
+                        <h5 class="card-bredcrumb mb-0">
+                            <a href="/manufactures" class="text-secondary">Manufaktur / </a>
+                            <a href="#" class="text-primary">Surat Jalan</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header__wrapper d-flex justify-content-between">
+                            <div class="search d-flex align-items-center position-relative">
+                                <i class="mdi mdi-magnify position-absolute"></i>
+                                <input type="text" class="form-control" placeholder="Cari ...">
+                            </div>
+                            <div>
+                                <a href="{{ route('logistic_create') }}"
+                                    class="btn btn-info h-100 d-flex align-items-center">Buat Surat Jalan <i
+                                        class="mdi mdi-plus ms-1"></i> </a>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center mb-3">
+                                <thead>
+                                    <tr>
+                                        <th> No. Surat Jalan </th>
+                                        <th> No. FPPP </th>
+                                        {{-- <th> No. Quotation </th> --}}
+                                        <th> Tgl Pengiriman </th>
+                                        <th> Jml Unit </th>
+                                        <th> Driver </th>
+                                        <th> Status </th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($getLogistics as $data)
+                                        <tr>
+                                            <td>{{ $data->no_logistic }}</td>
+                                            <td>{{ $data->FPPP_no }}</td>
+                                            {{-- <td>
+                                                @foreach ($getQuotations as $quotation)
+                                                    @if ($quotation->fppp_id === $data->fppp_id)
+                                                        {{ $quotation->no_quotation }}
+                                                    @endif
+                                                @endforeach
+                                            </td> --}}
+                                            <td>{{ date('d/m/Y', strtotime($data->tgl_berangkat)) }}</td>
+                                            <td>
+                                                @foreach ($getQtyPacking as $qty)
+                                                    @if ($data->id === $qty->l_id)
+                                                        {{ $qty->total }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>{{ ucwords($data->driver, ' .') }}</td>
+                                            <td>
+                                                @foreach ($getStatus as $status)
+                                                    @if ($data->id === $status->l_id)
+                                                        <div class="dropdown status-dropdown" id="statusDropdown">
+                                                            <button
+                                                                class="btn btn-secondary dropdown-toggle w-100 py-1 {{ $status->last_process == 'on delivery' ? 'on-delivery' : 'delivered' }} "
+                                                                type="button" data-bs-toggle="dropdown"
+                                                                aria-expanded="false" data-id={{ $data->id }}>
+                                                                <span>
+                                                                    <i
+                                                                        class="mdi {{ $status->last_process == 'on delivery' ? 'mdi-truck' : 'mdi-checkbox-marked-circle-outline' }} me-1"></i>
+                                                                    {{ ucwords($status->last_process, ' ') }}
+                                                                </span>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <span class="dropdown-item px-3 text-black"
+                                                                        data-value="on delivery"
+                                                                        data-id="{{ $data->id }}">
+                                                                        <i class="mdi mdi-truck me-2"></i>On Delivery</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="dropdown-item px-3 text-black"
+                                                                        data-value="delivered"
+                                                                        data-id="{{ $data->id }}">
+                                                                        <i
+                                                                            class="mdi mdi-checkbox-marked-circle-outline me-2"></i>
+                                                                        Delivered
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        @php
+                                                            break;
+                                                        @endphp
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-around">
+                                                    <a href="{{ route('logistic_show', $data->id) }}"
+                                                        class="btn btn-success" title="View">
+                                                        <i class="mdi mdi-eye"></i>
+                                                    </a>
+                                                    <a href="{{ route('logistic_generate_pdf', $data->id) }}"
+                                                        target="_blank" class="btn btn-primary" title="Download">
+                                                        <i class="mdi mdi-download"></i>
+                                                    </a>
+
+                                                    {{-- <form action="{{ route('logistic_destroy', $data->id) }}" method="post"> --}}
+                                                    {{-- @csrf --}}
+                                                    {{-- @method('DELETE') --}}
+                                                    <a href="{{ route('logistic_destroy', $data->id) }}"
+                                                        class="btn btn-danger" title="Delete">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </a>
+                                                    {{-- </form> --}}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        {{-- pagination --}}
+                        {{ $getLogistics->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@push('script')
+    <script>
+        // $(document).ready(function() {
+        let capt, classColor, status, iconClass;
+
+        $('#statusDropdown ul li span').click(function() {
+            // event.preventDefault();
+            const thisId = $(this).data('id');
+            const thisValue = $(this).data('value');
+
+            let PATH = '{{ route('logistic_handle_change_status', ':id') }}',
+                PARAM = thisValue;
+
+            PATH = PATH.replace(':id', thisId);
+
+            $.ajax({
+                url: PATH,
+                type: 'get',
+                data: {
+                    id: thisId,
+                    status: thisValue,
+                },
+                success: function(response) {
+                    // console.log(response);
+                    if (response.status == 'on delivery') {
+                        $(`#statusDropdown button[data-id='${response.id}']`).removeClass('delivered');
+
+                        classColor = "on-delivery";
+                        status = `${response.status}`;
+                        iconClass = "mdi-truck";
+                    } else if (response.status == 'delivered') {
+                        $(`#statusDropdown button[data-id='${response.id}']`).removeClass(
+                            'on-delivery');
+
+                        classColor = "delivered";
+                        status = `${response.status}`;
+                        iconClass = "mdi-checkbox-marked-circle-outline";
+                    };
+
+                    capt = `<span><i class="mdi ${iconClass} me-1"></i>${thisValue}</span>`;
+                    $(`#statusDropdown button[data-id='${response.id}']`).addClass(classColor);
+                    $(`#statusDropdown button[data-id='${response.id}']`).children().remove();
+                    $(`#statusDropdown button[data-id='${response.id}']`).append(capt);
+                    $(`#statusDropdown button[data-id='${response.id}']`).children().addClass(
+                        'text-capitalize');
+                },
+                error: function(result) {
+                    alert('Data gagal diubah!');
+                }
+            });
+        })
+        // })
+    </script>
+@endpush

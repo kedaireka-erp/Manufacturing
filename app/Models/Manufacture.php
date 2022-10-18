@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Manufacture extends Model
 {
     use HasFactory;
+    protected $table = "fppps";
     protected $guarded = ["id"];
 
     public function scopeSearch($query, array $filters)
@@ -21,5 +22,10 @@ class Manufacture extends Model
     public function workOrder()
     {
         return $this->hasMany("work_order");
+    }
+
+    public function logistic()
+    {
+        return $this->hasMany(Logistic::class, 'fppp_id', 'id');
     }
 }

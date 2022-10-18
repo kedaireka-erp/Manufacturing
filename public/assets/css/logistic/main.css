@@ -1,0 +1,100 @@
+.content-wrapper .card .card-body .card-header__wrapper .btn {
+    width: fit-content !important;
+    background: var(--blue);
+    padding: 10px 20px !important;
+}
+
+
+.content-wrapper .card .card-body .card-header__wrapper {
+    max-height: 36px;
+    height: 100%;
+    margin-bottom: 36px;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper>div {
+    max-height: inherit !important;
+    height: 100%;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper .form-control {
+    color: #9C9FA6 !important;
+    font-size: 12px !important;
+    border: 1px solid #9C9FA6 !important;
+    border-radius: 5px;
+    padding: 8px 8px 8px 36px !important;
+    height: 100%;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper .search {
+    max-width: 378px;
+    width: 100%;
+}
+
+.content-wrapper .card .card-body .card-header__wrapper .search i {
+    top: 10px;
+    left: 13px;
+}
+
+
+/* Table */
+.main-panel .content-wrapper .table th {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    /* white-space: normal; */
+}
+
+.main-panel .content-wrapper .table td {
+    font-size: 14px;
+    font-family: "Ubuntu-Regular";
+    /* white-space: normal; */
+
+}
+
+.main-panel .content-wrapper .table td .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 23px !important;
+    height: 23px !important; */
+    padding: 4px !important;
+}
+
+.main-panel .content-wrapper .table td #logisticStatus {
+    background-color: transparent;
+    border: none;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown span {
+    width: 100%;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown li {
+    cursor: pointer;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown .on-delivery {
+    color: var(--blue) !important;
+}
+
+.main-panel .content-wrapper .table td #statusDropdown .delivered {
+    color: #3dd6bf !important;
+}
+
+/* End Table */
+
+.pagination .small.text-muted {
+    margin-bottom: 0;
+    margin-right: 15px;
+}
+
+/* END MAIN PANEL */
