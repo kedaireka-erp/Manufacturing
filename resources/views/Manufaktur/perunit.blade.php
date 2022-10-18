@@ -28,18 +28,25 @@
                         <div class="card-body">
                             <div class="d-flex gap-5">
                                 <div class="d-flex gap-5">
-                                    <table class="table">
+                                    <table class="table table-borderless">
                                         @foreach ($fppp as $fp)
                                             <tr>
                                                 <td>Tanggal Terima</td>
                                                 <td>:</td>
-                                                <td>{{ date('d/m/Y', strtotime($fp->tanggalTerimaFppp) + 25200) . ' ' . date('H:i', strtotime($fp->tanggalTerimaFppp) + 25200) }}
-                                                </td>
+                                                <td>{{ date("d/m/Y", strtotime($fp->tanggalTerimaFppp) + 25200) . " " . date("H:i", strtotime($fp->tanggalTerimaFppp) + 25200) }}</td>
+                                                <td></td>
+                                                <td width=180>Nama Proyek</td>
+                                                <td>:</td>
+                                                <td width=300>{{ $fp->nama_proyek }}</td>
                                             </tr>
                                             <tr>
                                                 <td>No. FPPP</td>
                                                 <td>:</td>
                                                 <td>{{ $fp->fppp_no }}</td>
+                                                <td></td>
+                                                <td>Aplikator</td>
+                                                <td>:</td>
+                                                <td>{{ $fp->aplikator }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Deadline</td>
@@ -47,22 +54,8 @@
                                                 <td>{{ date('d/m/Y', strtotime($fp->deadline) + 25200) . ' ' . date('H:i', strtotime($fp->deadline) + 25200) }}
                                                 </td>
                                             </tr>
-                                        @endforeach
-                                    </table>
-                                    <table>
-                                        @foreach ($fppp as $fp)
-                                            <tr>
-                                                <td width=180>Nama Proyek</td>
-                                                <td>:</td>
-                                                <td width=300>{{ $fp->nama_proyek }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aplikator</td>
-                                                <td>:</td>
-                                                <td>{{ $fp->aplikator }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
+                                    @endforeach
+                                 </table>
 
                                 </div>
                             </div>
