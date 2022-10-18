@@ -30,7 +30,7 @@
                                     <table class="table table-borderless">
                                         @foreach ($fppp as $fp)
                                             <tr>
-                                                <td>Tanggal Terima</td>
+                                                <td>Tanggal Terima FPPP</td>
                                                 <td>:</td>
                                                 <td>{{ date("d/m/Y", strtotime($fp->tanggalTerimaFppp) + 25200) . " " . date("H:i", strtotime($fp->tanggalTerimaFppp) + 25200) }}</td>
                                                 <td></td>
@@ -50,7 +50,7 @@
                                             <tr>
                                                 <td>Deadline</td>
                                                 <td>:</td>
-                                                <td>{{ date("d/m/Y", strtotime($fp->deadline) + 25200) . " " . date("H:i", strtotime($fp->deadline) + 25200) }}</td>
+                                                <td>{{ date("d/m/Y", strtotime($fp->deadline) + 25200) }}</td>
                                             </tr>
                                     @endforeach
                                  </table>
@@ -232,7 +232,7 @@
                             @if ($w->tanggal_kirim == null)
                                 {{ "-" }}
                             @else
-                                {{ date("d/m/Y", strtotime($w->tanggal_kirim) + 25200) . " " . date("H:i", strtotime($w->tanggal_kirim) + 25200) }}
+                                {{ date("d/m/Y", strtotime($w->tanggal_kirim) + 25200) }}
                             @endif
                            </td>
                            <td>
