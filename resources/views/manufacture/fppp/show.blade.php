@@ -110,7 +110,9 @@
                                         @if ($unit->tanggal_cutting)
                                         <button type="button" class=" btn btn-dark btn-sm button mt-4 col-12 pe-none">{{ $unit->subkon1_cutting }} ({{ $unit->lead1_cutting }})</button>
                                         <br>
+                                        @if ($unit->subkon2_cutting)
                                         <button type="button" class=" btn btn-dark btn-sm button mt-2 col-12 pe-none">{{ $unit->subkon2_cutting }} ({{ $unit->lead2_cutting }})</button>
+                                        @endif
                                         <br>
                                         <button type="button" class=" btn btn-gradient-success btn-sm button mt-2 col-12 pe-none">{{ strtoupper($unit->proses_cutting) }}</button>
                                         <br>
@@ -129,8 +131,8 @@
                                         <form action="{{ route("update-cutting") }}" method="POST">
                                             @csrf
                                                 <input type="hidden" name="id" value="{{ $unit->id }}">
-                                                <input type="hidden" name="lead1_cutting" value="Steven">
-                                                <input type="hidden" name="lead2_cutting" value="Rhey">
+                                                <input type="hidden" name="lead1_cutting" value="{{ Auth::user()->name }}">
+                                                <input type="hidden" name="lead2_cutting" value="{{ Auth::user()->name }}">
                                                 <div class="dropdown">
                                                     <select
                                                         class="form-select bg-transparent text-center search"
@@ -168,7 +170,9 @@
                                         @if ($unit->tanggal_machining)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_machining }} ({{ $unit->lead1_machining }})</button>
                                         <br>
+                                        @if ($unit->subkon2_machining)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_machining }} ({{ $unit->lead2_machining }})</button>
+                                        @endif
                                         <br>
                                         <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_machining)) }} <br> {{ date("H:i", strtotime($unit->tanggal_machining)) }}</a>
                                         <br>
@@ -187,8 +191,8 @@
                                         <form action="{{ route("update-machining") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_machining" value="Steven">
-                                            <input type="hidden" name="lead2_machining" value="Rhey">
+                                            <input type="hidden" name="lead1_machining" value="{{ Auth::user()->name }}">
+                                            <input type="hidden" name="lead2_machining" value="{{ Auth::user()->name }}">
                                             <div class="dropdown" mt-3>
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -222,7 +226,9 @@
                                         @if ($unit->tanggal_assembly1)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly1 }} ({{ $unit->lead1_assembly1 }})</button>
                                         <br>
+                                        @if ($unit->subkon2_assembly1)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly1 }} ({{ $unit->lead2_assembly1 }})</button>
+                                        @endif
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly1) }}</button>
                                         <br>
@@ -241,8 +247,8 @@
                                         <form action="{{ route("update-assembly1") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_assembly1" value="Steven">
-                                            <input type="hidden" name="lead2_assembly1" value="Rhey">
+                                            <input type="hidden" name="lead1_assembly1" value="{{ Auth::user()->name }}">
+                                            <input type="hidden" name="lead2_assembly1" value="{{ Auth::user()->name }}">
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -284,7 +290,9 @@
                                         @if ($unit->tanggal_assembly2)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly2 }} ({{ $unit->lead1_assembly2 }})</button>
                                         <br>
+                                        @if ($unit->subkon2_assembly2)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly2 }} ({{ $unit->lead2_assembly2 }})</button>
+                                        @endif
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly2) }}</button>
                                         <br>
@@ -303,8 +311,8 @@
                                         <form action="{{ route("update-assembly2") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_assembly2" value="Steven">
-                                            <input type="hidden" name="lead2_assembly2" value="Rhey">
+                                            <input type="hidden" name="lead1_assembly2" value="{{ Auth::user()->name }}">
+                                            <input type="hidden" name="lead2_assembly2" value="{{ Auth::user()->name }}">
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -346,7 +354,9 @@
                                         @if ($unit->tanggal_assembly3)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_assembly3 }} ({{ $unit->lead1_assembly3 }})</button>
                                         <br>
+                                        @if ($unit->subkon2_assembly3)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_assembly3 }} ({{ $unit->lead2_assembly3 }})</button>
+                                        @endif
                                         <br>
                                         <button type="button" class="btn btn-gradient-primary btn-sm button col-12 mt-2 pe-none">{{ strtoupper($unit->process_assembly3) }}</button>
                                         <br>
@@ -365,8 +375,8 @@
                                         <form action="{{ route("update-assembly3") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_assembly3" value="Steven">
-                                            <input type="hidden" name="lead2_assembly3" value="Rhey">
+                                            <input type="hidden" name="lead1_assembly3" value="{{ Auth::user()->name }}">
+                                            <input type="hidden" name="lead2_assembly3" value="{{ Auth::user()->name }}">
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -436,7 +446,9 @@
                                         @if ($unit->tanggal_packing)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-4 pe-none">{{ $unit->subkon1_packing }} ({{ $unit->lead1_packing }})</button>
                                         <br>
+                                        @if ($unit->subkon2_packing)
                                         <button type="button" class="btn btn-dark btn-sm button col-12 mt-2 pe-none">{{ $unit->subkon2_packing }} ({{ $unit->lead2_packing }})</button>
+                                        @endif
                                         <div class="dropdown">
                                         </div> <button type="button" class="form-control text-center pe-none bg-secondary bg-opacity-50 mt-2"><b>{{ $unit->qty_packing }}</b></button>
                                         <a href="#" class=" btn btn-gradient-info mt-2 pe-none" >{{ date("d/m/Y", strtotime($unit->tanggal_packing)) }} <br> {{ date("H:i", strtotime($unit->tanggal_packing)) }}</a>
@@ -454,8 +466,8 @@
                                         <form action="{{ route("update-packing") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_packing" value="Steven">
-                                            <input type="hidden" name="lead2_packing" value="Rhey">
+                                            <input type="hidden" name="lead1_packing" value="{{ Auth::user()->name }}">
+                                            <input type="hidden" name="lead2_packing" value="{{ Auth::user()->name }}">
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select bg-transparent text-center search"
