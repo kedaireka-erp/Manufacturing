@@ -54,7 +54,7 @@
                                     <td>{{ $fppp->quotation->DataQuotation->nama_proyek }}</td>
                                     <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
                                     <td class="">
-                                        @if (Auth::user()->roles == "admin")
+                                        @if (Auth::user()->roles == "admin-manufacture")
                                             <button
                                                 type="button"
                                                 class="btn btn-purple btn-sm text-white"

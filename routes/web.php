@@ -1,17 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SubkonController;
-use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\LogisticController;
-use App\Http\Controllers\WorkOrderController;
-
-use App\Http\Controllers\DetailfpppController;
-use App\Http\Controllers\MonitoringController;
-use App\Http\Controllers\PerProjectController;
 use App\Http\Controllers\ManufactureController;
+use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\SubkonController;
+use App\Http\Controllers\WorkOrderController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +20,6 @@ use App\Http\Controllers\ManufactureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name("login");
     Route::post('/login', 'login');
@@ -31,8 +27,8 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 
-Route::middleware([])->group(function () {
-    Route::get('/', function () {
+Route::middleware(['auth','verified'])->group(function () {
+    Route::get('/dashboard', function () {
         return redirect('/manufactures');
     });
 
@@ -133,3 +129,10 @@ Route::middleware([])->group(function () {
         Route::get('/search-unit/{id}', 'searchPerUnit');
     });
 });
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+
+require __DIR__.'/auth.php';
