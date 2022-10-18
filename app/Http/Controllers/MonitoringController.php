@@ -46,7 +46,7 @@ class MonitoringController extends Controller
             $mpp[$key]['no_fppp'] = $fppp->fppp_no;
             $mpp[$key]['quotation_id'] = $fppp->quotation_id;
             $mpp[$key]['tanggalTerimaFppp'] = $this->ubahTanggal($fppp->created_at);
-            $mpp[$key]['deadline'] = $this->ubahTanggal($fppp->retrieval_deadline);
+            $mpp[$key]['deadline'] = $fppp->retrieval_deadline;
             foreach ($quo as $qt) {
                 if ($mpp[$key]['quotation_id'] == $qt->id_qtn) {
                     $mpp[$key]['project'] = $qt->nama_proyek;
@@ -108,7 +108,7 @@ class MonitoringController extends Controller
                     foreach ($logistics as $keyl => $logis) {
                         if ($wo->id == $logis->work_order_id) {
                             if ($logis->tgl_berangkat != null) {
-                                $tglKirim[$key][$keyl] = $this->ubahTanggal($logis->tgl_berangkat);
+                                $tglKirim[$key][$keyl] = $logis->tgl_berangkat;
                                 $j++;
                                 $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
                                 $mpp[$key]['jumlahtgl'] += 1;
@@ -252,7 +252,7 @@ class MonitoringController extends Controller
             $mpp[$key]['no_fppp'] = $fppp->fppp_no;
             $mpp[$key]['quotation_id'] = $fppp->quotation_id;
             $mpp[$key]['tanggalTerimaFppp'] = $this->ubahTanggal($fppp->created_at);
-            $mpp[$key]['deadline'] = $this->ubahTanggal($fppp->retrieval_deadline);
+            $mpp[$key]['deadline'] = $fppp->retrieval_deadline;
             foreach ($quo as $qt) {
                 if ($mpp[$key]['quotation_id'] == $qt->id_qtn) {
                     $mpp[$key]['project'] = $qt->nama_proyek;
@@ -314,7 +314,7 @@ class MonitoringController extends Controller
                     foreach ($logistics as $keyl => $logis) {
                         if ($wo->id == $logis->work_order_id) {
                             if ($logis->tgl_berangkat != null) {
-                                $tglKirim[$key][$keyl] = $this->ubahTanggal($logis->tgl_berangkat);
+                                $tglKirim[$key][$keyl] = $logis->tgl_berangkat;
                                 $j++;
                                 $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
                                 $mpp[$key]['jumlahtgl'] += 1;
