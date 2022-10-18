@@ -7,7 +7,6 @@ use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\DashboardController;
-
 use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\MonitoringController;
@@ -29,6 +28,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name("login");
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->name("logout");
+    route::get("/welcome", 'welcome')->name("welcome");
 });
 
 
@@ -87,6 +87,7 @@ Route::middleware([])->group(function () {
         Route::get('/logistic/getQuotation/{id}', 'getQuotation')->name('logistic_get_quotation');
         Route::get('/logistic/getDropdownItems/{id}', 'getDropdownItems')->name('logistic_get_dropdown_items'); // get items by fppp's id for dropdown
         Route::get('/logistic/handleChangeStatus/{id}', 'handleChangeStatus')->name('logistic_handle_change_status');
+        Route::get('/logistic/search', 'logisticSearch')->name('logistic_search');
         Route::get('/logistic/generatePDF/{id}', 'generatePDF')->name('logistic_generate_pdf');
     });
 
@@ -136,3 +137,8 @@ Route::middleware([])->group(function () {
 
     route::get("/dashboard", [DashboardController::class, "index"]);
 });
+
+
+
+
+
