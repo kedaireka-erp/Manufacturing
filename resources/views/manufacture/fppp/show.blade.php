@@ -129,7 +129,7 @@
                                         <form action="{{ route("update-cutting") }}" method="POST">
                                             @csrf
                                                 <input type="hidden" name="id" value="{{ $unit->id }}">
-                                                <input type="hidden" name="lead1_cutting" value="Steven">
+                                                <input type="hidden" name="lead1_cutting" value="{{ Auth::user()->name }}">
                                                 <input type="hidden" name="lead2_cutting" value="Rhey">
                                                 <div class="dropdown">
                                                     <select
@@ -187,7 +187,7 @@
                                         <form action="{{ route("update-machining") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_machining" value="Steven">
+                                            <input type="hidden" name="lead1_machining" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_machining" value="Rhey">
                                             <div class="dropdown" mt-3>
                                                 <select
@@ -241,7 +241,7 @@
                                         <form action="{{ route("update-assembly1") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_assembly1" value="Steven">
+                                            <input type="hidden" name="lead1_assembly1" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_assembly1" value="Rhey">
                                             <div class="dropdown">
                                                 <select
@@ -303,7 +303,7 @@
                                         <form action="{{ route("update-assembly2") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_assembly2" value="Steven">
+                                            <input type="hidden" name="lead1_assembly2" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_assembly2" value="Rhey">
                                             <div class="dropdown">
                                                 <select
@@ -365,7 +365,7 @@
                                         <form action="{{ route("update-assembly3") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_assembly3" value="Steven">
+                                            <input type="hidden" name="lead1_assembly3" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_assembly3" value="Rhey">
                                             <div class="dropdown">
                                                 <select
@@ -454,7 +454,7 @@
                                         <form action="{{ route("update-packing") }}" method="POST">
                                         @csrf
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
-                                            <input type="hidden" name="lead1_packing" value="Steven">
+                                            <input type="hidden" name="lead1_packing" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_packing" value="Rhey">
                                             <div class="dropdown">
                                                 <select
