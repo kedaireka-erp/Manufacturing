@@ -18,7 +18,7 @@
                     </div>
                     <div class="nav-profile-text">
                         {{-- <p class="mb-1 text-black">Username</p> --}}
-                        <p class="mb-1 text-black">{{ Auth::user()->name }}</p>
+                        <p class="mb-1 text-black">{{ Auth::user()->name ?? "Belum Login" }}</p>
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown logout-dropdown" aria-labelledby="profileDropdown">
