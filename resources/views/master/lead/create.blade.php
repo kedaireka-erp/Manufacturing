@@ -103,6 +103,18 @@
                   <label class="form-label">Nama</label>
                   <input type="text" name="lead_name" class="form-control" placeholder="Nama">
               </div>
+              <label class="form-label">Email</label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name = "email" placeholder="Username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">@Alluresystem.site</span>
+              </div>
+            <div class="mb-3">
+              <label class="form-label">Jenis kelamin</label>
+              <select class="form-select" name="gender">
+                  <option value="Laki-laki" selected>Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+          </div>
               <div class="mb-3">
                   <label class="form-label">Status</label>
                   <select class="form-select" name="is_active">
