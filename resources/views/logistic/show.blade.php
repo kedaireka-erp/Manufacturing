@@ -39,7 +39,7 @@
                         <hr class="divider">
                         <div class="paper-form">
                             <div class="paper-form__header d-flex align-items-center">
-                                <img src="{{ asset('assets/images/alphamax-logo.svg') }}" alt="Alphamax Logo">
+                                <img src="{{ asset('assets/images/logo-astral.svg') }}" alt="Astral Logo">
                                 <h4 class="paper-form__title fw-bold fs-4 text-uppercase me-auto mb-0">surat jalan</h4>
                             </div>
                             <hr class="bg-black opacity-100 mb-4">
@@ -53,14 +53,14 @@
                                                 <td>Tanggal Pengiriman</td>
                                                 <td>:</td>
                                                 <td>
-                                                    {{ date('Y-m-d', strtotime($data->tgl_berangkat)) }}
+                                                    {{ date('d-m-Y', strtotime($data->tgl_berangkat)) }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Input</td>
                                                 <td>:</td>
                                                 <td>
-                                                    {{ date('Y-m-d H:i:s', strtotime($data->tgl_input)) }}
+                                                    {{ date('d-m-Y H:i', strtotime($data->tgl_input)) }}
                                                 </td>
                                             </tr>
                                             <tr>

@@ -127,10 +127,10 @@
                                                     {{-- <form action="{{ route('logistic_destroy', $data->id) }}" method="post"> --}}
                                                     {{-- @csrf --}}
                                                     {{-- @method('DELETE') --}}
-                                                    <a href="{{ route('logistic_destroy', $data->id) }}"
+                                                    {{-- <a href="{{ route('logistic_destroy', $data->id) }}"
                                                         class="btn btn-danger" title="Delete">
                                                         <i class="mdi mdi-delete"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     {{-- </form> --}}
                                                 </div>
                                             </td>
@@ -310,9 +310,6 @@
                                     </a>
                                     <a href="/logistic/generatePDF/${data.id}" target="_blank" class="btn btn-primary" title="Download">
                                         <i class="mdi mdi-download"></i>
-                                    </a>
-                                    <a href="/logistic/delete/${data.id}" class="btn btn-danger" title="Delete">
-                                        <i class="mdi mdi-delete"></i>
                                     </a>
                                 </div>
                             </td>

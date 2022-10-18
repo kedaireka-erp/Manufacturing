@@ -50,8 +50,8 @@
                     <div class="card-body" style="">
                         <div class="paper-form">
                             <div class="paper-form__header" style="display: flex; align-items:center; max-width: 53%; ">
-                                <img src="{{ public_path('assets/images/alphamax-logo.png') }}"
-                                    style="float: left; width: 25%">
+                                <img src="{{ public_path('assets/images/logo-astral.png') }}"
+                                    style="float: left; width: 35%; padding-top: 30px; height: 45px;">
                                 <h4 class="paper-form__title fs-4 me-auto mb-0"
                                     style="font-weight: bold; text-transform: uppercase; margin-left:auto; font-size: 25px; font-weight: 700; margin-left: 70%; width: 95%;">
                                     surat jalan</h4>
@@ -68,14 +68,14 @@
                                                 <td>Tanggal Pengiriman</td>
                                                 <td>:</td>
                                                 <td>
-                                                    {{ date('Y-m-d', strtotime($logistic->tgl_berangkat)) }}
+                                                    {{ date('d-m-Y', strtotime($logistic->tgl_berangkat)) }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Input</td>
                                                 <td>:</td>
                                                 <td>
-                                                    {{ date('Y-m-d H:i:s', strtotime($logistic->tgl_input)) }}
+                                                    {{ date('d-m-Y H:i', strtotime($logistic->tgl_input)) }}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -156,7 +156,7 @@
                             <div class="instruction border border-1 rounded p-2 mb-4"
                                 style="height: 100px; padding-left: 8px; border: 1px solid #343A40; margin-bottom: 35px; margin-top: 220px; position: relative">
                                 <p
-                                    style="border: 1px solid red; width: fit-content !important; position: absolute; left: 8px; padding:0; margin: 0;">
+                                    style="width: fit-content !important; position: absolute; left: 8px; padding:0; margin: 0;">
                                     Special Instruction :</p>
                             </div>
 
