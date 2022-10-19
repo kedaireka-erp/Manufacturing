@@ -94,7 +94,7 @@ Route::middleware([])->group(function () {
 
     // Route FPPP
     Route::controller(ManufactureController::class)->group(function () {
-        Route::get("/manufactures", "index");
+        Route::get("/manufactures", "index")->name("manufactures");
         Route::post("/manufactures", "store");
         Route::get("/manufactures/delete", "delete");
         // Route::get("/manufactures/show", "show");
@@ -137,8 +137,3 @@ Route::middleware([])->group(function () {
 
     route::get("/dashboard", [DashboardController::class, "index"]);
 });
-
-
-
-
-
