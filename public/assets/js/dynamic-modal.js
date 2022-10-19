@@ -21,6 +21,8 @@ exampleModal.addEventListener("show.bs.modal", (event) => {
     const modalTitle = exampleModal.querySelector(".modal-title");
     const modalBodyInput = exampleModal.querySelector(".modal-body input");
     const modalTable = exampleModal.querySelector("#files_table");
+    const fileSelector = exampleModal.querySelector("#file-selector");
+    let existingFileArr = [0, 0, 0, 0];
 
     let modalTableContent = `<tr>
                                 <th class="text-center">No.</th>
@@ -30,6 +32,15 @@ exampleModal.addEventListener("show.bs.modal", (event) => {
                             `;
 
     files_arr.forEach((element, index) => {
+        if (element.includes("detail_wo")) {
+            existingFileArr[0] = 1;
+        } else if (element.includes("bom_alumunium")) {
+            existingFileArr[1] = 1;
+        } else if (element.includes("bom_aksesoris")) {
+            existingFileArr[2] = 1;
+        } else if (element.includes("wo_potong_alumunium")) {
+            existingFileArr[3] = 1;
+        }
         element = base_path + element;
         let simplePath = element.replace(base_path, "");
         simplePath = simplePath.substring(1);
@@ -42,12 +53,33 @@ exampleModal.addEventListener("show.bs.modal", (event) => {
                                 <td class="text-center">${jenis}</td>
                                 <td class="d-flex justify-content-center">
                                     <a href="${element}" target="_blank" class="btn btn-primary me-2 btn-sm btn-info">Lihat</a>
-                                    <a href="/manufactures/delete?path=${simplePath}&type=${jenisRaw}&id=${fppp_id}" class="btn btn-danger btn-sm">Hapus</a>
 
                                     
                                 </td>
                             </tr>`;
     });
+
+    let fileSelectorOption = "";
+    if (existingFileArr[0] == 0) {
+        fileSelectorOption += `<option value="detail_wo">
+                                Detail WO(.xlsx)</option>`;
+    }
+    if (existingFileArr[1] == 0) {
+        fileSelectorOption += `<option value="bom_alumunium">
+                                BOM Alumunium(.xlsx)
+                            </option>`;
+    }
+    if (existingFileArr[2] == 0) {
+        fileSelectorOption += `<option value="bom_aksesoris">
+                                BOM Aksesoris(.xlsx)
+                            </option>`;
+    }
+    if (existingFileArr[3] == 0) {
+        fileSelectorOption += `<option value="wo_potong_alumunium">
+                                WO Potong Alumunium(.pdf)
+                            </option>`;
+    }
+    fileSelector.innerHTML = fileSelectorOption;
     modalTitle.textContent = `Impot: ${project_name}`;
     modalBodyInput.value = fppp_id;
     modalTable.innerHTML = modalTableContent;

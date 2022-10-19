@@ -34,6 +34,10 @@ class ManufactureController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->type == null) {
+            toast("Tidak dapat upload file", "error");
+            return redirect("manufactures")->with("success", "Sukses upload file!");
+        }
         $mimes = "xlsx";
         if ($request->type == "wo_potong_alumunium") {
             $mimes = "pdf";
@@ -130,7 +134,7 @@ class ManufactureController extends Controller
         // return view('manufacture.fppp.pdf', ["manufacture" => $fppp, "workOrders" => $workOrders]);
     }
 
-    public function delete(Request $request)
+    /*public function delete(Request $request)
     {
         $fppp = Fppp::find($request->id);
         $work_orders = WorkOrder::where("fppp_id", $fppp->id)->get();
@@ -145,7 +149,7 @@ class ManufactureController extends Controller
 
         toast("File berhasil dihapus", "success");
         return redirect("/manufactures");
-    }
+    }*/
 
     public function show_file(Request $request)
     {
