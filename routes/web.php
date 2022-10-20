@@ -44,6 +44,12 @@ Route::middleware([])->group(function () {
     //     echo "Hello";
     // });
 
+    // Confirm
+    Route::get('/confirm', function(){
+        return view("login.welcome");
+    });
+
+
     //Route leads
     Route::controller(LeadController::class)->group(function () {
         Route::get('/leads', 'index')->name('leads');
