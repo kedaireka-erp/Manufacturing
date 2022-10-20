@@ -65,7 +65,6 @@ class ManufactureController extends Controller
                     "kode_op" => $row[0],
                     "kode_unit" => $row[1],
                     "nama_item" => $row[2],
-                    "jenis_kaca" => $row[3],
                     "last_process" => "queued"
                 ]);
             }
@@ -121,15 +120,24 @@ class ManufactureController extends Controller
     public function detail(Fppp $manufacture)
     {
         $workOrders = WorkOrder::where("fppp_id", $manufacture->id)->get();
+        $allItemStr = "";
+        foreach ($workOrders as $key => $value) {
+            $allItemStr = $allItemStr . $value->kode_unit . ", ";
+        }
 
-        return view("manufacture.fppp.detail", ["manufacture" => $manufacture, "workOrders" => $workOrders]);
+
+        return view("manufacture.fppp.detail", ["manufacture" => $manufacture, "workOrders" => $workOrders, "kodeItems" => $allItemStr]);
     }
 
     public function toPdf(Fppp $fppp)
     {
         $workOrders = WorkOrder::where("fppp_id", $fppp->id)->get();
+        $allItemStr = "";
+        foreach ($workOrders as $key => $value) {
+            $allItemStr = $allItemStr . $value->kode_unit . ", ";
+        }
 
-        $pdf = Pdf::loadView('manufacture.fppp.pdf', ["manufacture" => $fppp, "workOrders" => $workOrders]);
+        $pdf = Pdf::loadView('manufacture.fppp.pdf', ["manufacture" => $fppp, "workOrders" => $workOrders, "kodeItems" => $allItemStr]);
         return $pdf->download($fppp->fppp_no . '.pdf');
         // return view('manufacture.fppp.pdf', ["manufacture" => $fppp, "workOrders" => $workOrders]);
     }
