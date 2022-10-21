@@ -34,7 +34,7 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::middleware([])->group(function () {
     Route::get('/', function () {
-        return redirect('/manufactures');
+        return redirect('/welcome');
     });
 
     Route::get("/show1/{id}", [ManufactureController::class, "show"]);
