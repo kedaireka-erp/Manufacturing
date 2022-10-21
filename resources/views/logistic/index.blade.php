@@ -74,7 +74,7 @@
                                             </td>
                                             <td>{{ ucwords($data->driver, ' .') }}</td>
                                             <td>
-                                                @foreach ($getStatus as $status)
+                                                {{-- @foreach ($getStatus as $status)
                                                     @if ($data->id === $status->l_id)
                                                         <div class="dropdown status-dropdown" id="statusDropdown">
                                                             <button
@@ -111,7 +111,12 @@
                                                             break;
                                                         @endphp
                                                     @endif
-                                                @endforeach
+                                                @endforeach --}}
+                                                <span>
+                                                    <i
+                                                        class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
+                                                    Delivered
+                                                </span>
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-around">
