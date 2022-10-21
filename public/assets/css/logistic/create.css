@@ -182,4 +182,13 @@
 .content-wrapper .modal-content .modal-body .description textarea {
     line-height: 15px;
 }
+
 /* end modal */
+
+.modal-btn.btn.btn-info:focus {
+    box-shadow: 0 0 0 0.25rem rgb(21 117 193 / 50%);
+}
+
+.modal-btn.btn.btn-dark:focus {
+    box-shadow: 0 0 0 0.25rem rgb(91 102 116 / 50%);
+}

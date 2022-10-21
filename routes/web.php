@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\LogisticController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\MonitoringController;
@@ -92,13 +93,14 @@ Route::middleware([])->group(function () {
         Route::get('/logistic/getQuotation/{id}', 'getQuotation')->name('logistic_get_quotation');
         Route::get('/logistic/getDropdownItems/{id}', 'getDropdownItems')->name('logistic_get_dropdown_items'); // get items by fppp's id for dropdown
         Route::get('/logistic/handleChangeStatus/{id}', 'handleChangeStatus')->name('logistic_handle_change_status');
+        Route::get('/logistic/search', 'logisticSearch')->name('logistic_search');
         Route::get('/logistic/generatePDF/{id}', 'generatePDF')->name('logistic_generate_pdf');
     });
 
 
     // Route FPPP
     Route::controller(ManufactureController::class)->group(function () {
-        Route::get("/manufactures", "index");
+        Route::get("/manufactures", "index")->name("manufactures");
         Route::post("/manufactures", "store");
         Route::get("/manufactures/delete", "delete");
         // Route::get("/manufactures/show", "show");
@@ -138,9 +140,6 @@ Route::middleware([])->group(function () {
         Route::get('/search-project', 'searchPerProject');
         Route::get('/search-unit/{id}', 'searchPerUnit');
     });
+
+    route::get("/dashboard", [DashboardController::class, "index"]);
 });
-
-
-
-
-
