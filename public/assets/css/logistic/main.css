@@ -65,7 +65,7 @@
     border: none;
 }
 
-.main-panel .content-wrapper .table td #statusDropdown span {
+.main-panel .content-wrapper .table td span {
     width: 100%;
 }
 
@@ -86,7 +86,7 @@
     color: var(--blue) !important;
 }
 
-.main-panel .content-wrapper .table td #statusDropdown .delivered {
+.main-panel .content-wrapper .table td .delivered {
     color: #3dd6bf !important;
 }
 
