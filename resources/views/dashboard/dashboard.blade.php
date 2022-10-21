@@ -17,8 +17,8 @@
         <div class="card bg-gradient-primary card-img-holder text-white">
             <div class="card-body">
                 <img src="assets/images/welcome.svg" class="card-img-absolute" alt="welcome">
-                <h2 class="mb-2" style="color: black;">Selamat Datang, {{ Auth::user()->name ?? "" }}</h2>
-                <h4 class="card-text" style="color: black;">Sistem Manufacture Astral Allumunium System</h4>
+                <h2 class="mb-2" style="color: #eee;">Selamat Datang, {{ Auth::user()->name ?? "" }}</h2>
+                <h4 class="card-text" style="color: #eee;">Sistem Manufacture Astral Allumunium System</h4>
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
                             <h4 class="font-weight-normal mb-5"><i
                                     class="mdi mdi-book-open-variant mdi-24px float-right"></i> Panduan
                             </h4>
-                            
+
                             <a>Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
 @push('script')
 <!-- Custom js for this page -->
 <script src="{{ asset('assets/js/chart.js') }}" one="{{ $itemHoldCount }}">
-    
+
 </script>
 <!-- End custom js for this page -->
 @endpush
