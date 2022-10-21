@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Logistic;
 use App\Models\Manufacture;
 use App\Models\QC;
 use App\Models\WorkOrder;
@@ -26,7 +27,12 @@ class MonitoringController extends Controller
         $workOrder = DB::table('work_orders')
                     ->orderBy('tanggal_kirim','asc')
                     ->get();
-        
+        $logistics = DB::table('logistic_work_order')
+                    ->leftJoin('logistics','logistic_work_order.logistic_id','=','logistics.id')
+                    ->leftJoin('work_orders','work_orders.id','=','logistic_work_order.work_order_id')
+                    ->select('logistics.fppp_id as fppp_id_on_logistics', 'logistics.no_logistic','logistics.tgl_berangkat','logistic_work_order.work_order_id')
+                    ->get();
+                //dd($logistics);
         
         
         //dd($wo);
@@ -40,7 +46,7 @@ class MonitoringController extends Controller
             $mpp[$key]['no_fppp'] = $fppp->fppp_no;
             $mpp[$key]['quotation_id'] = $fppp->quotation_id;
             $mpp[$key]['tanggalTerimaFppp'] = $this->ubahTanggal($fppp->created_at);
-            $mpp[$key]['deadline'] = $this->ubahTanggal($fppp->retrieval_deadline);
+            $mpp[$key]['deadline'] = $fppp->retrieval_deadline;
             foreach ($quo as $qt) {
                 if ($mpp[$key]['quotation_id'] == $qt->id_qtn) {
                     $mpp[$key]['project'] = $qt->nama_proyek;
@@ -73,7 +79,11 @@ class MonitoringController extends Controller
                 if ($wo->fppp_id == $mpp[$key]['id_fppp']) {
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
                     $wor[$k]['kode_op'] = $wo->kode_op;
-                    $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
+                    if ($wo->kode_op) {
+                        $op[$key][$k] = $wo->kode_op;
+                        $mpp[$key]['total_op'] = count(array_unique($op[$key]));
+                    }
+                    
                     if ($wo->tanggal_kaca) {
                         $mpp[$key]['proses_kaca'] += 1;
                     }
@@ -95,21 +105,25 @@ class MonitoringController extends Controller
                     }elseif ($wo->last_process == "on delivery") {
                         $mpp[$key]['delivery'] += 1;
                     }
-                    if ($wo->tanggal_kirim != null) {
-                        $tglKirim[$key][$j] = $this->ubahTanggal($wo->tanggal_kirim);
-                        $j++;
-                        $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
-                        $mpp[$key]['jumlahtgl'] += 1;
-                    }
-                    if ($mpp[$key]['jumlahtgl'] == $mpp[$key]['total_unit']) {
-                        $mpp[$key]['tanggalKirimAkhir'] = $tglKirim[$key][$mpp[$key]['total_unit']-1];
+                    foreach ($logistics as $keyl => $logis) {
+                        if ($wo->id == $logis->work_order_id) {
+                            if ($logis->tgl_berangkat != null) {
+                                $tglKirim[$key][$keyl] = $logis->tgl_berangkat;
+                                $j++;
+                                $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
+                                $mpp[$key]['jumlahtgl'] += 1;
+                            }
+                            if ($mpp[$key]['jumlahtgl'] == $mpp[$key]['total_unit']) {
+                                $mpp[$key]['tanggalKirimAkhir'] = $tglKirim[$key][$mpp[$key]['total_unit']-1];
+                            }
+                        }
                     }
                     
                     if ($wo->acc_pengiriman == "ACCEPT") {
                         $mpp[$key]['acc_pengiriman'] += 1;
                         $jumlahacc +=1;
                     }
-                    if ($wo->last_process == "packing" && $wo->tanggal_kirim == null) {
+                    if ($wo->last_process != "delivered") {
                         $mpp[$key]['unitBelumKirim'] += 1;
                     }
                     if ($wo->last_process == "delivered") {
@@ -139,16 +153,7 @@ class MonitoringController extends Controller
                 $mpp[$key]['status'] = 'PARSIAL';
             }
         }
-        $temp = array_unique(array_column($wor,'kode_op'));
-        $unique_kodeOP = array_intersect_key($wor,$temp);
-
-        for ($i=0; $i < count($mpp); $i++) { 
-            foreach ($unique_kodeOP as $key => $uop) {
-                if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
-                    $mpp[$i]['total_op'] += 1;
-                }
-            }
-        }
+        
         
         
        return view('Manufaktur.perproject')->with('mpp',$mpp);
@@ -169,6 +174,11 @@ class MonitoringController extends Controller
                 ->leftJoin('q_c_s','q_c_s.work_order_id','=','work_orders.id')
                 ->select('work_orders.*','q_c_s.id as id_qcs','q_c_s.work_order_id','q_c_s.subkon as subkon_qcs','q_c_s.alasan as alasanqc','q_c_s.keterangan as keterangan_qc','q_c_s.status as status_qc','q_c_s.created_at','q_c_s.updated_at')
                 ->get();
+        $logistics = DB::table('logistic_work_order')
+                    ->leftJoin('logistics','logistic_work_order.logistic_id','=','logistics.id')
+                    ->leftJoin('work_orders','work_orders.id','=','logistic_work_order.work_order_id')
+                    ->select('logistics.fppp_id as fppp_id_on_logistics', 'logistics.no_logistic','logistics.tgl_berangkat','logistic_work_order.work_order_id')
+                    ->get();
         foreach ($wo as $key => $w) {
             foreach ($fppp as $key => $fp) {
                 if ($fp->id == $w->fppp_id) {
@@ -189,6 +199,12 @@ class MonitoringController extends Controller
                 }
                 $w->tanggalReject = "-";
                 $w->alasanReject = "-";
+            }
+            foreach ($logistics as $keyl => $logis) {
+                if ($w->id == $logis->work_order_id) {
+                    $w->tanggal_kirim = $logis->tgl_berangkat;
+                    $w->no_surat_jalan = $logis->no_logistic;
+                }
             }
         }
 
@@ -218,7 +234,11 @@ class MonitoringController extends Controller
         $workOrder = DB::table('work_orders')
                     ->orderBy('tanggal_kirim','asc')
                     ->get();
-        
+        $logistics = DB::table('logistic_work_order')
+        ->leftJoin('logistics','logistic_work_order.logistic_id','=','logistics.id')
+        ->leftJoin('work_orders','work_orders.id','=','logistic_work_order.work_order_id')
+        ->select('logistics.fppp_id as fppp_id_on_logistics', 'logistics.no_logistic','logistics.tgl_berangkat','logistic_work_order.work_order_id')
+        ->get();
         
         
         //dd($wo);
@@ -232,7 +252,7 @@ class MonitoringController extends Controller
             $mpp[$key]['no_fppp'] = $fppp->fppp_no;
             $mpp[$key]['quotation_id'] = $fppp->quotation_id;
             $mpp[$key]['tanggalTerimaFppp'] = $this->ubahTanggal($fppp->created_at);
-            $mpp[$key]['deadline'] = $this->ubahTanggal($fppp->retrieval_deadline);
+            $mpp[$key]['deadline'] = $fppp->retrieval_deadline;
             foreach ($quo as $qt) {
                 if ($mpp[$key]['quotation_id'] == $qt->id_qtn) {
                     $mpp[$key]['project'] = $qt->nama_proyek;
@@ -265,6 +285,10 @@ class MonitoringController extends Controller
                 if ($wo->fppp_id == $mpp[$key]['id_fppp']) {
                     $wor[$k]['id_fppp'] = $wo->fppp_id;
                     $wor[$k]['kode_op'] = $wo->kode_op;
+                    if ($wo->kode_op) {
+                        $op[$key][$k] = $wo->kode_op;
+                        $mpp[$key]['total_op'] = count(array_unique($op[$key]));
+                    }
                     $wor[$k]['tanggal_kirim'] = $this->ubahTanggal($wo->tanggal_kirim);
                     if ($wo->tanggal_kaca) {
                         $mpp[$key]['proses_kaca'] += 1;
@@ -287,21 +311,25 @@ class MonitoringController extends Controller
                     }elseif ($wo->last_process == "on delivery") {
                         $mpp[$key]['delivery'] += 1;
                     }
-                    if ($wo->tanggal_kirim != null) {
-                        $tglKirim[$key][$j] = $this->ubahTanggal($wo->tanggal_kirim);
-                        $j++;
-                        $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
-                        $mpp[$key]['jumlahtgl'] += 1;
-                    }
-                    if ($mpp[$key]['jumlahtgl'] == $mpp[$key]['total_unit']) {
-                        $mpp[$key]['tanggalKirimAkhir'] = $tglKirim[$key][$mpp[$key]['total_unit']-1];
+                    foreach ($logistics as $keyl => $logis) {
+                        if ($wo->id == $logis->work_order_id) {
+                            if ($logis->tgl_berangkat != null) {
+                                $tglKirim[$key][$keyl] = $logis->tgl_berangkat;
+                                $j++;
+                                $mpp[$key]['tanggalKirimAwal'] = $tglKirim[$key][0];
+                                $mpp[$key]['jumlahtgl'] += 1;
+                            }
+                            if ($mpp[$key]['jumlahtgl'] == $mpp[$key]['total_unit']) {
+                                $mpp[$key]['tanggalKirimAkhir'] = $tglKirim[$key][$mpp[$key]['total_unit']-1];
+                            }
+                        }
                     }
                     
                     if ($wo->acc_pengiriman == "ACCEPT") {
                         $mpp[$key]['acc_pengiriman'] += 1;
                         $jumlahacc +=1;
                     }
-                    if ($wo->last_process == "packing" && $wo->tanggal_kirim == null) {
+                    if ($wo->last_process != "delivered") {
                         $mpp[$key]['unitBelumKirim'] += 1;
                     }
                     if ($wo->last_process == "delivered") {
@@ -331,16 +359,7 @@ class MonitoringController extends Controller
                 $mpp[$key]['status'] = 'PARSIAL';
             }
         }
-        $temp = array_unique(array_column($wor,'kode_op'));
-        $unique_kodeOP = array_intersect_key($wor,$temp);
-
-        for ($i=0; $i < count($mpp); $i++) { 
-            foreach ($unique_kodeOP as $key => $uop) {
-                if ($uop['id_fppp'] == $mpp[$i]['id_fppp']) {
-                    $mpp[$i]['total_op'] += 1;
-                }
-            }
-        }
+        
         
         
        return view('Manufaktur.perproject')->with('mpp',$mpp);
@@ -362,6 +381,11 @@ class MonitoringController extends Controller
                 ->leftJoin('q_c_s','q_c_s.work_order_id','=','work_orders.id')
                 ->select('work_orders.*','q_c_s.id as id_qcs','q_c_s.work_order_id','q_c_s.subkon as subkon_qcs','q_c_s.alasan as alasanqc','q_c_s.keterangan as keterangan_qc','q_c_s.status as status_qc','q_c_s.created_at','q_c_s.updated_at')
                 ->get();
+        $logistics = DB::table('logistic_work_order')
+            ->leftJoin('logistics','logistic_work_order.logistic_id','=','logistics.id')
+            ->leftJoin('work_orders','work_orders.id','=','logistic_work_order.work_order_id')
+            ->select('logistics.fppp_id as fppp_id_on_logistics', 'logistics.no_logistic','logistics.tgl_berangkat','logistic_work_order.work_order_id')
+            ->get();
         foreach ($wo as $key => $w) {
             foreach ($fppp as $key => $fp) {
                 if ($fp->id == $w->fppp_id) {
@@ -382,6 +406,12 @@ class MonitoringController extends Controller
                 }
                 $w->tanggalReject = "-";
                 $w->alasanReject = "-";
+            }
+            foreach ($logistics as $keyl => $logis) {
+                if ($w->id == $logis->work_order_id) {
+                    $w->tanggal_kirim = $logis->tgl_berangkat;
+                    $w->no_surat_jalan = $logis->no_logistic;
+                }
             }
         }
 

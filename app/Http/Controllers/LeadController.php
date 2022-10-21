@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LeadController extends Controller
 {
@@ -28,7 +31,8 @@ class LeadController extends Controller
         ];
         $request->validate([
             'employee_number' => 'required|unique:leads|numeric',
-            'lead_name' => 'required'
+            'lead_name' => 'required',
+            'email' => 'unique:users'
         ],$messages);
 
         $newLeads = new Lead();
@@ -37,6 +41,15 @@ class LeadController extends Controller
         $newLeads->lead_name = $request->lead_name;
         $newLeads->is_active = $request->is_active;
 
+        //register lead to users table
+        $user = User::create([
+            'name' => $request->lead_name,
+            'email' => $request->email."@Alluresystem.site",
+            'gender' => $request->gender,
+            'active' => $request->is_active,
+            'password' => Hash::make("lead123"),
+        ]);
+        event(new Registered($user));
         $newLeads->save();
         toast("Data Berhasil Ditambahkan","success");
         return redirect('/leads');

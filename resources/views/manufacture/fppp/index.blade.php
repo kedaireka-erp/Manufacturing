@@ -54,6 +54,7 @@
                                     <td>{{ $fppp->quotation->DataQuotation->nama_proyek }}</td>
                                     <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
                                     <td class="">
+                                        @if (Auth::user()->roles == "admin-manufacture")
                                         <button
                                             type="button"
                                             class="btn btn-purple btn-sm text-white"
@@ -65,6 +66,7 @@
                                             data-bs-base-path="{{ asset("storage/") }}"
                                             data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
                                         </button>
+                                        @endif
                                         <a href="{{ route("manufactures.show",$fppp->id) }}" class="btn btn-info btn-sm"
                                             >Lihat</a
                                         >

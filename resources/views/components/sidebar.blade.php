@@ -49,6 +49,7 @@
                             @endif
                             FPPP</a>
                     </li>
+                    {{-- @if (Auth::user()->roles == "admin-manufacture") --}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('logistic*') ? 'sub-menu--active' : ''  }}" href="{{ route("logistic_index") }}">
                             @if (Request::is('logistic*'))
@@ -67,9 +68,11 @@
                             @endif
                             Monitoring</a>
                     </li>
+                    {{-- @endif --}}
                 </ul>
             </div>
         </li>
+        {{-- @if (Auth::user()->roles == "admin-manufacture") --}}
         <li class="nav-item px-0">
             <a class="nav-link px-4 mb-2 {{ Request::is('lead*','subkon*') ? 'nav-link--active' : ''  }}" data-bs-toggle="collapse" href="#general-pages"
                 aria-expanded="false" aria-controls="general-pages">
@@ -100,5 +103,6 @@
                 </ul>
             </div>
         </li>
+        {{-- @endif --}}
     </ul>
 </nav>
