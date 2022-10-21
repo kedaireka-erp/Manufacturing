@@ -51,9 +51,9 @@
                                 </tr> 
                                 <tr> 
                                     <td>Sales/Site Manager</td> 
-                                    <td>Wahyu(Dummy)</td>
+                                    <td>-</td>
                                     <td>Koordinator</td> 
-                                    <td>Clivia(Dummy)</td>  
+                                    <td>Clivia</td>  
                                 </tr> 
                                 <tr> 
                                     <td>Status Order</td> 
@@ -78,7 +78,7 @@
                                 </tr> 
                                 <tr> 
                                     <td>Kode Item</td> 
-                                    <td>#AW4, AW5, AW6, AW7 Dummy</td> 
+                                    <td>{{ $kodeItems }}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Warna</td> 
@@ -105,26 +105,26 @@
                             <thead> 
                             </thead> 
                             <tbody> 
-                                <tr> 
+                                {{-- <tr> 
                                     <td>Jenis Pengiriman</td> 
                                     <td>Luar Kota(Ini tidak jadi?)</td> 
-                                </tr> 
+                                </tr>  --}}
                                 <tr> 
                                     <td>Deadline</td> 
                                     <td>{{ \Carbon\Carbon::parse($manufacture->retrival_deadline)->translatedFormat('d F Y') }}</td> 
                                 </tr> 
-                                <tr> 
+                                {{-- <tr> 
                                     <td>Ditujukan Kepada</td> 
                                     <td>Andi(Dummy)</td> 
-                                </tr> 
-                                <tr> 
+                                </tr>  --}}
+                                {{-- <tr> 
                                     <td>No. Telepon Tujuan</td> 
                                     <td>089234567890(dummy)</td> 
-                                </tr> 
-                                <tr> 
+                                </tr>  --}}
+                                {{-- <tr> 
                                     <td>Nama & Alamat Ekspedisi</td> 
                                     <td>Andi, Jl. Kebun Jeruk 36 Jakarta Timur (Dummy)</td> 
-                                </tr> 
+                                </tr>  --}}
                                 <tr> 
                                     <td>Pembayaran Ekspedisi</td> 
                                     <td>{{ $manufacture->delivery_to_expedition }}</td> 
@@ -147,30 +147,34 @@
                      
                         <div class="">
                             <h2>PENGIRIMAN</h2> 
-        <table class="table table-striped"> 
-            <thead> 
+        <table class="" style="border: 1px #eaea solid"> 
+            <thead style="border: 1px #eaea solid"> 
                 <tr class="text-center"> 
                     <th scope="col">No.</th> 
                     <th scope="col">Code Item</th> 
                     <th scope="col">Item</th> 
                     <th scope="col">Glass Speification</th> 
-                    <th scope="col">Leaves</th> 
-                    <th scope="col">Opening Direct</th> 
+                    {{-- <th scope="col">Leaves</th> 
+                    <th scope="col">Opening Direct</th>  --}}
                     <th scope="col">Finish</th> 
                     <th scope="col">Marketing Approval</th> 
                 </tr> 
             </thead> 
-            <tbody>
+            <tbody style="border: 1px #eaea solid">
                 @foreach ($workOrders as $no => $wo)
-                    <tr class="text-center"> 
-                    <td>0 {{ $no+1 }}</td> 
-                    <td>{{ $wo->kode_unit }}</td> 
-                    <td>{{ $wo->nama_item }}</td> 
-                    <td>{{ $manufacture->glass }} {{ $manufacture->glass_type }}</td> 
-                    <td>1(Dummy)</td> 
-                    <td>Outsite(Dummy)</td> 
-                    <td>{{ $manufacture->color }}</td> 
-                    <td></td> 
+                    <tr style="background-color: #eaeaea" class="text-center
+                    @if($no%2 == 0)
+                    bg-white
+                    @endif
+                    "> 
+                    <td>0{{ $no+1 }}</td> 
+                    <td class="p-4">{{ $wo->kode_unit }}</td> 
+                    <td class="p-4">{{ $wo->nama_item }}</td> 
+                    <td class="p-4">{{ $manufacture->glass }} {{ $manufacture->glass_type }}</td> 
+                    {{-- <td class="p-4">1(Dummy)</td> 
+                    <td class="p-4">Outsite(Dummy)</td>  --}}
+                    <td class="p-4">{{ $manufacture->color }}</td> 
+                    <td class="p-4"></td> 
                 </tr>
                 @endforeach 
                 

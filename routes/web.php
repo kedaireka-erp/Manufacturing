@@ -34,7 +34,7 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::middleware([])->group(function () {
     Route::get('/', function () {
-        return redirect('/manufactures');
+        return redirect('/welcome');
     });
 
     Route::get("/show1/{id}", [ManufactureController::class, "show"]);
@@ -44,6 +44,12 @@ Route::middleware([])->group(function () {
     // Route::get(function () {
     //     echo "Hello";
     // });
+
+    // Confirm
+    Route::get('/confirm', function(){
+        return view("login.welcome");
+    });
+
 
     //Route leads
     Route::controller(LeadController::class)->group(function () {
@@ -94,9 +100,9 @@ Route::middleware([])->group(function () {
 
     // Route FPPP
     Route::controller(ManufactureController::class)->group(function () {
-        Route::get("/manufactures", "index");
+        Route::get("/manufactures", "index")->name("manufactures");
         Route::post("/manufactures", "store");
-        Route::get("/manufactures/delete", "delete");
+        //Route::get("/manufactures/delete", "delete");
         // Route::get("/manufactures/show", "show");
         Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
         Route::get('/manufactures/detail/{manufacture}', 'detail')->name("manufactures.detail");
@@ -137,8 +143,3 @@ Route::middleware([])->group(function () {
 
     route::get("/dashboard", [DashboardController::class, "index"]);
 });
-
-
-
-
-
