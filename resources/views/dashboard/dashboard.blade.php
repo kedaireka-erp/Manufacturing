@@ -17,8 +17,8 @@
         <div class="card bg-gradient-primary card-img-holder text-white">
             <div class="card-body">
                 <img src="assets/images/welcome.svg" class="card-img-absolute" alt="welcome">
-                <h2 class="mb-2" style="color: black;">Selamat Datang, Alfat Mutoriq!</h2>
-                <h4 class="card-text" style="color: black;">Sistem Manufacture Astral Allumunium System</h4>
+                <h2 class="mb-2" style="color: #eee;">Selamat Datang, {{ Auth::user()->name ?? "" }}</h2>
+                <h4 class="card-text" style="color: #eee;">Sistem Manufacture Astral Allumunium System</h4>
             </div>
         </div>
     </div>
@@ -33,8 +33,8 @@
                             <h4 class="font-weight-normal mb-3"><i class="mdi mdi-account mdi-24px float-right"></i>
                                 Jumlah Subkon
                             </h4>
-                            <h2 class="mb-4 mt-4 text-center">10</h2>
-                            <a>Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
+                            <h2 class="mb-4 mt-4 text-center">{{ $subkonCount }}</h2>
+                            <a href="{{ route("subkons") }}" class="text-decoration-none text-white">Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -48,8 +48,8 @@
                             <h4 class="font-weight-normal mb-3"><i class="mdi mdi-account mdi-24px float-right"></i>
                                 Jumlah Lead
                             </h4>
-                            <h2 class="mb-4 mt-4 text-center">8</h2>
-                            <a>Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
+                            <h2 class="mb-4 mt-4 text-center">{{ $leadCount }}</h2>
+                            <a href="{{ route("leads") }}" class="text-decoration-none text-white">Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -63,8 +63,8 @@
                             <h4 class="font-weight-normal mb-3"><i
                                     class="mdi mdi-file-document mdi-24px float-right"></i> Jumlah FPPP
                             </h4>
-                            <h2 class="mb-4 mt-4 text-center">23</h2>
-                            <a>Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
+                            <h2 class="mb-4 mt-4 text-center">{{ $fpppCount }}</h2>
+                            <a href="{{ route("manufactures") }}" class="text-decoration-none text-white">Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -78,6 +78,7 @@
                             <h4 class="font-weight-normal mb-5"><i
                                     class="mdi mdi-book-open-variant mdi-24px float-right"></i> Panduan
                             </h4>
+
                             <a>Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                         </div>
                     </div>
@@ -93,7 +94,7 @@
                     <ul class="list-group list-group-flush">
 
                             <h4 class="card-title">Total Item</h4>
-                            <h2>1000</h2>
+                            <h2>{{ $itemCount }}</h2>
 
                         <li class="list-group-item">
                         </li>
@@ -101,7 +102,7 @@
                         <br>
                         <br>
                           <div>
-                            <canvas id="pieChart"></canvas>
+                            <canvas id="pieChart" height="300px"></canvas>
                           </div>
                     </ul>
                 </div>
@@ -110,6 +111,11 @@
     </div>
 
 </div>
+
+<div id="itemHoldCount" hidden>{{ $itemHoldCount }}</div>
+<div id="itemCancelCount" hidden>{{ $itemCancelCount }}</div>
+<div id="itemRevisiCount" hidden>{{ $itemRevisiCount }}</div>
+<div id="itemDeliveredCount" hidden>{{ $itemDeliveredCount }}</div>
 
 
 
@@ -122,6 +128,8 @@
 
 @push('script')
 <!-- Custom js for this page -->
-<script src="{{ asset('assets/js/chart.js') }}"></script>
+<script src="{{ asset('assets/js/chart.js') }}" one="{{ $itemHoldCount }}">
+
+</script>
 <!-- End custom js for this page -->
 @endpush

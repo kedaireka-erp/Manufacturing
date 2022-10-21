@@ -13,10 +13,10 @@
             <div class="brand-logo d-flex justify-content-center">
                 <img src="{{ asset("assets/images/logo-astral.svg") }}">
             </div>
-            <h4 class="d-flex justify-content-center">Selamat Datang, Alfat Mutoriq</h4>
+            <h4 class="d-flex justify-content-center">Selamat Datang, {{ Auth::user()->name ?? "Belum Login" }}</h4>
               <h6 class="font-weight-light d-flex justify-content-center">Anda akan mengakses Sistem Manufaktur</h6>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary font-weight-medium auth-form-btn" style="width: 100%; margin-top: 110px;" href="">Klik untuk melanjutkan</a>
+                  <a class="btn btn-block btn-primary font-weight-medium auth-form-btn" style="width: 100%; margin-top: 110px;" href="/dashboard">Klik untuk melanjutkan</a>
                 </div>
         </div>
       </div>
