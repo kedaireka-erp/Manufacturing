@@ -13,15 +13,17 @@
                     aria-expanded="false">
                     <div class="nav-profile-img">
                         <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image">
+                        {{-- <img src="{{ Auth::user()->getPhotoUrlAttribute()}}" alt="image"> --}}
                         <span class="availability-status online"></span>
                     </div>
                     <div class="nav-profile-text">
-                        <p class="mb-1 text-black">Alfat Mutoriq</p>
+                        {{-- <p class="mb-1 text-black">Username</p> --}}
+                        <p class="mb-1 text-black">{{ Auth::user()->name ?? "Belum Login" }}</p>
                     </div>
                 </a>
-                <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <div class="dropdown-menu navbar-dropdown logout-dropdown" aria-labelledby="profileDropdown">
                     <a class="dropdown-item" href="#">
-                        <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+                        <i class="mdi mdi-logout me-2"></i> Signout </a>
                 </div>
             </li>
         </ul>

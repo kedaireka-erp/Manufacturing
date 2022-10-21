@@ -16,12 +16,17 @@ class LoginController extends Controller
     {
         Auth::loginUsingId(base64_decode($request->user_id));
 
-        return redirect("/");
+        return redirect("/login");
     }
 
     public function logout()
     {
         Auth::logout();
         return redirect("/");
+    }
+
+    public function welcome()
+    {
+        return view("login.welcome");
     }
 }

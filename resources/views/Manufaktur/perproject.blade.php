@@ -1,26 +1,14 @@
 @extends('layouts.admin')
-@push("style")
-<link rel="stylesheet" href="{{ asset('style.css')}}">
+@push('style')
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 @endpush
 @section('content')
-        {{-- <div class="content-wrapper bg-img">
+    {{-- <div class="content-wrapper bg-img">
             <div class="shadow p-3 mb-3 bg-body rounded">Monitoring Per Project
             <h5 class="float-end"><a href="#" class="text-secondary">Manufaktur</a> / <a href="#" class="text-primary">Monitoring Per Project</a></h5>
         </div> --}}
 
-        <div class="content-wrapper bg-img">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card card-table-header">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <h2 class="card-title mb-0">Monitoring Per Project</h2>
-                            <h5 class="card-bredcrumb mb-0"><a href="#" class="text-secondary">Manufaktur / </a><a
-                                    href="#" class="text-primary">Monitoring Per Project</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+    <div class="content-wrapper bg-img">
         <div class="row">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
@@ -96,7 +84,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
 @endsection
 
 @push('script')

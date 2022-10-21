@@ -6,8 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SubkonController;
 use App\Http\Controllers\PerunitController;
 use App\Http\Controllers\LogisticController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WorkOrderController;
-
 use App\Http\Controllers\DetailfpppController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\PerProjectController;
@@ -28,12 +28,13 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name("login");
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->name("logout");
+    route::get("/welcome", 'welcome')->name("welcome");
 });
 
 
 Route::middleware([])->group(function () {
     Route::get('/', function () {
-        return redirect('/manufactures');
+        return redirect('/welcome');
     });
 
     Route::get("/show1/{id}", [ManufactureController::class, "show"]);
@@ -43,6 +44,12 @@ Route::middleware([])->group(function () {
     // Route::get(function () {
     //     echo "Hello";
     // });
+
+    // Confirm
+    Route::get('/confirm', function(){
+        return view("login.welcome");
+    });
+
 
     //Route leads
     Route::controller(LeadController::class)->group(function () {
@@ -86,15 +93,16 @@ Route::middleware([])->group(function () {
         Route::get('/logistic/getQuotation/{id}', 'getQuotation')->name('logistic_get_quotation');
         Route::get('/logistic/getDropdownItems/{id}', 'getDropdownItems')->name('logistic_get_dropdown_items'); // get items by fppp's id for dropdown
         Route::get('/logistic/handleChangeStatus/{id}', 'handleChangeStatus')->name('logistic_handle_change_status');
+        Route::get('/logistic/search', 'logisticSearch')->name('logistic_search');
         Route::get('/logistic/generatePDF/{id}', 'generatePDF')->name('logistic_generate_pdf');
     });
 
 
     // Route FPPP
     Route::controller(ManufactureController::class)->group(function () {
-        Route::get("/manufactures", "index");
+        Route::get("/manufactures", "index")->name("manufactures");
         Route::post("/manufactures", "store");
-        Route::get("/manufactures/delete", "delete");
+        //Route::get("/manufactures/delete", "delete");
         // Route::get("/manufactures/show", "show");
         Route::get('/manufactures/{id}', 'show')->name("manufactures.show");
         Route::get('/manufactures/detail/{manufacture}', 'detail')->name("manufactures.detail");
@@ -132,4 +140,6 @@ Route::middleware([])->group(function () {
         Route::get('/search-project', 'searchPerProject');
         Route::get('/search-unit/{id}', 'searchPerUnit');
     });
+
+    route::get("/dashboard", [DashboardController::class, "index"]);
 });

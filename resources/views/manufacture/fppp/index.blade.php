@@ -125,19 +125,9 @@
                             class="form-select border border-2"
                             aria-label="Default select example"
                             name="type"
+                            id="file-selector"
                         >
-                            <option value="detail_wo">
-                                Detail WO(.xlsx)
-                            </option>
-                            <option value="bom_alumunium">
-                                BOM Alumunium(.xlsx)
-                            </option>
-                            <option value="bom_aksesoris">
-                                BOM Aksesoris(.xlsx)
-                            </option>
-                            <option value="wo_potong_alumunium">
-                                WO Potong Alumunium(.pdf)
-                            </option>
+                            
                         </select>
                     </div>
                     <div class="form-group mb-3">
