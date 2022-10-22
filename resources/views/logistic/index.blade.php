@@ -112,20 +112,20 @@
                                                         @endphp
                                                     @endif
                                                 @endforeach --}}
-                                                <span>
+                                                <span class="delivered">
                                                     <i
                                                         class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
                                                     Delivered
                                                 </span>
                                             </td>
                                             <td>
-                                                <div class="d-flex justify-content-around">
+                                                <div class="d-flex justify-content-center">
                                                     <a href="{{ route('logistic_show', $data->id) }}"
                                                         class="btn btn-success" title="View">
                                                         <i class="mdi mdi-eye"></i>
                                                     </a>
                                                     <a href="{{ route('logistic_generate_pdf', $data->id) }}"
-                                                        target="_blank" class="btn btn-primary" title="Download">
+                                                        target="_blank" class="btn btn-primary ms-2" title="Download">
                                                         <i class="mdi mdi-download"></i>
                                                     </a>
 
@@ -236,8 +236,8 @@
                         $.ajaxSetup({
                             cache: false
                         });
-                        // $('.container-scroller').load(URL);
-                        window.location.reload()
+                        $('body').load(window.location.href);
+                        // window.location.reload()
                     }
                 }, 1500)
             });
@@ -278,6 +278,49 @@
                                 }
                             })
 
+                        //     newRows = `
+                        // <tr>
+                        //     <td> ${data.no_logistic}</td>
+                        //     <td> ${data.FPPP_no} </td>
+                        //     <td> ${date} </td>
+                        //     <td> ${total} </td>
+                        //     <td class="text-capitalize"> ${data.driver} </td>
+                        //     <td>
+                        //         <div class="dropdown status-dropdown" id="statusDropdown">
+                        //             <button class="btn btn-secondary dropdown-toggle w-100 py-1 text-capitalize ${log_status == 'on delivery' ? 'on-delivery' : (log_status == 'delivered' ? 'delivered' : 'd-none')}" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-id=${data.id}>
+                        //                 <span><i class="mdi ${log_status == 'on delivery' ? 'mdi-truck' : (log_status == 'delivered' ? 'mdi-checkbox-marked-circle-outline' : '')} me-1"></i>
+                        //                     ${log_status }
+                        //                 </span>
+                        //             </button>
+                        //             <ul class="dropdown-menu">
+                        //                 <li>
+                        //                     <span class="dropdown-item px-3 text-black" onclick="handleChangeStatus(this)" data-value="on delivery" data-id=${data.id}>
+                        //                         <i class="mdi mdi-truck me-2"></i>
+                        //                         On Delivery
+                        //                     </span>
+                        //                 </li>
+                        //                 <li>
+                        //                     <span class="dropdown-item px-3 text-black" data-value="delivered" onclick="handleChangeStatus(this)" data-id=${data.id}>
+                        //                         <i class="mdi mdi-checkbox-marked-circle-outline me-2"></i>
+                        //                         Delivered
+                        //                     </span>
+                        //                 </li>
+                        //             </ul>
+                        //         </div>
+                        //     </td>
+                        //     <td>
+                        //         <div class="d-flex justify-content-around">
+                        //             <a href="/logistic/show/${data.id}" class="btn btn-success" title="View">
+                        //                 <i class="mdi mdi-eye"></i>
+                        //             </a>
+                        //             <a href="/logistic/generatePDF/${data.id}" target="_blank" class="btn btn-primary" title="Download">
+                        //                 <i class="mdi mdi-download"></i>
+                        //             </a>
+                        //         </div>
+                        //     </td>
+                        // </tr>
+                        // `;
+
                             newRows = `
                         <tr>
                             <td> ${data.no_logistic}</td>
@@ -287,33 +330,18 @@
                             <td class="text-capitalize"> ${data.driver} </td>
                             <td>
                                 <div class="dropdown status-dropdown" id="statusDropdown">
-                                    <button class="btn btn-secondary dropdown-toggle w-100 py-1 text-capitalize ${log_status == 'on delivery' ? 'on-delivery' : (log_status == 'delivered' ? 'delivered' : 'd-none')}" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-id=${data.id}>
-                                        <span><i class="mdi ${log_status == 'on delivery' ? 'mdi-truck' : (log_status == 'delivered' ? 'mdi-checkbox-marked-circle-outline' : '')} me-1"></i>
-                                            ${log_status }
-                                        </span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <span class="dropdown-item px-3 text-black" onclick="handleChangeStatus(this)" data-value="on delivery" data-id=${data.id}>
-                                                <i class="mdi mdi-truck me-2"></i>
-                                                On Delivery
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span class="dropdown-item px-3 text-black" data-value="delivered" onclick="handleChangeStatus(this)" data-id=${data.id}>
-                                                <i class="mdi mdi-checkbox-marked-circle-outline me-2"></i>
-                                                Delivered
-                                            </span>
-                                        </li>
-                                    </ul>
+                                    <span class="delivered">
+                                        <i class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
+                                        Delivered
+                                    </span>
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex justify-content-around">
+                                <div class="d-flex justify-content-center">
                                     <a href="/logistic/show/${data.id}" class="btn btn-success" title="View">
                                         <i class="mdi mdi-eye"></i>
                                     </a>
-                                    <a href="/logistic/generatePDF/${data.id}" target="_blank" class="btn btn-primary" title="Download">
+                                    <a href="/logistic/generatePDF/${data.id}" target="_blank" class="btn btn-primary ms-2" title="Download">
                                         <i class="mdi mdi-download"></i>
                                     </a>
                                 </div>
