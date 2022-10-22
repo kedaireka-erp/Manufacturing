@@ -75,7 +75,7 @@
                               </td>
                               <td>
                                 <a class="btn btn-success" style="font-size: 10px" href="/lead/edit/{{ $lead->id }}">Ubah</a>
-                                <button type="button" style="font-size: 10px" class="btn btn-danger" onclick="handleDelete({{ $lead->id }})">Hapus</button>
+                                {{-- <button type="button" style="font-size: 10px" class="btn btn-danger" onclick="handleDelete({{ $lead->id }})">Hapus</button> --}}
                               </td>
                             </tr>
                       @endforeach

@@ -32,7 +32,7 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 
-Route::middleware([])->group(function () {
+Route::middleware(["auth"])->group(function () {
     Route::get('/', function () {
         return redirect('/welcome');
     });

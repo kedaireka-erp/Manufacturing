@@ -44,11 +44,14 @@ class LeadController extends Controller
         //register lead to users table
         $user = User::create([
             'name' => $request->lead_name,
-            'email' => $request->email."@Alluresystem.site",
+            'email' => $request->email."@alluresystem.site",
             'gender' => $request->gender,
             'active' => $request->is_active,
-            'password' => Hash::make("lead123"),
+            'password' => Hash::make("lead1234"),
         ]);
+
+        $user->assignRole("lead-manufacture");
+
         event(new Registered($user));
         $newLeads->save();
         toast("Data Berhasil Ditambahkan","success");

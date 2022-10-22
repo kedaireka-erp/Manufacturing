@@ -106,7 +106,11 @@
               <label class="form-label">Email</label>
               <div class="input-group mb-3">
                 <input type="text" class="form-control" name = "email" placeholder="Username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <span class="input-group-text" id="basic-addon2">@Alluresystem.site</span>
+                <span class="input-group-text" id="basic-addon2">@alluresystem.site</span>
+              </div>
+              <label class="form-label">Password</label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled value="lead1234">
               </div>
               <div class="mb-3">
               <label class="form-label">Jenis kelamin</label>

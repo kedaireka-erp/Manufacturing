@@ -22,8 +22,13 @@
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown logout-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">
+                    <form action="{{ route("logout") }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item">
                         <i class="mdi mdi-logout me-2"></i> Signout </a>
+                    </button>
+                    </form>
+                    {{-- <a class="dropdown-item" href="/logout"> --}}
                 </div>
             </li>
         </ul>
