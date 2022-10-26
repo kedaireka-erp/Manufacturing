@@ -86,7 +86,7 @@
                                     class="mdi mdi-book-open-variant mdi-24px float-right"></i> Panduan
                             </h4>
 
-                            <a>Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
+                            <a target="_blank" href="https://docs.google.com/document/d/1yo0UFJe4VtiLBSiU1y8i0T9H460DRUeu/edit?usp=sharing&ouid=104348814626393291194&rtpof=true&sd=true" class="text-decoration-none text-white">Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                         </div>
                     </div>
                 </div>
