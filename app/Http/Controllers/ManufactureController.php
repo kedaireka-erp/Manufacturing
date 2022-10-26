@@ -25,7 +25,7 @@ class ManufactureController extends Controller
     //
     public function index()
     {
-        $all_fppp = Fppp::with(["quotation", "quotation.DataQuotation"])->where("acc_produksi", "ACCEPT")->latest("updated_at");
+        $all_fppp = Fppp::with(["quotation"])->where("acc_produksi", "ACCEPT")->latest("updated_at");
 
         return view("manufacture.fppp.index", [
             "all_fppp" => $all_fppp->search(request(["search"]))->paginate(5)
