@@ -9,12 +9,12 @@ use App\Models\DetailQuotation;
 use App\Models\MasterAplikator;
 use App\Models\ProyekQuotation;
 use Illuminate\Support\Facades\DB;
-use Kyslik\ColumnSortable\Sortable;
+// use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Spatie\Activitylog\Traits\LogsActivity;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\Activitylog\LogOptions;
+// use Spatie\Activitylog\LogOptions;
 
 class Quotation extends Model
 {
