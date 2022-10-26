@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td width="120px" height="50px">Nama Proyek</td>
-                                <td>: {{ $manufacture->quotation->DataQuotation->nama_proyek }}</td>
+                                <td>: {{ $manufacture->quotation->nama_proyek }}</td>
                             </tr>
                             <tr>
                                 <td width="120px" height="50px">Aplikator</td>

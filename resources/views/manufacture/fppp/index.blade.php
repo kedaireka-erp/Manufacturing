@@ -51,7 +51,7 @@
                                 @foreach ($all_fppp as $fppp)
                                 <tr class="text-center">
                                     <td>{{ $fppp->fppp_no }}</td>
-                                    <td>{{ $fppp->quotation->DataQuotation->nama_proyek }}</td>
+                                    <td>{{ $fppp->quotation->nama_proyek }}</td>
                                     <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
                                     <td class="">
                                         @if (Auth::user()->roles == "admin-manufacture")
@@ -62,7 +62,7 @@
                                             data-bs-target="#exampleModal"
                                             style="background-color: #51e29f"
                                             data-bs-id="{{ $fppp->id }}"
-                                            data-bs-title="{{ $fppp->quotation->DataQuotation->nama_proyek }}"
+                                            data-bs-title="{{ $fppp->quotation->nama_proyek }}"
                                             data-bs-base-path="{{ asset("storage/") }}"
                                             data-bs-files="{{ asset("storage/{$fppp->file_bom_alumunium}")." ".asset("storage/{$fppp->file_bom_aksesoris}")." ".asset("storage/{$fppp->file_wo_potong_alumunium}")." ".asset("storage/{$fppp->file_detail_wo}")}}" > Import
                                         </button>

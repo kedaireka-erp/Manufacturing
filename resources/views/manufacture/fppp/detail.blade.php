@@ -43,11 +43,11 @@
                                 </tr> 
                                 <tr> 
                                     <td>Nama Proyek</td> 
-                                    <td>{{ $manufacture->quotation->DataQuotation->nama_proyek}}</td> 
+                                    <td>{{ $manufacture->quotation->nama_proyek}}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Alamat Proyek</td> 
-                                    <td>{{ $manufacture->quotation->DataQuotation->alamat_proyek}}</td> 
+                                    <td>{{ $manufacture->quotation->alamat_proyek}}</td> 
                                 </tr> 
                                 <tr> 
                                     <td>Sales/Site Manager</td> 
