@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         Auth::loginUsingId(base64_decode($request->user_id));
-        if(Auth::user()->hasRole(["admin-manufacture", "lead-manufacture"]) === false) abort("403");
+        if(Auth::user()->hasRole(["admin-manufacture", "lead-manufacture", "Admin"]) === false) abort("403");
         return redirect("/login");
     }
 
