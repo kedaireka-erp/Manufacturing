@@ -19,10 +19,9 @@ class MonitoringController extends Controller
                 ->join('users','users.id','=','fppps.user_id')
                 ->select('fppps.*','users.name as sales')
                 ->get();
-        $quo = DB::table('quotations')
-                ->join('proyek_quotations','quotations.proyek_quotation_id','=','proyek_quotations.id')
-                ->join('master_aplikators','master_aplikators.kode','=','proyek_quotations.kode_aplikator')
-                ->select('quotations.id as id_qtn','proyek_quotations.*','master_aplikators.aplikator','master_aplikators.alamat')
+        $quo = DB::table('proyek_quotations')
+                ->join('fppps','fppps.quotation_id','=','proyek_quotations.id')
+                ->select('proyek_quotations.id as id_qtn','proyek_quotations.nama_proyek','proyek_quotations.no_quotation')
                 ->get();
         $workOrder = DB::table('work_orders')
                     ->orderBy('tanggal_kirim','asc')
@@ -226,10 +225,9 @@ class MonitoringController extends Controller
                 ->join('users','users.id','=','fppps.user_id')
                 ->select('fppps.*','users.name as sales')
                 ->get();
-        $quo = DB::table('quotations')
-                ->join('proyek_quotations','quotations.proyek_quotation_id','=','proyek_quotations.id')
-                ->join('master_aplikators','master_aplikators.kode','=','proyek_quotations.kode_aplikator')
-                ->select('quotations.id as id_qtn','proyek_quotations.*','master_aplikators.aplikator','master_aplikators.alamat')
+        $quo = DB::tabletable('proyek_quotations')
+        ->join('fppps','fppps.quotation_id','=','proyek_quotations.id')
+        ->select('proyek_quotations.id as id_qtn','proyek_quotations.nama_proyek','proyek_quotations.no_quotation')
                 ->get();
         $workOrder = DB::table('work_orders')
                     ->orderBy('tanggal_kirim','asc')

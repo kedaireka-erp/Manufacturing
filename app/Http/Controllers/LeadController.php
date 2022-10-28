@@ -50,7 +50,7 @@ class LeadController extends Controller
             'password' => Hash::make("lead1234"),
         ]);
 
-        $user->assignRole("lead-manufacture");
+        $user->assignRole($request->role);
 
         event(new Registered($user));
         $newLeads->save();

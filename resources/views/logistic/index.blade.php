@@ -33,9 +33,11 @@
                                     placeholder="Cari berdasarkan No. Surat Jalan atau No. FPPP">
                             </div>
                             <div>
+                                @if (Auth::user()->roles != "Lead-produksi" || Auth::user()->roles != "Operator-produksi")
                                 <a href="{{ route('logistic_create') }}"
                                     class="btn btn-info h-100 d-flex align-items-center">Buat Surat Jalan <i
                                         class="mdi mdi-plus ms-1"></i> </a>
+                                @endif
                             </div>
                         </div>
                         <div class="table-responsive">

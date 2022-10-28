@@ -119,6 +119,16 @@
                   <option value="Perempuan">Perempuan</option>
                 </select>
               </div>
+              <select class="form-select" name="role" aria-label="Default select example">
+                <option selected>Select Role</option>
+                <option value="Admin-manufacture">Admin Manufacture</option>
+                <option value="Lead-back-office">Lead Back Office</option>
+                <option value="Operator-back-office">Operator Back Office</option>
+                <option value="Lead-produksi">Lead Produksi</option>
+                <option value="Operator-produksi">Operator Produksi</option>
+                <option value="Lead-logistik">Lead LOgistik</option>
+                <option value="Operator-logistik">Operator Logistik</option>
+              </select>
               <div class="mb-3">
                   <label class="form-label">Status</label>
                   <select class="form-select" name="is_active">
