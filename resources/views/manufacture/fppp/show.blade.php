@@ -133,7 +133,7 @@
                                                 <input type="hidden" name="id" value="{{ $unit->id }}">
                                                 <input type="hidden" name="lead1_cutting" value="{{ Auth::user()->name }}">
                                                 <input type="hidden" name="lead2_cutting" value="{{ Auth::user()->name }}">
-                                                @if (Auth::user()->roles != "Lead-logistik" || Auth::user()->roles != "Operator-logistik")
+                                                @if (Auth::user()->hasRole("Admin-manufacture") || Auth::user()->hasRole("Lead-back-office") || Auth::user()->hasRole("Operator-back-office") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi"))
                                                 <div class="dropdown">
                                                     <select
                                                         class="form-select bg-transparent text-center search"
@@ -195,7 +195,7 @@
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
                                             <input type="hidden" name="lead1_machining" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_machining" value="{{ Auth::user()->name }}">
-                                            @if (Auth::user()->roles != "Lead-logistik" || Auth::user()->roles != "Operator-logistik")
+                                            @if (Auth::user()->hasRole("Admin-manufacture") || Auth::user()->hasRole("Lead-back-office") || Auth::user()->hasRole("Operator-back-office") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi"))
                                             <div class="dropdown" mt-3>
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -253,7 +253,7 @@
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
                                             <input type="hidden" name="lead1_assembly1" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_assembly1" value="{{ Auth::user()->name }}">
-                                            @if (Auth::user()->roles != "Lead-logistik" || Auth::user()->roles != "Operator-logistik")
+                                            @if (Auth::user()->hasRole("Admin-manufacture") || Auth::user()->hasRole("Lead-back-office") || Auth::user()->hasRole("Operator-back-office") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi"))
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -319,7 +319,7 @@
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
                                             <input type="hidden" name="lead1_assembly2" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_assembly2" value="{{ Auth::user()->name }}">
-                                            @if (Auth::user()->roles != "Lead-logistik" || Auth::user()->roles != "Operator-logistik")
+                                            @if (Auth::user()->hasRole("Admin-manufacture") || Auth::user()->hasRole("Lead-back-office") || Auth::user()->hasRole("Operator-back-office") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi"))
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -385,7 +385,7 @@
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
                                             <input type="hidden" name="lead1_assembly3" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_assembly3" value="{{ Auth::user()->name }}">
-                                            @if (Auth::user()->roles != "Lead-logistik" || Auth::user()->roles != "Operator-logistik")
+                                            @if (Auth::user()->hasRole("Admin-manufacture") || Auth::user()->hasRole("Lead-back-office") || Auth::user()->hasRole("Operator-back-office") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi"))
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select  bg-transparent text-center search"
@@ -478,7 +478,7 @@
                                             <input type="hidden" name="id" value="{{ $unit->id }}">
                                             <input type="hidden" name="lead1_packing" value="{{ Auth::user()->name }}">
                                             <input type="hidden" name="lead2_packing" value="{{ Auth::user()->name }}">
-                                            @if (Auth::user()->roles != "Lead-logistik" || Auth::user()->roles != "Operator-logistik")
+                                            @if (Auth::user()->hasRole("Admin-manufacture") || Auth::user()->hasRole("Lead-back-office") || Auth::user()->hasRole("Operator-back-office") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi"))
                                             <div class="dropdown">
                                                 <select
                                                     class="form-select bg-transparent text-center search"
@@ -1007,7 +1007,7 @@
                     @csrf
                     <div class="modal-body">
                         <input type="hidden" name="work_order_id" value="{{ $unit->id }}">
-                        @if (Auth::user()->roles != "Lead-logistik" || Auth::user()->roles != "Operator-logistik")
+                        @if (Auth::user()->hasRole("Admin-manufacture") || Auth::user()->hasRole("Lead-back-office") || Auth::user()->hasRole("Operator-back-office") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi"))
                         <div class="form-group" style="margin-bottom: 12px">
                             <label class="col-form-label fs-6">Nama Subkon</label>
                             <select class="form-select border border-2" aria-label="Default select example" name="subkon">
