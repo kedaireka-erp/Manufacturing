@@ -123,9 +123,9 @@
                 <label class="form-label">Pilih role</label>
               <select class="form-select" name="role" aria-label="Default select example">
                 <option selected>Select Role</option>
-                <option value="Admin-manufacture">Admin Manufacture</option>
-                <option value="Lead-back-office">Lead Back Office</option>
-                <option value="Operator-back-office">Operator Back Office</option>
+                <option value="Administrator">Administrator</option>
+                <option value="Manager-PPIC">Manager PPIC</option>
+                <option value="Admin-PPIC">Admin PPIC</option>
                 <option value="Lead-produksi">Lead Produksi</option>
                 <option value="Operator-produksi">Operator Produksi</option>
                 <option value="Lead-logistik">Lead Logistik</option>
