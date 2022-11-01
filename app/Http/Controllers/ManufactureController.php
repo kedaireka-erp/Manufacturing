@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fppp;
 use App\Models\Manufacture;
+use App\Models\ManufactureActivity;
 use App\Models\QC;
 use App\Models\Subkon;
 use App\Models\WorkOrder;
@@ -69,8 +70,10 @@ class ManufactureController extends Controller
                 ]);
             }
         }
+        $new_value = ["file_" . $request->type => $file_path];
 
-        $fppp->update(["file_" . $request->type => $file_path]);
+        ManufactureActivity::logActivity("update", $request->ip(), $new_value, $fppp->getTable());
+        $fppp->update($new_value);
         toast("File berhasil diunggah", "success");
         return redirect("manufactures")->with("success", "Sukses upload file!");
     }

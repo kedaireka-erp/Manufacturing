@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Logistic;
+use App\Models\ManufactureActivity;
 use App\Models\WorkOrder;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -84,6 +85,21 @@ class LogisticController extends Controller
             'no_polisi' => strtoupper($request->plateNumber),
             'alamat' => $request->address
         ]);
+
+        ManufactureActivity::logActivity(
+            "create",
+            $request->ip(),
+            [
+                'fppp_id' => $request->fppp,
+                'no_logistic' => $lastId + 1 . '/AST/' . date('m') . '/' . date('Y'),
+                'tgl_input' => date('Y-m-d H:i:s'),
+                'tgl_berangkat' => $request->departDate,
+                'driver' => strtolower($request->driver),
+                'no_polisi' => strtoupper($request->plateNumber),
+                'alamat' => $request->address
+            ],
+            "logistics"
+        );
 
         $getItems = collect($request->input('items', []));
 
@@ -188,6 +204,8 @@ class LogisticController extends Controller
                     "last_process" => 'packing',
                 ]);
             }
+            ManufactureActivity::logActivity("delete", $_SERVER['REMOTE_ADDR'], $logistic, $logistic->getTable());
+
             $logistic->delete(); // soft delete
 
             $msg = "Surat Jalan ({$logistic->no_logistic}) berhasil dihapus!";

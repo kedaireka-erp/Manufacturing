@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ManufactureActivity;
 use App\Models\QC;
 use App\Models\RekapSubkon;
 use App\Models\WorkOrder;
@@ -17,6 +18,8 @@ class WorkOrderController extends Controller
             "tanggal_kaca"  => Carbon::now() ?? $unit->tanggal_kaca,
             "user_kaca"     => "alice"
         ]);
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
+
         toast("Data kaca " . $unit->kode_unit . " berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -33,6 +36,8 @@ class WorkOrderController extends Controller
             "proses_cutting"    => $request->proses_cutting ?? $unit->proses_cutting,
             "last_process"      => "cutting"
         ]);
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
+
         toast("Data cutting " . $unit->kode_unit . " berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -48,6 +53,8 @@ class WorkOrderController extends Controller
             "lead2_machining"     => $request->lead2_machining ?? $unit->lead2_machining,
             "last_process"        => "machining"
         ]);
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
+
         toast("Data machining " . $unit->kode_unit . " berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -91,6 +98,9 @@ class WorkOrderController extends Controller
             "kode_assembly"     => 1,
         ]);
 
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
+
+
         toast("Data assembly 1 " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -132,6 +142,9 @@ class WorkOrderController extends Controller
             "assembly_id"       => $kode,
             "kode_assembly"     => 2,
         ]);
+
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
+
 
         toast("Data assembly 2 " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
@@ -175,6 +188,8 @@ class WorkOrderController extends Controller
             "kode_assembly"     => 3,
         ]);
 
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
+
         toast("Data assembly 3 " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -189,7 +204,16 @@ class WorkOrderController extends Controller
             "keterangan"        => $request->keterangan,
             "status"            => $request->status
         ]);
+
+        ManufactureActivity::logActivity("create", $request->ip(), [
+            "work_order_id"     => $request->work_order_id,
+            "subkon"            => $request->subkon,
+            "alasan"            => $request->alasan,
+            "keterangan"        => $request->keterangan,
+            "status"            => $request->status
+        ], "q_c_s");
         $unit->update(["last_process"      => "qc"]);
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
         toast("Data qc " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
     }
@@ -206,6 +230,7 @@ class WorkOrderController extends Controller
             "qty_packing"       => $request->qty_packing ?? $unit->qty_packing,
             "last_process"      => "packing"
         ]);
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
 
         toast("Data packing " . $unit->kode_unit . "  berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);
@@ -217,6 +242,8 @@ class WorkOrderController extends Controller
         $unit->update([
             "status_hold"   => $request->keterangan ?? $unit->status_hold
         ]);
+
+        ManufactureActivity::logActivity("update", $request->ip(), $unit->getChanges(), $unit->getTable());
 
         toast("Data status hold " . $unit->kode_unit . " berhasil diupdate", "success");
         return redirect("/manufactures/" . $unit->fppp_id);

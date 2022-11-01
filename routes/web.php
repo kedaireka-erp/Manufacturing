@@ -9,6 +9,7 @@ use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\DetailfpppController;
+use App\Http\Controllers\LogActivityController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\PerProjectController;
 use App\Http\Controllers\ManufactureController;
@@ -32,7 +33,7 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 
-Route::middleware(["auth"])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/', function () {
         return redirect('/welcome');
     });
@@ -46,7 +47,7 @@ Route::middleware(["auth"])->group(function () {
     // });
 
     // Confirm
-    Route::get('/confirm', function(){
+    Route::get('/confirm', function () {
         return view("login.welcome");
     });
 
@@ -142,4 +143,5 @@ Route::middleware(["auth"])->group(function () {
     });
 
     route::get("/dashboard", [DashboardController::class, "index"]);
+    Route::get("/logs", [LogActivityController::class, "index"]);
 });

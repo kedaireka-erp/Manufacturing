@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use App\Models\ManufactureActivity;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Session\Session;
@@ -16,7 +17,7 @@ class LeadController extends Controller
     {
         $leads = Lead::paginate(5);
 
-        return view('master.lead.index')->with('leads',$leads);
+        return view('master.lead.index')->with('leads', $leads);
     }
     public function create()
     {
@@ -33,7 +34,7 @@ class LeadController extends Controller
             'employee_number' => 'required|unique:leads|numeric',
             'lead_name' => 'required',
             'email' => 'unique:users'
-        ],$messages);
+        ], $messages);
 
         $newLeads = new Lead();
 
@@ -44,23 +45,32 @@ class LeadController extends Controller
         //register lead to users table
         $user = User::create([
             'name' => $request->lead_name,
-            'email' => $request->email."@alluresystem.site",
+            'email' => $request->email . "@alluresystem.site",
             'gender' => $request->gender,
             'active' => $request->is_active,
             'password' => Hash::make("lead1234"),
         ]);
+        ManufactureActivity::logActivity("create", $_SERVER['REMOTE_ADDR'], [
+            'name' => $request->lead_name,
+            'email' => $request->email . "@alluresystem.site",
+            'gender' => $request->gender,
+            'active' => $request->is_active,
+        ], "users");
+
 
         $user->assignRole("lead-manufacture");
 
         event(new Registered($user));
         $newLeads->save();
-        toast("Data Berhasil Ditambahkan","success");
+        ManufactureActivity::logActivity("update", $_SERVER['REMOTE_ADDR'], $newLeads->getChanges(), $newLeads->getTable());
+
+        toast("Data Berhasil Ditambahkan", "success");
         return redirect('/leads');
     }
     public function edit($id)
     {
         $lead = Lead::findOrFail($id);
-        return view('master.lead.edit')->with('lead',$lead);
+        return view('master.lead.edit')->with('lead', $lead);
     }
     public function update(Request $request, $id)
     {
@@ -71,7 +81,9 @@ class LeadController extends Controller
             'lead_name' => $request->lead_name,
             'is_active' => $request->is_active
         ]);
-        toast("Data Berhasil Diupdate","success");
+        ManufactureActivity::logActivity("update", $_SERVER['REMOTE_ADDR'], $lead->getChanges(), $lead->getTable());
+
+        toast("Data Berhasil Diupdate", "success");
         return redirect('/leads');
     }
 
@@ -79,22 +91,23 @@ class LeadController extends Controller
     public function destroy($id)
     {
         $lead = Lead::findOrFail($id);
+        ManufactureActivity::logActivity("delete", $_SERVER['REMOTE_ADDR'], $lead, $lead->getTable());
         $lead->delete();
-        toast("Data Berhasil Dihapus","error");
+        toast("Data Berhasil Dihapus", "error");
         return redirect('/leads');
     }
     public function trash()
     {
         $leads = Lead::onlyTrashed()->paginate(5);
 
-        return view('',compact('leads'));
+        return view('', compact('leads'));
     }
     public function restore($id)
     {
         $lead = Lead::onlyTrashed()->findOrFail($id);
         $lead->restore();
 
-        return to_route('leads')->with('success','lead restore successfully');
+        return to_route('leads')->with('success', 'lead restore successfully');
     }
 
 
@@ -103,30 +116,30 @@ class LeadController extends Controller
     {
 
         if ($request->ajax()) {
-            $output="";
+            $output = "";
 
-            $leads = DB::table('leads')->where('deleted_at',null)->Where('lead_name','LIKE','%'.$request->search."%")->paginate(6);
+            $leads = DB::table('leads')->where('deleted_at', null)->Where('lead_name', 'LIKE', '%' . $request->search . "%")->paginate(6);
 
             if ($leads) {
                 foreach ($leads as $key => $lead) {
                     if ($lead->is_active == 1) {
                         $is_active = 'Active';
                         $warna = "success";
-                    }else{
+                    } else {
                         $is_active = 'Inactive';
                         $warna = "danger";
                     }
 
-                    $output.='<tr class="text-center">'.
-                    '<td>'.$lead->employee_number.'</td>'.
-                    '<td>'.$lead->lead_name.'</td>'.
-                    '<td><label class="badge badge-'.$warna.'">'.$is_active.'</label></td>'.
+                    $output .= '<tr class="text-center">' .
+                        '<td>' . $lead->employee_number . '</td>' .
+                        '<td>' . $lead->lead_name . '</td>' .
+                        '<td><label class="badge badge-' . $warna . '">' . $is_active . '</label></td>' .
 
-                    '<td>
-                        <a class="btn btn-success" style="font-size: 10px" href="/lead/edit/'.$lead->id.'">Ubah</a>
-                        <button type="button" class="btn btn-danger" onclick="handleDelete('. $lead->id.')">Hapus</button>
-                    </td>'.
-                    '</tr>';
+                        '<td>
+                        <a class="btn btn-success" style="font-size: 10px" href="/lead/edit/' . $lead->id . '">Ubah</a>
+                        <button type="button" class="btn btn-danger" onclick="handleDelete(' . $lead->id . ')">Hapus</button>
+                    </td>' .
+                        '</tr>';
                 }
                 return Response($output);
                 //dd($output);
