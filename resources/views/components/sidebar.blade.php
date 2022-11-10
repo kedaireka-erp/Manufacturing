@@ -103,6 +103,14 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item px-0">
+            <a class="nav-link px-4 mb-2 py-2 {{ Request::is('logs') ? 'nav-link--active' : ''  }}" href="/logs"
+                aria-expanded="false" aria-controls="general-pages">
+                <h2 class="menu-title text-white mb-0">Log Aktivitas</h2>
+                {{-- <i class="menu-arrow text-transparent"></i> --}}
+                <i class="mdi mdi-chart-line text-white ms-auto"></i>
+            </a>
+        </li>
         @endif
     </ul>
 </nav>
