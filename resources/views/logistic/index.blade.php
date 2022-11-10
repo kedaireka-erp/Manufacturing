@@ -33,7 +33,7 @@
                                     placeholder="Cari berdasarkan No. Surat Jalan atau No. FPPP">
                             </div>
                             <div>
-                                @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
+                                @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
                                 <a href="{{ route('logistic_create') }}"
                                     class="btn btn-info h-100 d-flex align-items-center">Buat Surat Jalan <i
                                         class="mdi mdi-plus ms-1"></i> </a>
@@ -122,7 +122,7 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
+                                                @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{ route('logistic_show', $data->id) }}"
                                                         class="btn btn-success" title="View">
@@ -343,7 +343,7 @@
                                 </div>
                             </td>
                             <td>
-                                @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
+                                @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
                                 <div class="d-flex justify-content-center">
                                     <a href="/logistic/show/${data.id}" class="btn btn-success" title="View">
                                         <i class="mdi mdi-eye"></i>

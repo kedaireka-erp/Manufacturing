@@ -58,7 +58,7 @@
                             @endif
                             Surat Jalan</a>
                     </li>
-                    @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC"))
+                    @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC"))
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('monitoring*') ? 'sub-menu--active' : ''  }}" href="/monitoring">
                             @if (Request::is('monitoring*'))
@@ -72,7 +72,7 @@
                 </ul>
             </div>
         </li>
-       @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Admin") || Auth::user()->hasRole("Manager-PPIC"))
+       @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Admin") || Auth::user()->hasRole("Manager-PPIC"))
         <li class="nav-item px-0">
             <a class="nav-link px-4 mb-2 {{ Request::is('lead*','subkon*') ? 'nav-link--active' : ''  }}" data-bs-toggle="collapse" href="#general-pages"
                 aria-expanded="false" aria-controls="general-pages">

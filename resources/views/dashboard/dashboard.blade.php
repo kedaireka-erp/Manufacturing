@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    
+
     <div class="row">
         <div class="col-8">
             <div class="row">
@@ -35,7 +35,7 @@
                                 Jumlah Subkon
                             </h4>
                             <h2 class="mb-4 mt-4 text-center">{{ $subkonCount }}</h2>
-                            @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC"))
+                            @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Manager-PPIC"))
                             <a href="{{ route("subkons") }}" class="text-decoration-none text-white">Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                             @endif
                         </div>
@@ -52,7 +52,7 @@
                                 Jumlah Lead
                             </h4>
                             <h2 class="mb-4 mt-4 text-center">{{ $leadCount }}</h2>
-                            @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC"))
+                            @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Manager-PPIC"))
                             <a href="{{ route("leads") }}" class="text-decoration-none text-white">Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                             @endif
                         </div>
@@ -69,7 +69,7 @@
                                     class="mdi mdi-file-document mdi-24px float-right"></i> Jumlah FPPP
                             </h4>
                             <h2 class="mb-4 mt-4 text-center">{{ $fpppCount }}</h2>
-                            @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi") || Auth::user()->hasRole("Lead-logistik") || Auth::user("Operator-logistik"))
+                            @if (Auth::user()->hasRole("admin-manufacture") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-produksi") || Auth::user()->hasRole("Operator-produksi") || Auth::user()->hasRole("Lead-logistik") || Auth::user("Operator-logistik"))
                             <a href="{{ route("manufactures") }}" class="text-decoration-none text-white">Lihat Detail <i class="mdi mdi-chevron-right"></i> </a>
                             @endif
                         </div>
@@ -116,8 +116,8 @@
             </div>
         </div>
     </div>
-        
-    
+
+
 
 </div>
 
