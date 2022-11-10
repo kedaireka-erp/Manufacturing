@@ -50,6 +50,7 @@
                                         <th> Tgl Pengiriman </th>
                                         <th> Jml Unit </th>
                                         <th> Driver </th>
+                                        <th> User </th>
                                         <th> Status </th>
                                         <th> Action </th>
                                     </tr>
@@ -75,6 +76,7 @@
                                                 @endforeach
                                             </td>
                                             <td>{{ ucwords($data->driver, ' .') }}</td>
+                                            <td>{{ ucwords($data->user, ' .') }}</td>
                                             <td>
                                                 {{-- @foreach ($getStatus as $status)
                                                     @if ($data->id === $status->l_id)
@@ -115,8 +117,7 @@
                                                     @endif
                                                 @endforeach --}}
                                                 <span class="delivered">
-                                                    <i
-                                                        class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
+                                                    <i class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
                                                     Delivered
                                                 </span>
                                             </td>
@@ -282,7 +283,7 @@
                                 }
                             })
 
-                        //     newRows = `
+                            //     newRows = `
                         // <tr>
                         //     <td> ${data.no_logistic}</td>
                         //     <td> ${data.FPPP_no} </td>
@@ -332,6 +333,7 @@
                             <td> ${date} </td>
                             <td> ${total} </td>
                             <td class="text-capitalize"> ${data.driver} </td>
+                            <td class="text-capitalize"> ${data.user} </td>
                             <td>
                                 <div class="dropdown status-dropdown" id="statusDropdown">
                                     <span class="delivered">
