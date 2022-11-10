@@ -58,7 +58,7 @@ class LeadController extends Controller
         ], "users");
 
 
-        $user->assignRole("lead-manufacture");
+        $user->assignRole($request->role);
 
         event(new Registered($user));
         $newLeads->save();

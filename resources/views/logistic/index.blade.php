@@ -33,9 +33,11 @@
                                     placeholder="Cari berdasarkan No. Surat Jalan atau No. FPPP">
                             </div>
                             <div>
+                                @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
                                 <a href="{{ route('logistic_create') }}"
                                     class="btn btn-info h-100 d-flex align-items-center">Buat Surat Jalan <i
                                         class="mdi mdi-plus ms-1"></i> </a>
+                                @endif
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -48,6 +50,7 @@
                                         <th> Tgl Pengiriman </th>
                                         <th> Jml Unit </th>
                                         <th> Driver </th>
+                                        <th> User </th>
                                         <th> Status </th>
                                         <th> Action </th>
                                     </tr>
@@ -73,6 +76,7 @@
                                                 @endforeach
                                             </td>
                                             <td>{{ ucwords($data->driver, ' .') }}</td>
+                                            <td>{{ ucwords($data->user, ' .') }}</td>
                                             <td>
                                                 {{-- @foreach ($getStatus as $status)
                                                     @if ($data->id === $status->l_id)
@@ -113,12 +117,12 @@
                                                     @endif
                                                 @endforeach --}}
                                                 <span class="delivered">
-                                                    <i
-                                                        class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
+                                                    <i class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
                                                     Delivered
                                                 </span>
                                             </td>
                                             <td>
+                                                @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{ route('logistic_show', $data->id) }}"
                                                         class="btn btn-success" title="View">
@@ -138,6 +142,7 @@
                                                     </a> --}}
                                                     {{-- </form> --}}
                                                 </div>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -278,7 +283,7 @@
                                 }
                             })
 
-                        //     newRows = `
+                            //     newRows = `
                         // <tr>
                         //     <td> ${data.no_logistic}</td>
                         //     <td> ${data.FPPP_no} </td>
@@ -328,6 +333,7 @@
                             <td> ${date} </td>
                             <td> ${total} </td>
                             <td class="text-capitalize"> ${data.driver} </td>
+                            <td class="text-capitalize"> ${data.user} </td>
                             <td>
                                 <div class="dropdown status-dropdown" id="statusDropdown">
                                     <span class="delivered">
@@ -337,6 +343,7 @@
                                 </div>
                             </td>
                             <td>
+                                @if (Auth::user()->hasRole("Administrator") || Auth::user()->hasRole("Manager-PPIC") || Auth::user()->hasRole("Admin-PPIC") || Auth::user()->hasRole("Lead-logistik") || Auth::user()->hasRole("Operator-logistik"))
                                 <div class="d-flex justify-content-center">
                                     <a href="/logistic/show/${data.id}" class="btn btn-success" title="View">
                                         <i class="mdi mdi-eye"></i>
@@ -345,6 +352,7 @@
                                         <i class="mdi mdi-download"></i>
                                     </a>
                                 </div>
+                                @endif
                             </td>
                         </tr>
                         `;

@@ -7,6 +7,7 @@ use App\Models\ManufactureActivity;
 use App\Models\WorkOrder;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,7 +15,7 @@ class LogisticController extends Controller
 {
     public function index()
     {
-        $getLogistics = Logistic::select('logistics.id', 'no_logistic', 'fppp.id as fppp_id', 'fppp.FPPP_no', 'tgl_berangkat', 'driver')
+        $getLogistics = Logistic::select('logistics.id', 'no_logistic', 'fppp.id as fppp_id', 'fppp.FPPP_no', 'tgl_berangkat', 'driver', 'user')
             ->join('fppps as fppp', 'logistics.fppp_id', '=', 'fppp.id')
             ->orderBy('logistics.updated_at', 'desc')
             ->paginate(5);
@@ -76,12 +77,16 @@ class LogisticController extends Controller
 
         $lastId = DB::table('logistics')->max('id');
 
+        // get user's name
+        $getUser = Auth::user()->name;
+
         $logistic = Logistic::create([
             'fppp_id' => $request->fppp,
             'no_logistic' => $lastId + 1 . '/AST/' . date('m') . '/' . date('Y'),
             'tgl_input' => date('Y-m-d H:i:s'),
             'tgl_berangkat' => $request->departDate,
             'driver' => strtolower($request->driver),
+            'user' => strtolower($getUser),
             'no_polisi' => strtoupper($request->plateNumber),
             'alamat' => $request->address
         ]);
