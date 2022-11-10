@@ -26,8 +26,8 @@ class LoginController extends Controller
 
     public function logout()
     {
-        Auth::logout();
         ManufactureActivity::logActivity("logout", $_SERVER['REMOTE_ADDR']);
+        Auth::logout();
 
         return redirect("http://erp.alluresystem.site");
     }

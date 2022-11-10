@@ -39,9 +39,9 @@ class ManufactureActivity extends Model
             $description = "User Menghapus data {$table} dengan data sbb:";
         } else if ($type == "logout") {
 
-            $description = "Usser Logout dari sistem manufaktur";
+            $description = "User Logout dari sistem manufaktur";
         } else {
-            $description = "Usser Login ke sistem manufaktur";
+            $description = "User Login ke sistem manufaktur";
         }
 
         if (isset($new["created_at"])) {
